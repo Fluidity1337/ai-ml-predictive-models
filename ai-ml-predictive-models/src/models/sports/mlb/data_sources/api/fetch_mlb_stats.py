@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 from datetime import date
 
-def fetch_pitcher_stats(player_id: str, year: int = date.today().year, last_n_starts: int = 3):
+def fetch_mlb_pitcher_stats(player_id: str, year: int = date.today().year, last_n_starts: int = 3):
     """
     Fetch last N starts for a given pitcher using the MLB Stats API.
     Includes extended metrics like K, ER, R, HR, BF, Pitches, etc. and derived metrics.
@@ -82,3 +82,7 @@ def fetch_pitcher_stats(player_id: str, year: int = date.today().year, last_n_st
     df["Cumulative WHIP (last 3)"] = round((total_h + total_bb) / total_ip, 2) if total_ip > 0 else None
 
     return df
+
+if __name__ == "__main__":
+    df  = fetch_mlb_pitcher_stats(1)
+    print(df)
