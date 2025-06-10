@@ -31,6 +31,11 @@
             "link": "/api/v1/teams/113"
           },
           "isWinner": true,
+          "probablePitcher": {
+            "id": 489119,
+            "fullName": "Wade Miley",
+            "link": "/api/v1/people/489119"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         },
@@ -47,6 +52,11 @@
             "link": "/api/v1/teams/114"
           },
           "isWinner": false,
+          "probablePitcher": {
+            "id": 682847,
+            "fullName": "Luis L. Ortiz",
+            "link": "/api/v1/people/682847"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         }
@@ -108,6 +118,11 @@
             "link": "/api/v1/teams/146"
           },
           "isWinner": false,
+          "probablePitcher": {
+            "id": 691587,
+            "fullName": "Eury P\u00e9rez",
+            "link": "/api/v1/people/691587"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         },
@@ -124,6 +139,11 @@
             "link": "/api/v1/teams/134"
           },
           "isWinner": true,
+          "probablePitcher": {
+            "id": 681347,
+            "fullName": "Mike Burrows",
+            "link": "/api/v1/people/681347"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         }
@@ -185,6 +205,11 @@
             "link": "/api/v1/teams/112"
           },
           "isWinner": false,
+          "probablePitcher": {
+            "id": 571510,
+            "fullName": "Matthew Boyd",
+            "link": "/api/v1/people/571510"
+          },
           "splitSquad": false,
           "seriesNumber": 23
         },
@@ -201,6 +226,11 @@
             "link": "/api/v1/teams/143"
           },
           "isWinner": true,
+          "probablePitcher": {
+            "id": 554430,
+            "fullName": "Zack Wheeler",
+            "link": "/api/v1/people/554430"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         }
@@ -261,6 +291,11 @@
             "name": "Tampa Bay Rays",
             "link": "/api/v1/teams/139"
           },
+          "probablePitcher": {
+            "id": 669358,
+            "fullName": "Shane Baz",
+            "link": "/api/v1/people/669358"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         },
@@ -270,11 +305,16 @@
             "losses": 35,
             "pct": ".478"
           },
-          "score": 7,
+          "score": 8,
           "team": {
             "id": 111,
             "name": "Boston Red Sox",
             "link": "/api/v1/teams/111"
+          },
+          "probablePitcher": {
+            "id": 678394,
+            "fullName": "Brayan Bello",
+            "link": "/api/v1/people/678394"
           },
           "splitSquad": false,
           "seriesNumber": 22
@@ -336,6 +376,11 @@
             "link": "/api/v1/teams/144"
           },
           "isWinner": true,
+          "probablePitcher": {
+            "id": 519242,
+            "fullName": "Chris Sale",
+            "link": "/api/v1/people/519242"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         },
@@ -352,6 +397,11 @@
             "link": "/api/v1/teams/158"
           },
           "isWinner": false,
+          "probablePitcher": {
+            "id": 650644,
+            "fullName": "Aaron Civale",
+            "link": "/api/v1/people/650644"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         }
@@ -392,19 +442,19 @@
       "gameDate": "2025-06-09T23:45:00Z",
       "officialDate": "2025-06-09",
       "status": {
-        "abstractGameState": "Live",
-        "codedGameState": "I",
-        "detailedState": "In Progress",
-        "statusCode": "I",
+        "abstractGameState": "Final",
+        "codedGameState": "O",
+        "detailedState": "Game Over",
+        "statusCode": "O",
         "startTimeTBD": false,
-        "abstractGameCode": "L"
+        "abstractGameCode": "F"
       },
       "teams": {
         "away": {
           "leagueRecord": {
-            "wins": 35,
+            "wins": 36,
             "losses": 30,
-            "pct": ".538"
+            "pct": ".545"
           },
           "score": 5,
           "team": {
@@ -412,20 +462,32 @@
             "name": "Toronto Blue Jays",
             "link": "/api/v1/teams/141"
           },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 621244,
+            "fullName": "Jos\u00e9 Berr\u00edos",
+            "link": "/api/v1/people/621244"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         },
         "home": {
           "leagueRecord": {
             "wins": 36,
-            "losses": 29,
-            "pct": ".554"
+            "losses": 30,
+            "pct": ".545"
           },
           "score": 4,
           "team": {
             "id": 138,
             "name": "St. Louis Cardinals",
             "link": "/api/v1/teams/138"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 669467,
+            "fullName": "Andre Pallante",
+            "link": "/api/v1/people/669467"
           },
           "splitSquad": false,
           "seriesNumber": 22
@@ -439,6 +501,7 @@
       "content": {
         "link": "/api/v1/game/777581/content"
       },
+      "isTie": false,
       "gameNumber": 1,
       "publicFacing": true,
       "doubleHeader": "N",
@@ -486,6 +549,11 @@
             "name": "Athletics",
             "link": "/api/v1/teams/133"
           },
+          "probablePitcher": {
+            "id": 680880,
+            "fullName": "Grant Holman",
+            "link": "/api/v1/people/680880"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         },
@@ -495,11 +563,16 @@
             "losses": 34,
             "pct": ".469"
           },
-          "score": 3,
+          "score": 4,
           "team": {
             "id": 108,
             "name": "Los Angeles Angels",
             "link": "/api/v1/teams/108"
+          },
+          "probablePitcher": {
+            "id": 579328,
+            "fullName": "Yusei Kikuchi",
+            "link": "/api/v1/people/579328"
           },
           "splitSquad": false,
           "seriesNumber": 22
@@ -554,11 +627,16 @@
             "losses": 27,
             "pct": ".591"
           },
-          "score": 2,
+          "score": 5,
           "team": {
             "id": 119,
             "name": "Los Angeles Dodgers",
             "link": "/api/v1/teams/119"
+          },
+          "probablePitcher": {
+            "id": 669160,
+            "fullName": "Dustin May",
+            "link": "/api/v1/people/669160"
           },
           "splitSquad": false,
           "seriesNumber": 23
@@ -574,6 +652,11 @@
             "id": 135,
             "name": "San Diego Padres",
             "link": "/api/v1/teams/135"
+          },
+          "probablePitcher": {
+            "id": 601713,
+            "fullName": "Nick Pivetta",
+            "link": "/api/v1/people/601713"
           },
           "splitSquad": false,
           "seriesNumber": 22
@@ -634,6 +717,11 @@
             "name": "Seattle Mariners",
             "link": "/api/v1/teams/136"
           },
+          "probablePitcher": {
+            "id": 676106,
+            "fullName": "Emerson Hancock",
+            "link": "/api/v1/people/676106"
+          },
           "splitSquad": false,
           "seriesNumber": 22
         },
@@ -648,6 +736,11 @@
             "id": 109,
             "name": "Arizona Diamondbacks",
             "link": "/api/v1/teams/109"
+          },
+          "probablePitcher": {
+            "id": 518876,
+            "fullName": "Merrill Kelly",
+            "link": "/api/v1/people/518876"
           },
           "splitSquad": false,
           "seriesNumber": 22
@@ -680,7 +773,354 @@
       "ifNecessaryDescription": "Normal Game"
     }
   ],
-  "pitchers": [],
+  "pitchers": [
+    {
+      "name": "Luis L. Ortiz",
+      "id": 682847,
+      "team": "home",
+      "stats": {
+        "note": "(L, 3-7)",
+        "summary": "4.2 IP, 4 ER, 5 K, BB",
+        "gamesPlayed": 1,
+        "gamesStarted": 1,
+        "flyOuts": 3,
+        "groundOuts": 4,
+        "airOuts": 4,
+        "runs": 4,
+        "doubles": 0,
+        "triples": 0,
+        "homeRuns": 2,
+        "strikeOuts": 5,
+        "baseOnBalls": 1,
+        "intentionalWalks": 0,
+        "hits": 9,
+        "hitByPitch": 0,
+        "atBats": 21,
+        "caughtStealing": 0,
+        "stolenBases": 0,
+        "stolenBasePercentage": ".---",
+        "numberOfPitches": 88,
+        "inningsPitched": "4.2",
+        "wins": 0,
+        "losses": 1,
+        "saves": 0,
+        "saveOpportunities": 0,
+        "holds": 0,
+        "blownSaves": 0,
+        "earnedRuns": 4,
+        "battersFaced": 23,
+        "outs": 14,
+        "gamesPitched": 1,
+        "completeGames": 0,
+        "shutouts": 0,
+        "pitchesThrown": 88,
+        "balls": 25,
+        "strikes": 63,
+        "strikePercentage": ".720",
+        "hitBatsmen": 0,
+        "balks": 0,
+        "wildPitches": 0,
+        "pickoffs": 0,
+        "rbi": 4,
+        "gamesFinished": 0,
+        "runsScoredPer9": "7.71",
+        "homeRunsPer9": "3.86",
+        "inheritedRunners": 0,
+        "inheritedRunnersScored": 0,
+        "catchersInterference": 0,
+        "sacBunts": 0,
+        "sacFlies": 1,
+        "passedBall": 0,
+        "popOuts": 1,
+        "lineOuts": 0
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Emilio Pag\u00e1n",
+      "id": 641941,
+      "team": "away",
+      "stats": {
+        "note": "(S, 16)",
+        "summary": "1.0 IP, 0 ER, 2 K, BB",
+        "gamesPlayed": 1,
+        "gamesStarted": 0,
+        "flyOuts": 0,
+        "groundOuts": 0,
+        "airOuts": 1,
+        "runs": 0,
+        "doubles": 0,
+        "triples": 0,
+        "homeRuns": 0,
+        "strikeOuts": 2,
+        "baseOnBalls": 1,
+        "intentionalWalks": 0,
+        "hits": 0,
+        "hitByPitch": 0,
+        "atBats": 3,
+        "caughtStealing": 0,
+        "stolenBases": 0,
+        "stolenBasePercentage": ".---",
+        "numberOfPitches": 14,
+        "inningsPitched": "1.0",
+        "wins": 0,
+        "losses": 0,
+        "saves": 1,
+        "saveOpportunities": 1,
+        "holds": 0,
+        "blownSaves": 0,
+        "earnedRuns": 0,
+        "battersFaced": 4,
+        "outs": 3,
+        "gamesPitched": 1,
+        "completeGames": 0,
+        "shutouts": 0,
+        "pitchesThrown": 14,
+        "balls": 6,
+        "strikes": 8,
+        "strikePercentage": ".570",
+        "hitBatsmen": 0,
+        "balks": 0,
+        "wildPitches": 0,
+        "pickoffs": 0,
+        "rbi": 0,
+        "gamesFinished": 1,
+        "runsScoredPer9": "0.00",
+        "homeRunsPer9": "0.00",
+        "inheritedRunners": 0,
+        "inheritedRunnersScored": 0,
+        "catchersInterference": 0,
+        "sacBunts": 0,
+        "sacFlies": 0,
+        "passedBall": 0,
+        "popOuts": 0,
+        "lineOuts": 1
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Paul Skenes",
+      "id": 694973,
+      "team": "home",
+      "stats": {},
+      "game_id": 777574
+    },
+    {
+      "name": "Sandy Alcantara",
+      "id": 645261,
+      "team": "away",
+      "stats": {},
+      "game_id": 777574
+    },
+    {
+      "name": "Jes\u00fas Luzardo",
+      "id": 666200,
+      "team": "home",
+      "stats": {},
+      "game_id": 777578
+    },
+    {
+      "name": "Daniel Palencia",
+      "id": 694037,
+      "team": "away",
+      "stats": {
+        "note": "(L, 0-2)",
+        "summary": "1.0 IP, ER, 0 K, BB",
+        "gamesPlayed": 1,
+        "gamesStarted": 0,
+        "flyOuts": 0,
+        "groundOuts": 2,
+        "airOuts": 0,
+        "runs": 2,
+        "doubles": 0,
+        "triples": 0,
+        "homeRuns": 0,
+        "strikeOuts": 0,
+        "baseOnBalls": 1,
+        "intentionalWalks": 1,
+        "hits": 4,
+        "hitByPitch": 0,
+        "atBats": 6,
+        "caughtStealing": 0,
+        "stolenBases": 0,
+        "stolenBasePercentage": ".---",
+        "numberOfPitches": 14,
+        "inningsPitched": "1.0",
+        "wins": 0,
+        "losses": 1,
+        "saves": 0,
+        "saveOpportunities": 0,
+        "holds": 0,
+        "blownSaves": 0,
+        "earnedRuns": 1,
+        "battersFaced": 7,
+        "outs": 3,
+        "gamesPitched": 1,
+        "completeGames": 0,
+        "shutouts": 0,
+        "pitchesThrown": 14,
+        "balls": 2,
+        "strikes": 12,
+        "strikePercentage": ".860",
+        "hitBatsmen": 0,
+        "balks": 0,
+        "wildPitches": 0,
+        "pickoffs": 0,
+        "rbi": 2,
+        "gamesFinished": 1,
+        "runsScoredPer9": "18.00",
+        "homeRunsPer9": "0.00",
+        "inheritedRunners": 0,
+        "inheritedRunnersScored": 0,
+        "catchersInterference": 0,
+        "sacBunts": 0,
+        "sacFlies": 0,
+        "passedBall": 0,
+        "popOuts": 0,
+        "lineOuts": 0
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Brian Van Belle",
+      "id": 687003,
+      "team": "home",
+      "stats": {},
+      "game_id": 777584
+    },
+    {
+      "name": "Taj Bradley",
+      "id": 671737,
+      "team": "away",
+      "stats": {},
+      "game_id": 777584
+    },
+    {
+      "name": "Chad Patrick",
+      "id": 694477,
+      "team": "home",
+      "stats": {},
+      "game_id": 777575
+    },
+    {
+      "name": "Spencer Strider",
+      "id": 675911,
+      "team": "away",
+      "stats": {},
+      "game_id": 777575
+    },
+    {
+      "name": "Steven Matz",
+      "id": 571927,
+      "team": "home",
+      "stats": {},
+      "game_id": 777581
+    },
+    {
+      "name": "Brendon Little",
+      "id": 663893,
+      "team": "away",
+      "stats": {
+        "note": "(H, 12)",
+        "summary": "1.0 IP, 2 ER, 3 K, BB",
+        "gamesPlayed": 1,
+        "gamesStarted": 0,
+        "flyOuts": 0,
+        "groundOuts": 0,
+        "airOuts": 0,
+        "runs": 2,
+        "doubles": 0,
+        "triples": 0,
+        "homeRuns": 0,
+        "strikeOuts": 3,
+        "baseOnBalls": 1,
+        "intentionalWalks": 0,
+        "hits": 1,
+        "hitByPitch": 0,
+        "atBats": 4,
+        "caughtStealing": 0,
+        "stolenBases": 0,
+        "stolenBasePercentage": ".---",
+        "numberOfPitches": 24,
+        "inningsPitched": "1.0",
+        "wins": 0,
+        "losses": 0,
+        "saves": 0,
+        "saveOpportunities": 0,
+        "holds": 1,
+        "blownSaves": 0,
+        "earnedRuns": 2,
+        "battersFaced": 5,
+        "outs": 3,
+        "gamesPitched": 1,
+        "completeGames": 0,
+        "shutouts": 0,
+        "pitchesThrown": 24,
+        "balls": 10,
+        "strikes": 14,
+        "strikePercentage": ".580",
+        "hitBatsmen": 0,
+        "balks": 0,
+        "wildPitches": 0,
+        "pickoffs": 0,
+        "rbi": 0,
+        "gamesFinished": 0,
+        "runsScoredPer9": "18.00",
+        "homeRunsPer9": "0.00",
+        "inheritedRunners": 1,
+        "inheritedRunnersScored": 0,
+        "catchersInterference": 0,
+        "sacBunts": 0,
+        "sacFlies": 0,
+        "passedBall": 0,
+        "popOuts": 0,
+        "lineOuts": 0
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "H\u00e9ctor Neris",
+      "id": 593576,
+      "team": "home",
+      "stats": {},
+      "game_id": 777576
+    },
+    {
+      "name": "Luis Severino",
+      "id": 622663,
+      "team": "away",
+      "stats": {},
+      "game_id": 777576
+    },
+    {
+      "name": "Yuki Matsui",
+      "id": 673513,
+      "team": "home",
+      "stats": {},
+      "game_id": 777579
+    },
+    {
+      "name": "Ben Casparius",
+      "id": 676508,
+      "team": "away",
+      "stats": {},
+      "game_id": 777579
+    },
+    {
+      "name": "Eduardo Rodriguez",
+      "id": 593958,
+      "team": "home",
+      "stats": {},
+      "game_id": 777577
+    },
+    {
+      "name": "Casey Legumina",
+      "id": 668984,
+      "team": "away",
+      "stats": {},
+      "game_id": 777577
+    }
+  ],
   "batters": [
     {
       "name": "Steven Kwan",
@@ -1427,11 +1867,11 @@
       "order": 100,
       "position": "LF",
       "stats": {
-        "summary": "1-5 | 2B, 2 K, R",
+        "summary": "1-6 | 2B, 2 K, R",
         "gamesPlayed": 1,
-        "flyOuts": 0,
+        "flyOuts": 1,
         "groundOuts": 2,
-        "airOuts": 0,
+        "airOuts": 1,
         "runs": 1,
         "doubles": 1,
         "triples": 0,
@@ -1441,16 +1881,16 @@
         "intentionalWalks": 0,
         "hits": 1,
         "hitByPitch": 0,
-        "atBats": 5,
+        "atBats": 6,
         "caughtStealing": 0,
         "stolenBases": 0,
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 5,
+        "plateAppearances": 6,
         "totalBases": 2,
         "rbi": 0,
-        "leftOnBase": 1,
+        "leftOnBase": 2,
         "sacBunts": 0,
         "sacFlies": 0,
         "catchersInterference": 0,
@@ -1468,7 +1908,7 @@
       "order": 100,
       "position": "RF",
       "stats": {
-        "summary": "1-5 | 2B, K, RBI",
+        "summary": "1-5 | 2B, BB, K",
         "gamesPlayed": 1,
         "flyOuts": 0,
         "groundOuts": 2,
@@ -1478,7 +1918,7 @@
         "triples": 0,
         "homeRuns": 0,
         "strikeOuts": 1,
-        "baseOnBalls": 0,
+        "baseOnBalls": 1,
         "intentionalWalks": 0,
         "hits": 1,
         "hitByPitch": 0,
@@ -1488,7 +1928,7 @@
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 5,
+        "plateAppearances": 6,
         "totalBases": 2,
         "rbi": 1,
         "leftOnBase": 1,
@@ -1509,7 +1949,7 @@
       "order": 200,
       "position": "DH",
       "stats": {
-        "summary": "0-3 | 2 BB, 2 K, 2 R",
+        "summary": "0-3 | 3 BB, 2 K, 2 R",
         "gamesPlayed": 1,
         "flyOuts": 0,
         "groundOuts": 1,
@@ -1519,8 +1959,8 @@
         "triples": 0,
         "homeRuns": 0,
         "strikeOuts": 2,
-        "baseOnBalls": 2,
-        "intentionalWalks": 0,
+        "baseOnBalls": 3,
+        "intentionalWalks": 1,
         "hits": 0,
         "hitByPitch": 0,
         "atBats": 3,
@@ -1529,7 +1969,7 @@
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 5,
+        "plateAppearances": 6,
         "totalBases": 0,
         "rbi": 0,
         "leftOnBase": 2,
@@ -1636,7 +2076,7 @@
         "summary": "0-0 | BB, R, 2 SB",
         "gamesPlayed": 1,
         "flyOuts": 0,
-        "groundOuts": 0,
+        "groundOuts": 1,
         "airOuts": 0,
         "runs": 1,
         "doubles": 0,
@@ -1653,11 +2093,11 @@
         "stolenBasePercentage": "1.000",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 1,
+        "plateAppearances": 2,
         "totalBases": 0,
         "rbi": 0,
         "leftOnBase": 0,
-        "sacBunts": 0,
+        "sacBunts": 1,
         "sacFlies": 0,
         "catchersInterference": 0,
         "pickoffs": 0,
@@ -1920,7 +2360,7 @@
       "order": 100,
       "position": "LF",
       "stats": {
-        "summary": "0-4 | K",
+        "summary": "0-5 | 2 K",
         "gamesPlayed": 1,
         "flyOuts": 0,
         "groundOuts": 1,
@@ -1929,21 +2369,21 @@
         "doubles": 0,
         "triples": 0,
         "homeRuns": 0,
-        "strikeOuts": 1,
+        "strikeOuts": 2,
         "baseOnBalls": 0,
         "intentionalWalks": 0,
         "hits": 0,
         "hitByPitch": 0,
-        "atBats": 4,
+        "atBats": 5,
         "caughtStealing": 0,
         "stolenBases": 0,
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 4,
+        "plateAppearances": 5,
         "totalBases": 0,
         "rbi": 0,
-        "leftOnBase": 2,
+        "leftOnBase": 3,
         "sacBunts": 0,
         "sacFlies": 0,
         "catchersInterference": 0,
@@ -2002,10 +2442,10 @@
       "order": 200,
       "position": "SS",
       "stats": {
-        "summary": "1-4 | R",
+        "summary": "1-5 | R",
         "gamesPlayed": 1,
         "flyOuts": 2,
-        "groundOuts": 0,
+        "groundOuts": 1,
         "airOuts": 3,
         "runs": 1,
         "doubles": 0,
@@ -2016,16 +2456,16 @@
         "intentionalWalks": 0,
         "hits": 1,
         "hitByPitch": 0,
-        "atBats": 4,
+        "atBats": 5,
         "caughtStealing": 0,
         "stolenBases": 0,
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 4,
+        "plateAppearances": 5,
         "totalBases": 1,
         "rbi": 0,
-        "leftOnBase": 0,
+        "leftOnBase": 1,
         "sacBunts": 0,
         "sacFlies": 0,
         "catchersInterference": 0,
@@ -2084,11 +2524,11 @@
       "order": 300,
       "position": "2B",
       "stats": {
-        "summary": "1-4 | K",
+        "summary": "1-5 | K",
         "gamesPlayed": 1,
         "flyOuts": 1,
         "groundOuts": 1,
-        "airOuts": 1,
+        "airOuts": 2,
         "runs": 0,
         "doubles": 0,
         "triples": 0,
@@ -2098,23 +2538,23 @@
         "intentionalWalks": 0,
         "hits": 1,
         "hitByPitch": 0,
-        "atBats": 4,
+        "atBats": 5,
         "caughtStealing": 0,
         "stolenBases": 0,
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 4,
+        "plateAppearances": 5,
         "totalBases": 1,
         "rbi": 0,
-        "leftOnBase": 2,
+        "leftOnBase": 3,
         "sacBunts": 0,
         "sacFlies": 0,
         "catchersInterference": 0,
         "pickoffs": 0,
         "atBatsPerHomeRun": "-.--",
         "popOuts": 0,
-        "lineOuts": 0
+        "lineOuts": 1
       },
       "game_id": 777581
     },
@@ -2371,10 +2811,10 @@
       "order": 300,
       "position": "LF",
       "stats": {
-        "summary": "0-1",
+        "summary": "0-2",
         "gamesPlayed": 1,
         "flyOuts": 1,
-        "groundOuts": 0,
+        "groundOuts": 1,
         "airOuts": 1,
         "runs": 0,
         "doubles": 0,
@@ -2385,13 +2825,13 @@
         "intentionalWalks": 0,
         "hits": 0,
         "hitByPitch": 0,
-        "atBats": 1,
+        "atBats": 2,
         "caughtStealing": 0,
         "stolenBases": 0,
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 1,
+        "plateAppearances": 2,
         "totalBases": 0,
         "rbi": 0,
         "leftOnBase": 0,
@@ -2535,12 +2975,12 @@
       "order": 200,
       "position": "SS",
       "stats": {
-        "summary": "1-2",
+        "summary": "1-2 | R",
         "gamesPlayed": 1,
         "flyOuts": 0,
         "groundOuts": 1,
         "airOuts": 0,
-        "runs": 0,
+        "runs": 1,
         "doubles": 0,
         "triples": 0,
         "homeRuns": 0,
@@ -2576,7 +3016,7 @@
       "order": 300,
       "position": "3B",
       "stats": {
-        "summary": "1-1 | 2B, RBI",
+        "summary": "2-2 | 2B, RBI",
         "gamesPlayed": 1,
         "flyOuts": 0,
         "groundOuts": 0,
@@ -2588,16 +3028,16 @@
         "strikeOuts": 0,
         "baseOnBalls": 0,
         "intentionalWalks": 0,
-        "hits": 1,
+        "hits": 2,
         "hitByPitch": 0,
-        "atBats": 1,
+        "atBats": 2,
         "caughtStealing": 0,
         "stolenBases": 0,
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 1,
-        "totalBases": 2,
+        "plateAppearances": 2,
+        "totalBases": 3,
         "rbi": 1,
         "leftOnBase": 0,
         "sacBunts": 0,
@@ -2617,12 +3057,12 @@
       "order": 300,
       "position": "1B",
       "stats": {
-        "summary": "2-2 | 2B, RBI, R",
+        "summary": "2-2 | 2B, RBI, 2 R",
         "gamesPlayed": 1,
         "flyOuts": 0,
         "groundOuts": 0,
         "airOuts": 0,
-        "runs": 1,
+        "runs": 2,
         "doubles": 1,
         "triples": 0,
         "homeRuns": 0,
@@ -2863,11 +3303,11 @@
       "order": 300,
       "position": "C",
       "stats": {
-        "summary": "0-1",
+        "summary": "0-2",
         "gamesPlayed": 1,
-        "flyOuts": 0,
+        "flyOuts": 1,
         "groundOuts": 0,
-        "airOuts": 1,
+        "airOuts": 2,
         "runs": 0,
         "doubles": 0,
         "triples": 0,
@@ -2877,13 +3317,13 @@
         "intentionalWalks": 0,
         "hits": 0,
         "hitByPitch": 0,
-        "atBats": 1,
+        "atBats": 2,
         "caughtStealing": 0,
         "stolenBases": 0,
         "stolenBasePercentage": ".---",
         "groundIntoDoublePlay": 0,
         "groundIntoTriplePlay": 0,
-        "plateAppearances": 1,
+        "plateAppearances": 2,
         "totalBases": 0,
         "rbi": 0,
         "leftOnBase": 0,
