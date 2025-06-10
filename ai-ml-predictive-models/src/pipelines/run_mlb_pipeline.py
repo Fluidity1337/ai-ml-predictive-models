@@ -19,6 +19,8 @@ with open(CONFIG_PATH) as f:
 RAW_DATA_DIR = Path(config["sports_baseball_mlb_raw_data_output_dir"]).resolve()
 RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+HTML_OUTPUT_PATH = Path(config.get("sports_baseball_mlb_html_output_path", Path(__file__).resolve().parents[2] / "index.html"))
+
 def fetch_mlb_schedule(date_str):
     url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date_str}&hydrate=probablePitcher"
     response = requests.get(url)
@@ -53,18 +55,20 @@ def fetch_game_details(game):
             matched_pitcher = team_box.get("players", {}).get(pitcher_player_id)
             if matched_pitcher:
                 pitching_stats = matched_pitcher.get("stats", {}).get("pitching", {})
+                stats_obj = {
+                    "era": pitching_stats.get("era"),
+                    "whip": pitching_stats.get("whip"),
+                    "strikeOutsPer9Inn": pitching_stats.get("strikeOutsPer9Inn"),
+                    "baseOnBallsPer9Inn": pitching_stats.get("baseOnBallsPer9Inn"),
+                    "firstInningEra": pitching_stats.get("firstInningEra")
+                }
                 pitchers.append({
                     "name": probable_pitcher.get("fullName"),
                     "id": pitcher_id,
                     "team": team_type,
-                    "stats": {
-                        "era": pitching_stats.get("era"),
-                        "whip": pitching_stats.get("whip"),
-                        "strikeOutsPer9Inn": pitching_stats.get("strikeOutsPer9Inn"),
-                        "baseOnBallsPer9Inn": pitching_stats.get("baseOnBallsPer9Inn"),
-                        "firstInningEra": pitching_stats.get("firstInningEra")
-                    }
+                    "stats": stats_obj
                 })
+                game["teams"][team_type]["pitcherStats"] = stats_obj
             else:
                 logging.info(f"Probable pitcher with ID {pitcher_id} not found in boxscore for {team_type} team in game {game_id}, falling back.")
 
@@ -74,18 +78,20 @@ def fetch_game_details(game):
             if fallback_pitcher:
                 person = fallback_pitcher.get("person", {})
                 stats = fallback_pitcher.get("stats", {}).get("pitching", {})
+                stats_obj = {
+                    "era": stats.get("era"),
+                    "whip": stats.get("whip"),
+                    "strikeOutsPer9Inn": stats.get("strikeOutsPer9Inn"),
+                    "baseOnBallsPer9Inn": stats.get("baseOnBallsPer9Inn"),
+                    "firstInningEra": stats.get("firstInningEra")
+                }
                 pitchers.append({
                     "name": person.get("fullName"),
                     "id": person.get("id"),
                     "team": team_type,
-                    "stats": {
-                        "era": stats.get("era"),
-                        "whip": stats.get("whip"),
-                        "strikeOutsPer9Inn": stats.get("strikeOutsPer9Inn"),
-                        "baseOnBallsPer9Inn": stats.get("baseOnBallsPer9Inn"),
-                        "firstInningEra": stats.get("firstInningEra")
-                    }
+                    "stats": stats_obj
                 })
+                game["teams"][team_type]["pitcherStats"] = stats_obj
                 logging.info(f"Used fallback pitcher for {team_type} team in game {game_id}")
 
         for player_id, player_data in team_box.get("players", {}).items():
@@ -113,6 +119,58 @@ def fetch_game_details(game):
                     })
     batters = sorted(batters, key=lambda x: x["order"])[:6]
     return pitchers, batters
+
+def generate_html(games):
+    html = f"""<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+  <meta charset=\"UTF-8\" />
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+  <title>Moneyline Hacks - RFI Model</title>
+  <link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\">
+  <style>
+    body {{ background-color: #0f172a; color: #e2e8f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }}
+    .title-highlight {{ background: linear-gradient(to right, #34d399, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }}
+  </style>
+</head>
+<body class=\"p-6\">
+  <div class=\"flex flex-col items-center justify-center gap-3 mb-6\">
+    <img src=\"https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/ai-ml-predictive-models/assets/img/mlh/mlh-logo-1.jpg\" alt=\"Moneyline Hacks Logo\" class=\"h-16\" />
+    <h1 class=\"text-4xl font-extrabold title-highlight\">Moneyline Hacks</h1>
+    <h2 class=\"text-xl text-gray-400\">Run First Inning (RFI) Model — {datetime.now().strftime('%B %d')}</h2>
+    <img src=\"https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/ai-ml-predictive-models/assets/img/mlb/mlb-logo-2.png\" alt=\"Baseball Icon\" class=\"h-10\" />
+  </div>
+  <div class=\"bg-gray-800 max-w-5xl mx-auto overflow-x-auto rounded-lg shadow-xl\">
+    <table class=\"min-w-full text-sm text-left text-gray-300\">
+      <thead class=\"bg-gray-700 text-gray-300 text-sm uppercase\">
+        <tr>
+          <th class=\"px-4 py-3\">Matchup</th>
+          <th class=\"px-4 py-3\">Start Time</th>
+          <th class=\"px-4 py-3\">ERA</th>
+          <th class=\"px-4 py-3\">WHIP</th>
+          <th class=\"px-4 py-3\">K/9</th>
+          <th class=\"px-4 py-3\">BB/9</th>
+          <th class=\"px-4 py-3\">1st Inning ERA</th>
+        </tr>
+      </thead>
+      <tbody>
+"""
+    for game in games:
+        for team_type in ["away", "home"]:
+            team = game["teams"][team_type]["team"]["name"]
+            stats = {k: v for k, v in game["teams"][team_type].get("pitcherStats", {}).items()}
+            html += f"<tr class=\"hover:bg-gray-700 border-b border-gray-700\">\n"
+            html += f"  <td class=\"px-4 py-3\">{team}</td>\n"
+            html += f"  <td class=\"px-4 py-3\">{game['gameDate'][11:16]}</td>\n"
+            html += f"  <td class=\"px-4 py-3\">{stats.get('era', '-')}</td>\n"
+            html += f"  <td class=\"px-4 py-3\">{stats.get('whip', '-')}</td>\n"
+            html += f"  <td class=\"px-4 py-3\">{stats.get('strikeOutsPer9Inn', '-')}</td>\n"
+            html += f"  <td class=\"px-4 py-3\">{stats.get('baseOnBallsPer9Inn', '-')}</td>\n"
+            html += f"  <td class=\"px-4 py-3\">{stats.get('firstInningEra', '-')}</td>\n"
+            html += f"</tr>\n"
+    html += "</tbody></table></div></body></html>"
+    HTML_OUTPUT_PATH.write_text(html)
+    logging.info(f"✅ Saved HTML summary to {HTML_OUTPUT_PATH}")
 
 if __name__ == "__main__":
     date_str = datetime.now().strftime("%Y-%m-%d")
@@ -163,3 +221,5 @@ if __name__ == "__main__":
                 b["stats"].get("obp"), b["stats"].get("homeRuns"), b["stats"].get("firstInningOBP")
             ])
     logging.info(f"Saved CSV summary to {csv_path}")
+
+    generate_html(games)

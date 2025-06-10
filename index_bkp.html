@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moneyline Hacks - RFI Model</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .title-highlight {
+      background: linear-gradient(to right, #34d399, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="p-6">
+  <div class="flex flex-col items-center justify-center gap-3 mb-6">
+    <img
+  src="https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/ai-ml-predictive-models/assets/img/mlh/mlh-logo-1.jpg"
+  alt="Moneyline Hacks Logo"
+  class="h-16" />
+
+    <h1 class="text-4xl font-extrabold title-highlight">Moneyline Hacks</h1>
+    <h2 class="text-xl text-gray-400">Run First Inning (RFI) Model — June 9</h2>
+    <img
+  src="https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/ai-ml-predictive-models/assets/img/mlb/mlb-logo-2.png"
+  alt="Baseball Icon"
+  class="h-10"
+/>
+
+  </div>
+
+  <div class="bg-gray-800 max-w-5xl mx-auto overflow-x-auto rounded-lg shadow-xl">
+    <table class="min-w-full text-sm text-left text-gray-300">
+      <thead class="bg-gray-700 text-gray-300 text-sm uppercase">
+        <tr>
+          <th class="px-4 py-3">Matchup</th>
+          <th class="px-4 py-3">Start Time</th>
+          <th class="px-4 py-3">RFI Probability</th>
+          <th class="px-4 py-3">Implied Odds</th>
+          <th class="px-4 py-3">Sportsbook Odds</th>
+          <th class="px-4 py-3">EV%</th>
+          <th class="px-4 py-3">Recommendation</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Atlanta Braves vs Philadelphia Phillies</td>
+          <td class="px-4 py-3">10:05 AM</td>
+          <td class="px-4 py-3">53.96%</td>
+          <td class="px-4 py-3">+85</td>
+          <td class="px-4 py-3">+97</td>
+          <td class="px-4 py-3">-6.27%</td>
+          <td class="px-4 py-3 font-semibold text-red-400">❌ Pass</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Philadelphia Phillies vs Atlanta Braves</td>
+          <td class="px-4 py-3">10:05 AM</td>
+          <td class="px-4 py-3">46.34%</td>
+          <td class="px-4 py-3">+115</td>
+          <td class="px-4 py-3">+97</td>
+          <td class="px-4 py-3">9.12%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Atlanta Braves vs Philadelphia Phillies</td>
+          <td class="px-4 py-3">3:45 PM</td>
+          <td class="px-4 py-3">55.77%</td>
+          <td class="px-4 py-3">+79</td>
+          <td class="px-4 py-3">+99</td>
+          <td class="px-4 py-3">-10.15%</td>
+          <td class="px-4 py-3 font-semibold text-red-400">❌ Pass</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Philadelphia Phillies vs Atlanta Braves</td>
+          <td class="px-4 py-3">3:45 PM</td>
+          <td class="px-4 py-3">66.28%</td>
+          <td class="px-4 py-3">+50</td>
+          <td class="px-4 py-3">+102</td>
+          <td class="px-4 py-3">-25.63%</td>
+          <td class="px-4 py-3 font-semibold text-red-400">❌ Pass</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Oakland Athletics vs Toronto Blue Jays</td>
+          <td class="px-4 py-3">4:07 PM</td>
+          <td class="px-4 py-3">45.19%</td>
+          <td class="px-4 py-3">+121</td>
+          <td class="px-4 py-3">+101</td>
+          <td class="px-4 py-3">9.83%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Toronto Blue Jays vs Oakland Athletics</td>
+          <td class="px-4 py-3">4:07 PM</td>
+          <td class="px-4 py-3">45.19%</td>
+          <td class="px-4 py-3">+121</td>
+          <td class="px-4 py-3">+99</td>
+          <td class="px-4 py-3">10.99%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Tampa Bay Rays vs Houston Astros</td>
+          <td class="px-4 py-3">5:10 PM</td>
+          <td class="px-4 py-3">66.95%</td>
+          <td class="px-4 py-3">+49</td>
+          <td class="px-4 py-3">+104</td>
+          <td class="px-4 py-3">-26.85%</td>
+          <td class="px-4 py-3 font-semibold text-red-400">❌ Pass</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Houston Astros vs Tampa Bay Rays</td>
+          <td class="px-4 py-3">5:10 PM</td>
+          <td class="px-4 py-3">57.21%</td>
+          <td class="px-4 py-3">+74</td>
+          <td class="px-4 py-3">+97</td>
+          <td class="px-4 py-3">-11.31%</td>
+          <td class="px-4 py-3 font-semibold text-red-400">❌ Pass</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Washington Nationals vs Seattle Mariners</td>
+          <td class="px-4 py-3">6:40 PM</td>
+          <td class="px-4 py-3">42.37%</td>
+          <td class="px-4 py-3">+136</td>
+          <td class="px-4 py-3">+99</td>
+          <td class="px-4 py-3">18.38%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Seattle Mariners vs Washington Nationals</td>
+          <td class="px-4 py-3">6:40 PM</td>
+          <td class="px-4 py-3">54.51%</td>
+          <td class="px-4 py-3">+83</td>
+          <td class="px-4 py-3">+100</td>
+          <td class="px-4 py-3">-8.5%</td>
+          <td class="px-4 py-3 font-semibold text-red-400">❌ Pass</td>
+        </tr>
+    
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

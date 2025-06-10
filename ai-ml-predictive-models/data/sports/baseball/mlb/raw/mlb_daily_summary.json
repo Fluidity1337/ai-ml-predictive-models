@@ -37,7 +37,14 @@
             "link": "/api/v1/people/489119"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -58,7 +65,14 @@
             "link": "/api/v1/people/682847"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
@@ -124,7 +138,14 @@
             "link": "/api/v1/people/691587"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -145,7 +166,14 @@
             "link": "/api/v1/people/681347"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
@@ -211,7 +239,14 @@
             "link": "/api/v1/people/571510"
           },
           "splitSquad": false,
-          "seriesNumber": 23
+          "seriesNumber": 23,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -232,7 +267,14 @@
             "link": "/api/v1/people/554430"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
@@ -298,7 +340,14 @@
             "link": "/api/v1/people/669358"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -319,7 +368,14 @@
             "link": "/api/v1/people/678394"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
@@ -385,7 +441,14 @@
             "link": "/api/v1/people/519242"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -406,7 +469,14 @@
             "link": "/api/v1/people/650644"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
@@ -472,7 +542,14 @@
             "link": "/api/v1/people/621244"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -493,7 +570,14 @@
             "link": "/api/v1/people/669467"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
@@ -533,9 +617,9 @@
       "officialDate": "2025-06-09",
       "status": {
         "abstractGameState": "Final",
-        "codedGameState": "O",
-        "detailedState": "Game Over",
-        "statusCode": "O",
+        "codedGameState": "F",
+        "detailedState": "Final",
+        "statusCode": "F",
         "startTimeTBD": false,
         "abstractGameCode": "F"
       },
@@ -559,7 +643,14 @@
             "link": "/api/v1/people/680880"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -580,7 +671,14 @@
             "link": "/api/v1/people/579328"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
@@ -633,7 +731,7 @@
             "losses": 27,
             "pct": ".591"
           },
-          "score": 6,
+          "score": 8,
           "team": {
             "id": 119,
             "name": "Los Angeles Dodgers",
@@ -645,7 +743,14 @@
             "link": "/api/v1/people/669160"
           },
           "splitSquad": false,
-          "seriesNumber": 23
+          "seriesNumber": 23,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -665,7 +770,14 @@
             "link": "/api/v1/people/601713"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
@@ -717,7 +829,7 @@
             "losses": 31,
             "pct": ".516"
           },
-          "score": 0,
+          "score": 4,
           "team": {
             "id": 136,
             "name": "Seattle Mariners",
@@ -729,7 +841,14 @@
             "link": "/api/v1/people/676106"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         },
         "home": {
           "leagueRecord": {
@@ -749,7 +868,14 @@
             "link": "/api/v1/people/518876"
           },
           "splitSquad": false,
-          "seriesNumber": 22
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
         }
       },
       "venue": {
