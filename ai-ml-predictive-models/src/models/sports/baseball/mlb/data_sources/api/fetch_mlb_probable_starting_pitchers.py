@@ -1,57 +1,69 @@
-import sys
-from pathlib import Path
-
-# Dynamically add project root to sys.path
-current_file = Path(__file__).resolve()
-project_root = current_file
-while project_root.name != "src":
-    project_root = project_root.parent
-sys.path.append(str(project_root))
-
-from models.sports.baseball.schema import Game, PitcherStats
+# fetch_mlb_probable_starting_pitchers.py
+import requests
+from datetime import datetime
+from src.models.sports.baseball.schema.baseball_model_schema import GameInfo
+from src.models.sports.baseball.mlb.data_sources.api.fetch_mlb_stats import fetch_mlb_pitcher_stats
 
 
-def fetch_probable_pitchers(schedule: list[Game], game_date: date) -> dict[str, PitcherStats]:
+def fetch_probable_pitchers(date_input: str = None) -> list[dict]:
     """
-    Given a list of scheduled games, fetch probable pitchers with stats for each.
+    Fetch probable starting pitchers for all games on the given date from the MLB API.
+    Returns a list of dicts with pitcher stats for each team.
     """
-    print(f"Fetching probable pitchers for {game_date}...")
-    game_date_str = game_date.strftime("%Y-%m-%d")
+    base_url = "https://statsapi.mlb.com/api/v1/schedule"
 
-    url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={game_date_str}&hydrate=probablePitcher(note,stats)"
-    headers = {"User-Agent": "Mozilla/5.0"}
+    if date_input is None:
+        date_str = datetime.now().strftime("%Y-%m-%d")
+    else:
+        date_str = date_input
 
-    response = requests.get(url, headers=headers)
+    params = {
+        "sportId": 1,
+        "date": date_str,
+        "hydrate": "probablePitcher(stats(gameLog))"
+    }
+
+    print(f"Fetching probable pitchers for {date_str}...")
+    response = requests.get(base_url, params=params)
+    print(f"GET {response.url} => {response.status_code}")
+
     if response.status_code != 200:
-        raise Exception(f"Error fetching data: {response.status_code}")
+        raise Exception(f"Failed to fetch schedule: {response.status_code}")
 
     data = response.json()
-    probable_pitchers = {}
+    games = data.get("dates", [])[0].get("games", [])
 
-    for date_info in data.get("dates", []):
-        for game in date_info.get("games", []):
-            for side in ["home", "away"]:
-                team_info = game.get(side, {})
-                pitcher_info = team_info.get("probablePitcher", {})
+    pitcher_profiles: list[dict] = []
 
-                if pitcher_info:
-                    name = pitcher_info.get("fullName")
-                    player_id = pitcher_info.get("id")
-                    team = team_info.get("team", {}).get("name")
+    for game in games:
+        for team_type in ["home", "away"]:
+            team = game.get(team_type, {})
+            team_name = team.get("team", {}).get("name")
+            pitcher = team.get("probablePitcher")
 
-                    probable_pitchers[name] = PitcherStats(
-                        player_id=player_id,
-                        name=name,
-                        team=team,
-                        last_3_game_stats=None,  # to be filled in next step
-                        game_id=game.get("gamePk")
-                    )
+            if pitcher:
+                pitcher_id = pitcher.get("id")
+                pitcher_name = pitcher.get("fullName")
 
-    return probable_pitchers
+                print(f"Fetching stats for {pitcher_name} ({team_name})...")
+                try:
+                    stats_df = fetch_mlb_pitcher_stats(pitcher_id)
+                    pitcher_profiles.append({
+                        "date": date_str,
+                        "team": team_name,
+                        "pitcher": pitcher_name,
+                        "pitcher_id": pitcher_id,
+                        "stats": stats_df.to_dict(orient="records")
+                    })
+                except Exception as e:
+                    print(f"Error fetching stats for {pitcher_name}: {e}")
 
-# Example usage
+    return pitcher_profiles
+
+
 if __name__ == "__main__":
-    dummy_schedule = []  # You'd pass in your list of Game objects
-    result = fetch_probable_pitchers(dummy_schedule, date.today())
-    for name, stats in result.items():
-        print(f"{name} ({stats.team}) — ID: {stats.player_id}")
+    import json
+    results = fetch_probable_pitchers()
+    with open("probable_pitchers.json", "w") as f:
+        json.dump(results, f, indent=2)
+    print("Saved probable_pitchers.json")

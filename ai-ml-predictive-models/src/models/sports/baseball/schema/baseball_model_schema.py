@@ -1,4 +1,4 @@
-# schema_model_schema.py
+# baseball_model_schema.py
 
 from typing import TypedDict, List, Optional
 
