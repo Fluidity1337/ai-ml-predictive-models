@@ -6,48 +6,83 @@ from datetime import datetime
 import json
 import csv
 import os
+import logging
 
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-RAW_DATA_DIR = Path(__file__).resolve().parents[6] / "data" / "raw"
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+CONFIG_PATH = Path(__file__).resolve().parents[2] / "config.json"
+with open(CONFIG_PATH) as f:
+    config = json.load(f)
+
+RAW_DATA_DIR = Path(config["sports_baseball_mlb_raw_data_output_dir"]).resolve()
 RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 def fetch_mlb_schedule(date_str):
-    url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date_str}"
+    url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date_str}&hydrate=probablePitcher"
     response = requests.get(url)
     if response.status_code != 200:
         raise Exception(f"Failed to fetch schedule for {date_str}")
     data = response.json()
     return data.get("dates", [{}])[0].get("games", [])
 
-def fetch_game_details(game_id):
+def fetch_game_details(game):
+    game_id = game.get("gamePk")
+    if not game_id:
+        return [], []
+
     url = f"https://statsapi.mlb.com/api/v1/game/{game_id}/boxscore"
     response = requests.get(url)
     if response.status_code != 200:
-        print(f"Failed to fetch boxscore for game {game_id}")
-        return {}, {}
+        logging.warning(f"Failed to fetch boxscore for game {game_id}")
+        return [], []
     data = response.json()
 
     pitchers = []
     batters = []
 
     for team_type in ["home", "away"]:
-        team = data.get("teams", {}).get(team_type, {})
-        for player_id, player_data in team.get("players", {}).items():
+        team_info = game.get(team_type, {})
+        team_box = data.get("teams", {}).get(team_type, {})
+        probable_pitcher = team_info.get("probablePitcher")
+
+        pitcher_found = False
+        if probable_pitcher:
+            pitcher_id = probable_pitcher.get("id")
+            pitcher_stats = next((player.get("stats", {}).get("pitching", {})
+                                   for player in team_box.get("players", {}).values()
+                                   if player.get("person", {}).get("id") == pitcher_id), {})
+            pitchers.append({
+                "name": probable_pitcher.get("fullName"),
+                "id": pitcher_id,
+                "team": team_type,
+                "stats": pitcher_stats
+            })
+            pitcher_found = True
+
+        if not pitcher_found:
+            fallback_pitcher = next((player for player in team_box.get("players", {}).values()
+                                      if player.get("position", {}).get("abbreviation") == "P"), None)
+            if fallback_pitcher:
+                person = fallback_pitcher.get("person", {})
+                stats = fallback_pitcher.get("stats", {}).get("pitching", {})
+                pitchers.append({
+                    "name": person.get("fullName"),
+                    "id": person.get("id"),
+                    "team": team_type,
+                    "stats": stats
+                })
+                logging.info(f"Used fallback pitcher for {team_type} team in game {game_id}")
+
+        for player_id, player_data in team_box.get("players", {}).items():
             person = player_data.get("person", {})
             stats = player_data.get("stats", {})
             position = player_data.get("position", {}).get("abbreviation")
             full_name = person.get("fullName")
             if not full_name:
                 continue
-            if position == "P":
-                pitchers.append({
-                    "name": full_name,
-                    "id": person.get("id"),
-                    "team": team_type,
-                    "stats": stats.get("pitching", {})
-                })
-            elif player_data.get("battingOrder") and player_data.get("battingOrder").isdigit():
+            if player_data.get("battingOrder") and str(player_data.get("battingOrder")).isdigit():
                 batting_order = int(player_data.get("battingOrder"))
                 if batting_order <= 300:
                     batters.append({
@@ -64,19 +99,19 @@ def fetch_game_details(game_id):
 if __name__ == "__main__":
     date_str = datetime.now().strftime("%Y-%m-%d")
 
-    print("\n--- Fetching MLB Schedule ---")
+    logging.info("Fetching MLB Schedule")
     games = fetch_mlb_schedule(date_str)
-    print(f"Fetched {len(games)} games.")
+    logging.info(f"Fetched {len(games)} games.")
 
     all_pitchers = []
     all_batters = []
 
-    print("\n--- Fetching Details for Each Game ---")
+    logging.info("Fetching Details for Each Game")
     for game in games:
         game_id = game.get("gamePk")
         if not game_id:
             continue
-        pitchers, batters = fetch_game_details(game_id)
+        pitchers, batters = fetch_game_details(game)
         for pitcher in pitchers:
             pitcher["game_id"] = game_id
             all_pitchers.append(pitcher)
@@ -92,7 +127,7 @@ if __name__ == "__main__":
             "pitchers": all_pitchers,
             "batters": all_batters
         }, f, indent=2)
-    print(f"\n✅ Saved combined summary to {json_path}")
+    logging.info(f"Saved combined summary to {json_path}")
 
     csv_path = RAW_DATA_DIR / "mlb_daily_summary.csv"
     with open(csv_path, "w", newline='', encoding='utf-8') as f:
@@ -108,4 +143,4 @@ if __name__ == "__main__":
                 b["game_id"], "Batter", b["team"], b["name"], b["position"],
                 b["stats"].get("hits"), "", b["stats"].get("avg"), b["stats"].get("obp")
             ])
-    print(f"✅ Saved CSV summary to {csv_path}")
+    logging.info(f"Saved CSV summary to {csv_path}")
