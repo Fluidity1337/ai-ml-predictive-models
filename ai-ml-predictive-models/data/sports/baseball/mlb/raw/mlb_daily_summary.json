@@ -717,19 +717,19 @@
       "gameDate": "2025-06-10T01:40:00Z",
       "officialDate": "2025-06-09",
       "status": {
-        "abstractGameState": "Live",
-        "codedGameState": "I",
-        "detailedState": "In Progress",
-        "statusCode": "I",
+        "abstractGameState": "Final",
+        "codedGameState": "O",
+        "detailedState": "Game Over",
+        "statusCode": "O",
         "startTimeTBD": false,
-        "abstractGameCode": "L"
+        "abstractGameCode": "F"
       },
       "teams": {
         "away": {
           "leagueRecord": {
-            "wins": 39,
+            "wins": 40,
             "losses": 27,
-            "pct": ".591"
+            "pct": ".597"
           },
           "score": 8,
           "team": {
@@ -737,6 +737,7 @@
             "name": "Los Angeles Dodgers",
             "link": "/api/v1/teams/119"
           },
+          "isWinner": true,
           "probablePitcher": {
             "id": 669160,
             "fullName": "Dustin May",
@@ -755,15 +756,16 @@
         "home": {
           "leagueRecord": {
             "wins": 37,
-            "losses": 27,
-            "pct": ".578"
+            "losses": 28,
+            "pct": ".569"
           },
-          "score": 6,
+          "score": 7,
           "team": {
             "id": 135,
             "name": "San Diego Padres",
             "link": "/api/v1/teams/135"
           },
+          "isWinner": false,
           "probablePitcher": {
             "id": 601713,
             "fullName": "Nick Pivetta",
@@ -788,6 +790,7 @@
       "content": {
         "link": "/api/v1/game/777579/content"
       },
+      "isTie": false,
       "gameNumber": 1,
       "publicFacing": true,
       "doubleHeader": "N",
