@@ -7,10 +7,12 @@ import csv
 import os
 import logging
 
+# Configure logging
+datefmt = '%Y-%m-%d %H:%M:%S'
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', datefmt=datefmt)
+
 # Allow project-root imports
 sys.path.append(str(Path(__file__).resolve().parents[2]))
-
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Load config
 CONFIG_PATH = Path(__file__).resolve().parents[2] / "config.json"
