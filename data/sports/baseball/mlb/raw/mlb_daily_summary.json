@@ -1,0 +1,1851 @@
+{
+  "date": "2025-06-09",
+  "games": [
+    {
+      "gamePk": 777580,
+      "gameGuid": "bcd8abce-919d-4adb-955c-0131b2f82947",
+      "link": "/api/v1.1/game/777580/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-09T22:40:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Final",
+        "codedGameState": "F",
+        "detailedState": "Final",
+        "statusCode": "F",
+        "startTimeTBD": false,
+        "abstractGameCode": "F"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 34,
+            "losses": 33,
+            "pct": ".507"
+          },
+          "score": 7,
+          "team": {
+            "id": 113,
+            "name": "Cincinnati Reds",
+            "link": "/api/v1/teams/113"
+          },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 489119,
+            "fullName": "Wade Miley",
+            "link": "/api/v1/people/489119"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 34,
+            "losses": 31,
+            "pct": ".523"
+          },
+          "score": 4,
+          "team": {
+            "id": 114,
+            "name": "Cleveland Guardians",
+            "link": "/api/v1/teams/114"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 682847,
+            "fullName": "Luis L. Ortiz",
+            "link": "/api/v1/people/682847"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 5,
+        "name": "Progressive Field",
+        "link": "/api/v1/venues/5"
+      },
+      "content": {
+        "link": "/api/v1/game/777580/content"
+      },
+      "isTie": false,
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777580-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    },
+    {
+      "gamePk": 777574,
+      "gameGuid": "253f1555-9b67-4d4c-882b-3b72e2da6c38",
+      "link": "/api/v1.1/game/777574/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-09T22:40:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Final",
+        "codedGameState": "F",
+        "detailedState": "Final",
+        "statusCode": "F",
+        "startTimeTBD": false,
+        "abstractGameCode": "F"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 24,
+            "losses": 40,
+            "pct": ".375"
+          },
+          "score": 3,
+          "team": {
+            "id": 146,
+            "name": "Miami Marlins",
+            "link": "/api/v1/teams/146"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 691587,
+            "fullName": "Eury P\u00e9rez",
+            "link": "/api/v1/people/691587"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 27,
+            "losses": 40,
+            "pct": ".403"
+          },
+          "score": 10,
+          "team": {
+            "id": 134,
+            "name": "Pittsburgh Pirates",
+            "link": "/api/v1/teams/134"
+          },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 681347,
+            "fullName": "Mike Burrows",
+            "link": "/api/v1/people/681347"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 31,
+        "name": "PNC Park",
+        "link": "/api/v1/venues/31"
+      },
+      "content": {
+        "link": "/api/v1/game/777574/content"
+      },
+      "isTie": false,
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777574-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    },
+    {
+      "gamePk": 777578,
+      "gameGuid": "c47439bd-9031-4cc3-9f83-ccb4e3ff7774",
+      "link": "/api/v1.1/game/777578/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-09T22:45:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Final",
+        "codedGameState": "F",
+        "detailedState": "Final",
+        "statusCode": "F",
+        "startTimeTBD": false,
+        "abstractGameCode": "F"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 40,
+            "losses": 26,
+            "pct": ".606"
+          },
+          "score": 3,
+          "team": {
+            "id": 112,
+            "name": "Chicago Cubs",
+            "link": "/api/v1/teams/112"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 571510,
+            "fullName": "Matthew Boyd",
+            "link": "/api/v1/people/571510"
+          },
+          "splitSquad": false,
+          "seriesNumber": 23,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 38,
+            "losses": 28,
+            "pct": ".576"
+          },
+          "score": 4,
+          "team": {
+            "id": 143,
+            "name": "Philadelphia Phillies",
+            "link": "/api/v1/teams/143"
+          },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 554430,
+            "fullName": "Zack Wheeler",
+            "link": "/api/v1/people/554430"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 2681,
+        "name": "Citizens Bank Park",
+        "link": "/api/v1/venues/2681"
+      },
+      "content": {
+        "link": "/api/v1/game/777578/content"
+      },
+      "isTie": false,
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777578-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    },
+    {
+      "gamePk": 777584,
+      "gameGuid": "507dccf5-a559-4d5a-9043-10481c9590df",
+      "link": "/api/v1.1/game/777584/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-09T23:10:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Final",
+        "codedGameState": "F",
+        "detailedState": "Final",
+        "statusCode": "F",
+        "startTimeTBD": false,
+        "abstractGameCode": "F"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 36,
+            "losses": 30,
+            "pct": ".545"
+          },
+          "score": 10,
+          "team": {
+            "id": 139,
+            "name": "Tampa Bay Rays",
+            "link": "/api/v1/teams/139"
+          },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 669358,
+            "fullName": "Shane Baz",
+            "link": "/api/v1/people/669358"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 32,
+            "losses": 36,
+            "pct": ".471"
+          },
+          "score": 8,
+          "team": {
+            "id": 111,
+            "name": "Boston Red Sox",
+            "link": "/api/v1/teams/111"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 678394,
+            "fullName": "Brayan Bello",
+            "link": "/api/v1/people/678394"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 3,
+        "name": "Fenway Park",
+        "link": "/api/v1/venues/3"
+      },
+      "content": {
+        "link": "/api/v1/game/777584/content"
+      },
+      "isTie": false,
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777584-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    },
+    {
+      "gamePk": 777575,
+      "gameGuid": "9e33cdd0-2510-48b9-9f57-b47af7784b2b",
+      "link": "/api/v1.1/game/777575/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-09T23:40:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Final",
+        "codedGameState": "F",
+        "detailedState": "Final",
+        "statusCode": "F",
+        "startTimeTBD": false,
+        "abstractGameCode": "F"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 28,
+            "losses": 37,
+            "pct": ".431"
+          },
+          "score": 7,
+          "team": {
+            "id": 144,
+            "name": "Atlanta Braves",
+            "link": "/api/v1/teams/144"
+          },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 519242,
+            "fullName": "Chris Sale",
+            "link": "/api/v1/people/519242"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 35,
+            "losses": 32,
+            "pct": ".522"
+          },
+          "score": 1,
+          "team": {
+            "id": 158,
+            "name": "Milwaukee Brewers",
+            "link": "/api/v1/teams/158"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 650644,
+            "fullName": "Aaron Civale",
+            "link": "/api/v1/people/650644"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 32,
+        "name": "American Family Field",
+        "link": "/api/v1/venues/32"
+      },
+      "content": {
+        "link": "/api/v1/game/777575/content"
+      },
+      "isTie": false,
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777575-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    },
+    {
+      "gamePk": 777581,
+      "gameGuid": "1c10fd08-6f2d-47e8-a5ba-c77091d7e9b0",
+      "link": "/api/v1.1/game/777581/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-09T23:45:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Final",
+        "codedGameState": "F",
+        "detailedState": "Final",
+        "statusCode": "F",
+        "startTimeTBD": false,
+        "abstractGameCode": "F"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 36,
+            "losses": 30,
+            "pct": ".545"
+          },
+          "score": 5,
+          "team": {
+            "id": 141,
+            "name": "Toronto Blue Jays",
+            "link": "/api/v1/teams/141"
+          },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 621244,
+            "fullName": "Jos\u00e9 Berr\u00edos",
+            "link": "/api/v1/people/621244"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 36,
+            "losses": 30,
+            "pct": ".545"
+          },
+          "score": 4,
+          "team": {
+            "id": 138,
+            "name": "St. Louis Cardinals",
+            "link": "/api/v1/teams/138"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 669467,
+            "fullName": "Andre Pallante",
+            "link": "/api/v1/people/669467"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 2889,
+        "name": "Busch Stadium",
+        "link": "/api/v1/venues/2889"
+      },
+      "content": {
+        "link": "/api/v1/game/777581/content"
+      },
+      "isTie": false,
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777581-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    },
+    {
+      "gamePk": 777576,
+      "gameGuid": "213325cf-8b16-42fc-b503-de030e5aa902",
+      "link": "/api/v1.1/game/777576/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-10T01:38:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Final",
+        "codedGameState": "F",
+        "detailedState": "Final",
+        "statusCode": "F",
+        "startTimeTBD": false,
+        "abstractGameCode": "F"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 26,
+            "losses": 42,
+            "pct": ".382"
+          },
+          "score": 4,
+          "team": {
+            "id": 133,
+            "name": "Athletics",
+            "link": "/api/v1/teams/133"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 680880,
+            "fullName": "Grant Holman",
+            "link": "/api/v1/people/680880"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 31,
+            "losses": 34,
+            "pct": ".477"
+          },
+          "score": 7,
+          "team": {
+            "id": 108,
+            "name": "Los Angeles Angels",
+            "link": "/api/v1/teams/108"
+          },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 579328,
+            "fullName": "Yusei Kikuchi",
+            "link": "/api/v1/people/579328"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 1,
+        "name": "Angel Stadium",
+        "link": "/api/v1/venues/1"
+      },
+      "content": {
+        "link": "/api/v1/game/777576/content"
+      },
+      "isTie": false,
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777576-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    },
+    {
+      "gamePk": 777579,
+      "gameGuid": "263aab0a-8b86-4661-98e2-99c1b0510eda",
+      "link": "/api/v1.1/game/777579/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-10T01:40:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Final",
+        "codedGameState": "O",
+        "detailedState": "Game Over",
+        "statusCode": "O",
+        "startTimeTBD": false,
+        "abstractGameCode": "F"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 40,
+            "losses": 27,
+            "pct": ".597"
+          },
+          "score": 8,
+          "team": {
+            "id": 119,
+            "name": "Los Angeles Dodgers",
+            "link": "/api/v1/teams/119"
+          },
+          "isWinner": true,
+          "probablePitcher": {
+            "id": 669160,
+            "fullName": "Dustin May",
+            "link": "/api/v1/people/669160"
+          },
+          "splitSquad": false,
+          "seriesNumber": 23,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 37,
+            "losses": 28,
+            "pct": ".569"
+          },
+          "score": 7,
+          "team": {
+            "id": 135,
+            "name": "San Diego Padres",
+            "link": "/api/v1/teams/135"
+          },
+          "isWinner": false,
+          "probablePitcher": {
+            "id": 601713,
+            "fullName": "Nick Pivetta",
+            "link": "/api/v1/people/601713"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 2680,
+        "name": "Petco Park",
+        "link": "/api/v1/venues/2680"
+      },
+      "content": {
+        "link": "/api/v1/game/777579/content"
+      },
+      "isTie": false,
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777579-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    },
+    {
+      "gamePk": 777577,
+      "gameGuid": "afec3eca-d7a2-4c32-8aac-fa91c4257cb0",
+      "link": "/api/v1.1/game/777577/feed/live",
+      "gameType": "R",
+      "season": "2025",
+      "gameDate": "2025-06-10T01:40:00Z",
+      "officialDate": "2025-06-09",
+      "status": {
+        "abstractGameState": "Live",
+        "codedGameState": "I",
+        "detailedState": "In Progress",
+        "statusCode": "I",
+        "startTimeTBD": false,
+        "abstractGameCode": "L"
+      },
+      "teams": {
+        "away": {
+          "leagueRecord": {
+            "wins": 33,
+            "losses": 31,
+            "pct": ".516"
+          },
+          "score": 4,
+          "team": {
+            "id": 136,
+            "name": "Seattle Mariners",
+            "link": "/api/v1/teams/136"
+          },
+          "probablePitcher": {
+            "id": 676106,
+            "fullName": "Emerson Hancock",
+            "link": "/api/v1/people/676106"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        },
+        "home": {
+          "leagueRecord": {
+            "wins": 31,
+            "losses": 34,
+            "pct": ".477"
+          },
+          "score": 4,
+          "team": {
+            "id": 109,
+            "name": "Arizona Diamondbacks",
+            "link": "/api/v1/teams/109"
+          },
+          "probablePitcher": {
+            "id": 518876,
+            "fullName": "Merrill Kelly",
+            "link": "/api/v1/people/518876"
+          },
+          "splitSquad": false,
+          "seriesNumber": 22,
+          "pitcherStats": {
+            "era": null,
+            "whip": null,
+            "strikeOutsPer9Inn": null,
+            "baseOnBallsPer9Inn": null,
+            "firstInningEra": null
+          }
+        }
+      },
+      "venue": {
+        "id": 15,
+        "name": "Chase Field",
+        "link": "/api/v1/venues/15"
+      },
+      "content": {
+        "link": "/api/v1/game/777577/content"
+      },
+      "gameNumber": 1,
+      "publicFacing": true,
+      "doubleHeader": "N",
+      "gamedayType": "P",
+      "tiebreaker": "N",
+      "calendarEventID": "14-777577-2025-06-09",
+      "seasonDisplay": "2025",
+      "dayNight": "night",
+      "scheduledInnings": 9,
+      "reverseHomeAwayStatus": false,
+      "inningBreakLength": 120,
+      "gamesInSeries": 3,
+      "seriesGameNumber": 1,
+      "seriesDescription": "Regular Season",
+      "recordSource": "S",
+      "ifNecessary": "N",
+      "ifNecessaryDescription": "Normal Game"
+    }
+  ],
+  "pitchers": [
+    {
+      "name": "Luis L. Ortiz",
+      "id": 682847,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Wade Miley",
+      "id": 489119,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Mike Burrows",
+      "id": 681347,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777574
+    },
+    {
+      "name": "Eury P\u00e9rez",
+      "id": 691587,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777574
+    },
+    {
+      "name": "Zack Wheeler",
+      "id": 554430,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Matthew Boyd",
+      "id": 571510,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Brayan Bello",
+      "id": 678394,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777584
+    },
+    {
+      "name": "Shane Baz",
+      "id": 669358,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777584
+    },
+    {
+      "name": "Aaron Civale",
+      "id": 650644,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777575
+    },
+    {
+      "name": "Chris Sale",
+      "id": 519242,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777575
+    },
+    {
+      "name": "Andre Pallante",
+      "id": 669467,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "Jos\u00e9 Berr\u00edos",
+      "id": 621244,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "Yusei Kikuchi",
+      "id": 579328,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777576
+    },
+    {
+      "name": "Grant Holman",
+      "id": 680880,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777576
+    },
+    {
+      "name": "Nick Pivetta",
+      "id": 601713,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777579
+    },
+    {
+      "name": "Dustin May",
+      "id": 669160,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777579
+    },
+    {
+      "name": "Merrill Kelly",
+      "id": 518876,
+      "team": "home",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777577
+    },
+    {
+      "name": "Emerson Hancock",
+      "id": 676106,
+      "team": "away",
+      "stats": {
+        "era": null,
+        "whip": null,
+        "strikeOutsPer9Inn": null,
+        "baseOnBallsPer9Inn": null,
+        "firstInningEra": null
+      },
+      "game_id": 777577
+    }
+  ],
+  "batters": [
+    {
+      "name": "Steven Kwan",
+      "id": 680757,
+      "team": "home",
+      "order": 100,
+      "position": "LF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "TJ Friedl",
+      "id": 670770,
+      "team": "away",
+      "order": 100,
+      "position": "CF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 1,
+        "firstInningOBP": null
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Lane Thomas",
+      "id": 657041,
+      "team": "home",
+      "order": 200,
+      "position": "CF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Gavin Lux",
+      "id": 666158,
+      "team": "away",
+      "order": 200,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Jos\u00e9 Ram\u00edrez",
+      "id": 608070,
+      "team": "home",
+      "order": 300,
+      "position": "3B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Elly De La Cruz",
+      "id": 682829,
+      "team": "away",
+      "order": 300,
+      "position": "SS",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777580
+    },
+    {
+      "name": "Oneil Cruz",
+      "id": 665833,
+      "team": "home",
+      "order": 100,
+      "position": "CF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777574
+    },
+    {
+      "name": "Xavier Edwards",
+      "id": 669364,
+      "team": "away",
+      "order": 100,
+      "position": "2B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777574
+    },
+    {
+      "name": "Andrew McCutchen",
+      "id": 457705,
+      "team": "home",
+      "order": 200,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777574
+    },
+    {
+      "name": "Jes\u00fas S\u00e1nchez",
+      "id": 660821,
+      "team": "away",
+      "order": 200,
+      "position": "RF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777574
+    },
+    {
+      "name": "Bryan Reynolds",
+      "id": 668804,
+      "team": "home",
+      "order": 300,
+      "position": "RF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777574
+    },
+    {
+      "name": "Agust\u00edn Ram\u00edrez",
+      "id": 682663,
+      "team": "away",
+      "order": 300,
+      "position": "C",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777574
+    },
+    {
+      "name": "Trea Turner",
+      "id": 607208,
+      "team": "home",
+      "order": 100,
+      "position": "SS",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Ian Happ",
+      "id": 664023,
+      "team": "away",
+      "order": 100,
+      "position": "LF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 1,
+        "firstInningOBP": null
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Kyle Schwarber",
+      "id": 656941,
+      "team": "home",
+      "order": 200,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Kyle Tucker",
+      "id": 663656,
+      "team": "away",
+      "order": 200,
+      "position": "RF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 1,
+        "firstInningOBP": null
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Alec Bohm",
+      "id": 664761,
+      "team": "home",
+      "order": 300,
+      "position": "1B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Seiya Suzuki",
+      "id": 673548,
+      "team": "away",
+      "order": 300,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777578
+    },
+    {
+      "name": "Jarren Duran",
+      "id": 680776,
+      "team": "home",
+      "order": 100,
+      "position": "LF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777584
+    },
+    {
+      "name": "Josh Lowe",
+      "id": 666139,
+      "team": "away",
+      "order": 100,
+      "position": "RF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777584
+    },
+    {
+      "name": "Rafael Devers",
+      "id": 646240,
+      "team": "home",
+      "order": 200,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777584
+    },
+    {
+      "name": "Brandon Lowe",
+      "id": 664040,
+      "team": "away",
+      "order": 200,
+      "position": "2B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777584
+    },
+    {
+      "name": "Curtis Mead",
+      "id": 678554,
+      "team": "away",
+      "order": 201,
+      "position": "PH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777584
+    },
+    {
+      "name": "Jos\u00e9 Caballero",
+      "id": 676609,
+      "team": "away",
+      "order": 202,
+      "position": "2B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777584
+    },
+    {
+      "name": "Jackson Chourio",
+      "id": 694192,
+      "team": "home",
+      "order": 100,
+      "position": "CF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777575
+    },
+    {
+      "name": "Ronald Acu\u00f1a Jr.",
+      "id": 660670,
+      "team": "away",
+      "order": 100,
+      "position": "RF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 1,
+        "firstInningOBP": null
+      },
+      "game_id": 777575
+    },
+    {
+      "name": "William Contreras",
+      "id": 661388,
+      "team": "home",
+      "order": 200,
+      "position": "C",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777575
+    },
+    {
+      "name": "Drake Baldwin",
+      "id": 686948,
+      "team": "away",
+      "order": 200,
+      "position": "C",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777575
+    },
+    {
+      "name": "Christian Yelich",
+      "id": 592885,
+      "team": "home",
+      "order": 300,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777575
+    },
+    {
+      "name": "Austin Riley",
+      "id": 663586,
+      "team": "away",
+      "order": 300,
+      "position": "3B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777575
+    },
+    {
+      "name": "Lars Nootbaar",
+      "id": 663457,
+      "team": "home",
+      "order": 100,
+      "position": "LF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "Bo Bichette",
+      "id": 666182,
+      "team": "away",
+      "order": 100,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "Masyn Winn",
+      "id": 691026,
+      "team": "home",
+      "order": 200,
+      "position": "SS",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "Vladimir Guerrero Jr.",
+      "id": 665489,
+      "team": "away",
+      "order": 200,
+      "position": "1B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "Brendan Donovan",
+      "id": 680977,
+      "team": "home",
+      "order": 300,
+      "position": "2B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "Addison Barger",
+      "id": 680718,
+      "team": "away",
+      "order": 300,
+      "position": "3B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777581
+    },
+    {
+      "name": "Zach Neto",
+      "id": 687263,
+      "team": "home",
+      "order": 100,
+      "position": "SS",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777576
+    },
+    {
+      "name": "Lawrence Butler",
+      "id": 671732,
+      "team": "away",
+      "order": 100,
+      "position": "RF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777576
+    },
+    {
+      "name": "Nolan Schanuel",
+      "id": 694384,
+      "team": "home",
+      "order": 200,
+      "position": "1B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777576
+    },
+    {
+      "name": "Jacob Wilson",
+      "id": 805779,
+      "team": "away",
+      "order": 200,
+      "position": "SS",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777576
+    },
+    {
+      "name": "Mike Trout",
+      "id": 545361,
+      "team": "home",
+      "order": 300,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777576
+    },
+    {
+      "name": "Brent Rooker",
+      "id": 667670,
+      "team": "away",
+      "order": 300,
+      "position": "LF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777576
+    },
+    {
+      "name": "Fernando Tatis Jr.",
+      "id": 665487,
+      "team": "home",
+      "order": 100,
+      "position": "RF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777579
+    },
+    {
+      "name": "Shohei Ohtani",
+      "id": 660271,
+      "team": "away",
+      "order": 100,
+      "position": "DH",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777579
+    },
+    {
+      "name": "Luis Arraez",
+      "id": 650333,
+      "team": "home",
+      "order": 200,
+      "position": "1B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777579
+    },
+    {
+      "name": "Mookie Betts",
+      "id": 605141,
+      "team": "away",
+      "order": 200,
+      "position": "SS",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777579
+    },
+    {
+      "name": "Manny Machado",
+      "id": 592518,
+      "team": "home",
+      "order": 300,
+      "position": "3B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777579
+    },
+    {
+      "name": "Freddie Freeman",
+      "id": 518692,
+      "team": "away",
+      "order": 300,
+      "position": "1B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777579
+    },
+    {
+      "name": "Corbin Carroll",
+      "id": 682998,
+      "team": "home",
+      "order": 100,
+      "position": "RF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 1,
+        "firstInningOBP": null
+      },
+      "game_id": 777577
+    },
+    {
+      "name": "J.P. Crawford",
+      "id": 641487,
+      "team": "away",
+      "order": 100,
+      "position": "SS",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777577
+    },
+    {
+      "name": "Ketel Marte",
+      "id": 606466,
+      "team": "home",
+      "order": 200,
+      "position": "2B",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777577
+    },
+    {
+      "name": "Julio Rodr\u00edguez",
+      "id": 677594,
+      "team": "away",
+      "order": 200,
+      "position": "CF",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777577
+    },
+    {
+      "name": "Geraldo Perdomo",
+      "id": 672695,
+      "team": "home",
+      "order": 300,
+      "position": "SS",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777577
+    },
+    {
+      "name": "Cal Raleigh",
+      "id": 663728,
+      "team": "away",
+      "order": 300,
+      "position": "C",
+      "stats": {
+        "obp": null,
+        "homeRuns": 0,
+        "firstInningOBP": null
+      },
+      "game_id": 777577
+    }
+  ]
+}

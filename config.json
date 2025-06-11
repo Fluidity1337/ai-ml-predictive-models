@@ -1,0 +1,5 @@
+{
+  "MLB_DATA_RAW_PATH": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/ai-ml-predictive-models/data/sports/baseball/mlb/raw"
+  "MLB_DATA_RAW_PATH": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/ai-ml-predictive-models/data/sports/baseball/mlb/"
+  "MLB_API_PATH": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api"
+}

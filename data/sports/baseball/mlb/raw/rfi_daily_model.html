@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moneyline Hacks - RFI Model</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #0f172a; color: #e2e8f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .title-highlight { background: linear-gradient(to right, #34d399, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  </style>
+</head>
+<body class="p-6">
+  <div class="flex flex-col items-center justify-center gap-3 mb-6">
+    <img src="https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/ai-ml-predictive-models/assets/img/mlh/mlh-logo-1.jpg" alt="Moneyline Hacks Logo" class="h-16" />
+    <h1 class="text-4xl font-extrabold title-highlight">Moneyline Hacks</h1>
+    <h2 class="text-xl text-gray-400">Run First Inning (RFI) Model — June 09</h2>
+    <img src="https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/ai-ml-predictive-models/assets/img/mlb/mlb-logo-2.png" alt="Baseball Icon" class="h-10" />
+  </div>
+  <div class="bg-gray-800 max-w-5xl mx-auto overflow-x-auto rounded-lg shadow-xl">
+    <table class="min-w-full text-sm text-left text-gray-300">
+      <thead class="bg-gray-700 text-gray-300 text-sm uppercase">
+        <tr>
+          <th class="px-4 py-3">Matchup</th>
+          <th class="px-4 py-3">Start Time</th>
+          <th class="px-4 py-3">ERA</th>
+          <th class="px-4 py-3">WHIP</th>
+          <th class="px-4 py-3">K/9</th>
+          <th class="px-4 py-3">BB/9</th>
+          <th class="px-4 py-3">1st Inning ERA</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Cincinnati Reds</td>
+  <td class="px-4 py-3">22:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Cleveland Guardians</td>
+  <td class="px-4 py-3">22:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Miami Marlins</td>
+  <td class="px-4 py-3">22:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Pittsburgh Pirates</td>
+  <td class="px-4 py-3">22:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Chicago Cubs</td>
+  <td class="px-4 py-3">22:45</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Philadelphia Phillies</td>
+  <td class="px-4 py-3">22:45</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Tampa Bay Rays</td>
+  <td class="px-4 py-3">23:10</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Boston Red Sox</td>
+  <td class="px-4 py-3">23:10</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Atlanta Braves</td>
+  <td class="px-4 py-3">23:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Milwaukee Brewers</td>
+  <td class="px-4 py-3">23:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Toronto Blue Jays</td>
+  <td class="px-4 py-3">23:45</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">St. Louis Cardinals</td>
+  <td class="px-4 py-3">23:45</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Athletics</td>
+  <td class="px-4 py-3">01:38</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Los Angeles Angels</td>
+  <td class="px-4 py-3">01:38</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Los Angeles Dodgers</td>
+  <td class="px-4 py-3">01:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">San Diego Padres</td>
+  <td class="px-4 py-3">01:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Seattle Mariners</td>
+  <td class="px-4 py-3">01:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+<tr class="hover:bg-gray-700 border-b border-gray-700">
+  <td class="px-4 py-3">Arizona Diamondbacks</td>
+  <td class="px-4 py-3">01:40</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+  <td class="px-4 py-3">-</td>
+</tr>
+</tbody></table></div></body></html>
