@@ -233,9 +233,9 @@ if __name__ == "__main__":
 
     if len(sys.argv) < 2:
         print("Usage: python run_mlb_pipeline.py <game_id>")
-        sys.exit(1)
+       # sys.exit(1)
 
-    game_id = sys.argv[1]
+    #game_id = sys.argv[1]
     try:
         batters = get_first_three_batters_live_feed(game_id)
     except requests.HTTPError as e:
