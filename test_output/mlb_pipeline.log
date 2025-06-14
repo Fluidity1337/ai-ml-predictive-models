@@ -1,0 +1,1971 @@
+2025-06-13 20:00:30 - INFO - Logging to console and file: F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_pipeline.log
+2025-06-13 20:00:30 - INFO - Loading 2025 pitching stats via pybaseball…
+2025-06-13 20:00:30 - DEBUG - Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-13 20:00:31 - DEBUG - https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=pit&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C323%2C324%2C325%2C326%2C327%2C328%2C329%2C330%2C331%2C332%2C333%2C334%2C335%2C336%2C337%2C338%2C339%2C340%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C348%2C349%2C350%2C351%2C352%2C353%2C354%2C355%2C356%2C357%2C358%2C359%2C360%2C361%2C362%2C363%2C364%2C365%2C366%2C367%2C368%2C369%2C370%2C371%2C372%2C373%2C374%2C375%2C376%2C377%2C378%2C379%2C380%2C381%2C382%2C383%2C384%2C385%2C386%2C387%2C388%2C389%2C390%2C391&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-13 20:00:31 - DEBUG - DF_PITCH shape: (78, 393)
+2025-06-13 20:00:31 - WARNING - No MLBAM ID column found in DF_PITCH; index lookup will always fail.
+2025-06-13 20:00:31 - INFO - Loading 2025 batting stats via pybaseball…
+2025-06-13 20:00:31 - DEBUG - Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-13 20:00:32 - DEBUG - https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=bat&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-13 20:00:32 - DEBUG - DF_BAT shape: (161, 320)
+2025-06-13 20:00:32 - DEBUG - Indexed DF_BAT on FG column: IDfg
+2025-06-13 20:00:32 - INFO - Building MLBAM→FG crosswalk…
+2025-06-13 20:00:32 - DEBUG - Starting new HTTPS connection (1): github.com:443
+2025-06-13 20:00:32 - DEBUG - https://github.com:443 "GET /chadwickbureau/register/archive/refs/heads/master.zip HTTP/1.1" 302 0
+2025-06-13 20:00:32 - DEBUG - Starting new HTTPS connection (1): codeload.github.com:443
+2025-06-13 20:00:32 - DEBUG - https://codeload.github.com:443 "GET /chadwickbureau/register/zip/refs/heads/master HTTP/1.1" 200 26803856
+2025-06-13 20:00:35 - DEBUG - Re-indexed DF_BAT on MLBAM via crosswalk; new shape: (161, 322)
+2025-06-13 20:00:35 - INFO - Fetching MLB schedule…
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/schedule?sportId=1&date=2025-06-13&hydrate=probablePitcher HTTP/1.1" 200 3359
+2025-06-13 20:00:35 - INFO -   → 15 games on 2025-06-13
+2025-06-13 20:00:35 - INFO - Collecting details…
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777526/boxscore HTTP/1.1" 200 17000
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Paul Skenes (ID=694973)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Paul Skenes (ID=694973)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Adam Frazier (ID=624428)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Adam Frazier
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Adam Frazier (ID=624428): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Adam Frazier (ID=624428) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Spencer Horwitz (ID=687462)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Spencer Horwitz
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Spencer Horwitz (ID=687462): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Spencer Horwitz (ID=687462) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Bryan Reynolds (ID=668804)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Bryan Reynolds (ID=668804)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Cade Horton (ID=690990)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Cade Horton
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Cade Horton (ID=690990): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Cade Horton (ID=690990) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Kyle Tucker (ID=663656)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Kyle Tucker (ID=663656)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Ian Happ (ID=664023)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Ian Happ (ID=664023)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Michael Busch (ID=683737)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Michael Busch (ID=683737)
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777531/boxscore HTTP/1.1" 200 15981
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Kevin Gausman (ID=592332)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Kevin Gausman (ID=592332)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Bo Bichette (ID=666182)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Bo Bichette (ID=666182)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jonatan Clase (ID=682729)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Jonatan Clase
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Jonatan Clase (ID=682729): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Jonatan Clase (ID=682729) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Ernie Clement (ID=676391)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Ernie Clement (ID=676391)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Ranger Suárez (ID=624133)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Ranger Suárez
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Ranger Suárez (ID=624133): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Ranger Suárez (ID=624133) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Brandon Marsh (ID=669016)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Brandon Marsh
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Brandon Marsh (ID=669016): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Brandon Marsh (ID=669016) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for J.T. Realmuto (ID=592663)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for J.T. Realmuto (ID=592663)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Nick Castellanos (ID=592206)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Nick Castellanos (ID=592206)
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777530/boxscore HTTP/1.1" 200 16114
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Edward Cabrera (ID=665795)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Edward Cabrera
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Edward Cabrera (ID=665795): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Edward Cabrera (ID=665795) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Dane Myers (ID=667472)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Dane Myers
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Dane Myers (ID=667472): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Dane Myers (ID=667472) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Heriberto Hernandez (ID=681715)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Heriberto Hernandez
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Heriberto Hernandez (ID=681715): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Heriberto Hernandez (ID=681715) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Eric Wagaman (ID=676572)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Eric Wagaman (ID=676572)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Mitchell Parker (ID=680730)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Mitchell Parker (ID=680730)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for CJ Abrams (ID=682928)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for CJ Abrams (ID=682928)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Nathaniel Lowe (ID=663993)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Nathaniel Lowe (ID=663993)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Josh Bell (ID=605137)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Josh Bell (ID=605137)
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777539/boxscore HTTP/1.1" 200 15045
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jack Kochanowicz (ID=686799)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Jack Kochanowicz (ID=686799)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Luis Rengifo (ID=650859)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Luis Rengifo (ID=650859)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Zach Neto (ID=687263)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Zach Neto (ID=687263)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Christian Moore (ID=695681)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Christian Moore
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Christian Moore (ID=695681): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Christian Moore (ID=695681) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Charlie Morton (ID=450203)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Charlie Morton
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Charlie Morton (ID=450203): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Charlie Morton (ID=450203) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Dylan Carlson (ID=666185)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Dylan Carlson
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Dylan Carlson (ID=666185): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Dylan Carlson (ID=666185) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Gunnar Henderson (ID=683002)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Gunnar Henderson (ID=683002)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Adley Rutschman (ID=668939)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Adley Rutschman (ID=668939)
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777538/boxscore HTTP/1.1" 200 17141
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Nick Martinez (ID=607259)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Nick Martinez (ID=607259)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Elly De La Cruz (ID=682829)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Elly De La Cruz (ID=682829)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Matt McLain (ID=680574)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Matt McLain (ID=680574)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Connor Joe (ID=656582)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Connor Joe
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Connor Joe (ID=656582): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Connor Joe (ID=656582) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Brant Hurter (ID=676428)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Brant Hurter
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Brant Hurter (ID=676428): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Brant Hurter (ID=676428) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Trey Sweeney (ID=700242)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Trey Sweeney
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Trey Sweeney (ID=700242): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Trey Sweeney (ID=700242) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Zach McKinstry (ID=656716)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Zach McKinstry (ID=656716)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jahmai Jones (ID=663330)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Jahmai Jones
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Jahmai Jones (ID=663330): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Jahmai Jones (ID=663330) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777528/boxscore HTTP/1.1" 200 16909
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Taj Bradley (ID=671737)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Taj Bradley (ID=671737)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Kameron Misner (ID=670224)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Kameron Misner
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Kameron Misner (ID=670224): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Kameron Misner (ID=670224) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Taylor Walls (ID=670764)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Taylor Walls
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Taylor Walls (ID=670764): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Taylor Walls (ID=670764) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for José Caballero (ID=676609)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for José Caballero
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for José Caballero (ID=676609): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for José Caballero (ID=676609) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Clay Holmes (ID=605280)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Clay Holmes (ID=605280)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Tyrone Taylor (ID=621438)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Tyrone Taylor
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Tyrone Taylor (ID=621438): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Tyrone Taylor (ID=621438) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Francisco Alvarez (ID=682626)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Francisco Alvarez
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Francisco Alvarez (ID=682626): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Francisco Alvarez (ID=682626) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jeff McNeil (ID=643446)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Jeff McNeil
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Jeff McNeil (ID=643446): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Jeff McNeil (ID=643446) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777537/boxscore HTTP/1.1" 200 17142
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Ryan Yarbrough (ID=642232)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Ryan Yarbrough
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Ryan Yarbrough (ID=642232): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Ryan Yarbrough (ID=642232) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for DJ LeMahieu (ID=518934)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for DJ LeMahieu
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for DJ LeMahieu (ID=518934): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for DJ LeMahieu (ID=518934) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Oswald Peraza (ID=672724)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Oswald Peraza
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Oswald Peraza (ID=672724): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Oswald Peraza (ID=672724) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Pablo Reyes (ID=622569)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Pablo Reyes
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Pablo Reyes (ID=622569): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Pablo Reyes (ID=622569) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Garrett Crochet (ID=676979)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Garrett Crochet (ID=676979)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Roman Anthony (ID=701350)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Roman Anthony
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Roman Anthony (ID=701350): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Roman Anthony (ID=701350) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Romy Gonzalez (ID=663853)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Romy Gonzalez
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Romy Gonzalez (ID=663853): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Romy Gonzalez (ID=663853) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Rob Refsnyder (ID=608701)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Rob Refsnyder
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Rob Refsnyder (ID=608701): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Rob Refsnyder (ID=608701) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777535/boxscore HTTP/1.1" 200 16885
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Germán Márquez (ID=608566)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Germán Márquez
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Germán Márquez (ID=608566): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Germán Márquez (ID=608566) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Keston Hiura (ID=669374)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Keston Hiura
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Keston Hiura (ID=669374): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Keston Hiura (ID=669374) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Mickey Moniak (ID=666160)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Mickey Moniak
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Mickey Moniak (ID=666160): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Mickey Moniak (ID=666160) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Thairo Estrada (ID=642731)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Thairo Estrada
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Thairo Estrada (ID=642731): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Thairo Estrada (ID=642731) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Bryce Elder (ID=693821)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Bryce Elder
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Bryce Elder (ID=693821): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Bryce Elder (ID=693821) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Nick Allen (ID=669397)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Nick Allen
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Nick Allen (ID=669397): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Nick Allen (ID=669397) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Michael Harris II (ID=671739)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Michael Harris II (ID=671739)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Alex Verdugo (ID=657077)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Alex Verdugo
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Alex Verdugo (ID=657077): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Alex Verdugo (ID=657077) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777524/boxscore HTTP/1.1" 200 16576
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Adrian Houser (ID=605288)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Adrian Houser
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Adrian Houser (ID=605288): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Adrian Houser (ID=605288) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Josh Rojas (ID=668942)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Josh Rojas
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Josh Rojas (ID=668942): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Josh Rojas (ID=668942) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Mike Tauchman (ID=643565)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Mike Tauchman
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Mike Tauchman (ID=643565): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Mike Tauchman (ID=643565) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Brooks Baldwin (ID=681460)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Brooks Baldwin
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Brooks Baldwin (ID=681460): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Brooks Baldwin (ID=681460) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Shawn Armstrong (ID=542888)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Shawn Armstrong
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Shawn Armstrong (ID=542888): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Shawn Armstrong (ID=542888) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jonah Heim (ID=641680)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Jonah Heim
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Jonah Heim (ID=641680): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Jonah Heim (ID=641680) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Evan Carter (ID=694497)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Evan Carter
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Evan Carter (ID=694497): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Evan Carter (ID=694497) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Wyatt Langford (ID=694671)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Wyatt Langford (ID=694671)
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777529/boxscore HTTP/1.1" 200 16322
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Luis Severino (ID=622663)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Luis Severino (ID=622663)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Lawrence Butler (ID=671732)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Lawrence Butler (ID=671732)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Luis Urías (ID=649966)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Luis Urías
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Luis Urías (ID=649966): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Luis Urías (ID=649966) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Brent Rooker (ID=667670)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Brent Rooker (ID=667670)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Michael Wacha (ID=608379)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Michael Wacha (ID=608379)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jonathan India (ID=663697)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Jonathan India (ID=663697)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Salvador Perez (ID=521692)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Salvador Perez (ID=521692)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Nick Loftin (ID=679845)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Nick Loftin
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Nick Loftin (ID=679845): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Nick Loftin (ID=679845) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777527/boxscore HTTP/1.1" 200 16679
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Chris Paddack (ID=663978)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Chris Paddack (ID=663978)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Kody Clemens (ID=665019)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Kody Clemens
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Kody Clemens (ID=665019): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Kody Clemens (ID=665019) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Brooks Lee (ID=686797)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Brooks Lee
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Brooks Lee (ID=686797): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Brooks Lee (ID=686797) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jonah Bride (ID=681146)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Jonah Bride
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Jonah Bride (ID=681146): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Jonah Bride (ID=681146) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Colton Gordon (ID=676467)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Colton Gordon
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Colton Gordon (ID=676467): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Colton Gordon (ID=676467) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Shay Whitcomb (ID=694376)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Shay Whitcomb
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Shay Whitcomb (ID=694376): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Shay Whitcomb (ID=694376) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jacob Melton (ID=689200)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Jacob Melton
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Jacob Melton (ID=689200): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Jacob Melton (ID=689200) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Cam Smith (ID=701358)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Cam Smith
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Cam Smith (ID=701358): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Cam Smith (ID=701358) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777525/boxscore HTTP/1.1" 200 16626
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Erick Fedde (ID=607200)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Erick Fedde (ID=607200)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Nolan Gorman (ID=669357)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Nolan Gorman
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Nolan Gorman (ID=669357): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Nolan Gorman (ID=669357) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Victor Scott II (ID=687363)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Victor Scott II (ID=687363)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Willson Contreras (ID=575929)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Willson Contreras (ID=575929)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Freddy Peralta (ID=642547)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Freddy Peralta (ID=642547)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Joey Ortiz (ID=687401)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Joey Ortiz (ID=687401)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jackson Chourio (ID=694192)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Jackson Chourio (ID=694192)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Christian Yelich (ID=592885)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Christian Yelich (ID=592885)
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777521/boxscore HTTP/1.1" 200 15658
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Stephen Kolek (ID=663568)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Stephen Kolek
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Stephen Kolek (ID=663568): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Stephen Kolek (ID=663568) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Jackson Merrill (ID=701538)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Jackson Merrill
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Jackson Merrill (ID=701538): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Jackson Merrill (ID=701538) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Gavin Sheets (ID=657757)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Gavin Sheets (ID=657757)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Manny Machado (ID=592518)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Manny Machado (ID=592518)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Ryne Nelson (ID=669194)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Ryne Nelson
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Ryne Nelson (ID=669194): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Ryne Nelson (ID=669194) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Josh Naylor (ID=647304)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Josh Naylor (ID=647304)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Ketel Marte (ID=606466)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Ketel Marte
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Ketel Marte (ID=606466): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Ketel Marte (ID=606466) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Geraldo Perdomo (ID=672695)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Geraldo Perdomo (ID=672695)
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777520/boxscore HTTP/1.1" 200 14815
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Gavin Williams (ID=668909)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Gavin Williams
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Gavin Williams (ID=668909): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Gavin Williams (ID=668909) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Daniel Schneemann (ID=682177)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Daniel Schneemann
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Daniel Schneemann (ID=682177): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Daniel Schneemann (ID=682177) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Gabriel Arias (ID=672356)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Gabriel Arias (ID=672356)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Bo Naylor (ID=666310)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Bo Naylor
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Bo Naylor (ID=666310): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Bo Naylor (ID=666310) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Luis Castillo (ID=622491)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Luis Castillo (ID=622491)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Cole Young (ID=702284)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Cole Young
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Cole Young (ID=702284): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Cole Young (ID=702284) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for J.P. Crawford (ID=641487)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for J.P. Crawford (ID=641487)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Randy Arozarena (ID=668227)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Randy Arozarena (ID=668227)
+2025-06-13 20:00:35 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:00:35 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777522/boxscore HTTP/1.1" 200 15261
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Logan Webb (ID=657277)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Logan Webb (ID=657277)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Casey Schmitt (ID=669477)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Casey Schmitt
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Casey Schmitt (ID=669477): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Casey Schmitt (ID=669477) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Heliot Ramos (ID=671218)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Heliot Ramos (ID=671218)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Andrew Knizner (ID=668800)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup found no match for Andrew Knizner
+2025-06-13 20:00:35 - ERROR - MLB-StatsAPI fallback failed for Andrew Knizner (ID=668800): module 'statsapi' has no attribute 'stats'
+2025-06-13 20:00:35 - ERROR - No stats found for Andrew Knizner (ID=668800) after all fallbacks.
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Yoshinobu Yamamoto (ID=808967)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Yoshinobu Yamamoto (ID=808967)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Will Smith (ID=669257)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Will Smith (ID=669257)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Michael Conforto (ID=624424)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Michael Conforto (ID=624424)
+2025-06-13 20:00:35 - DEBUG - Index lookup failed for Max Muncy (ID=571970)
+2025-06-13 20:00:35 - DEBUG - Name fallback lookup succeeded for Max Muncy (ID=571970)
+2025-06-13 20:00:36 - INFO - Wrote JSON → F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_summary.json
+2025-06-13 20:00:36 - INFO - Wrote CSV → F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_summary.csv
+2025-06-13 20:02:44 - INFO - Logging to console and file: F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_pipeline.log
+2025-06-13 20:02:44 - INFO - Loading 2025 pitching stats via pybaseball…
+2025-06-13 20:02:58 - INFO - Logging to console and file: F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_pipeline.log
+2025-06-13 20:02:58 - INFO - Loading 2025 pitching stats via pybaseball…
+2025-06-13 20:04:49 - INFO - Logging to console and file: F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_pipeline.log
+2025-06-13 20:04:49 - INFO - Loading 2025 pitching stats via pybaseball…
+2025-06-13 20:06:04 - INFO - Logging to console and file: F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_pipeline.log
+2025-06-13 20:06:04 - INFO - Loading 2025 pitching stats via pybaseball…
+2025-06-13 20:06:04 - DEBUG - Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-13 20:06:04 - DEBUG - https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=pit&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C323%2C324%2C325%2C326%2C327%2C328%2C329%2C330%2C331%2C332%2C333%2C334%2C335%2C336%2C337%2C338%2C339%2C340%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C348%2C349%2C350%2C351%2C352%2C353%2C354%2C355%2C356%2C357%2C358%2C359%2C360%2C361%2C362%2C363%2C364%2C365%2C366%2C367%2C368%2C369%2C370%2C371%2C372%2C373%2C374%2C375%2C376%2C377%2C378%2C379%2C380%2C381%2C382%2C383%2C384%2C385%2C386%2C387%2C388%2C389%2C390%2C391&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-13 20:06:04 - DEBUG - DF_PITCH shape: (78, 393)
+2025-06-13 20:06:04 - WARNING - No MLBAM ID column found in DF_PITCH; index lookup will always fail.
+2025-06-13 20:06:04 - INFO - Loading 2025 batting stats via pybaseball…
+2025-06-13 20:06:04 - DEBUG - Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-13 20:06:05 - DEBUG - https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=bat&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-13 20:06:05 - DEBUG - DF_BAT shape: (161, 320)
+2025-06-13 20:06:05 - DEBUG - Indexed DF_BAT on column: IDfg
+2025-06-13 20:06:05 - INFO - Building MLBAM→FG crosswalk…
+2025-06-13 20:06:05 - DEBUG - Starting new HTTPS connection (1): github.com:443
+2025-06-13 20:06:06 - DEBUG - https://github.com:443 "GET /chadwickbureau/register/archive/refs/heads/master.zip HTTP/1.1" 302 0
+2025-06-13 20:06:06 - DEBUG - Starting new HTTPS connection (1): codeload.github.com:443
+2025-06-13 20:06:06 - DEBUG - https://codeload.github.com:443 "GET /chadwickbureau/register/zip/refs/heads/master HTTP/1.1" 200 26803856
+2025-06-13 20:06:08 - DEBUG - Re-indexed DF_BAT on MLBAM via crosswalk; new shape: (161, 322)
+2025-06-13 20:06:08 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:08 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/schedule?sportId=1&date=2025-06-13&hydrate=probablePitcher HTTP/1.1" 200 3358
+2025-06-13 20:06:08 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777526/boxscore HTTP/1.1" 200 17000
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Paul Skenes (ID=694973)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Paul Skenes (ID=694973)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Paul Skenes (ID=694973)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Adam Frazier (ID=624428)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Adam Frazier (ID=624428)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Adam Frazier (ID=624428)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Adam Frazier (ID=624428)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Spencer Horwitz (ID=687462)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Spencer Horwitz (ID=687462)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Spencer Horwitz (ID=687462)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Spencer Horwitz (ID=687462)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Bryan Reynolds (ID=668804)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Bryan Reynolds (ID=668804)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Bryan Reynolds (ID=668804)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Cade Horton (ID=690990)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Cade Horton (ID=690990)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Cade Horton (ID=690990)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Cade Horton (ID=690990)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Kyle Tucker (ID=663656)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Kyle Tucker (ID=663656)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Kyle Tucker (ID=663656)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Ian Happ (ID=664023)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Ian Happ (ID=664023)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Ian Happ (ID=664023)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Michael Busch (ID=683737)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Michael Busch (ID=683737)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Michael Busch (ID=683737)
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777531/boxscore HTTP/1.1" 200 15981
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Kevin Gausman (ID=592332)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Kevin Gausman (ID=592332)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Kevin Gausman (ID=592332)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Bo Bichette (ID=666182)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Bo Bichette (ID=666182)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Bo Bichette (ID=666182)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Jonatan Clase (ID=682729)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Jonatan Clase (ID=682729)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Jonatan Clase (ID=682729)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Jonatan Clase (ID=682729)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Ernie Clement (ID=676391)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Ernie Clement (ID=676391)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Ernie Clement (ID=676391)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Ranger Suárez (ID=624133)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Ranger Suárez (ID=624133)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Ranger Suárez (ID=624133)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Ranger Suárez (ID=624133)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Brandon Marsh (ID=669016)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Brandon Marsh (ID=669016)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Brandon Marsh (ID=669016)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Brandon Marsh (ID=669016)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for J.T. Realmuto (ID=592663)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for J.T. Realmuto (ID=592663)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for J.T. Realmuto (ID=592663)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Nick Castellanos (ID=592206)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Nick Castellanos (ID=592206)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Nick Castellanos (ID=592206)
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777530/boxscore HTTP/1.1" 200 16247
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Edward Cabrera (ID=665795)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Edward Cabrera (ID=665795)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Edward Cabrera (ID=665795)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Edward Cabrera (ID=665795)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Dane Myers (ID=667472)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Dane Myers (ID=667472)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Dane Myers (ID=667472)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Dane Myers (ID=667472)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Heriberto Hernandez (ID=681715)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Heriberto Hernandez (ID=681715)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Heriberto Hernandez (ID=681715)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Heriberto Hernandez (ID=681715)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Eric Wagaman (ID=676572)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Eric Wagaman (ID=676572)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Eric Wagaman (ID=676572)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Mitchell Parker (ID=680730)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Mitchell Parker (ID=680730)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Mitchell Parker (ID=680730)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for CJ Abrams (ID=682928)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for CJ Abrams (ID=682928)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for CJ Abrams (ID=682928)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Nathaniel Lowe (ID=663993)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Nathaniel Lowe (ID=663993)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Nathaniel Lowe (ID=663993)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Josh Bell (ID=605137)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Josh Bell (ID=605137)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Josh Bell (ID=605137)
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777539/boxscore HTTP/1.1" 200 15178
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Jack Kochanowicz (ID=686799)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Jack Kochanowicz (ID=686799)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Jack Kochanowicz (ID=686799)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Luis Rengifo (ID=650859)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Luis Rengifo (ID=650859)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Luis Rengifo (ID=650859)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Zach Neto (ID=687263)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Zach Neto (ID=687263)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Zach Neto (ID=687263)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Christian Moore (ID=695681)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Christian Moore (ID=695681)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Christian Moore (ID=695681)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Christian Moore (ID=695681)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Charlie Morton (ID=450203)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Charlie Morton (ID=450203)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Charlie Morton (ID=450203)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Charlie Morton (ID=450203)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Dylan Carlson (ID=666185)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Dylan Carlson (ID=666185)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback found no match for Dylan Carlson (ID=666185)
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:09 - DEBUG - Found query param: stats
+2025-06-13 20:06:09 - DEBUG - Found query param: group
+2025-06-13 20:06:09 - DEBUG - Found query param: season
+2025-06-13 20:06:09 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:09 - DEBUG - path_params: {}
+2025-06-13 20:06:09 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:09 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:09 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:09 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:09 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:09 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:09 - DEBUG - MLB-StatsAPI fallback succeeded for Dylan Carlson (ID=666185)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Gunnar Henderson (ID=683002)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Gunnar Henderson (ID=683002)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Gunnar Henderson (ID=683002)
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Adley Rutschman (ID=668939)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Adley Rutschman (ID=668939)
+2025-06-13 20:06:09 - DEBUG - pybaseball name fallback lookup succeeded for Adley Rutschman (ID=668939)
+2025-06-13 20:06:09 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:09 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777538/boxscore HTTP/1.1" 200 17141
+2025-06-13 20:06:09 - DEBUG - Looking up stats for Nick Martinez (ID=607259)
+2025-06-13 20:06:09 - DEBUG - pybaseball index lookup failed for Nick Martinez (ID=607259)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback lookup succeeded for Nick Martinez (ID=607259)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Elly De La Cruz (ID=682829)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Elly De La Cruz (ID=682829)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback lookup succeeded for Elly De La Cruz (ID=682829)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Matt McLain (ID=680574)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Matt McLain (ID=680574)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback lookup succeeded for Matt McLain (ID=680574)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Connor Joe (ID=656582)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Connor Joe (ID=656582)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Connor Joe (ID=656582)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Connor Joe (ID=656582)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Brant Hurter (ID=676428)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Brant Hurter (ID=676428)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Brant Hurter (ID=676428)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Brant Hurter (ID=676428)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Trey Sweeney (ID=700242)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Trey Sweeney (ID=700242)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Trey Sweeney (ID=700242)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Trey Sweeney (ID=700242)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Zach McKinstry (ID=656716)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Zach McKinstry (ID=656716)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback lookup succeeded for Zach McKinstry (ID=656716)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Jahmai Jones (ID=663330)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Jahmai Jones (ID=663330)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Jahmai Jones (ID=663330)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Jahmai Jones (ID=663330)
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777528/boxscore HTTP/1.1" 200 16909
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Taj Bradley (ID=671737)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Taj Bradley (ID=671737)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback lookup succeeded for Taj Bradley (ID=671737)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Kameron Misner (ID=670224)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Kameron Misner (ID=670224)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Kameron Misner (ID=670224)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Kameron Misner (ID=670224)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Taylor Walls (ID=670764)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Taylor Walls (ID=670764)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Taylor Walls (ID=670764)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Taylor Walls (ID=670764)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for José Caballero (ID=676609)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for José Caballero (ID=676609)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for José Caballero (ID=676609)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for José Caballero (ID=676609)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Clay Holmes (ID=605280)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Clay Holmes (ID=605280)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback lookup succeeded for Clay Holmes (ID=605280)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Tyrone Taylor (ID=621438)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Tyrone Taylor (ID=621438)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Tyrone Taylor (ID=621438)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Tyrone Taylor (ID=621438)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Francisco Alvarez (ID=682626)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Francisco Alvarez (ID=682626)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Francisco Alvarez (ID=682626)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Francisco Alvarez (ID=682626)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Jeff McNeil (ID=643446)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Jeff McNeil (ID=643446)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Jeff McNeil (ID=643446)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Jeff McNeil (ID=643446)
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777537/boxscore HTTP/1.1" 200 17142
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Ryan Yarbrough (ID=642232)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Ryan Yarbrough (ID=642232)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Ryan Yarbrough (ID=642232)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Ryan Yarbrough (ID=642232)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for DJ LeMahieu (ID=518934)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for DJ LeMahieu (ID=518934)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for DJ LeMahieu (ID=518934)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for DJ LeMahieu (ID=518934)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Oswald Peraza (ID=672724)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Oswald Peraza (ID=672724)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Oswald Peraza (ID=672724)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Oswald Peraza (ID=672724)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Pablo Reyes (ID=622569)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Pablo Reyes (ID=622569)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Pablo Reyes (ID=622569)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Pablo Reyes (ID=622569)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Garrett Crochet (ID=676979)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Garrett Crochet (ID=676979)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback lookup succeeded for Garrett Crochet (ID=676979)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Roman Anthony (ID=701350)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Roman Anthony (ID=701350)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Roman Anthony (ID=701350)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Roman Anthony (ID=701350)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Romy Gonzalez (ID=663853)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Romy Gonzalez (ID=663853)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Romy Gonzalez (ID=663853)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Romy Gonzalez (ID=663853)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Rob Refsnyder (ID=608701)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Rob Refsnyder (ID=608701)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Rob Refsnyder (ID=608701)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Rob Refsnyder (ID=608701)
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777535/boxscore HTTP/1.1" 200 16885
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Germán Márquez (ID=608566)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Germán Márquez (ID=608566)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Germán Márquez (ID=608566)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Germán Márquez (ID=608566)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Keston Hiura (ID=669374)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Keston Hiura (ID=669374)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Keston Hiura (ID=669374)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Keston Hiura (ID=669374)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Mickey Moniak (ID=666160)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Mickey Moniak (ID=666160)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Mickey Moniak (ID=666160)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Mickey Moniak (ID=666160)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Thairo Estrada (ID=642731)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Thairo Estrada (ID=642731)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Thairo Estrada (ID=642731)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Thairo Estrada (ID=642731)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Bryce Elder (ID=693821)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Bryce Elder (ID=693821)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Bryce Elder (ID=693821)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Bryce Elder (ID=693821)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Nick Allen (ID=669397)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Nick Allen (ID=669397)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Nick Allen (ID=669397)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Nick Allen (ID=669397)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Michael Harris II (ID=671739)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Michael Harris II (ID=671739)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback lookup succeeded for Michael Harris II (ID=671739)
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Alex Verdugo (ID=657077)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Alex Verdugo (ID=657077)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Alex Verdugo (ID=657077)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:10 - DEBUG - MLB-StatsAPI fallback succeeded for Alex Verdugo (ID=657077)
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:10 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777524/boxscore HTTP/1.1" 200 16576
+2025-06-13 20:06:10 - DEBUG - Looking up stats for Adrian Houser (ID=605288)
+2025-06-13 20:06:10 - DEBUG - pybaseball index lookup failed for Adrian Houser (ID=605288)
+2025-06-13 20:06:10 - DEBUG - pybaseball name fallback found no match for Adrian Houser (ID=605288)
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:10 - DEBUG - Found query param: stats
+2025-06-13 20:06:10 - DEBUG - Found query param: group
+2025-06-13 20:06:10 - DEBUG - Found query param: season
+2025-06-13 20:06:10 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:10 - DEBUG - path_params: {}
+2025-06-13 20:06:10 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:10 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:10 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:10 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:10 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:10 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:10 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Adrian Houser (ID=605288)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Josh Rojas (ID=668942)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Josh Rojas (ID=668942)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Josh Rojas (ID=668942)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Josh Rojas (ID=668942)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Mike Tauchman (ID=643565)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Mike Tauchman (ID=643565)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Mike Tauchman (ID=643565)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Mike Tauchman (ID=643565)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Brooks Baldwin (ID=681460)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Brooks Baldwin (ID=681460)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Brooks Baldwin (ID=681460)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Brooks Baldwin (ID=681460)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Shawn Armstrong (ID=542888)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Shawn Armstrong (ID=542888)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Shawn Armstrong (ID=542888)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Shawn Armstrong (ID=542888)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Jonah Heim (ID=641680)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Jonah Heim (ID=641680)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Jonah Heim (ID=641680)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Jonah Heim (ID=641680)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Evan Carter (ID=694497)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Evan Carter (ID=694497)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Evan Carter (ID=694497)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Evan Carter (ID=694497)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Wyatt Langford (ID=694671)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Wyatt Langford (ID=694671)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Wyatt Langford (ID=694671)
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777529/boxscore HTTP/1.1" 200 16322
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Luis Severino (ID=622663)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Luis Severino (ID=622663)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Luis Severino (ID=622663)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Lawrence Butler (ID=671732)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Lawrence Butler (ID=671732)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Lawrence Butler (ID=671732)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Luis Urías (ID=649966)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Luis Urías (ID=649966)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Luis Urías (ID=649966)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Luis Urías (ID=649966)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Brent Rooker (ID=667670)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Brent Rooker (ID=667670)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Brent Rooker (ID=667670)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Michael Wacha (ID=608379)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Michael Wacha (ID=608379)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Michael Wacha (ID=608379)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Jonathan India (ID=663697)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Jonathan India (ID=663697)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Jonathan India (ID=663697)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Salvador Perez (ID=521692)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Salvador Perez (ID=521692)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Salvador Perez (ID=521692)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Nick Loftin (ID=679845)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Nick Loftin (ID=679845)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Nick Loftin (ID=679845)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Nick Loftin (ID=679845)
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777527/boxscore HTTP/1.1" 200 16679
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Chris Paddack (ID=663978)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Chris Paddack (ID=663978)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Chris Paddack (ID=663978)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Kody Clemens (ID=665019)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Kody Clemens (ID=665019)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Kody Clemens (ID=665019)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Kody Clemens (ID=665019)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Brooks Lee (ID=686797)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Brooks Lee (ID=686797)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Brooks Lee (ID=686797)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Brooks Lee (ID=686797)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Jonah Bride (ID=681146)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Jonah Bride (ID=681146)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Jonah Bride (ID=681146)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Jonah Bride (ID=681146)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Colton Gordon (ID=676467)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Colton Gordon (ID=676467)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Colton Gordon (ID=676467)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Colton Gordon (ID=676467)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Shay Whitcomb (ID=694376)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Shay Whitcomb (ID=694376)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Shay Whitcomb (ID=694376)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Shay Whitcomb (ID=694376)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Jacob Melton (ID=689200)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Jacob Melton (ID=689200)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Jacob Melton (ID=689200)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Jacob Melton (ID=689200)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Cam Smith (ID=701358)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Cam Smith (ID=701358)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Cam Smith (ID=701358)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Cam Smith (ID=701358)
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777525/boxscore HTTP/1.1" 200 16626
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Erick Fedde (ID=607200)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Erick Fedde (ID=607200)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Erick Fedde (ID=607200)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Nolan Gorman (ID=669357)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Nolan Gorman (ID=669357)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Nolan Gorman (ID=669357)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Nolan Gorman (ID=669357)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Victor Scott II (ID=687363)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Victor Scott II (ID=687363)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Victor Scott II (ID=687363)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Willson Contreras (ID=575929)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Willson Contreras (ID=575929)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Willson Contreras (ID=575929)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Freddy Peralta (ID=642547)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Freddy Peralta (ID=642547)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Freddy Peralta (ID=642547)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Joey Ortiz (ID=687401)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Joey Ortiz (ID=687401)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Joey Ortiz (ID=687401)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Jackson Chourio (ID=694192)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Jackson Chourio (ID=694192)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Jackson Chourio (ID=694192)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Christian Yelich (ID=592885)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Christian Yelich (ID=592885)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Christian Yelich (ID=592885)
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777521/boxscore HTTP/1.1" 200 15794
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Stephen Kolek (ID=663568)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Stephen Kolek (ID=663568)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Stephen Kolek (ID=663568)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Stephen Kolek (ID=663568)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Jackson Merrill (ID=701538)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Jackson Merrill (ID=701538)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Jackson Merrill (ID=701538)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Jackson Merrill (ID=701538)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Gavin Sheets (ID=657757)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Gavin Sheets (ID=657757)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Gavin Sheets (ID=657757)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Manny Machado (ID=592518)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Manny Machado (ID=592518)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Manny Machado (ID=592518)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Ryne Nelson (ID=669194)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Ryne Nelson (ID=669194)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Ryne Nelson (ID=669194)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Ryne Nelson (ID=669194)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Josh Naylor (ID=647304)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Josh Naylor (ID=647304)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Josh Naylor (ID=647304)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Ketel Marte (ID=606466)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Ketel Marte (ID=606466)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Ketel Marte (ID=606466)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:11 - DEBUG - MLB-StatsAPI fallback succeeded for Ketel Marte (ID=606466)
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Geraldo Perdomo (ID=672695)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Geraldo Perdomo (ID=672695)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback lookup succeeded for Geraldo Perdomo (ID=672695)
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:11 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777520/boxscore HTTP/1.1" 200 15052
+2025-06-13 20:06:11 - DEBUG - Looking up stats for Gavin Williams (ID=668909)
+2025-06-13 20:06:11 - DEBUG - pybaseball index lookup failed for Gavin Williams (ID=668909)
+2025-06-13 20:06:11 - DEBUG - pybaseball name fallback found no match for Gavin Williams (ID=668909)
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:11 - DEBUG - Found query param: stats
+2025-06-13 20:06:11 - DEBUG - Found query param: group
+2025-06-13 20:06:11 - DEBUG - Found query param: season
+2025-06-13 20:06:11 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:11 - DEBUG - path_params: {}
+2025-06-13 20:06:11 - DEBUG - query_params: {'stats': 'season', 'group': 'pitching', 'season': '2025'}
+2025-06-13 20:06:11 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:11 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:11 - DEBUG - Adding query parameter group=pitching
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching
+2025-06-13 20:06:11 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:11 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=pitching&season=2025
+2025-06-13 20:06:11 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:12 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 9963
+2025-06-13 20:06:12 - DEBUG - MLB-StatsAPI fallback succeeded for Gavin Williams (ID=668909)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Daniel Schneemann (ID=682177)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Daniel Schneemann (ID=682177)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback found no match for Daniel Schneemann (ID=682177)
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:12 - DEBUG - Found query param: stats
+2025-06-13 20:06:12 - DEBUG - Found query param: group
+2025-06-13 20:06:12 - DEBUG - Found query param: season
+2025-06-13 20:06:12 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:12 - DEBUG - path_params: {}
+2025-06-13 20:06:12 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:12 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:12 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:12 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:12 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:12 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:12 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:12 - DEBUG - MLB-StatsAPI fallback succeeded for Daniel Schneemann (ID=682177)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Gabriel Arias (ID=672356)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Gabriel Arias (ID=672356)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Gabriel Arias (ID=672356)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Bo Naylor (ID=666310)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Bo Naylor (ID=666310)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback found no match for Bo Naylor (ID=666310)
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:12 - DEBUG - Found query param: stats
+2025-06-13 20:06:12 - DEBUG - Found query param: group
+2025-06-13 20:06:12 - DEBUG - Found query param: season
+2025-06-13 20:06:12 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:12 - DEBUG - path_params: {}
+2025-06-13 20:06:12 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:12 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:12 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:12 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:12 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:12 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:12 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:12 - DEBUG - MLB-StatsAPI fallback succeeded for Bo Naylor (ID=666310)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Luis Castillo (ID=622491)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Luis Castillo (ID=622491)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Luis Castillo (ID=622491)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Cole Young (ID=702284)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Cole Young (ID=702284)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback found no match for Cole Young (ID=702284)
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:12 - DEBUG - Found query param: stats
+2025-06-13 20:06:12 - DEBUG - Found query param: group
+2025-06-13 20:06:12 - DEBUG - Found query param: season
+2025-06-13 20:06:12 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:12 - DEBUG - path_params: {}
+2025-06-13 20:06:12 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:12 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:12 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:12 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:12 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:12 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:12 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:12 - DEBUG - MLB-StatsAPI fallback succeeded for Cole Young (ID=702284)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for J.P. Crawford (ID=641487)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for J.P. Crawford (ID=641487)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for J.P. Crawford (ID=641487)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Randy Arozarena (ID=668227)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Randy Arozarena (ID=668227)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Randy Arozarena (ID=668227)
+2025-06-13 20:06:12 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:12 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777522/boxscore HTTP/1.1" 200 15321
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Logan Webb (ID=657277)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Logan Webb (ID=657277)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Logan Webb (ID=657277)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Casey Schmitt (ID=669477)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Casey Schmitt (ID=669477)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback found no match for Casey Schmitt (ID=669477)
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:12 - DEBUG - Found query param: stats
+2025-06-13 20:06:12 - DEBUG - Found query param: group
+2025-06-13 20:06:12 - DEBUG - Found query param: season
+2025-06-13 20:06:12 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:12 - DEBUG - path_params: {}
+2025-06-13 20:06:12 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:12 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:12 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:12 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:12 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:12 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:12 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:12 - DEBUG - MLB-StatsAPI fallback succeeded for Casey Schmitt (ID=669477)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Heliot Ramos (ID=671218)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Heliot Ramos (ID=671218)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Heliot Ramos (ID=671218)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Andrew Knizner (ID=668800)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Andrew Knizner (ID=668800)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback found no match for Andrew Knizner (ID=668800)
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/{ver}/stats
+2025-06-13 20:06:12 - DEBUG - Found query param: stats
+2025-06-13 20:06:12 - DEBUG - Found query param: group
+2025-06-13 20:06:12 - DEBUG - Found query param: season
+2025-06-13 20:06:12 - DEBUG - Found invalid param, ignoring: personIds
+2025-06-13 20:06:12 - DEBUG - path_params: {}
+2025-06-13 20:06:12 - DEBUG - query_params: {'stats': 'season', 'group': 'hitting', 'season': '2025'}
+2025-06-13 20:06:12 - DEBUG - Replacing {ver} with default: v1.
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats
+2025-06-13 20:06:12 - DEBUG - Adding query parameter stats=season
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season
+2025-06-13 20:06:12 - DEBUG - Adding query parameter group=hitting
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting
+2025-06-13 20:06:12 - DEBUG - Adding query parameter season=2025
+2025-06-13 20:06:12 - DEBUG - URL: https://statsapi.mlb.com/api/v1/stats?stats=season&group=hitting&season=2025
+2025-06-13 20:06:12 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-13 20:06:12 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 7333
+2025-06-13 20:06:12 - DEBUG - MLB-StatsAPI fallback succeeded for Andrew Knizner (ID=668800)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Yoshinobu Yamamoto (ID=808967)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Yoshinobu Yamamoto (ID=808967)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Yoshinobu Yamamoto (ID=808967)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Will Smith (ID=669257)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Will Smith (ID=669257)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Will Smith (ID=669257)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Michael Conforto (ID=624424)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Michael Conforto (ID=624424)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Michael Conforto (ID=624424)
+2025-06-13 20:06:12 - DEBUG - Looking up stats for Max Muncy (ID=571970)
+2025-06-13 20:06:12 - DEBUG - pybaseball index lookup failed for Max Muncy (ID=571970)
+2025-06-13 20:06:12 - DEBUG - pybaseball name fallback lookup succeeded for Max Muncy (ID=571970)
+2025-06-13 20:06:12 - INFO - Saved JSON summary to F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_summary.json
+2025-06-13 20:06:12 - INFO - Saved CSV summary to F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_summary.csv

@@ -4,5 +4,6 @@
   "mlb_api_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api",
   "mlb_test_output_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output",
   "mlb_tests_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api",
-  "mlb_api_graphql_url": "https://statsapi.mlb.com/graphql"
+  "mlb_api_graphql_url": "https://statsapi.mlb.com/graphql",
+  "mlb_fetch_daily_data_log_path" : "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output"
 }
