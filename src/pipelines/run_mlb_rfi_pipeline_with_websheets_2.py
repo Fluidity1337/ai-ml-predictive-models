@@ -71,6 +71,49 @@ except Exception as e:
 # Helper to lookup stats
 
 
+def minmax_scale(x, lo, hi):
+    if x is None:
+        return 0.5
+    return max(0.0, min(1.0, (x - lo) / (hi - lo)))
+
+
+def pitcher_score(stats):
+    b = BOUNDS
+    f = {
+        "era":    1 - minmax_scale(stats.get("era"),    *b["era"]),
+        "whip":   1 - minmax_scale(stats.get("whip"),   *b["whip"]),
+        "k_rate": minmax_scale(stats.get("strikeOutsPer9Inn")/9, *b["k_rate"]),
+        "bb_rate": 1 - minmax_scale(stats.get("baseOnBallsPer9Inn")/9, *b["bb_rate"]),
+        "f1_era": 1 - minmax_scale(stats.get("firstInningEra"), *b["f1_era"])
+    }
+    return sum(f.values()) / len(f)
+
+
+def batter_score(feats):
+    b = BOUNDS
+    f = {
+        "obp_vs":        feats["obp_vs"],
+        "hr_rate":       minmax_scale(feats["hr_rate"], *b["hr_rate"]),
+        "recent_f1_obp": feats["recent_f1_obp"]
+    }
+    return sum(f.values()) / len(f)
+
+
+def compute_nrfi_score(pitch_stats, batt_feats, park, weather, team_pct, opp_pct):
+    ps = pitcher_score(pitch_stats)
+    bs = batter_score(batt_feats)
+    pk = (park + weather) / 2
+    tm = (team_pct + opp_pct) / 2
+
+    w = WEIGHTS
+    return (
+        w["pitcher"] * ps +
+        w["batter"] * bs +
+        w["park"] * pk +
+        w["team"] * tm
+    )
+
+
 def lookup_stats(pid, name, df, group):
     try:
         url = f"https://statsapi.mlb.com/api/v1/people/{pid}/stats?stats=season&group={group}&season={SEASON}"
@@ -305,11 +348,12 @@ if __name__ == '__main__':
     ).json()
     games = sched.get('dates', [{}])[0].get('games', [])
     allp, allb = [], []
-    for g in games:
+    for game in games:
         ps, bs = fetch_game_details(g)
         allp.extend(ps)
         allb.extend(bs)
 
+'''
     # write outputs
     js = RAW_DATA_DIR / f"mlb_daily_stats_{date_str.replace('-','')}.json"
     with open(js, 'w') as f:
@@ -327,6 +371,94 @@ if __name__ == '__main__':
             w.writerow([row.get(k) for k in keys] +
                        [row['stats'].get(k, '') for k in stat_keys])
     logging.info(f"Saved CSV to {csvf}")
+'''
+   # ─── Enrich each game with scores & grades ───────────────────────────────
+   for game in games:
+        # find this game’s pitchers & batters from the flattened lists
+        for side in ("away", "home"):
+            stats = next(
+                (p["stats"] for p in allp
+                 if p["game_id"] == game["gamePk"] and p["team"] == side),
+                {}
+            )
+            p_score = pitcher_score(stats)
+
+            lineup = [
+                b["stats"] for b in allb
+                if b["game_id"] == game["gamePk"] and b["team"] == side
+            ]
+            if lineup:
+                obp_vs = sum(b.get("obp", 0) for b in lineup) / len(lineup)
+                hr_rate = sum(b.get("homeRuns", 0)
+                              for b in lineup) / len(lineup)
+                recent_f1_obp = sum(b.get("firstInningOBP", 0)
+                                    for b in lineup) / len(lineup)
+                feats = {"obp_vs": obp_vs, "hr_rate": hr_rate,
+                    "recent_f1_obp": recent_f1_obp}
+            else:
+                feats = {"obp_vs": 0, "hr_rate": 0, "recent_f1_obp": 0}
+            b_score = batter_score(feats)
+
+            # RFI grade = pitcher_weight * pitcher_score + batter_weight * batter_score
+            rfi = WEIGHTS["pitcher"] * p_score + WEIGHTS["batter"] * b_score
+
+            game[f"{side}_pitcher_score"] = p_score
+            game[f"{side}_batter_score"] = b_score
+            game[f"{side}_rfi_grade"] = rfi
+
+        # game-level NRFI grade = away side’s RFI grade
+        game["nrfi_grade"] = game["away_rfi_grade"]
+
+    # ─── Write enriched JSON ────────────────────────────────────────────────
+    enriched_json = RAW_DATA_DIR / \
+        f"mlb_daily_summary_{date_str.replace('-', '')}.json"
+    with open(enriched_json, "w", encoding="utf-8") as f:
+        json.dump({"date": date_str, "games": games}, f, indent=2)
+    logging.info(f"Saved enriched JSON to {enriched_json}")
+
+    # ─── Write enriched CSV ─────────────────────────────────────────────────
+    enriched_csv = RAW_DATA_DIR / \
+        f"mlb_daily_summary_{date_str.replace('-', '')}.csv"
+    headers = [
+        "Date", "Game ID", "Game Time",
+        "Away Team", "Away Pitcher", "Away Pitcher Score", "Away Batter Score", "Away RFI Grade",
+        "Home Team", "Home Pitcher", "Home Pitcher Score", "Home Batter Score", "Home RFI Grade",
+        "NRFI Grade"
+    ]
+    with open(enriched_csv, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(headers)
+        for game in games:
+            # format time
+            iso = game.get("gameDate", "")
+            try:
+                dt = _dt.fromisoformat(iso.replace("Z", ""))
+                time_str = dt.strftime("%I:%M %p ET").lstrip("0")
+            except:
+                time_str = iso or "-"
+
+            writer.writerow([
+                date_str,
+                game["gamePk"],
+                time_str,
+                game["teams"]["away"]["team"]["name"],
+                game["teams"]["away"].get(
+                    "probablePitcher", {}).get("fullName", "-"),
+                game["away_pitcher_score"],
+                game["away_batter_score"],
+                game["away_rfi_grade"],
+                game["teams"]["home"]["team"]["name"],
+                game["teams"]["home"].get(
+                    "probablePitcher", {}).get("fullName", "-"),
+                game["home_pitcher_score"],
+                game["home_batter_score"],
+                game["home_rfi_grade"],
+                game["nrfi_grade"],
+            ])
+    logging.info(f"Saved enriched CSV to {enriched_csv}")
+
+    # ─── Finally, generate the websheet HTML ───────────────────────────────
+    generate_html(games)
 
     # Example: load games from JSON and generate HTML
     """
@@ -338,4 +470,4 @@ if __name__ == '__main__':
         logging.error(f"Failed to load games JSON: {e}")
         sys.exit(1)
     """
-    generate_html(games)
+   # generate_html(games)
