@@ -1,0 +1,218 @@
+2025-06-16 17:31:06 - INFO - Logging to console and file: F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_pipeline_2025-06-16.log
+2025-06-16 17:31:06 - INFO - Loading 2025 pitching stats via pybaseball…
+2025-06-16 17:31:06 - DEBUG - Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-16 17:31:06 - DEBUG - https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=pit&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C323%2C324%2C325%2C326%2C327%2C328%2C329%2C330%2C331%2C332%2C333%2C334%2C335%2C336%2C337%2C338%2C339%2C340%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C348%2C349%2C350%2C351%2C352%2C353%2C354%2C355%2C356%2C357%2C358%2C359%2C360%2C361%2C362%2C363%2C364%2C365%2C366%2C367%2C368%2C369%2C370%2C371%2C372%2C373%2C374%2C375%2C376%2C377%2C378%2C379%2C380%2C381%2C382%2C383%2C384%2C385%2C386%2C387%2C388%2C389%2C390%2C391&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-16 17:31:06 - INFO - Loading 2025 batting stats via pybaseball…
+2025-06-16 17:31:06 - DEBUG - Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-16 17:31:07 - DEBUG - https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=bat&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-16 17:31:53 - INFO - Logging to console and file: F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_pipeline_2025-06-16.log
+2025-06-16 17:31:53 - INFO - Loading 2025 pitching stats via pybaseball…
+2025-06-16 17:31:53 - DEBUG - Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-16 17:31:53 - DEBUG - https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=pit&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C323%2C324%2C325%2C326%2C327%2C328%2C329%2C330%2C331%2C332%2C333%2C334%2C335%2C336%2C337%2C338%2C339%2C340%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C348%2C349%2C350%2C351%2C352%2C353%2C354%2C355%2C356%2C357%2C358%2C359%2C360%2C361%2C362%2C363%2C364%2C365%2C366%2C367%2C368%2C369%2C370%2C371%2C372%2C373%2C374%2C375%2C376%2C377%2C378%2C379%2C380%2C381%2C382%2C383%2C384%2C385%2C386%2C387%2C388%2C389%2C390%2C391&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-16 17:31:53 - INFO - Loading 2025 batting stats via pybaseball…
+2025-06-16 17:31:53 - DEBUG - Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-16 17:31:54 - DEBUG - https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=bat&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-16 17:31:54 - INFO - Fetching schedule for 2025-06-16
+2025-06-16 17:31:54 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/schedule?sportId=1&date=2025-06-16&hydrate=teams(team,previewPlayers),probablePitcher HTTP/1.1" 200 1952
+2025-06-16 17:31:55 - DEBUG - Looking up pitching stats for Mick Abel (ID=690953)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/690953/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 861
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777483/boxscore HTTP/1.1" 200 15725
+2025-06-16 17:31:55 - DEBUG - Looking up hitting stats for Trea Turner (ID=607208)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/607208/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 673
+2025-06-16 17:31:55 - DEBUG - Looking up hitting stats for Kyle Schwarber (ID=656941)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/656941/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 671
+2025-06-16 17:31:55 - DEBUG - Looking up hitting stats for Alec Bohm (ID=664761)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/664761/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 672
+2025-06-16 17:31:55 - DEBUG - Looking up pitching stats for Sandy Alcantara (ID=645261)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/645261/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 887
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777483/boxscore HTTP/1.1" 200 15727
+2025-06-16 17:31:55 - DEBUG - Looking up hitting stats for Xavier Edwards (ID=669364)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/669364/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 664
+2025-06-16 17:31:55 - DEBUG - Looking up hitting stats for Jesús Sánchez (ID=660821)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/660821/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 672
+2025-06-16 17:31:55 - DEBUG - Looking up hitting stats for Otto Lopez (ID=672640)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:55 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/672640/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 663
+2025-06-16 17:31:55 - DEBUG - Looking up pitching stats for Carson Palmquist (ID=687223)
+2025-06-16 17:31:55 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:56 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/687223/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 884
+2025-06-16 17:31:56 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:56 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777488/boxscore HTTP/1.1" 200 15662
+2025-06-16 17:31:56 - DEBUG - Looking up hitting stats for Jordan Beck (ID=687597)
+2025-06-16 17:31:56 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:56 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/687597/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 672
+2025-06-16 17:31:56 - DEBUG - Looking up hitting stats for Tyler Freeman (ID=671289)
+2025-06-16 17:31:56 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:56 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/671289/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 664
+2025-06-16 17:31:56 - DEBUG - Looking up hitting stats for Hunter Goodman (ID=696100)
+2025-06-16 17:31:56 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:56 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/696100/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 670
+2025-06-16 17:31:56 - DEBUG - Looking up pitching stats for Jake Irvin (ID=663623)
+2025-06-16 17:31:56 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:56 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/663623/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 884
+2025-06-16 17:31:56 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:56 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777488/boxscore HTTP/1.1" 200 15662
+2025-06-16 17:31:56 - DEBUG - Looking up hitting stats for Alex Call (ID=669743)
+2025-06-16 17:31:56 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:56 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/669743/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 663
+2025-06-16 17:31:56 - DEBUG - Looking up hitting stats for James Wood (ID=695578)
+2025-06-16 17:31:56 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/695578/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 670
+2025-06-16 17:31:57 - DEBUG - Looking up hitting stats for CJ Abrams (ID=682928)
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/682928/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 665
+2025-06-16 17:31:57 - DEBUG - Looking up pitching stats for José Soriano (ID=667755)
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/667755/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 898
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777487/boxscore HTTP/1.1" 200 14933
+2025-06-16 17:31:57 - DEBUG - Looking up hitting stats for Zach Neto (ID=687263)
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/687263/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 666
+2025-06-16 17:31:57 - DEBUG - Looking up hitting stats for Nolan Schanuel (ID=694384)
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/694384/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 671
+2025-06-16 17:31:57 - DEBUG - Looking up hitting stats for Mike Trout (ID=545361)
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/545361/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 667
+2025-06-16 17:31:57 - DEBUG - Looking up pitching stats for Clarke Schmidt (ID=657376)
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/657376/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 886
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:57 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777487/boxscore HTTP/1.1" 200 14933
+2025-06-16 17:31:57 - DEBUG - Looking up hitting stats for Trent Grisham (ID=663757)
+2025-06-16 17:31:57 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:58 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/663757/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 674
+2025-06-16 17:31:58 - DEBUG - Looking up hitting stats for Ben Rice (ID=700250)
+2025-06-16 17:31:58 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:58 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/700250/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 670
+2025-06-16 17:31:58 - DEBUG - Looking up hitting stats for Aaron Judge (ID=592450)
+2025-06-16 17:31:58 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:58 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/592450/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 681
+2025-06-16 17:31:58 - DEBUG - Looking up pitching stats for Zach Eflin (ID=621107)
+2025-06-16 17:31:58 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:58 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/621107/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 883
+2025-06-16 17:31:58 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:58 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777484/boxscore HTTP/1.1" 200 15138
+2025-06-16 17:31:58 - DEBUG - Looking up hitting stats for Jackson Holliday (ID=702616)
+2025-06-16 17:31:58 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:58 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/702616/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 676
+2025-06-16 17:31:58 - DEBUG - Looking up hitting stats for Adley Rutschman (ID=668939)
+2025-06-16 17:31:58 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:58 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/668939/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 671
+2025-06-16 17:31:58 - DEBUG - Looking up hitting stats for Gunnar Henderson (ID=683002)
+2025-06-16 17:31:58 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:59 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/683002/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 673
+2025-06-16 17:31:59 - DEBUG - Looking up pitching stats for Ryan Pepiot (ID=686752)
+2025-06-16 17:31:59 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:59 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/686752/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 893
+2025-06-16 17:31:59 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:59 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777484/boxscore HTTP/1.1" 200 15138
+2025-06-16 17:31:59 - DEBUG - Looking up hitting stats for Josh Lowe (ID=666139)
+2025-06-16 17:31:59 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:59 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/666139/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 660
+2025-06-16 17:31:59 - DEBUG - Looking up hitting stats for Brandon Lowe (ID=664040)
+2025-06-16 17:31:59 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:59 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/664040/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 670
+2025-06-16 17:31:59 - DEBUG - Looking up hitting stats for Yandy Díaz (ID=650490)
+2025-06-16 17:31:59 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:59 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/650490/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 679
+2025-06-16 17:31:59 - DEBUG - Looking up pitching stats for Lucas Giolito (ID=608337)
+2025-06-16 17:31:59 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:31:59 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/608337/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 889
+2025-06-16 17:31:59 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:00 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777486/boxscore HTTP/1.1" 200 13708
+2025-06-16 17:32:00 - DEBUG - Looking up hitting stats for Jarren Duran (ID=680776)
+2025-06-16 17:32:00 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:00 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/680776/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 671
+2025-06-16 17:32:00 - DEBUG - Looking up hitting stats for Abraham Toro (ID=647351)
+2025-06-16 17:32:00 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:00 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/647351/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 665
+2025-06-16 17:32:00 - DEBUG - Looking up hitting stats for Roman Anthony (ID=701350)
+2025-06-16 17:32:00 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:00 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/701350/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 655
+2025-06-16 17:32:00 - DEBUG - Looking up pitching stats for Logan Gilbert (ID=669302)
+2025-06-16 17:32:00 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:00 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/669302/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 878
+2025-06-16 17:32:00 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:00 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777486/boxscore HTTP/1.1" 200 13708
+2025-06-16 17:32:00 - DEBUG - Looking up hitting stats for J.P. Crawford (ID=641487)
+2025-06-16 17:32:00 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:00 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/641487/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 668
+2025-06-16 17:32:00 - DEBUG - Looking up hitting stats for Julio Rodríguez (ID=677594)
+2025-06-16 17:32:00 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:01 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/677594/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 680
+2025-06-16 17:32:01 - DEBUG - Looking up hitting stats for Cal Raleigh (ID=663728)
+2025-06-16 17:32:01 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:01 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/663728/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 673
+2025-06-16 17:32:01 - DEBUG - Looking up pitching stats for Ryan Gusto (ID=687473)
+2025-06-16 17:32:01 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:01 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/687473/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 892
+2025-06-16 17:32:01 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:01 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777485/boxscore HTTP/1.1" 200 13968
+2025-06-16 17:32:01 - DEBUG - Looking up hitting stats for Jeremy Peña (ID=665161)
+2025-06-16 17:32:01 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:01 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/665161/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 675
+2025-06-16 17:32:01 - DEBUG - Looking up hitting stats for Isaac Paredes (ID=670623)
+2025-06-16 17:32:01 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:01 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/670623/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 675
+2025-06-16 17:32:01 - DEBUG - Looking up hitting stats for Jose Altuve (ID=514888)
+2025-06-16 17:32:01 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:01 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/514888/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 671
+2025-06-16 17:32:01 - DEBUG - Looking up pitching stats for Mitch Spence (ID=687765)
+2025-06-16 17:32:01 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:02 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/687765/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 877
+2025-06-16 17:32:02 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:02 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777485/boxscore HTTP/1.1" 200 13968
+2025-06-16 17:32:02 - DEBUG - Looking up hitting stats for Lawrence Butler (ID=671732)
+2025-06-16 17:32:02 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:02 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/671732/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 667
+2025-06-16 17:32:02 - DEBUG - Looking up hitting stats for Jacob Wilson (ID=805779)
+2025-06-16 17:32:02 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:02 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/805779/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 670
+2025-06-16 17:32:02 - DEBUG - Looking up hitting stats for Tyler Soderstrom (ID=691016)
+2025-06-16 17:32:02 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:02 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/691016/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 668
+2025-06-16 17:32:02 - DEBUG - Looking up pitching stats for Dylan Cease (ID=656302)
+2025-06-16 17:32:02 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:02 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/656302/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 885
+2025-06-16 17:32:02 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:02 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777490/boxscore HTTP/1.1" 200 14197
+2025-06-16 17:32:02 - DEBUG - Looking up hitting stats for Fernando Tatis Jr. (ID=665487)
+2025-06-16 17:32:02 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:03 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/665487/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 673
+2025-06-16 17:32:03 - DEBUG - Looking up hitting stats for Luis Arraez (ID=650333)
+2025-06-16 17:32:03 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:03 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/650333/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 670
+2025-06-16 17:32:03 - DEBUG - Looking up hitting stats for Manny Machado (ID=592518)
+2025-06-16 17:32:03 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:03 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/592518/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 666
+2025-06-16 17:32:03 - DEBUG - Looking up pitching stats for Shohei Ohtani (ID=660271)
+2025-06-16 17:32:03 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:03 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/660271/stats?stats=season&group=pitching&season=2025 HTTP/1.1" 200 176
+2025-06-16 17:32:03 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:03 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/660271?hydrate=stats(group=pitching,type=season,season=2025) HTTP/1.1" 200 605
+2025-06-16 17:32:03 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:03 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/game/777490/boxscore HTTP/1.1" 200 14197
+2025-06-16 17:32:03 - DEBUG - Looking up hitting stats for Shohei Ohtani (ID=660271)
+2025-06-16 17:32:03 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:03 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/660271/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 673
+2025-06-16 17:32:03 - DEBUG - Looking up hitting stats for Mookie Betts (ID=605141)
+2025-06-16 17:32:03 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:04 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/605141/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 672
+2025-06-16 17:32:04 - DEBUG - Looking up hitting stats for Freddie Freeman (ID=518692)
+2025-06-16 17:32:04 - DEBUG - Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-16 17:32:04 - DEBUG - https://statsapi.mlb.com:443 "GET /api/v1/people/518692/stats?stats=season&group=hitting&season=2025 HTTP/1.1" 200 674
+2025-06-16 17:32:04 - INFO - Saved JSON to F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_summary_20250616.json
+2025-06-16 17:32:04 - INFO - Saved CSV to F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_summary_20250616.csv
+2025-06-16 17:32:04 - INFO - Done pipeline. Run with --generate-html to generate HTML.

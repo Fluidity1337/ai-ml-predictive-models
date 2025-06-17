@@ -33,15 +33,19 @@ logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(levelname)s - %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
-    handlers=[logging.StreamHandler(), logging.FileHandler(log_file, mode='a', encoding='utf-8')]
+    handlers=[logging.StreamHandler(), logging.FileHandler(
+        log_file, mode='a', encoding='utf-8')]
 )
 logging.info(f"Logging to console and file: {log_file}")
 
 # Determine date to process
-date_str = sys.argv[1] if len(sys.argv) > 1 else datetime.now().strftime('%Y-%m-%d')
+date_str = sys.argv[1] if len(
+    sys.argv) > 1 else datetime.now().strftime('%Y-%m-%d')
 SEASON = int(date_str.split('-')[0])
 
 # Load season stats
+
+
 def load_stats():
     df_pitch = pd.DataFrame()
     df_bat = pd.DataFrame()
@@ -58,74 +62,46 @@ def load_stats():
             logging.error(f"pybaseball batting_stats error: {e}")
     return df_pitch, df_bat
 
+
 DF_PITCH, DF_BAT = load_stats()
 
-# Lookup stats helper, prioritize HTTP MLB Stats API for completeness
+# Lookup stats helper
+
+
 def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
     logging.debug(f"Looking up {group} stats for {name} (ID={pid})")
-    # 1. Primary HTTP GET via stats endpoint
+    # 1) Primary statsapi GET
     try:
         url = f"https://statsapi.mlb.com/api/v1/people/{pid}/stats?stats=season&group={group}&season={SEASON}"
-        logging.debug(f"Manual statsapi HTTP GET: {url}")
         res = requests.get(url)
         res.raise_for_status()
-        data = res.json()
-        splits = data.get('stats', [{}])[0].get('splits', [])
+        splits = res.json().get('stats', [{}])[0].get('splits', [])
         if splits:
-            stat = splits[0].get('stat', {})
-            logging.debug(f"Manual HTTP statsapi lookup succeeded for {name} (ID={pid})")
-            return stat
-    except Exception as e:
-        logging.warning(f"Manual HTTP statsapi failed for {name} (ID={pid}): {e}")
-    # 2. Hydrated people endpoint
+            return splits[0].get('stat', {})
+    except Exception:
+        pass
+    # 2) Hydrate people endpoint
     try:
-        url2 = (
-            f"https://statsapi.mlb.com/api/v1/people/{pid}"
-            f"?hydrate=stats(group={group},type=season,season={SEASON}),currentTeam"
-        )
-        logging.debug(f"Hydrate people HTTP GET: {url2}")
+        url2 = (f"https://statsapi.mlb.com/api/v1/people/{pid}"
+                f"?hydrate=stats(group={group},type=season,season={SEASON})")
         res2 = requests.get(url2)
         res2.raise_for_status()
-        data2 = res2.json()
-        people = data2.get('people', [])
-        if people:
-            stats_list = people[0].get('stats', [])
-            if stats_list:
-                splits2 = stats_list[0].get('splits', [])
-                if splits2:
-                    stat2 = splits2[0].get('stat', {})
-                    logging.debug(f"Hydrate people lookup succeeded for {name} (ID={pid})")
-                    return stat2
-    except Exception as e:
-        logging.warning(f"Hydrate people HTTP fallback failed for {name} (ID={pid}): {e}")
-    # 3. Fallback to pybaseball if available and loaded
+        ppl = res2.json().get('people', [{}])[0]
+        splits2 = ppl.get('stats', [{}])[0].get('splits', [])
+        if splits2:
+            return splits2[0].get('stat', {})
+    except Exception:
+        pass
+    # 3) pybaseball fallback
     if HAS_PYBASEBALL and not df.empty:
-        try:
-            # direct ID lookup
-            for col in ('mlbam_id', 'player_id'):
-                if col in df.columns:
-                    match = df[df[col] == pid]
-                    if not match.empty:
-                        logging.debug(f"pybaseball id lookup succeeded on {col}")
-                        return match.iloc[0].dropna().to_dict()
-            # fallback any id-like columns
-            for col in df.columns:
-                if col.lower().endswith('id') and pid in df[col].values:
-                    match = df[df[col] == pid]
-                    if not match.empty:
-                        logging.debug(f"pybaseball id lookup succeeded on {col}")
-                        return match.iloc[0].dropna().to_dict()
-            # name lookup
-            if 'Name' in df.columns:
-                match = df[df['Name'].str.contains(name.split()[0], na=False)]
-                if not match.empty:
-                    logging.debug("pybaseball name lookup succeeded")
-                    return match.iloc[0].dropna().to_dict()
-        except Exception as e:
-            logging.warning(f"pybaseball lookup failed for {name} (ID={pid}): {e}")
+        for col in ('mlbam_id', 'player_id'):
+            if col in df.columns and pid in df[col].values:
+                return df[df[col] == pid].iloc[0].dropna().to_dict()
     return {}
 
-# Batters fetchers
+# Batter fetchers
+
+
 def get_boxscore_batters(game_id: int, side: str) -> list:
     try:
         teams = requests.get(
@@ -140,7 +116,7 @@ def get_boxscore_batters(game_id: int, side: str) -> list:
             bat.append({
                 'id': pl['person']['id'],
                 'name': pl['person']['fullName'],
-                'position': pl.get('position', {}).get('abbreviation',''),
+                'position': pl.get('position', {}).get('abbreviation', ''),
                 'order': int(ord)
             })
     return sorted(bat, key=lambda x: x['order'])[:3]
@@ -160,8 +136,8 @@ def get_live_batters(game_id: int, side: str) -> list:
         pers = p.get('person', {})
         bat.append({
             'id': bid,
-            'name': pers.get('fullName','Unknown'),
-            'position': p.get('position',{}).get('abbreviation',''),
+            'name': pers.get('fullName', 'Unknown'),
+            'position': p.get('position', {}).get('abbreviation', ''),
             'order': None
         })
     return bat
@@ -178,7 +154,7 @@ def get_roster_batters(team_id: int) -> list:
         {
             'id': r['person']['id'],
             'name': r['person']['fullName'],
-            'position': r.get('position', {}).get('abbreviation',''),
+            'position': r.get('position', {}).get('abbreviation', ''),
             'order': None
         }
         for r in roster if r.get('position', {}).get('type') == 'Batter'
@@ -187,69 +163,93 @@ def get_roster_batters(team_id: int) -> list:
 
 
 def get_season_leaders() -> list:
-    res = []
     if DF_BAT.empty:
-        return res
+        return []
     df = DF_BAT.copy()
-    col = next((c for c in df.columns if 'OBP' in c.upper() or 'AVG' in c.upper()), None)
+    col = next((c for c in df.columns if 'OBP' in c.upper()
+               or 'AVG' in c.upper()), None)
     if not col:
-        return res
-    top = df.sort_values(by=col, ascending=False).head(3)
-    for _, r in top.iterrows():
-        pid = r.get('mlbam_id') or r.get('player_id') or None
-        name = r.get('Name') or ''
-        res.append({'id': int(pid) if pid else 0, 'name': name, 'position': r.get('POS',''), 'order': None})
-    return res
+        return []
+    top = df.sort_values(col, ascending=False).head(3)
+    return [{
+        'id': int(r.get('mlbam_id', 0)) if r.get('mlbam_id') else None,
+        'name': r.get('Name', ''),
+        'position': r.get('POS', ''),
+        'order': None
+    } for _, r in top.iterrows()]
+
+# Fallback from schedule previewPlayers
+
+
+def get_schedule_preview_batters(game: dict, side: str) -> list:
+    pp = game['teams'][side].get('previewPlayers', [])
+    bat = []
+    for p in pp[:3]:
+        bat.append({
+            'id': p['person']['id'],
+            'name': p['person']['fullName'],
+            'position': p.get('position', {}).get('abbreviation', ''),
+            'order': int(p.get('battingOrder', 0))
+        })
+    return bat
+
+# Main game detail fetch
 
 
 def fetch_game_details(game: dict) -> tuple[list, list]:
     gid = game.get('gamePk')
     pitchers, batters = [], []
-    for side in ('away','home'):
+    for side in ('away', 'home'):
         info = game['teams'][side]
         team_id = info['team']['id']
-        # pitcher
+        # Pitcher
         prob = info.get('probablePitcher')
         if prob:
-            stats = lookup_stats(prob['id'], prob['fullName'], DF_PITCH, 'pitching')
-            pitchers.append({'game_id': gid, 'player_type':'Pitcher', 'team':side,
-                             'id':prob['id'], 'name':prob['fullName'], 'position':'P', 'stats':stats})
-        else:
-            logging.info(f"No probable pitcher for {side} in game {gid}, using boxscore fallback")
-            try:
-                box = requests.get(f"https://statsapi.mlb.com/api/v1/game/{gid}/boxscore").json()['teams'][side]
-                for pl in box.get('players', {}).values():
-                    if pl.get('position', {}).get('abbreviation') == 'P':
-                        pid = pl['person']['id']
-                        name = pl['person']['fullName']
-                        stats = lookup_stats(pid, name, DF_PITCH, 'pitching')
-                        pitchers.append({'game_id': gid, 'player_type':'Pitcher', 'team':side,
-                                         'id':pid, 'name':name, 'position':'P', 'stats':stats})
-                        break
-            except Exception:
-                logging.error(f"Pitcher fallback failed for {side} in game {gid}")
-        # batters
+            stats = lookup_stats(
+                prob['id'], prob['fullName'], DF_PITCH, 'pitching')
+            pitchers.append({
+                'game_id': gid,
+                'player_type': 'Pitcher',
+                'team': side,
+                'id': prob['id'],
+                'name': prob['fullName'],
+                'position': 'P',
+                'stats': stats
+            })
+        # Batters: sequence of fallbacks
         lineup = get_boxscore_batters(gid, side)
-        if not lineup:
-            logging.info(f"No boxscore batters for {side} in game {gid}, trying live feed")
+        if len(lineup) < 3:
             lineup = get_live_batters(gid, side)
-        if not lineup:
-            logging.info(f"No live batters for {side} in game {gid}, trying roster")
+        if len(lineup) < 3:
             lineup = get_roster_batters(team_id)
-        if not lineup:
-            logging.info(f"No roster batters for {side} in game {gid}, using season leaders")
+        if len(lineup) < 3:
             lineup = get_season_leaders()
+        if len(lineup) < 3:
+            lineup = get_schedule_preview_batters(game, side)
+            logging.info(
+                f"Using schedule previewPlayers for {side} in game {gid}")
         for b in lineup:
-            stats = lookup_stats(b['id'], b.get('name',''), DF_BAT, 'hitting')
-            batters.append({'game_id': gid, 'player_type':'Batter', 'team':side,
-                            'id':b['id'], 'name':b['name'], 'position':b['position'],
-                            'order':b.get('order'), 'stats':stats})
+            stats = lookup_stats(b['id'], b.get(
+                'name', ''), DF_BAT, 'hitting') if b.get('id') else {}
+            batters.append({
+                'game_id': gid,
+                'player_type': 'Batter',
+                'team': side,
+                'id': b['id'],
+                'name': b['name'],
+                'position': b['position'],
+                'order': b.get('order'),
+                'stats': stats
+            })
     return pitchers, batters
+
 
 # Main
 if __name__ == '__main__':
+    # fetch schedule with previewPlayers hydrate
     sched = requests.get(
-        f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date_str}&hydrate=probablePitcher"
+        f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date_str}"
+        "&hydrate=teams(team,previewPlayers),probablePitcher"
     ).json()
     games = sched.get('dates', [{}])[0].get('games', [])
     allp, allb = [], []
@@ -261,15 +261,17 @@ if __name__ == '__main__':
     # write outputs
     js = RAW_DATA_DIR / f"mlb_daily_stats_{date_str.replace('-','')}.json"
     with open(js, 'w') as f:
-        json.dump(allp+allb, f, indent=2)
+        json.dump(allp + allb, f, indent=2)
     logging.info(f"Saved JSON to {js}")
 
     csvf = RAW_DATA_DIR / f"mlb_daily_stats_{date_str.replace('-','')}.csv"
-    keys = ['game_id','player_type','team','id','name','position','order']
-    stat_keys = sorted({k for p in (allp+allb) for k in p.get('stats',{})})
+    keys = ['game_id', 'player_type', 'team',
+            'id', 'name', 'position', 'order']
+    stat_keys = sorted({k for p in (allp + allb) for k in p.get('stats', {})})
     with open(csvf, 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
         w.writerow(keys + stat_keys)
-        for row in allp+allb:
-            w.writerow([row.get(k) for k in keys] + [row['stats'].get(k,'') for k in stat_keys])
+        for row in allp + allb:
+            w.writerow([row.get(k) for k in keys] +
+                       [row['stats'].get(k, '') for k in stat_keys])
     logging.info(f"Saved CSV to {csvf}")

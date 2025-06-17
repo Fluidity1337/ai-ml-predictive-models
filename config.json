@@ -1,9 +1,11 @@
 {
+  "root_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/",
   "mlb_base_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/",
   "mlb_raw_data_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/raw",
   "mlb_api_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api",
   "mlb_test_output_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output",
   "mlb_tests_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api",
   "mlb_api_graphql_url": "https://statsapi.mlb.com/graphql",
-  "mlb_fetch_daily_data_log_path" : "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output"
+  "mlb_fetch_daily_data_log_path" : "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output",
+  "mlb_rfi_model_features_config_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/config/sports/baseball/mlb/rfi_features_config.json"
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <title>Moneyline Hacks - RFI Model</title>
+  <link href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css' rel='stylesheet'>
+  <style>
+    body {background-color:#0f172a;color:#e2e8f0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}  
+    .title-highlight {background:linear-gradient(to right,#34d399,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  </style>
+</head>
+<body class='p-6'>
+  <div class='flex flex-col items-center justify-center gap-3 mb-6'>
+    <img src='https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/assets/img/mlh/mlh-logo-1.jpg' alt='Moneyline Hacks Logo' class='h-16'/>
+    <h1 class='text-4xl font-extrabold title-highlight'>Moneyline Hacks</h1>
+    <h2 class='text-xl text-gray-400'>Run First Inning (RFI) Model — {_dt.now().strftime('%B %d')}</h2>
+    <img src='https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/assets/img/mlb/mlb-logo-2.png' alt='Baseball Icon' class='h-10'/>
+  </div>
+  <div class='bg-gray-800 max-w-5xl mx-auto overflow-x-auto rounded-lg shadow-xl'>
+    <table class='min-w-full text-sm text-left text-gray-300'>
+      <thead class='bg-gray-700 text-gray-300 text-sm uppercase'>
+        <tr>
+          <th class='px-4 py-3'>Game Time</th>
+          <th class='px-4 py-3'>Pitching Team</th>
+          <th class='px-4 py-3'>Proj. Pitcher</th>
+          <th class='px-4 py-3'>Opponent</th>
+          <th class='px-4 py-3'>Team Grade</th>
+          <th class='px-4 py-3'>NRFI Grade</th>
+          <th class='px-4 py-3'>Recommendation</th>
+        </tr>
+      </thead>
+      <tbody><tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-16T22:40:00Z</td><td class='px-4 py-3'>Philadelphia Phillies</td><td class='px-4 py-3'>Mick Abel</td><td class='px-4 py-3'>Miami Marlins</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-16T22:40:00Z</td><td class='px-4 py-3'>Miami Marlins</td><td class='px-4 py-3'>Sandy Alcantara</td><td class='px-4 py-3'>Philadelphia Phillies</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-16T22:45:00Z</td><td class='px-4 py-3'>Colorado Rockies</td><td class='px-4 py-3'>Carson Palmquist</td><td class='px-4 py-3'>Washington Nationals</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-16T22:45:00Z</td><td class='px-4 py-3'>Washington Nationals</td><td class='px-4 py-3'>Jake Irvin</td><td class='px-4 py-3'>Colorado Rockies</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-16T23:05:00Z</td><td class='px-4 py-3'>Los Angeles Angels</td><td class='px-4 py-3'>José Soriano</td><td class='px-4 py-3'>New York Yankees</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-16T23:05:00Z</td><td class='px-4 py-3'>New York Yankees</td><td class='px-4 py-3'>Clarke Schmidt</td><td class='px-4 py-3'>Los Angeles Angels</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-16T23:35:00Z</td><td class='px-4 py-3'>Baltimore Orioles</td><td class='px-4 py-3'>Zach Eflin</td><td class='px-4 py-3'>Tampa Bay Rays</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-16T23:35:00Z</td><td class='px-4 py-3'>Tampa Bay Rays</td><td class='px-4 py-3'>Ryan Pepiot</td><td class='px-4 py-3'>Baltimore Orioles</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-17T01:40:00Z</td><td class='px-4 py-3'>Boston Red Sox</td><td class='px-4 py-3'>Lucas Giolito</td><td class='px-4 py-3'>Seattle Mariners</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-17T01:40:00Z</td><td class='px-4 py-3'>Seattle Mariners</td><td class='px-4 py-3'>Logan Gilbert</td><td class='px-4 py-3'>Boston Red Sox</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-17T02:05:00Z</td><td class='px-4 py-3'>Houston Astros</td><td class='px-4 py-3'>Ryan Gusto</td><td class='px-4 py-3'>Athletics</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-17T02:05:00Z</td><td class='px-4 py-3'>Athletics</td><td class='px-4 py-3'>Mitch Spence</td><td class='px-4 py-3'>Houston Astros</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-17T02:10:00Z</td><td class='px-4 py-3'>San Diego Padres</td><td class='px-4 py-3'>Dylan Cease</td><td class='px-4 py-3'>Los Angeles Dodgers</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+<tr class='hover:bg-gray-700 border-b border-gray-700'><td class='px-4 py-3'>2025-06-17T02:10:00Z</td><td class='px-4 py-3'>Los Angeles Dodgers</td><td class='px-4 py-3'>Shohei Ohtani</td><td class='px-4 py-3'>San Diego Padres</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>0.0</td><td class='px-4 py-3'>TBD</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
