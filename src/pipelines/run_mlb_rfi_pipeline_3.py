@@ -52,19 +52,31 @@ def minmax_scale(x, lo, hi):
 
 def pitcher_score(stats):
     b = BOUNDS
-    # make sure any None values become 0 before dividing or scaling
-    era_val = stats.get("era")
-    whip_val = stats.get("whip")
-    so9 = (stats.get("strikeOutsPer9Inn") or 0) / 9
-    bb9 = (stats.get("baseOnBallsPer9Inn") or 0) / 9
-    first_era = stats.get("firstInningEra")
+
+    # helper to give a numeric fallback when API returns None
+    def safe(key, default):
+        v = stats.get(key)
+        return v if v is not None else default
+
+    # midpoint of a bound range
+    def mid(low, high):
+        return (low + high) / 2
+
+    # coalesced values
+    era_val = safe("era",            mid(*b["era"]))
+    whip_val = safe("whip",           mid(*b["whip"]))
+    so9 = safe("strikeOutsPer9Inn", 0) / 9
+    bb9 = safe("baseOnBallsPer9Inn", 0) / 9
+    f1_era = safe("firstInningEra", mid(*b["f1_era"]))
+
     f = {
-        "era":    1 - minmax_scale(era_val,    *b["era"]),
-        "whip":   1 - minmax_scale(whip_val,   *b["whip"]),
-        "k_rate": minmax_scale(so9,           *b["k_rate"]),
-        "bb_rate": 1 - minmax_scale(bb9,       *b["bb_rate"]),
-        "f1_era": 1 - minmax_scale(first_era, *b["f1_era"]),
+        "era":     1 - minmax_scale(era_val,  *b["era"]),
+        "whip":    1 - minmax_scale(whip_val, *b["whip"]),
+        "k_rate":  minmax_scale(so9,          *b["k_rate"]),
+        "bb_rate": 1 - minmax_scale(bb9,      *b["bb_rate"]),
+        "f1_era":  1 - minmax_scale(f1_era,   *b["f1_era"]),
     }
+
     return sum(f.values()) / len(f)
 
 
