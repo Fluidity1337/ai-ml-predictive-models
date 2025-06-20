@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from datetime import date
+import os
 import sys
 import logging
 import json
@@ -244,14 +246,46 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
     return pitchers, batters
 
 
+def generate_daily_games_summary(games, output_dir):
+    """
+    Write a summary JSON for today's games to
+    mlb_daily_games_summary_YYYYMMDD.json in output_dir.
+    """
+    today_str = date.today().strftime("%Y%m%d")
+    filename = f"mlb_daily_games_summary_{today_str}.json"
+    path = os.path.join(output_dir, filename)
+
+    summary = []
+    for g in games:
+        away = g['teams']['away']
+        home = g['teams']['home']
+        summary.append({
+            "gamePk": g.get("gamePk"),
+            "gameDate": g.get("gameDate"),
+            "away_team": away['team']['name'],
+            "home_team": home['team']['name'],
+            "away_probable_pitcher": away.get("probablePitcher", {}).get("fullName"),
+            "home_probable_pitcher": home.get("probablePitcher", {}).get("fullName"),
+            "start_time": g.get("gameDate").replace("T", " ").replace("Z", ""),
+        })
+
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+
+    print(f"Daily games summary written to {path}")
+    return path
+
+
 # Main
 if __name__ == '__main__':
+
     # fetch schedule with previewPlayers hydrate
     sched = requests.get(
         f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date_str}"
         "&hydrate=teams(team,previewPlayers),probablePitcher"
     ).json()
     games = sched.get('dates', [{}])[0].get('games', [])
+    generate_daily_games_summary(games, RAW_DATA_DIR)
     allp, allb = [], []
     for g in games:
         ps, bs = fetch_game_details(g)

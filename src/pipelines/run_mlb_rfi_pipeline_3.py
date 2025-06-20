@@ -53,31 +53,39 @@ def minmax_scale(x, lo, hi):
 def pitcher_score(stats):
     b = BOUNDS
 
-    # helper to give a numeric fallback when API returns None
+    # helper: coerce to float, or fall back to default
     def safe(key, default):
-        v = stats.get(key)
-        return v if v is not None else default
+        try:
+            v = stats.get(key, None)
+            return float(v) if v is not None else default
+        except (TypeError, ValueError):
+            return default
 
     # midpoint of a bound range
     def mid(low, high):
         return (low + high) / 2
 
-    # coalesced values
-    era_val = safe("era",            mid(*b["era"]))
-    whip_val = safe("whip",           mid(*b["whip"]))
-    so9 = safe("strikeOutsPer9Inn", 0) / 9
-    bb9 = safe("baseOnBallsPer9Inn", 0) / 9
-    f1_era = safe("firstInningEra", mid(*b["f1_era"]))
+    # debug log so you can inspect what came in
+    print(f"[DEBUG pitcher_score] stats = {stats!r}")
 
-    f = {
-        "era":     1 - minmax_scale(era_val,  *b["era"]),
-        "whip":    1 - minmax_scale(whip_val, *b["whip"]),
-        "k_rate":  minmax_scale(so9,          *b["k_rate"]),
-        "bb_rate": 1 - minmax_scale(bb9,      *b["bb_rate"]),
-        "f1_era":  1 - minmax_scale(f1_era,   *b["f1_era"]),
+    # pull every value through safe()
+    era = safe("era",            mid(*b["era"]))
+    whip = safe("whip",           mid(*b["whip"]))
+    so9 = safe("strikeOutsPer9Inn", 0.0) / 9.0
+    bb9 = safe("baseOnBallsPer9Inn", 0.0) / 9.0
+    f1era = safe("firstInningEra", mid(*b["f1_era"]))
+
+    # build your feature scores
+    scores = {
+        "era":     1.0 - minmax_scale(era,   *b["era"]),
+        "whip":    1.0 - minmax_scale(whip,  *b["whip"]),
+        "k_rate":  minmax_scale(so9,        *b["k_rate"]),
+        "bb_rate": 1.0 - minmax_scale(bb9,   *b["bb_rate"]),
+        "f1_era":  1.0 - minmax_scale(f1era, *b["f1_era"]),
     }
 
-    return sum(f.values()) / len(f)
+    # average them
+    return sum(scores.values()) / len(scores)
 
 
 def batter_score(feats):
@@ -142,35 +150,54 @@ def fetch_game_details(game):
         team_id = info['team']['id']
         pitcher = info.get("probablePitcher")
 
+        # ——— Pitcher ———
         if pitcher:
             pid = pitcher["id"]
             stats = lookup_stats(
                 pid, pitcher["fullName"], df_pitch, 'pitching')
             pitchers.append({
-                "game_id": game_id,
-                "team": side,
-                "id": pid,
-                "name": pitcher["fullName"],
-                "position": "P",
-                "stats": stats
+                "game_id":     game_id,
+                "player_type": "pitcher",
+                "team":        side,
+                "id":           pid,
+                "name":        pitcher["fullName"],
+                "position":    "P",
+                "order":       None,
+                "stats":       stats
             })
             team_stats[side]["pitcher"] = stats
 
+        # ——— Batters: try boxscore, then previewPlayers ———
         lineup = get_boxscore_batters(game_id, side)
+        if not lineup:
+            # fall back to the schedule’s hydrated previewPlayers
+            preview = info.get("previewPlayers", [])
+            lineup = []
+            for p in preview[:3]:
+                lineup.append({
+                    "id":       p['person']['id'],
+                    "name":     p['person']['fullName'],
+                    "position": p.get('position', {}).get('abbreviation', ''),
+                    "order":    int(p.get('battingOrder', 0)) if p.get('battingOrder') else None
+                })
         lineup_stats = []
         for b in lineup:
             stats = lookup_stats(b["id"], b["name"], df_bat, 'hitting')
             batters.append({
-                "game_id": game_id,
-                "team": side,
-                "id": b["id"],
-                "name": b["name"],
-                "position": b["position"],
-                "order": b["order"],
-                "stats": stats
+                "game_id":     game_id,
+                "player_type": "batter",
+                "team":        side,
+                "id":           b["id"],
+                "name":        b["name"],
+                "position":    b["position"],
+                "order":       b["order"],
+                "stats":       stats
             })
             lineup_stats.append(stats)
+
         team_stats[side]["batters"] = lineup_stats
+
+    # (compute pitcher_score, batter_score, attach to game, then return)
 
     # Compute RFI grade
     for side in ("away", "home"):
@@ -185,40 +212,75 @@ def fetch_game_details(game):
                          for b in bat_feats) / len(bat_feats)
         else:
             obp_vs = hr_rate = f1_obp = 0
-        bscore = batter_score(
-            {"obp_vs": obp_vs, "hr_rate": hr_rate, "recent_f1_obp": f1_obp})
+
+        bscore = batter_score({
+            "obp_vs":        obp_vs,
+            "hr_rate":       hr_rate,
+            "recent_f1_obp": f1_obp
+        })
+
         game[f"{side}_pitcher_score"] = pscore
         game[f"{side}_batter_score"] = bscore
-        game[f"{side}_rfi_grade"] = WEIGHTS["pitcher"] * \
-            pscore + WEIGHTS["batter"] * bscore
+        game[f"{side}_rfi_grade"] = WEIGHTS["pitcher"] * pscore \
+            + WEIGHTS["batter"] * bscore
 
     game["nrfi_grade"] = game["away_rfi_grade"]
     return pitchers, batters
 
 
 if __name__ == '__main__':
-    date_str = datetime.now().strftime('%Y-%m-%d')
+    # allow passing a date in YYYY-MM-DD as first arg, otherwise use today
+    if len(sys.argv) > 1:
+        date_str = sys.argv[1]
+    else:
+        date_str = datetime.now().strftime('%Y-%m-%d')
+
+    # validate format (simple check)
+    try:
+        datetime.strptime(date_str, '%Y-%m-%d')
+    except ValueError:
+        logging.error("Date must be in YYYY-MM-DD format, got %r", date_str)
+        sys.exit(1)
+
     games = fetch_schedule(date_str)
+
     all_pitchers, all_batters = [], []
     for g in games:
         ps, bs = fetch_game_details(g)
+        # attach the game-level grades onto each record
+        for p in ps:
+            p.update({
+                'pitcher_score': g[f"{p['team']}_pitcher_score"],
+                'batter_score':  g[f"{p['team']}_batter_score"],
+                'rfi_grade':     g[f"{p['team']}_rfi_grade"],
+                'nrfi_grade':    g["nrfi_grade"]
+            })
+        for b in bs:
+            b.update({
+                'pitcher_score': g[f"{b['team']}_pitcher_score"],
+                'batter_score':  g[f"{b['team']}_batter_score"],
+                'rfi_grade':     g[f"{b['team']}_rfi_grade"],
+                'nrfi_grade':    g["nrfi_grade"]
+            })
         all_pitchers.extend(ps)
         all_batters.extend(bs)
 
+    # build CSV filename with the provided date
     csv_path = RAW_DATA_DIR / \
         f"mlb_combined_stats_{date_str.replace('-', '')}.csv"
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         headers = ['game_id', 'player_type', 'team',
                    'id', 'name', 'position', 'order']
-        stat_keys = sorted(set(k for obj in (all_pitchers + all_batters)
-                           for k in obj['stats'].keys()))
-        writer.writerow(headers + stat_keys)
-        for p in all_pitchers:
-            writer.writerow([p[k] for k in headers[:7]] +
-                            [p['stats'].get(k, '') for k in stat_keys])
-        for b in all_batters:
-            writer.writerow([b[k] for k in headers[:7]] +
-                            [b['stats'].get(k, '') for k in stat_keys])
+        grade_keys = ['pitcher_score',
+                      'batter_score', 'rfi_grade', 'nrfi_grade']
+        stat_keys = sorted({k for rec in all_pitchers +
+                           all_batters for k in rec['stats'].keys()})
+        writer.writerow(headers + grade_keys + stat_keys)
+        for rec in all_pitchers + all_batters:
+            row = [rec.get(c, '') for c in headers]
+            row += [rec.get(gk, '') for gk in grade_keys]
+            row += [rec['stats'].get(sk, '') for sk in stat_keys]
+            writer.writerow(row)
 
     logging.info(f"Saved CSV to {csv_path}")

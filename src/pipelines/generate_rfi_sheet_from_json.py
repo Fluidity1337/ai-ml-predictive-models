@@ -46,13 +46,14 @@ BOUNDS = features_cfg["bounds"]
 
 # Define paths
 ROOT = Path(config['root_path']).resolve()
-RAW_DATA_DIR = Path(config['mlb_test_output_path']).resolve()
+RAW_DATA_DIR = Path(config['mlb_raw_data_path']).resolve()
 RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 date_suffix = _dt.now().strftime('%Y%m%d')
-JSON_PATH = RAW_DATA_DIR / f"mlb_daily_summary_{date_suffix}.json"
+DAILY_PLAYER_STATS_SUMMARY_JSON_PATH = RAW_DATA_DIR / \
+    f"mlb_daily_stats_{date_suffix}.json"
 HTML_PATH = RAW_DATA_DIR / f"mlb_mlh_rfi_websheet_{date_suffix}.html"
-CSV_PATH = RAW_DATA_DIR / f"mlb_daily_summary_{date_suffix}.csv"
+CSV_PATH = RAW_DATA_DIR / f"mlb_daily_stats_{date_suffix}.csv"
 
 # Load season stats via pybaseball if available
 df_pitch = pd.DataFrame()
@@ -300,7 +301,7 @@ def fetch_game_details(game):
 if __name__ == '__main__':
     # Example: load games from JSON and generate HTML
     try:
-        with open(JSON_PATH, 'r', encoding='utf-8') as f:
+        with open(DAILY_PLAYER_STATS_SUMMARY_JSON_PATH, 'r', encoding='utf-8') as f:
             data = json.load(f)
         games = data.get('games', [])
     except Exception as e:
