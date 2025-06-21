@@ -289,8 +289,13 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
         # ——— Probable Pitcher ———
         prob = info.get("probablePitcher")
         if prob:
-            stats = lookup_stats(
+            pstats = lookup_stats(
                 prob["id"], prob["fullName"], df_pitch, "pitching")
+            pscore = pitcher_score(pstats)
+
+            # ***** NEW: record raw pitcher score on the game *****
+            game[f"{side}_pitcher_score"] = pscore
+
             pitchers.append({
                 "game_id":     game_id,
                 "player_type": "pitcher",
@@ -299,70 +304,27 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
                 "name":        prob["fullName"],
                 "position":    "P",
                 "order":       None,
-                "stats":       stats
+                "stats":       pstats
             })
-            team_stats[side]["pitcher"] = stats
+            team_stats[side]["pitcher"] = pstats
 
         # ——— Batters fallback chain ———
-        # 1) boxscore
         lineup = get_boxscore_batters(game_id, side)
-        logging.debug(
-            f"[{game_id}][{side}] Boxscore batters ({len(lineup)}): {[b['name'] for b in lineup]}")
-
-        # 2) live feed
         if len(lineup) < 3:
-            logging.debug(
-                f"[{game_id}][{side}] Falling back to LIVE feed (had {len(lineup)})")
             lineup = get_live_batters(game_id, side)
-            logging.debug(
-                f"[{game_id}][{side}] Live batters ({len(lineup)}): {[b['name'] for b in lineup]}")
-
-        # 3) team roster (exclude any position "P")
         if len(lineup) < 3:
-            logging.debug(
-                f"[{game_id}][{side}] Falling back to ROSTER (had {len(lineup)})")
-            try:
-                roster = requests.get(f"https://statsapi.mlb.com/api/v1/teams/{team_id}/roster") \
-                                 .json().get('roster', [])
-            except Exception:
-                roster = []
-            roster_lineup = [
-                {
-                    'id': r['person']['id'],
-                    'name': r['person']['fullName'],
-                    'position': r.get('position', {}).get('abbreviation', ''),
-                    'order': None
-                }
-                for r in roster
-                if r.get('position', {}).get('abbreviation', '') != 'P'
-            ][:3]
-            lineup = roster_lineup
-            logging.debug(
-                f"[{game_id}][{side}] Roster batters ({len(lineup)}): {[b['name'] for b in lineup]}")
-
-        # 4) schedule previewPlayers
+            lineup = get_roster_batters(team_id)
         if len(lineup) < 3:
-            logging.debug(
-                f"[{game_id}][{side}] Falling back to PREVIEW (had {len(lineup)})")
             lineup = get_schedule_preview_batters(game, side)
-            logging.debug(
-                f"[{game_id}][{side}] Preview batters ({len(lineup)}): {[b['name'] for b in lineup]}")
-
-        # 5) season leaders (last resort)
         if len(lineup) < 3:
-            logging.debug(
-                f"[{game_id}][{side}] Falling back to SEASON LEADERS (had {len(lineup)})")
             lineup = get_season_leaders()
-            logging.debug(
-                f"[{game_id}][{side}] Season leader batters ({len(lineup)}): {[b['name'] for b in lineup]}")
-
-        # ensure exactly three batters
         lineup = lineup[:3]
 
         # collect their stats
-        team_feats = []
+        feats = []
         for b in lineup:
-            stats = lookup_stats(b["id"], b["name"], df_bat, "hitting")
+            bstats = lookup_stats(b["id"], b["name"], df_bat, "hitting")
+            feats.append(bstats)
             batters.append({
                 "game_id":     game_id,
                 "player_type": "batter",
@@ -371,37 +333,34 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
                 "name":        b["name"],
                 "position":    b["position"],
                 "order":       b.get("order"),
-                "stats":       stats
+                "stats":       bstats
             })
-            team_feats.append(stats)
-        team_stats[side]["batters"] = team_feats
+        team_stats[side]["batters"] = feats
 
-    # ——— Compute RFI grades ———
-    for side in ("away", "home"):
-        pscore = pitcher_score(team_stats[side].get("pitcher", {}))
-        bat_feats = team_stats[side].get("batters", [])
-        if bat_feats:
-            obp_vs = sum(float(b.get("obp", 0))
-                         for b in bat_feats) / len(bat_feats)
+        # ***** NEW: compute and record raw batter score on the game *****
+        bscore = 0.0
+        if feats:
+            obp_vs = sum(float(b.get("obp", 0)) for b in feats) / len(feats)
             hr_rate = sum(float(b.get("homeRuns", 0))
-                          for b in bat_feats) / len(bat_feats)
+                          for b in feats) / len(feats)
             f1_obp = sum(float(b.get("firstInningOBP", 0))
-                         for b in bat_feats) / len(bat_feats)
-        else:
-            obp_vs = hr_rate = f1_obp = 0.0
+                         for b in feats) / len(feats)
+            bscore = batter_score(
+                {"obp_vs": obp_vs, "hr_rate": hr_rate, "recent_f1_obp": f1_obp})
 
-        bscore = batter_score({
-            "obp_vs":        obp_vs,
-            "hr_rate":       hr_rate,
-            "recent_f1_obp": f1_obp
-        })
-
-        game[f"{side}_pitcher_score"] = pscore
         game[f"{side}_batter_score"] = bscore
-        game[f"{side}_rfi_grade"] = WEIGHTS["pitcher"] * \
-            pscore + WEIGHTS["batter"] * bscore
 
-    game["nrfi_grade"] = game["away_rfi_grade"]
+    # ——— Compute and scale RFI grades (0–10) ———
+    for side in ("away", "home"):
+        p = game.get(f"{side}_pitcher_score", 0.0)
+        b = game.get(f"{side}_batter_score",  0.0)
+        raw = WEIGHTS["pitcher"] * p + WEIGHTS["batter"] * b
+        game[f"{side}_rfi_grade"] = round(raw * 10, 1)
+
+    away_g = game["away_rfi_grade"]
+    home_g = game["home_rfi_grade"]
+    game["nrfi_grade"] = round((away_g + home_g) / 2, 1)
+
     return pitchers, batters
 
 
@@ -429,15 +388,17 @@ if __name__ == '__main__':
             p.update({
                 'pitcher_score': g[f"{p['team']}_pitcher_score"],
                 'batter_score':  g[f"{p['team']}_batter_score"],
-                'rfi_grade':     g[f"{p['team']}_rfi_grade"],
-                'nrfi_grade':    g["nrfi_grade"]
+                'away_rfi_grade': g['away_rfi_grade'],
+                'home_rfi_grade': g['home_rfi_grade'],
+                'nrfi_grade':     g['nrfi_grade']
             })
         for b in bs:
             b.update({
                 'pitcher_score': g[f"{b['team']}_pitcher_score"],
                 'batter_score':  g[f"{b['team']}_batter_score"],
-                'rfi_grade':     g[f"{b['team']}_rfi_grade"],
-                'nrfi_grade':    g["nrfi_grade"]
+                'away_rfi_grade': g['away_rfi_grade'],
+                'home_rfi_grade': g['home_rfi_grade'],
+                'nrfi_grade':     g['nrfi_grade']
             })
         all_pitchers.extend(ps)
         all_batters.extend(bs)
@@ -450,7 +411,7 @@ if __name__ == '__main__':
         headers = ['game_id', 'player_type', 'team',
                    'id', 'name', 'position', 'order']
         grade_keys = ['pitcher_score',
-                      'batter_score', 'rfi_grade', 'nrfi_grade']
+                      'batter_score', 'away_rfi_grade', 'home_rfi_grade', 'nrfi_grade']
         stat_keys = sorted({k for rec in all_pitchers +
                            all_batters for k in rec['stats'].keys()})
         writer.writerow(headers + grade_keys + stat_keys)
@@ -486,6 +447,7 @@ if __name__ == '__main__':
 
         game_summary.append({
             "game_id":          g["gamePk"],
+            "game_datetime":    g["gameDate"],
             "away_team":        away_team,
             "home_team":        home_team,
             "away_pitcher":     away_pitch,
@@ -503,14 +465,14 @@ if __name__ == '__main__':
     with open(game_csv, 'w', newline='', encoding='utf-8') as gf:
         writer = csv.writer(gf)
         writer.writerow([
-            "game_id", "away_team", "home_team",
+            "game_id", "game_datetime", "away_team", "home_team",
             "away_pitcher", "home_pitcher",
             "away_batters", "home_batters",
             "away_rfi_grade", "home_rfi_grade", "nrfi_grade"
         ])
         for r in game_summary:
             writer.writerow([
-                r["game_id"], r["away_team"], r["home_team"],
+                r["game_id"], r["game_datetime"], r["away_team"], r["home_team"],
                 r["away_pitcher"], r["home_pitcher"],
                 ";".join(r["away_batters"]), ";".join(r["home_batters"]),
                 r["away_rfi_grade"], r["home_rfi_grade"], r["nrfi_grade"],

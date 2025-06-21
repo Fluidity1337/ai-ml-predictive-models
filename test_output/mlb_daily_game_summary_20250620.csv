@@ -1,16 +1,16 @@
-game_id,away_team,home_team,away_pitcher,home_pitcher,away_batters,home_batters,away_rfi_grade,home_rfi_grade,nrfi_grade
-777436,Seattle Mariners,Chicago Cubs,George Kirby,Matthew Boyd,J.P. Crawford;Julio Rodríguez;Cal Raleigh,Ian Happ;Kyle Tucker;Seiya Suzuki,0.3302,0.39360000000000006,0.3302
-777432,Texas Rangers,Pittsburgh Pirates,Jacob deGrom,Mike Burrows,Adolis García;Alejandro Osuna;Corey Seager,Adam Frazier;Alexander Canario;Andrew McCutchen,0.4160666666666666,0.35540000000000005,0.4160666666666666
-777431,Detroit Tigers,Tampa Bay Rays,Jack Flaherty,Shane Baz,Colt Keith;Dillon Dingler;Gleyber Torres,Brandon Lowe;Christopher Morel;Curtis Mead,0.3748666666666667,0.3502333333333333,0.3748666666666667
-777438,Baltimore Orioles,New York Yankees,Tomoyuki Sugano,Max Fried,Adley Rutschman;Cedric Mullins;Coby Mayo,Aaron Judge;Anthony Volpe;Austin Wells,0.38049999999999995,0.4235333333333333,0.38049999999999995
-777435,Chicago White Sox,Toronto Blue Jays,,Spencer Turnbull,Andrew Benintendi;Austin Slater;Chase Meidroth,Addison Barger;Alan Roden;Alejandro Kirk,0.38203333333333334,0.34763333333333335,0.38203333333333334
-777439,Atlanta Braves,Miami Marlins,Didier Fuentes,Janson Junk,Alex Verdugo;Austin Riley;Drake Baldwin,Agustín Ramírez;Connor Norby;Dane Myers,0.3827,0.4013666666666666,0.3827
-777433,Cincinnati Reds,St. Louis Cardinals,Brady Singer,Andre Pallante,Christian Encarnacion-Strand;Connor Joe;Elly De La Cruz,Alec Burleson;Brendan Donovan;Iván Herrera,0.34940000000000004,0.34840000000000004,0.34940000000000004
-777437,New York Mets,Philadelphia Phillies,Blade Tidwell,Zack Wheeler,Brandon Nimmo;Brett Baty;Francisco Alvarez,Alec Bohm;Brandon Marsh;Bryson Stott,0.27959999999999996,0.4106666666666667,0.27959999999999996
-777434,Milwaukee Brewers,Minnesota Twins,Jacob Misiorowski,Joe Ryan,Andruw Monasterio;Brice Turang;Caleb Durbin,Brooks Lee;Byron Buxton;Carlos Correa,0.4619333333333333,0.4058666666666667,0.4619333333333333
-777430,Arizona Diamondbacks,Colorado Rockies,Zac Gallen,Austin Gomber,Alek Thomas;Aramis Garcia;Corbin Carroll,Braxton Fulford;Brenton Doyle;Hunter Goodman,0.3280666666666667,0.47130000000000005,0.3280666666666667
-777428,Houston Astros,Los Angeles Angels,Hunter Brown,Yusei Kikuchi,Cam Smith;César Salazar;Christian Walker,Christian Moore;Jo Adell;Jorge Soler,0.41653333333333337,0.35996666666666666,0.41653333333333337
-777426,Kansas City Royals,San Diego Padres,Michael Lorenzen,Nick Pivetta,Bobby Witt Jr.;Drew Waters;Freddy Fermin,Brandon Lockridge;Bryce Johnson;Elias Díaz,0.34236666666666665,0.3938333333333333,0.34236666666666665
-777429,Cleveland Guardians,Athletics,Tanner Bibee,Jeffrey Springs,Angel Martínez;Austin Hedges;Bo Naylor,Austin Wynns;Brent Rooker;Denzel Clarke,0.3644,0.3536333333333333,0.3644
-777427,Washington Nationals,Los Angeles Dodgers,MacKenzie Gore,Clayton Kershaw,Alex Call;Amed Rosario;Andrés Chaparro,Andy Pages;Dalton Rushing;Enrique Hernández,0.38839999999999997,0.37170000000000003,0.38839999999999997
-777425,Boston Red Sox,San Francisco Giants,Hunter Dobbins,Hayden Birdsong,Abraham Toro;Carlos Narváez;Ceddanne Rafaela,Andrew Knizner;Casey Schmitt;Christian Koss,0.3747,0.37609999999999993,0.3747
+game_id,game_datetime,away_team,home_team,away_pitcher,home_pitcher,away_batters,home_batters,away_rfi_grade,home_rfi_grade,nrfi_grade
+777436,2025-06-20T18:20:00Z,Seattle Mariners,Chicago Cubs,George Kirby,Matthew Boyd,J.P. Crawford;Julio Rodríguez;Cal Raleigh,Ian Happ;Kyle Tucker;Seiya Suzuki,3.3,3.9,3.6
+777432,2025-06-20T22:40:00Z,Texas Rangers,Pittsburgh Pirates,Jacob deGrom,Mike Burrows,Josh Smith;Sam Haggerty;Corey Seager,Oneil Cruz;Andrew McCutchen;Nick Gonzales,4.2,3.4,3.8
+777431,2025-06-20T23:05:00Z,Detroit Tigers,Tampa Bay Rays,Jack Flaherty,Shane Baz,Colt Keith;Gleyber Torres;Kerry Carpenter,Yandy Díaz;Brandon Lowe;Jake Mangum,3.6,3.6,3.6
+777438,2025-06-20T23:05:00Z,Baltimore Orioles,New York Yankees,Tomoyuki Sugano,Max Fried,Jackson Holliday;Jordan Westburg;Ramón Laureano,Paul Goldschmidt;Trent Grisham;Aaron Judge,3.8,4.3,4.0
+777435,2025-06-20T23:07:00Z,Chicago White Sox,Toronto Blue Jays,Grant Taylor,Spencer Turnbull,Chase Meidroth;Andrew Benintendi;Miguel Vargas,Bo Bichette;Addison Barger;Vladimir Guerrero Jr.,3.9,2.8,3.3
+777439,2025-06-20T23:10:00Z,Atlanta Braves,Miami Marlins,Didier Fuentes,Janson Junk,Ronald Acuña Jr.;Alex Verdugo;Austin Riley,Xavier Edwards;Jesús Sánchez;Otto Lopez,3.0,4.1,3.5
+777433,2025-06-20T23:15:00Z,Cincinnati Reds,St. Louis Cardinals,Brady Singer,Andre Pallante,TJ Friedl;Gavin Lux;Elly De La Cruz,Brendan Donovan;Masyn Winn;Alec Burleson,3.6,3.5,3.5
+777437,2025-06-20T23:15:00Z,New York Mets,Philadelphia Phillies,Blade Tidwell,Zack Wheeler,Francisco Lindor;Brandon Nimmo;Juan Soto,Trea Turner;Kyle Schwarber;Alec Bohm,2.8,4.1,3.4
+777434,2025-06-21T00:10:00Z,Milwaukee Brewers,Minnesota Twins,Jacob Misiorowski,Joe Ryan,Sal Frelick;Jackson Chourio;Christian Yelich,Byron Buxton;Matt Wallner;Willi Castro,4.7,4.1,4.4
+777430,2025-06-21T00:40:00Z,Arizona Diamondbacks,Colorado Rockies,Zac Gallen,Austin Gomber,Ketel Marte;Geraldo Perdomo;Lourdes Gurriel Jr.,Jordan Beck;Tyler Freeman;Hunter Goodman,3.4,4.8,4.1
+777428,2025-06-21T01:38:00Z,Houston Astros,Los Angeles Angels,Hunter Brown,Yusei Kikuchi,Jeremy Peña;Isaac Paredes;Jose Altuve,Zach Neto;Nolan Schanuel;Mike Trout,4.3,3.7,4.0
+777426,2025-06-21T01:40:00Z,Kansas City Royals,San Diego Padres,Michael Lorenzen,Nick Pivetta,Jonathan India;Bobby Witt Jr.;Maikel Garcia,Fernando Tatis Jr.;Luis Arraez;Manny Machado,3.5,3.9,3.7
+777429,2025-06-21T02:05:00Z,Cleveland Guardians,Athletics,Tanner Bibee,Jeffrey Springs,Steven Kwan;Lane Thomas;José Ramírez,Lawrence Butler;Jacob Wilson;Brent Rooker,3.7,3.6,3.7
+777427,2025-06-21T02:10:00Z,Washington Nationals,Los Angeles Dodgers,MacKenzie Gore,Clayton Kershaw,CJ Abrams;Amed Rosario;James Wood,Shohei Ohtani;Mookie Betts;Will Smith,3.9,3.8,3.8
+777425,2025-06-21T02:15:00Z,Boston Red Sox,San Francisco Giants,Hunter Dobbins,Hayden Birdsong,Jarren Duran;Carlos Narváez;Roman Anthony,Mike Yastrzemski;Heliot Ramos;Rafael Devers,3.7,3.9,3.8

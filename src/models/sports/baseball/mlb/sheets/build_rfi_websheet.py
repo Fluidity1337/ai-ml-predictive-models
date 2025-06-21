@@ -19,7 +19,7 @@ RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 date_suffix = datetime.now().strftime("%Y%m%d")
 JSON_FILENAME = config.get(
-    "json_filename", f"mlb_daily_summary_{date_suffix}.json")
+    "json_filename", f"mlb_daily_game_summary_{date_suffix}.json")
 HTML_FILENAME = config.get(
     "html_filename", f"mlb_mlh_rfi_websheet_{date_suffix}.html")
 
