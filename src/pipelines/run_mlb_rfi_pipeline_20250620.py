@@ -236,7 +236,12 @@ def fetch_schedule(date_str):
 
 
 def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
+    if pid is None:
+        logging.debug(
+            f"[LookupStats]  → skipping lookup for {name!r} because pid is None")
+        return {}
     logging.debug(f"[LookupStats] {group.upper()} for {name} (ID={pid})…")
+
     # 1) Primary statsapi GET
     try:
         url = f"https://statsapi.mlb.com/api/v1/people/{pid}/stats?stats=season&group={group}&season={SEASON}"
@@ -320,21 +325,30 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
             lineup = get_season_leaders()
         lineup = lineup[:3]
 
-        # collect their stats
+        # collect their stats (skip any b where id is None)
         feats = []
         for b in lineup:
-            bstats = lookup_stats(b["id"], b["name"], df_bat, "hitting")
-            feats.append(bstats)
+            pid = b.get("id")
+            if pid is not None:
+                # we have a real MLBAM id, so fetch whatever stats we can
+                bstats = lookup_stats(pid, b["name"], df_bat, "hitting")
+            else:
+                # projected or missing id – still include the batter, but no stats
+                logging.debug(
+                    f"[fetch_game_details] no ID for {b['name']}, assigning empty stats")
+                bstats = {}
+
             batters.append({
                 "game_id":     game_id,
                 "player_type": "batter",
                 "team":        side,
-                "id":          b["id"],
+                "id":          pid,
                 "name":        b["name"],
                 "position":    b["position"],
                 "order":       b.get("order"),
                 "stats":       bstats
             })
+
         team_stats[side]["batters"] = feats
 
         # ***** NEW: compute and record raw batter score on the game *****
