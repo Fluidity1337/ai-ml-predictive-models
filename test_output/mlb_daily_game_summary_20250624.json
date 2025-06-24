@@ -3,39 +3,43 @@
     "game_id": 777380,
     "game_datetime": "2025-06-24T22:35:00Z",
     "away_team": "Texas Rangers",
+    "away_abbrev": "",
     "home_team": "Baltimore Orioles",
+    "home_abbrev": "",
     "away_pitcher": "Jacob Latz",
     "home_pitcher": "Charlie Morton",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.6,
-    "home_rfi_grade": 2.9,
-    "nrfi_grade": 3.2
+    "away_rfi_grade": 3.8,
+    "home_rfi_grade": 3.2,
+    "nrfi_grade": 3.5
   },
   {
     "game_id": 777386,
     "game_datetime": "2025-06-24T22:40:00Z",
     "away_team": "Athletics",
+    "away_abbrev": "",
     "home_team": "Detroit Tigers",
+    "home_abbrev": "",
     "away_pitcher": "Luis Severino",
     "home_pitcher": "Tarik Skubal",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
     "away_rfi_grade": 3.6,
     "home_rfi_grade": 4.3,
@@ -45,60 +49,66 @@
     "game_id": 777384,
     "game_datetime": "2025-06-24T22:40:00Z",
     "away_team": "Toronto Blue Jays",
+    "away_abbrev": "",
     "home_team": "Cleveland Guardians",
+    "home_abbrev": "",
     "away_pitcher": "Eric Lauer",
     "home_pitcher": "Logan Allen",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
     "away_rfi_grade": 4.2,
-    "home_rfi_grade": 3.5,
-    "nrfi_grade": 3.9
+    "home_rfi_grade": 3.4,
+    "nrfi_grade": 3.8
   },
   {
     "game_id": 777387,
     "game_datetime": "2025-06-24T23:10:00Z",
     "away_team": "Atlanta Braves",
+    "away_abbrev": "",
     "home_team": "New York Mets",
+    "home_abbrev": "",
     "away_pitcher": "Spencer Strider",
     "home_pitcher": "Frankie Montas",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 2.5,
+    "away_rfi_grade": 3.8,
     "home_rfi_grade": 3.9,
-    "nrfi_grade": 3.2
+    "nrfi_grade": 3.8
   },
   {
     "game_id": 777385,
     "game_datetime": "2025-06-24T23:10:00Z",
     "away_team": "New York Yankees",
+    "away_abbrev": "",
     "home_team": "Cincinnati Reds",
+    "home_abbrev": "",
     "away_pitcher": "Carlos Rod\u00f3n",
     "home_pitcher": "Chase Burns",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
     "away_rfi_grade": 4.0,
     "home_rfi_grade": 3.8,
@@ -108,18 +118,20 @@
     "game_id": 777378,
     "game_datetime": "2025-06-24T23:40:00Z",
     "away_team": "Tampa Bay Rays",
+    "away_abbrev": "",
     "home_team": "Kansas City Royals",
+    "home_abbrev": "",
     "away_pitcher": "Taj Bradley",
     "home_pitcher": "Kris Bubic",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
     "away_rfi_grade": 3.4,
     "home_rfi_grade": 4.1,
@@ -129,39 +141,43 @@
     "game_id": 777375,
     "game_datetime": "2025-06-24T23:40:00Z",
     "away_team": "Seattle Mariners",
+    "away_abbrev": "",
     "home_team": "Minnesota Twins",
+    "home_abbrev": "",
     "away_pitcher": "Luis Castillo",
     "home_pitcher": "Chris Paddack",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.5,
+    "away_rfi_grade": 3.8,
     "home_rfi_grade": 3.6,
-    "nrfi_grade": 3.5
+    "nrfi_grade": 3.7
   },
   {
     "game_id": 777383,
     "game_datetime": "2025-06-24T23:40:00Z",
     "away_team": "Arizona Diamondbacks",
+    "away_abbrev": "",
     "home_team": "Chicago White Sox",
+    "home_abbrev": "",
     "away_pitcher": "Ryne Nelson",
     "home_pitcher": "Jordan Leasure",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
     "away_rfi_grade": 3.9,
     "home_rfi_grade": 3.5,
@@ -171,62 +187,68 @@
     "game_id": 777374,
     "game_datetime": "2025-06-24T23:40:00Z",
     "away_team": "Pittsburgh Pirates",
+    "away_abbrev": "",
     "home_team": "Milwaukee Brewers",
+    "home_abbrev": "",
     "away_pitcher": "Andrew Heaney",
     "home_pitcher": "Freddy Peralta",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.6,
-    "home_rfi_grade": 2.7,
-    "nrfi_grade": 3.2
+    "away_rfi_grade": 3.7,
+    "home_rfi_grade": 4.0,
+    "nrfi_grade": 3.9
   },
   {
     "game_id": 777373,
     "game_datetime": "2025-06-24T23:45:00Z",
     "away_team": "Chicago Cubs",
+    "away_abbrev": "",
     "home_team": "St. Louis Cardinals",
+    "home_abbrev": "",
     "away_pitcher": "Jameson Taillon",
     "home_pitcher": "Michael McGreevy",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 2.5,
-    "home_rfi_grade": 4.1,
-    "nrfi_grade": 3.3
+    "away_rfi_grade": 3.8,
+    "home_rfi_grade": 4.2,
+    "nrfi_grade": 4.0
   },
   {
     "game_id": 777377,
     "game_datetime": "2025-06-25T00:10:00Z",
     "away_team": "Philadelphia Phillies",
+    "away_abbrev": "",
     "home_team": "Houston Astros",
+    "home_abbrev": "",
     "away_pitcher": "Ranger Su\u00e1rez",
     "home_pitcher": "Framber Valdez",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 4.0,
+    "away_rfi_grade": 4.1,
     "home_rfi_grade": 3.9,
     "nrfi_grade": 4.0
   },
@@ -234,84 +256,92 @@
     "game_id": 777379,
     "game_datetime": "2025-06-25T00:40:00Z",
     "away_team": "Los Angeles Dodgers",
+    "away_abbrev": "",
     "home_team": "Colorado Rockies",
-    "away_pitcher": "",
+    "home_abbrev": "",
+    "away_pitcher": "Jack Dreyer",
     "home_pitcher": "Germ\u00e1n M\u00e1rquez",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 1.1,
+    "away_rfi_grade": 3.9,
     "home_rfi_grade": 3.1,
-    "nrfi_grade": 2.1
+    "nrfi_grade": 3.5
   },
   {
     "game_id": 777376,
     "game_datetime": "2025-06-25T01:38:00Z",
     "away_team": "Boston Red Sox",
+    "away_abbrev": "",
     "home_team": "Los Angeles Angels",
+    "home_abbrev": "",
     "away_pitcher": "Garrett Crochet",
     "home_pitcher": "Tyler Anderson",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.9,
-    "home_rfi_grade": 3.2,
-    "nrfi_grade": 3.5
+    "away_rfi_grade": 4.1,
+    "home_rfi_grade": 3.4,
+    "nrfi_grade": 3.8
   },
   {
     "game_id": 777372,
     "game_datetime": "2025-06-25T01:40:00Z",
     "away_team": "Washington Nationals",
+    "away_abbrev": "",
     "home_team": "San Diego Padres",
+    "home_abbrev": "",
     "away_pitcher": "Trevor Williams",
     "home_pitcher": "Ryan Bergert",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
     "away_rfi_grade": 3.2,
-    "home_rfi_grade": 3.0,
-    "nrfi_grade": 3.1
+    "home_rfi_grade": 4.2,
+    "nrfi_grade": 3.7
   },
   {
     "game_id": 777364,
     "game_datetime": "2025-06-25T01:45:00Z",
     "away_team": "Miami Marlins",
+    "away_abbrev": "",
     "home_team": "San Francisco Giants",
+    "home_abbrev": "",
     "away_pitcher": "Cal Quantrill",
     "home_pitcher": "Justin Verlander",
     "away_batters": [
-      "Agust\u00edn Ram\u00edrez",
-      "Anthony Bender",
-      "Cade Gibson"
+      "Xavier Edwards",
+      "Jes\u00fas S\u00e1nchez",
+      "Otto Lopez"
     ],
     "home_batters": [
-      "Andrew Knizner",
-      "Brett Wisely",
-      "Camilo Doval"
+      "Mike Yastrzemski",
+      "Rafael Devers",
+      "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.0,
-    "home_rfi_grade": 3.2,
-    "nrfi_grade": 3.1
+    "away_rfi_grade": 3.2,
+    "home_rfi_grade": 3.5,
+    "nrfi_grade": 3.4
   }
 ]

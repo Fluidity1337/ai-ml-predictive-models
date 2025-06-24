@@ -47,6 +47,16 @@ date_str = sys.argv[1] if len(
     sys.argv) > 1 else datetime.now().strftime('%Y-%m-%d')
 SEASON = int(date_str.split('-')[0])
 
+# build a map of team IDs → 3-letter club codes
+teams_resp = requests.get(
+    f"https://statsapi.mlb.com/api/v1/teams?season={SEASON}&sportId=1"
+)
+teams_resp.raise_for_status()
+TEAM_CODES = {
+    t['id']: t.get('abbreviation') or t.get('triCode', '')
+    for t in teams_resp.json().get('teams', [])
+}
+
 # Load season stats
 
 
@@ -311,6 +321,8 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
         game[f"{side}_batter_score"] = 0.0
         info = game['teams'][side]
         team_id = info['team']['id']
+        # look up the 3-letter code from our pre-fetched map
+        team_abbrev = TEAM_CODES.get(team_id, '')
 
         # Probable Pitcher
         prob = info.get('probablePitcher')
@@ -323,6 +335,7 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
                 'game_id': game_id,
                 'player_type': 'pitcher',
                 'team': side,
+                'team_abbrev': team_abbrev,
                 'id': prob['id'],
                 'name': prob['fullName'],
                 'position': 'P',
@@ -358,6 +371,7 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
                 'game_id': game_id,
                 'player_type': 'batter',
                 'team': side,
+                'team_abbrev': team_abbrev,
                 'id': pid,
                 'name': b.get('name'),
                 'position': b.get('position'),
@@ -436,7 +450,7 @@ if __name__ == '__main__':
         f"mlb_combined_stats_{date_str.replace('-', '')}.csv"
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        headers = ['game_id', 'player_type', 'team',
+        headers = ['game_id', 'player_type', 'team', 'team_abbrev',
                    'id', 'name', 'position', 'order']
         grade_keys = ['pitcher_score',
                       'batter_score', 'away_rfi_grade', 'home_rfi_grade', 'nrfi_grade']
@@ -463,6 +477,10 @@ if __name__ == '__main__':
     for g in games:
         away_team = g["teams"]["away"]["team"]["name"]
         home_team = g["teams"]["home"]["team"]["name"]
+        away_abbrev = g["teams"]["away"]["team"].get("abbreviation",
+                                                     g["teams"]["away"]["team"].get("triCode", ""))
+        home_abbrev = g["teams"]["home"]["team"].get("abbreviation",
+                                                     g["teams"]["home"]["team"].get("triCode", ""))
         away_pitch = g["teams"]["away"].get(
             "probablePitcher", {}).get("fullName", "")
         home_pitch = g["teams"]["home"].get(
@@ -477,7 +495,9 @@ if __name__ == '__main__':
             "game_id":          g["gamePk"],
             "game_datetime":    g["gameDate"],
             "away_team":        away_team,
+            "away_abbrev":      away_abbrev,
             "home_team":        home_team,
+            "home_abbrev":      home_abbrev,
             "away_pitcher":     away_pitch,
             "home_pitcher":     home_pitch,
             "away_batters":     away_bats,
@@ -493,14 +513,14 @@ if __name__ == '__main__':
     with open(game_csv, 'w', newline='', encoding='utf-8') as gf:
         writer = csv.writer(gf)
         writer.writerow([
-            "game_id", "game_datetime", "away_team", "home_team",
+            "game_id", "game_datetime", "away_team", "away_abbrev", "home_team", "home_abbrev",
             "away_pitcher", "home_pitcher",
             "away_batters", "home_batters",
             "away_rfi_grade", "home_rfi_grade", "nrfi_grade"
         ])
         for r in game_summary:
             writer.writerow([
-                r["game_id"], r["game_datetime"], r["away_team"], r["home_team"],
+                r["game_id"], r["game_datetime"], r["away_team"], r["away_abbrev"], r["home_team"], r["home_abbrev"],
                 r["away_pitcher"], r["home_pitcher"],
                 ";".join(r["away_batters"]), ";".join(r["home_batters"]),
                 r["away_rfi_grade"], r["home_rfi_grade"], r["nrfi_grade"],
