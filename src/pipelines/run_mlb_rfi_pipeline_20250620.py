@@ -138,83 +138,97 @@ def batter_score(feats):
     return sum(f.values()) / len(f)
 
 
-def get_boxscore_batters(game_id: int, side: str) -> list:
-    try:
-        teams = requests.get(
-            f"https://statsapi.mlb.com/api/v1/game/{game_id}/boxscore"
-        ).json()['teams'][side]
-    except Exception:
-        return []
-    bat = []
-    for pl in teams.get('players', {}).values():
-        ord = pl.get('battingOrder')
-        if ord and str(ord).isdigit():
-            bat.append({
-                'id': pl['person']['id'],
-                'name': pl['person']['fullName'],
-                'position': pl.get('position', {}).get('abbreviation', ''),
-                'order': int(ord)
-            })
-    return sorted(bat, key=lambda x: x['order'])[:3]
-
-
-def get_live_batters(game_id: int, side: str) -> list:
-    try:
-        data = requests.get(
-            f"https://statsapi.mlb.com/api/v1.1/game/{game_id}/feed/live"
-        ).json()
-        teams = data['liveData']['boxscore']['teams'][side]
-    except Exception:
-        return []
-    bat = []
-    for bid in teams.get('batters', [])[:3]:
-        p = teams['players'].get(f"ID{bid}", {})
-        pers = p.get('person', {})
-        bat.append({
-            'id': bid,
-            'name': pers.get('fullName', 'Unknown'),
-            'position': p.get('position', {}).get('abbreviation', ''),
+# Utility functions
+def get_boxscore_batters(game_id, side):
+    url = f"https://statsapi.mlb.com/api/v1/game/{game_id}/boxscore"
+    data = requests.get(url).json()
+    lineup = []
+    team_data = data.get('teams', {}).get(side, {})
+    players_info = team_data.get('players', {})
+    for pid in team_data.get('batters', []):
+        key = f"ID{pid}"
+        player = players_info.get(key, {})
+        person = player.get('person', {})
+        pos = player.get('position', {}).get('code')
+        lineup.append({
+            'id': person.get('id'),
+            'name': person.get('fullName'),
+            'position': pos,
             'order': None
         })
-    return bat
+    return lineup
 
 
-def get_roster_batters(team_id: int) -> list:
-    try:
-        roster = requests.get(
-            f"https://statsapi.mlb.com/api/v1/teams/{team_id}/roster"
-        ).json().get('roster', [])
-    except Exception:
-        return []
-    bat = [
-        {
-            'id': r['person']['id'],
-            'name': r['person']['fullName'],
-            'position': r.get('position', {}).get('abbreviation', ''),
+def get_live_batters(game_id, side):
+    url = f"https://statsapi.mlb.com/api/v1.1/game/{game_id}/feed/live"
+    data = requests.get(url).json()
+    lineup = []
+    box = data.get('liveData', {}).get(
+        'boxscore', {}).get('teams', {}).get(side, {})
+    players_info = box.get('players', {})
+    for pid in box.get('batters', []):
+        key = f"ID{pid}"
+        player = players_info.get(key, {})
+        person = player.get('person', {})
+        pos = player.get('position', {}).get('code')
+        lineup.append({
+            'id': person.get('id'),
+            'name': person.get('fullName'),
+            'position': pos,
             'order': None
-        }
-        for r in roster if r.get('position', {}).get('type') == 'Batter'
-    ]
-    return bat[:3]
+        })
+    return lineup
 
 
-def get_season_leaders() -> list:
-    if DF_BAT.empty:
+def get_schedule_preview_batters(game, side):
+    preview = game.get('teams', {}).get(side, {}).get('previewPlayers', [])
+    lineup = []
+    for p in preview:
+        person = p.get('person', {})
+        pos = None
+        position_info = p.get('position')
+        if isinstance(position_info, dict):
+            pos = position_info.get('code')
+        else:
+            pos = position_info
+        lineup.append({
+            'id': person.get('id'),
+            'name': person.get('fullName'),
+            'position': pos,
+            'order': p.get('battingOrder')
+        })
+    return lineup
+
+
+def get_roster_batters(team_id):
+    url = f"https://statsapi.mlb.com/api/v1/teams/{team_id}/roster"
+    data = requests.get(url).json()
+    lineup = []
+    for m in data.get('roster', []):
+        person = m.get('person', {})
+        pos = m.get('position', {}).get('code')
+        lineup.append({
+            'id': person.get('id'),
+            'name': person.get('fullName'),
+            'position': pos,
+            'order': None
+        })
+    return lineup
+
+
+def get_season_leaders():
+    if df_bat.empty:
         return []
-    df = DF_BAT.copy()
-    col = next((c for c in df.columns if 'OBP' in c.upper()
-               or 'AVG' in c.upper()), None)
-    if not col:
-        return []
-    top = df.sort_values(col, ascending=False).head(3)
-    return [{
-        'id': int(r.get('mlbam_id', 0)) if r.get('mlbam_id') else None,
-        'name': r.get('Name', ''),
-        'position': r.get('POS', ''),
-        'order': None
-    } for _, r in top.iterrows()]
-
-# Fallback from schedule previewPlayers
+    top = df_bat.nlargest(3, 'atBats')
+    lineup = []
+    for _, row in top.iterrows():
+        lineup.append({
+            'id': row.get('playerId'),
+            'name': row.get('Name'),
+            'position': row.get('Pos'),
+            'order': None
+        })
+    return lineup
 
 
 def get_schedule_preview_batters(game: dict, side: str) -> list:
@@ -281,101 +295,99 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
                 return df[df[col] == pid].iloc[0].dropna().to_dict()
     return {}
 
+# Main game detail fetch and scoring
+
 
 def fetch_game_details(game: dict) -> tuple[list, list]:
-    game_id = game.get("gamePk")
-    team_stats = {"away": {}, "home": {}}
-    pitchers, batters = [], []
+    game_id = game.get('gamePk')
+    team_stats = {'away': {}, 'home': {}}
+    pitchers, batters_list = [], []
 
-    for side in ("away", "home"):
-        info = game["teams"][side]
-        team_id = info["team"]["id"]
+    for side in ('away', 'home'):
+        # initialize default pitcher and batter scores to avoid KeyError
+        game[f"{side}_pitcher_score"] = 0.0
+        game[f"{side}_batter_score"] = 0.0
+        info = game['teams'][side]
+        team_id = info['team']['id']
 
-        # ——— Probable Pitcher ———
-        prob = info.get("probablePitcher")
+        # Probable Pitcher
+        prob = info.get('probablePitcher')
         if prob:
             pstats = lookup_stats(
-                prob["id"], prob["fullName"], df_pitch, "pitching")
+                prob['id'], prob['fullName'], df_pitch, 'pitching')
             pscore = pitcher_score(pstats)
-
-            # ***** NEW: record raw pitcher score on the game *****
             game[f"{side}_pitcher_score"] = pscore
-
             pitchers.append({
-                "game_id":     game_id,
-                "player_type": "pitcher",
-                "team":        side,
-                "id":          prob["id"],
-                "name":        prob["fullName"],
-                "position":    "P",
-                "order":       None,
-                "stats":       pstats
+                'game_id': game_id,
+                'player_type': 'pitcher',
+                'team': side,
+                'id': prob['id'],
+                'name': prob['fullName'],
+                'position': 'P',
+                'order': None,
+                'stats': pstats
             })
-            team_stats[side]["pitcher"] = pstats
+            team_stats[side]['pitcher'] = pstats
 
-        # ——— Batters fallback chain ———
+        # Batters fallback
         lineup = get_boxscore_batters(game_id, side)
         if len(lineup) < 3:
             lineup = get_live_batters(game_id, side)
         if len(lineup) < 3:
-            lineup = get_roster_batters(team_id)
-        if len(lineup) < 3:
             lineup = get_schedule_preview_batters(game, side)
+        if len(lineup) < 3:
+            lineup = get_roster_batters(team_id)
         if len(lineup) < 3:
             lineup = get_season_leaders()
         lineup = lineup[:3]
 
-        # collect their stats (skip any b where id is None)
         feats = []
         for b in lineup:
-            pid = b.get("id")
-            if pid is not None:
-                # we have a real MLBAM id, so fetch whatever stats we can
-                bstats = lookup_stats(pid, b["name"], df_bat, "hitting")
+            pid = b.get('id')
+            if pid:
+                bstats = lookup_stats(pid, b.get(
+                    'name', ''), df_bat, 'hitting')
             else:
-                # projected or missing id – still include the batter, but no stats
                 logging.debug(
-                    f"[fetch_game_details] no ID for {b['name']}, assigning empty stats")
+                    f"[fetch_game_details] no ID for {b.get('name', 'unknown')}, assigning empty stats")
                 bstats = {}
-
-            batters.append({
-                "game_id":     game_id,
-                "player_type": "batter",
-                "team":        side,
-                "id":          pid,
-                "name":        b["name"],
-                "position":    b["position"],
-                "order":       b.get("order"),
-                "stats":       bstats
+            feats.append(bstats)
+            batters_list.append({
+                'game_id': game_id,
+                'player_type': 'batter',
+                'team': side,
+                'id': pid,
+                'name': b.get('name'),
+                'position': b.get('position'),
+                'order': b.get('order'),
+                'stats': bstats
             })
+        team_stats[side]['batters'] = feats
 
-        team_stats[side]["batters"] = feats
-
-        # ***** NEW: compute and record raw batter score on the game *****
+        # Batter score
         bscore = 0.0
         if feats:
-            obp_vs = sum(float(b.get("obp", 0)) for b in feats) / len(feats)
-            hr_rate = sum(float(b.get("homeRuns", 0))
-                          for b in feats) / len(feats)
-            f1_obp = sum(float(b.get("firstInningOBP", 0))
-                         for b in feats) / len(feats)
+            obp_vs = sum(float(x.get('obp', 0)) for x in feats) / len(feats)
+            hr_rate = sum(float(x.get('homeRuns', 0))
+                          for x in feats) / len(feats)
+            f1_obp = sum(float(x.get('firstInningOBP', 0))
+                         for x in feats) / len(feats)
             bscore = batter_score(
-                {"obp_vs": obp_vs, "hr_rate": hr_rate, "recent_f1_obp": f1_obp})
+                {'obp_vs': obp_vs, 'hr_rate': hr_rate, 'recent_f1_obp': f1_obp})
+            game[f"{side}_batter_score"] = bscore
 
-        game[f"{side}_batter_score"] = bscore
-
-    # ——— Compute and scale RFI grades (0–10) ———
-    for side in ("away", "home"):
+    # Compute RFI grades
+    for side in ('away', 'home'):
         p = game.get(f"{side}_pitcher_score", 0.0)
-        b = game.get(f"{side}_batter_score",  0.0)
-        raw = WEIGHTS["pitcher"] * p + WEIGHTS["batter"] * b
+        b = game.get(f"{side}_batter_score", 0.0)
+        raw = WEIGHTS['pitcher'] * p + WEIGHTS['batter'] * b
         game[f"{side}_rfi_grade"] = round(raw * 10, 1)
 
-    away_g = game["away_rfi_grade"]
-    home_g = game["home_rfi_grade"]
-    game["nrfi_grade"] = round((away_g + home_g) / 2, 1)
+    away_g = game.get('away_rfi_grade', 0)
+    home_g = game.get('home_rfi_grade', 0)
+    game['nrfi_grade'] = round((away_g + home_g) / 2, 1)
 
-    return pitchers, batters
+    return pitchers, batters_list
 
 
 if __name__ == '__main__':

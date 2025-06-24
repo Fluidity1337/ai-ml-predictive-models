@@ -1,0 +1,191 @@
+[
+  {
+    "game_id": 777394,
+    "game_datetime": "2025-06-23T22:35:00Z",
+    "away_team": "Texas Rangers",
+    "home_team": "Baltimore Orioles",
+    "away_pitcher": "Patrick Corbin",
+    "home_pitcher": "Trevor Rogers",
+    "away_batters": [
+      "Adolis Garc\u00eda",
+      "Alejandro Osuna",
+      "Caleb Boushley"
+    ],
+    "home_batters": [
+      "Jackson Holliday",
+      "Ram\u00f3n Laureano",
+      "Gunnar Henderson"
+    ],
+    "away_rfi_grade": 3.5,
+    "home_rfi_grade": 3.9,
+    "nrfi_grade": 3.7
+  },
+  {
+    "game_id": 777389,
+    "game_datetime": "2025-06-23T23:10:00Z",
+    "away_team": "Atlanta Braves",
+    "home_team": "New York Mets",
+    "away_pitcher": "Spencer Schwellenbach",
+    "home_pitcher": "Paul Blackburn",
+    "away_batters": [
+      "Aaron Bummer",
+      "Alex Verdugo",
+      "Austin Cox"
+    ],
+    "home_batters": [
+      "Francisco Lindor",
+      "Brandon Nimmo",
+      "Juan Soto"
+    ],
+    "away_rfi_grade": 2.7,
+    "home_rfi_grade": 3.1,
+    "nrfi_grade": 2.9
+  },
+  {
+    "game_id": 777390,
+    "game_datetime": "2025-06-23T23:10:00Z",
+    "away_team": "New York Yankees",
+    "home_team": "Cincinnati Reds",
+    "away_pitcher": "Allan Winans",
+    "home_pitcher": "Nick Lodolo",
+    "away_batters": [
+      "Aaron Judge",
+      "Allan Winans",
+      "Anthony Volpe"
+    ],
+    "home_batters": [
+      "TJ Friedl",
+      "Matt McLain",
+      "Elly De La Cruz"
+    ],
+    "away_rfi_grade": 3.8,
+    "home_rfi_grade": 3.8,
+    "nrfi_grade": 3.8
+  },
+  {
+    "game_id": 777388,
+    "game_datetime": "2025-06-23T23:40:00Z",
+    "away_team": "Seattle Mariners",
+    "home_team": "Minnesota Twins",
+    "away_pitcher": "Bryan Woo",
+    "home_pitcher": "Bailey Ober",
+    "away_batters": [
+      "Andr\u00e9s Mu\u00f1oz",
+      "Ben Williamson",
+      "Bryan Woo"
+    ],
+    "home_batters": [
+      "Byron Buxton",
+      "Matt Wallner",
+      "Brooks Lee"
+    ],
+    "away_rfi_grade": 3.8,
+    "home_rfi_grade": 3.5,
+    "nrfi_grade": 3.6
+  },
+  {
+    "game_id": 777393,
+    "game_datetime": "2025-06-23T23:40:00Z",
+    "away_team": "Arizona Diamondbacks",
+    "home_team": "Chicago White Sox",
+    "away_pitcher": "Eduardo Rodriguez",
+    "home_pitcher": "Shane Smith",
+    "away_batters": [
+      "Alek Thomas",
+      "Anthony DeSclafani",
+      "Aramis Garcia"
+    ],
+    "home_batters": [
+      "Aaron Civale",
+      "Adrian Houser",
+      "Andrew Benintendi"
+    ],
+    "away_rfi_grade": 2.9,
+    "home_rfi_grade": 3.6,
+    "nrfi_grade": 3.2
+  },
+  {
+    "game_id": 777391,
+    "game_datetime": "2025-06-23T23:40:00Z",
+    "away_team": "Pittsburgh Pirates",
+    "home_team": "Milwaukee Brewers",
+    "away_pitcher": "Braxton Ashcraft",
+    "home_pitcher": "Chad Patrick",
+    "away_batters": [
+      "Adam Frazier",
+      "Alexander Canario",
+      "Andrew Heaney"
+    ],
+    "home_batters": [
+      "Aaron Ashby",
+      "Abner Uribe",
+      "Andruw Monasterio"
+    ],
+    "away_rfi_grade": 3.9,
+    "home_rfi_grade": 2.5,
+    "nrfi_grade": 3.2
+  },
+  {
+    "game_id": 777392,
+    "game_datetime": "2025-06-23T23:45:00Z",
+    "away_team": "Chicago Cubs",
+    "home_team": "St. Louis Cardinals",
+    "away_pitcher": "Ben Brown",
+    "home_pitcher": "Matthew Liberatore",
+    "away_batters": [
+      "Ben Brown",
+      "Brad Keller",
+      "Cade Horton"
+    ],
+    "home_batters": [
+      "Alec Burleson",
+      "Andre Pallante",
+      "Brendan Donovan"
+    ],
+    "away_rfi_grade": 1.9,
+    "home_rfi_grade": 3.6,
+    "nrfi_grade": 2.8
+  },
+  {
+    "game_id": 777381,
+    "game_datetime": "2025-06-24T01:38:00Z",
+    "away_team": "Boston Red Sox",
+    "home_team": "Los Angeles Angels",
+    "away_pitcher": "Walker Buehler",
+    "home_pitcher": "Jack Kochanowicz",
+    "away_batters": [
+      "Abraham Toro",
+      "Aroldis Chapman",
+      "Brayan Bello"
+    ],
+    "home_batters": [
+      "Brock Burke",
+      "Christian Moore",
+      "Connor Brogdon"
+    ],
+    "away_rfi_grade": 2.9,
+    "home_rfi_grade": 3.0,
+    "nrfi_grade": 3.0
+  },
+  {
+    "game_id": 777382,
+    "game_datetime": "2025-06-24T01:40:00Z",
+    "away_team": "Washington Nationals",
+    "home_team": "San Diego Padres",
+    "away_pitcher": "Mitchell Parker",
+    "home_pitcher": "Stephen Kolek",
+    "away_batters": [
+      "Alex Call",
+      "Amed Rosario",
+      "Andr\u00e9s Chaparro"
+    ],
+    "home_batters": [
+      "Adrian Morejon",
+      "Bryan Hoeing",
+      "Bryce Johnson"
+    ],
+    "away_rfi_grade": 3.5,
+    "home_rfi_grade": 2.5,
+    "nrfi_grade": 3.0
+  }
+]
