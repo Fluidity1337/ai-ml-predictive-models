@@ -56,10 +56,12 @@ logging.info(f"Title date: {title_date}")
 def grade_color(score):
     try:
         s = float(score)
+        """
         if s <= 3:
             return 'bg-red-600 text-white'
         if s < 4:
             return 'bg-red-300 text-black'
+        """
         if s <= 6:
             return 'bg-gray-500 text-white'
         if s < 7:
@@ -79,11 +81,11 @@ def recommendation(nrfi):
             return 'YRFI'
         if s < 4:
             return 'Lean YRFI'
+        """
         if s <= 6:
             return 'No Bet'
         if s < 7:
             return 'Lean NRFI'
-        """
         return 'NRFI'
     except:
         return 'TBD'
@@ -140,12 +142,15 @@ class BaseballRfiHtmlGenerator:
     <table class='min-w-full text-gray-300 text-sm'>
       <thead class='bg-gray-900 text-gray-100 uppercase text-xs'>
         <tr>
-          <th class='px-4 py-2'>Game Time</th>
-          <th class='px-4 py-2'>Pitching Team</th>
-          <th class='px-4 py-2'>Projected Starter</th>
-          <th class='px-4 py-2 borderless'>Vs</th>
-          <th class='px-4 py-2'>Team To NRFI</th>
-          <th class='px-4 py-2'>Team Grade</th>
+          <th class='px-4 py-2'>Matchup</th>
+          <th class='px-4 py-2'>Start Time</th>
+          <th class='px-4 py-2'>SP Name</th>
+          <th class='px-4 py-2'>SP xFIP (L30D)</th>
+          <th class='px-4 py-2 borderless'>SP Barrel% (L30D)</th>
+          <th class='px-4 py-2'>Team 1st Inning wRC+</th>
+          <th class='px-4 py-2'>Top 3 Hitters Avg wOBA</th>
+          <th class='px-4 py-2'>Ballpark Factor</th>
+          <th class='px-4 py-2'>Weather Impact</th>
           <th class='px-4 py-2'>NRFI Grade</th>
           <th class='px-4 py-2'>Recommendation</th>
         </tr>
@@ -191,7 +196,7 @@ class BaseballRfiHtmlGenerator:
             html += (
                 "<tr>"
                 f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{game_time}</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>{away_team}</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>{home_team} @{away_team}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>vs</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{home_team}</td>"
@@ -204,7 +209,7 @@ class BaseballRfiHtmlGenerator:
             # Home row (darker gray on left 5 cols, lighter gray on RHS already spanned)
             html += (
                 "<tr>"
-                f"<td class='px-4 py-2 bg-gray-800'>{home_team}</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>{home_team} @{away_team}</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher}</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>vs</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{away_team}</td>"

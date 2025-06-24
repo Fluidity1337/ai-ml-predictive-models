@@ -7,14 +7,14 @@
     "away_pitcher": "Jacob Latz",
     "home_pitcher": "Charlie Morton",
     "away_batters": [
-      "Adolis Garc\u00eda",
-      "Alejandro Osuna",
-      "Chris Martin"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Andrew Kittredge",
-      "Bryan Baker",
-      "Cedric Mullins"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 3.6,
     "home_rfi_grade": 2.9,
@@ -28,18 +28,18 @@
     "away_pitcher": "Luis Severino",
     "home_pitcher": "Tarik Skubal",
     "away_batters": [
-      "Austin Wynns",
-      "Brent Rooker",
-      "Denzel Clarke"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Brant Hurter",
-      "Brenan Hanifee",
-      "Carlos Hern\u00e1ndez"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
-    "away_rfi_grade": 3.5,
-    "home_rfi_grade": 2.9,
-    "nrfi_grade": 3.2
+    "away_rfi_grade": 3.6,
+    "home_rfi_grade": 4.3,
+    "nrfi_grade": 4.0
   },
   {
     "game_id": 777384,
@@ -49,18 +49,18 @@
     "away_pitcher": "Eric Lauer",
     "home_pitcher": "Logan Allen",
     "away_batters": [
-      "Addison Barger",
-      "Alan Roden",
-      "Alejandro Kirk"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Angel Mart\u00ednez",
-      "Austin Hedges",
-      "Bo Naylor"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 4.2,
-    "home_rfi_grade": 3.4,
-    "nrfi_grade": 3.8
+    "home_rfi_grade": 3.5,
+    "nrfi_grade": 3.9
   },
   {
     "game_id": 777387,
@@ -70,18 +70,18 @@
     "away_pitcher": "Spencer Strider",
     "home_pitcher": "Frankie Montas",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brett Baty",
-      "Chris Devenski"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 2.5,
-    "home_rfi_grade": 3.7,
-    "nrfi_grade": 3.1
+    "home_rfi_grade": 3.9,
+    "nrfi_grade": 3.2
   },
   {
     "game_id": 777385,
@@ -91,18 +91,18 @@
     "away_pitcher": "Carlos Rod\u00f3n",
     "home_pitcher": "Chase Burns",
     "away_batters": [
-      "Aaron Judge",
-      "Allan Winans",
-      "Anthony Volpe"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Andrew Abbott",
-      "Brady Singer",
-      "Brent Suter"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
-    "away_rfi_grade": 3.9,
-    "home_rfi_grade": 2.5,
-    "nrfi_grade": 3.2
+    "away_rfi_grade": 4.0,
+    "home_rfi_grade": 3.8,
+    "nrfi_grade": 3.9
   },
   {
     "game_id": 777378,
@@ -112,18 +112,18 @@
     "away_pitcher": "Taj Bradley",
     "home_pitcher": "Kris Bubic",
     "away_batters": [
-      "Brandon Lowe",
-      "Christopher Morel",
-      "Curtis Mead"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Angel Zerpa",
-      "Bobby Witt Jr.",
-      "Carlos Est\u00e9vez"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 3.4,
-    "home_rfi_grade": 3.8,
-    "nrfi_grade": 3.6
+    "home_rfi_grade": 4.1,
+    "nrfi_grade": 3.8
   },
   {
     "game_id": 777375,
@@ -133,17 +133,17 @@
     "away_pitcher": "Luis Castillo",
     "home_pitcher": "Chris Paddack",
     "away_batters": [
-      "Andr\u00e9s Mu\u00f1oz",
-      "Ben Williamson",
-      "Bryan Woo"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Bailey Ober",
-      "Brock Stewart",
-      "Brooks Lee"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 3.5,
-    "home_rfi_grade": 3.4,
+    "home_rfi_grade": 3.6,
     "nrfi_grade": 3.5
   },
   {
@@ -154,18 +154,18 @@
     "away_pitcher": "Ryne Nelson",
     "home_pitcher": "Jordan Leasure",
     "away_batters": [
-      "Alek Thomas",
-      "Anthony DeSclafani",
-      "Brandon Pfaadt"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Aaron Civale",
-      "Adrian Houser",
-      "Andrew Benintendi"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
-    "away_rfi_grade": 3.6,
-    "home_rfi_grade": 3.2,
-    "nrfi_grade": 3.4
+    "away_rfi_grade": 3.9,
+    "home_rfi_grade": 3.5,
+    "nrfi_grade": 3.7
   },
   {
     "game_id": 777374,
@@ -175,14 +175,14 @@
     "away_pitcher": "Andrew Heaney",
     "home_pitcher": "Freddy Peralta",
     "away_batters": [
-      "Adam Frazier",
-      "Alexander Canario",
-      "Andrew Heaney"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Aaron Ashby",
-      "Abner Uribe",
-      "Andruw Monasterio"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 3.6,
     "home_rfi_grade": 2.7,
@@ -196,14 +196,14 @@
     "away_pitcher": "Jameson Taillon",
     "home_pitcher": "Michael McGreevy",
     "away_batters": [
-      "Ben Brown",
-      "Brad Keller",
-      "Cade Horton"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Alec Burleson",
-      "Andre Pallante",
-      "Brendan Donovan"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 2.5,
     "home_rfi_grade": 4.1,
@@ -217,18 +217,18 @@
     "away_pitcher": "Ranger Su\u00e1rez",
     "home_pitcher": "Framber Valdez",
     "away_batters": [
-      "Alan Rangel",
-      "Alec Bohm",
-      "Brandon Marsh"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Bennett Sousa",
-      "Brandon Walter",
-      "Bryan Abreu"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 4.0,
-    "home_rfi_grade": 2.6,
-    "nrfi_grade": 3.3
+    "home_rfi_grade": 3.9,
+    "nrfi_grade": 4.0
   },
   {
     "game_id": 777379,
@@ -238,18 +238,18 @@
     "away_pitcher": "",
     "home_pitcher": "Germ\u00e1n M\u00e1rquez",
     "away_batters": [
-      "Alex Vesia",
-      "Andy Pages",
-      "Anthony Banda"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Angel Chivilli",
-      "Anthony Molina",
-      "Antonio Senzatela"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 1.1,
-    "home_rfi_grade": 1.7,
-    "nrfi_grade": 1.4
+    "home_rfi_grade": 3.1,
+    "nrfi_grade": 2.1
   },
   {
     "game_id": 777376,
@@ -259,14 +259,14 @@
     "away_pitcher": "Garrett Crochet",
     "home_pitcher": "Tyler Anderson",
     "away_batters": [
-      "Abraham Toro",
-      "Aroldis Chapman",
-      "Brayan Bello"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Brock Burke",
-      "Christian Moore",
-      "Connor Brogdon"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 3.9,
     "home_rfi_grade": 3.2,
@@ -280,14 +280,14 @@
     "away_pitcher": "Trevor Williams",
     "home_pitcher": "Ryan Bergert",
     "away_batters": [
-      "Alex Call",
-      "Amed Rosario",
-      "Andr\u00e9s Chaparro"
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
     ],
     "home_batters": [
-      "Adrian Morejon",
-      "Bryan Hoeing",
-      "Bryce Johnson"
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
     ],
     "away_rfi_grade": 3.2,
     "home_rfi_grade": 3.0,

@@ -268,8 +268,10 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
             splits = []
         if splits:
             stat = splits[0].get('stat', {})
-            logging.debug(f"[LookupStats]  → got {len(stat)} fields")
-            return stat
+
+        logging.debug(f"[LookupStats]  → got {len(stat)} fields")
+        return stat
+
     except Exception:
         logging.debug(
             f"[LookupStats]  → Primary API failed for {name}", exc_info=True)
@@ -465,11 +467,11 @@ if __name__ == '__main__':
             "probablePitcher", {}).get("fullName", "")
         home_pitch = g["teams"]["home"].get(
             "probablePitcher", {}).get("fullName", "")
+
         # first 3 batters we just collected:
-        away_bats = [b['name'] for b in all_batters if b['game_id']
-                     == g["gamePk"] and b['team'] == "away"]
-        home_bats = [b['name'] for b in all_batters if b['game_id']
-                     == g["gamePk"] and b['team'] == "home"]
+        # bs is the per‐game batters list returned by fetch_game_details()
+        away_bats = [b['name'] for b in bs if b['team'] == "away"]
+        home_bats = [b['name'] for b in bs if b['team'] == "home"]
 
         game_summary.append({
             "game_id":          g["gamePk"],
