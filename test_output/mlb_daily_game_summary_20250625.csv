@@ -1,0 +1,16 @@
+game_id,game_datetime,away_team,away_abbrev,home_team,home_abbrev,away_pitcher,home_pitcher,away_batters,home_batters,away_rfi_grade,home_rfi_grade,nrfi_grade
+777370,2025-06-25T18:10:00Z,Arizona Diamondbacks,AZ,Chicago White Sox,CWS,Zac Gallen,Sean Burke,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,3.1,3.2,3.2
+777361,2025-06-25T18:10:00Z,Pittsburgh Pirates,PIT,Milwaukee Brewers,MIL,Paul Skenes,Jacob Misiorowski,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,4.1,3.3,3.7
+777362,2025-06-25T20:07:00Z,Boston Red Sox,BOS,Los Angeles Angels,LAA,Richard Fitts,Yusei Kikuchi,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,3.3,3.5,3.4
+777360,2025-06-25T20:10:00Z,Washington Nationals,WSH,San Diego Padres,SD,MacKenzie Gore,Nick Pivetta,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,3.8,2.7,3.2
+777365,2025-06-25T22:35:00Z,Texas Rangers,TEX,Baltimore Orioles,BAL,Jacob deGrom,Brandon Young,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,4.0,2.6,3.3
+777371,2025-06-25T22:40:00Z,Athletics,ATH,Detroit Tigers,DET,Jacob Lopez,Jack Flaherty,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,3.5,2.2,2.9
+777368,2025-06-25T22:40:00Z,Toronto Blue Jays,TOR,Cleveland Guardians,CLE,Max Scherzer,Gavin Williams,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,3.5,3.5,3.5
+777369,2025-06-25T23:10:00Z,Atlanta Braves,ATL,New York Mets,NYM,Didier Fuentes,Clay Holmes,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,2.0,3.7,2.9
+777367,2025-06-25T23:10:00Z,New York Yankees,NYY,Cincinnati Reds,CIN,Max Fried,Brady Singer,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,4.1,2.3,3.2
+777359,2025-06-25T23:40:00Z,Tampa Bay Rays,TB,Kansas City Royals,KC,Drew Rasmussen,Michael Wacha,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,4.1,3.6,3.8
+777363,2025-06-25T23:40:00Z,Seattle Mariners,SEA,Minnesota Twins,MIN,George Kirby,Joe Ryan,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,3.0,3.8,3.4
+777357,2025-06-25T23:45:00Z,Chicago Cubs,CHC,St. Louis Cardinals,STL,Matthew Boyd,Erick Fedde,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,2.6,3.6,3.1
+777366,2025-06-26T00:10:00Z,Philadelphia Phillies,PHI,Houston Astros,HOU,Zack Wheeler,Colton Gordon,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,4.0,2.2,3.1
+777358,2025-06-26T00:40:00Z,Los Angeles Dodgers,LAD,Colorado Rockies,COL,Yoshinobu Yamamoto,Chase Dollander,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,3.8,1.8,2.8
+777355,2025-06-26T01:45:00Z,Miami Marlins,MIA,San Francisco Giants,SF,Edward Cabrera,Logan Webb,Agustín Ramírez;Anthony Bender;Cade Gibson,Andrew Knizner;Brett Wisely;Camilo Doval,3.4,3.7,3.5

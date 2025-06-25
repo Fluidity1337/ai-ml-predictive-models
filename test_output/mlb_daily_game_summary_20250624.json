@@ -41,9 +41,9 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.6,
-    "home_rfi_grade": 4.3,
-    "nrfi_grade": 4.0
+    "away_rfi_grade": 3.5,
+    "home_rfi_grade": 4.2,
+    "nrfi_grade": 3.9
   },
   {
     "game_id": 777384,
@@ -64,8 +64,8 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 4.2,
-    "home_rfi_grade": 3.4,
+    "away_rfi_grade": 4.1,
+    "home_rfi_grade": 3.5,
     "nrfi_grade": 3.8
   },
   {
@@ -88,8 +88,8 @@
       "Heliot Ramos"
     ],
     "away_rfi_grade": 3.8,
-    "home_rfi_grade": 3.9,
-    "nrfi_grade": 3.8
+    "home_rfi_grade": 4.4,
+    "nrfi_grade": 4.1
   },
   {
     "game_id": 777385,
@@ -110,9 +110,9 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 4.0,
-    "home_rfi_grade": 3.8,
-    "nrfi_grade": 3.9
+    "away_rfi_grade": 4.1,
+    "home_rfi_grade": 3.5,
+    "nrfi_grade": 3.8
   },
   {
     "game_id": 777378,
@@ -133,7 +133,7 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.4,
+    "away_rfi_grade": 3.5,
     "home_rfi_grade": 4.1,
     "nrfi_grade": 3.8
   },
@@ -156,7 +156,7 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.8,
+    "away_rfi_grade": 3.7,
     "home_rfi_grade": 3.6,
     "nrfi_grade": 3.7
   },
@@ -180,8 +180,8 @@
       "Heliot Ramos"
     ],
     "away_rfi_grade": 3.9,
-    "home_rfi_grade": 3.5,
-    "nrfi_grade": 3.7
+    "home_rfi_grade": 3.4,
+    "nrfi_grade": 3.6
   },
   {
     "game_id": 777374,
@@ -202,9 +202,9 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.7,
-    "home_rfi_grade": 4.0,
-    "nrfi_grade": 3.9
+    "away_rfi_grade": 3.6,
+    "home_rfi_grade": 3.9,
+    "nrfi_grade": 3.8
   },
   {
     "game_id": 777373,
@@ -225,9 +225,9 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.8,
-    "home_rfi_grade": 4.2,
-    "nrfi_grade": 4.0
+    "away_rfi_grade": 3.7,
+    "home_rfi_grade": 3.8,
+    "nrfi_grade": 3.8
   },
   {
     "game_id": 777377,
@@ -248,9 +248,9 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 4.1,
-    "home_rfi_grade": 3.9,
-    "nrfi_grade": 4.0
+    "away_rfi_grade": 4.2,
+    "home_rfi_grade": 4.0,
+    "nrfi_grade": 4.1
   },
   {
     "game_id": 777379,
@@ -295,7 +295,7 @@
       "Heliot Ramos"
     ],
     "away_rfi_grade": 4.1,
-    "home_rfi_grade": 3.4,
+    "home_rfi_grade": 3.5,
     "nrfi_grade": 3.8
   },
   {
@@ -317,9 +317,9 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.2,
-    "home_rfi_grade": 4.2,
-    "nrfi_grade": 3.7
+    "away_rfi_grade": 3.3,
+    "home_rfi_grade": 4.0,
+    "nrfi_grade": 3.6
   },
   {
     "game_id": 777364,
@@ -340,7 +340,7 @@
       "Rafael Devers",
       "Heliot Ramos"
     ],
-    "away_rfi_grade": 3.2,
+    "away_rfi_grade": 3.3,
     "home_rfi_grade": 3.5,
     "nrfi_grade": 3.4
   }

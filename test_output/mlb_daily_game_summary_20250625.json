@@ -1,0 +1,347 @@
+[
+  {
+    "game_id": 777370,
+    "game_datetime": "2025-06-25T18:10:00Z",
+    "away_team": "Arizona Diamondbacks",
+    "away_abbrev": "AZ",
+    "home_team": "Chicago White Sox",
+    "home_abbrev": "CWS",
+    "away_pitcher": "Zac Gallen",
+    "home_pitcher": "Sean Burke",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 3.1,
+    "home_rfi_grade": 3.2,
+    "nrfi_grade": 3.2
+  },
+  {
+    "game_id": 777361,
+    "game_datetime": "2025-06-25T18:10:00Z",
+    "away_team": "Pittsburgh Pirates",
+    "away_abbrev": "PIT",
+    "home_team": "Milwaukee Brewers",
+    "home_abbrev": "MIL",
+    "away_pitcher": "Paul Skenes",
+    "home_pitcher": "Jacob Misiorowski",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 4.1,
+    "home_rfi_grade": 3.3,
+    "nrfi_grade": 3.7
+  },
+  {
+    "game_id": 777362,
+    "game_datetime": "2025-06-25T20:07:00Z",
+    "away_team": "Boston Red Sox",
+    "away_abbrev": "BOS",
+    "home_team": "Los Angeles Angels",
+    "home_abbrev": "LAA",
+    "away_pitcher": "Richard Fitts",
+    "home_pitcher": "Yusei Kikuchi",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 3.3,
+    "home_rfi_grade": 3.5,
+    "nrfi_grade": 3.4
+  },
+  {
+    "game_id": 777360,
+    "game_datetime": "2025-06-25T20:10:00Z",
+    "away_team": "Washington Nationals",
+    "away_abbrev": "WSH",
+    "home_team": "San Diego Padres",
+    "home_abbrev": "SD",
+    "away_pitcher": "MacKenzie Gore",
+    "home_pitcher": "Nick Pivetta",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 3.8,
+    "home_rfi_grade": 2.7,
+    "nrfi_grade": 3.2
+  },
+  {
+    "game_id": 777365,
+    "game_datetime": "2025-06-25T22:35:00Z",
+    "away_team": "Texas Rangers",
+    "away_abbrev": "TEX",
+    "home_team": "Baltimore Orioles",
+    "home_abbrev": "BAL",
+    "away_pitcher": "Jacob deGrom",
+    "home_pitcher": "Brandon Young",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 4.0,
+    "home_rfi_grade": 2.6,
+    "nrfi_grade": 3.3
+  },
+  {
+    "game_id": 777371,
+    "game_datetime": "2025-06-25T22:40:00Z",
+    "away_team": "Athletics",
+    "away_abbrev": "ATH",
+    "home_team": "Detroit Tigers",
+    "home_abbrev": "DET",
+    "away_pitcher": "Jacob Lopez",
+    "home_pitcher": "Jack Flaherty",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 3.5,
+    "home_rfi_grade": 2.2,
+    "nrfi_grade": 2.9
+  },
+  {
+    "game_id": 777368,
+    "game_datetime": "2025-06-25T22:40:00Z",
+    "away_team": "Toronto Blue Jays",
+    "away_abbrev": "TOR",
+    "home_team": "Cleveland Guardians",
+    "home_abbrev": "CLE",
+    "away_pitcher": "Max Scherzer",
+    "home_pitcher": "Gavin Williams",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 3.5,
+    "home_rfi_grade": 3.5,
+    "nrfi_grade": 3.5
+  },
+  {
+    "game_id": 777369,
+    "game_datetime": "2025-06-25T23:10:00Z",
+    "away_team": "Atlanta Braves",
+    "away_abbrev": "ATL",
+    "home_team": "New York Mets",
+    "home_abbrev": "NYM",
+    "away_pitcher": "Didier Fuentes",
+    "home_pitcher": "Clay Holmes",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 2.0,
+    "home_rfi_grade": 3.7,
+    "nrfi_grade": 2.9
+  },
+  {
+    "game_id": 777367,
+    "game_datetime": "2025-06-25T23:10:00Z",
+    "away_team": "New York Yankees",
+    "away_abbrev": "NYY",
+    "home_team": "Cincinnati Reds",
+    "home_abbrev": "CIN",
+    "away_pitcher": "Max Fried",
+    "home_pitcher": "Brady Singer",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 4.1,
+    "home_rfi_grade": 2.3,
+    "nrfi_grade": 3.2
+  },
+  {
+    "game_id": 777359,
+    "game_datetime": "2025-06-25T23:40:00Z",
+    "away_team": "Tampa Bay Rays",
+    "away_abbrev": "TB",
+    "home_team": "Kansas City Royals",
+    "home_abbrev": "KC",
+    "away_pitcher": "Drew Rasmussen",
+    "home_pitcher": "Michael Wacha",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 4.1,
+    "home_rfi_grade": 3.6,
+    "nrfi_grade": 3.8
+  },
+  {
+    "game_id": 777363,
+    "game_datetime": "2025-06-25T23:40:00Z",
+    "away_team": "Seattle Mariners",
+    "away_abbrev": "SEA",
+    "home_team": "Minnesota Twins",
+    "home_abbrev": "MIN",
+    "away_pitcher": "George Kirby",
+    "home_pitcher": "Joe Ryan",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 3.0,
+    "home_rfi_grade": 3.8,
+    "nrfi_grade": 3.4
+  },
+  {
+    "game_id": 777357,
+    "game_datetime": "2025-06-25T23:45:00Z",
+    "away_team": "Chicago Cubs",
+    "away_abbrev": "CHC",
+    "home_team": "St. Louis Cardinals",
+    "home_abbrev": "STL",
+    "away_pitcher": "Matthew Boyd",
+    "home_pitcher": "Erick Fedde",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 2.6,
+    "home_rfi_grade": 3.6,
+    "nrfi_grade": 3.1
+  },
+  {
+    "game_id": 777366,
+    "game_datetime": "2025-06-26T00:10:00Z",
+    "away_team": "Philadelphia Phillies",
+    "away_abbrev": "PHI",
+    "home_team": "Houston Astros",
+    "home_abbrev": "HOU",
+    "away_pitcher": "Zack Wheeler",
+    "home_pitcher": "Colton Gordon",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 4.0,
+    "home_rfi_grade": 2.2,
+    "nrfi_grade": 3.1
+  },
+  {
+    "game_id": 777358,
+    "game_datetime": "2025-06-26T00:40:00Z",
+    "away_team": "Los Angeles Dodgers",
+    "away_abbrev": "LAD",
+    "home_team": "Colorado Rockies",
+    "home_abbrev": "COL",
+    "away_pitcher": "Yoshinobu Yamamoto",
+    "home_pitcher": "Chase Dollander",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 3.8,
+    "home_rfi_grade": 1.8,
+    "nrfi_grade": 2.8
+  },
+  {
+    "game_id": 777355,
+    "game_datetime": "2025-06-26T01:45:00Z",
+    "away_team": "Miami Marlins",
+    "away_abbrev": "MIA",
+    "home_team": "San Francisco Giants",
+    "home_abbrev": "SF",
+    "away_pitcher": "Edward Cabrera",
+    "home_pitcher": "Logan Webb",
+    "away_batters": [
+      "Agust\u00edn Ram\u00edrez",
+      "Anthony Bender",
+      "Cade Gibson"
+    ],
+    "home_batters": [
+      "Andrew Knizner",
+      "Brett Wisely",
+      "Camilo Doval"
+    ],
+    "away_rfi_grade": 3.4,
+    "home_rfi_grade": 3.7,
+    "nrfi_grade": 3.5
+  }
+]

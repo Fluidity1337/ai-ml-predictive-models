@@ -1,4 +1,4 @@
-python F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\src\pipelines\run_mlb_rfi_pipeline_3.py 2025-06-20
+python F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\src\pipelines\run_mlb_rfi_pipeline_20250620.py 2025-06-24
 
 python -m src.models.sports.baseball.mlb.data_sources.api.fetch_mlb_probable_starting_pitchers
 

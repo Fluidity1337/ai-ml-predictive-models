@@ -21,7 +21,8 @@ RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 # Determine JSON and HTML filenames
 # JSON_PATH must be defined before deriving date_suffix
 JSON_FILENAME = config.get(
-    "json_filename", f"mlb_daily_game_summary_{_dt.now().strftime('%Y%m%d')}.json"
+    # "json_filename", f"mlb_daily_game_summary_{_dt.now().strftime('%Y%m%d')}.json"
+    "json_filename", f"mlb_daily_game_summary_20250625.json"
 )
 JSON_PATH = RAW_DATA_DIR / JSON_FILENAME
 HTML_FILENAME = config.get(
