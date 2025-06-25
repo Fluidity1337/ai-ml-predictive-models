@@ -477,10 +477,14 @@ if __name__ == '__main__':
     for g in games:
         away_team = g["teams"]["away"]["team"]["name"]
         home_team = g["teams"]["home"]["team"]["name"]
-        away_abbrev = g["teams"]["away"]["team"].get("abbreviation",
-                                                     g["teams"]["away"]["team"].get("triCode", ""))
-        home_abbrev = g["teams"]["home"]["team"].get("abbreviation",
-                                                     g["teams"]["home"]["team"].get("triCode", ""))
+        away_abbrev = TEAM_CODES.get(
+            g["teams"]["away"]["team"]["id"],
+            ""
+        )
+        home_abbrev = TEAM_CODES.get(
+            g["teams"]["home"]["team"]["id"],
+            ""
+        )
         away_pitch = g["teams"]["away"].get(
             "probablePitcher", {}).get("fullName", "")
         home_pitch = g["teams"]["home"].get(

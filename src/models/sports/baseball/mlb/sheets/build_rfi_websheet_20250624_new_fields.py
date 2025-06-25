@@ -142,16 +142,15 @@ class BaseballRfiHtmlGenerator:
     <table class='min-w-full text-gray-300 text-sm'>
       <thead class='bg-gray-900 text-gray-100 uppercase text-xs'>
         <tr>
-          <th class='px-4 py-2'>Matchup</th>
+          <th class='px-4 py-2'>MLB Matchup</th>
           <th class='px-4 py-2'>Start Time</th>
           <th class='px-4 py-2'>SP Name</th>
           <th class='px-4 py-2'>SP xFIP (L30D)</th>
           <th class='px-4 py-2 borderless'>SP Barrel% (L30D)</th>
           <th class='px-4 py-2'>Team 1st Inning wRC+</th>
           <th class='px-4 py-2'>Top 3 Hitters Avg wOBA</th>
-          <th class='px-4 py-2'>Ballpark Factor</th>
-          <th class='px-4 py-2'>Weather Impact</th>
-          <th class='px-4 py-2'>NRFI Grade</th>
+          <th class='px-4 py-2'>Team RFI Grade (0-5)</th>
+          <th class='px-4 py-2'>NRFI Grade (0-100)</th>
           <th class='px-4 py-2'>Recommendation</th>
         </tr>
       </thead>
@@ -185,6 +184,8 @@ class BaseballRfiHtmlGenerator:
 
             away_team = game.get('away_team', '-')
             home_team = game.get('home_team', '-')
+            away_abbrev = game.get('away_abbrev', '-')
+            home_abbrev = game.get('home_abbrev', '-')
             away_pitcher = game.get('away_pitcher', '-')
             home_pitcher = game.get('home_pitcher', '-')
             away_team_rfi_score = game.get('away_rfi_grade', '')
@@ -195,11 +196,13 @@ class BaseballRfiHtmlGenerator:
             # Away row (lighter gray on left 5 cols, lighter gray on RHS spans)
             html += (
                 "<tr>"
+                f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{away_abbrev} @{home_abbrev}</td>"
                 f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{game_time}</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>{home_team} @{away_team}</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher}</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>vs</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>{home_team}</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher} ({away_abbrev})</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_team_rfi_score}</td>"
                 f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{nrfi}</td>"
                 f"<td class='{grade_color(nrfi)}' rowspan='2'>{rec}</td>"
@@ -209,10 +212,11 @@ class BaseballRfiHtmlGenerator:
             # Home row (darker gray on left 5 cols, lighter gray on RHS already spanned)
             html += (
                 "<tr>"
-                f"<td class='px-4 py-2 bg-gray-800'>{home_team} @{away_team}</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher}</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>vs</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>{away_team}</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher} ({home_abbrev})</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_team_rfi_score}</td>"
                 "</tr>\n"
             )
