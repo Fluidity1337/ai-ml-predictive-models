@@ -1,54 +1,45 @@
 import requests
-from typing import List, Dict, Optional
 
 
-class FanGraphsClient:
-    """
-    Fetches FanGraphs pitching leaderboards (advanced stats, including xFIP)
-    and allows lookup of a pitcher’s xFIP by name.
-    """
-    FG_ENDPOINT = "https://www.fangraphs.com/api/leaders/major-league/data"
+class FangraphsClient:
+    BASE_URL = "https://api.fangraphs.com"
 
-    def __init__(self, session: Optional[requests.Session] = None):
-        # Allows injection of a custom session for testing
-        self.session = session or requests.Session()
-
-    def fetch_leaderboard(self, season: int) -> List[Dict]:
+    def __init__(self, api_key: str = None):
         """
-        Returns the 'advanced' (type=8) pitching leaderboard for the given season.
-        Each row is a dict, with 'Name' and 'xFIP' among its keys.
+        Initialize the FangraphsClient.
+        :param api_key: Optional API key for authenticated endpoints.
         """
-        params = {
-            "pos":       "all",
-            "stats":     "pit",
-            "lg":        "all",
-            "type":      "8",        # advanced metrics
-            "qual":      "0",        # no min innings
-            "season":    str(season),
-            "season1":   str(season),
-            "month":     "0",
-            "pageitems": "500000"
-        }
-        resp = self.session.get(self.FG_ENDPOINT, params=params)
+        self.session = requests.Session()
+        if api_key:
+            # If FG supports bearer tokens, include here
+            self.session.headers.update({'Authorization': f"Bearer {api_key}"})
+
+    def get_player_stats(self,
+                         player_id: int = None,
+                         player_name: str = None,
+                         stat_type: str = 'pitching',
+                         season: int = None) -> dict:
+        """
+        Fetch player stats by Fangraphs ID or fallback to name.
+        :param player_id: Numeric FanGraphs player ID.
+        :param player_name: Full player name (fallback if ID not provided).
+        :param stat_type: 'pitching' or 'hitting'.
+        :param season: Optional season year.
+        :return: Parsed JSON response as dict.
+        """
+        if player_id:
+            params = {'playerid': player_id}
+        elif player_name:
+            params = {'playername': player_name}
+        else:
+            raise ValueError("Must provide player_id or player_name")
+
+        if season:
+            params['season'] = season
+
+        url = f"{self.BASE_URL}/{stat_type}/stats"
+        resp = self.session.get(url, params=params)
         resp.raise_for_status()
-        payload = resp.json()
-        rows = payload.get("data", [])
-        # convert xFIP from string to float
-        for r in rows:
-            xfip = r.get("xFIP")
-            try:
-                r["xFIP"] = float(xfip) if xfip is not None else None
-            except (ValueError, TypeError):
-                r["xFIP"] = None
-        return rows
+        return resp.json()
 
-    def get_xfip_by_name(self, name: str, season: int) -> Optional[float]:
-        """
-        Lookup a pitcher’s xFIP by exact name match.
-        Returns the float xFIP or None if not found.
-        """
-        rows = self.fetch_leaderboard(season)
-        for r in rows:
-            if r.get("Name") == name:
-                return r.get("xFIP")
-        return None
+    # Additional helper methods can be added here (e.g., caching, rate limiting)

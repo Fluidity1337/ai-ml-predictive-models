@@ -149,8 +149,12 @@ def batter_score(feats):
 
 
 # Utility functions
-def get_boxscore_batters(game_id, side):
-    url = f"https://statsapi.mlb.com/api/v1/game/{game_id}/boxscore"
+def get_boxscore_batters(game_id, side, preview: bool = False):
+    """
+    Fetch the boxscore lineup. If preview=True, use ?mode=preview.
+    """
+    suffix = "?mode=preview" if preview else ""
+    url = f"https://statsapi.mlb.com/api/v1/game/{game_id}/boxscore{suffix}"
     data = requests.get(url).json()
     lineup = []
     team_data = data.get('teams', {}).get(side, {})
@@ -345,11 +349,14 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
             team_stats[side]['pitcher'] = pstats
 
         # Batters fallback
-        lineup = get_boxscore_batters(game_id, side)
+        # Batters fallback: projected schedule → boxscore preview → live → roster → leaders
+        lineup = get_schedule_preview_batters(game, side)
+        if len(lineup) < 3:
+            lineup = get_boxscore_batters(game_id, side, preview=True)
+        if len(lineup) < 3:
+            lineup = get_boxscore_batters(game_id, side, preview=False)
         if len(lineup) < 3:
             lineup = get_live_batters(game_id, side)
-        if len(lineup) < 3:
-            lineup = get_schedule_preview_batters(game, side)
         if len(lineup) < 3:
             lineup = get_roster_batters(team_id)
         if len(lineup) < 3:
@@ -411,7 +418,8 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         date_str = sys.argv[1]
     else:
-        date_str = datetime.now().strftime('%Y-%m-%d')
+        # date_str = datetime.now().strftime('%Y-%m-%d')
+        date_str = "2025-06-26"
 
     # validate format (simple check)
     try:
@@ -459,8 +467,8 @@ if __name__ == '__main__':
         writer.writerow(headers + grade_keys + stat_keys)
         for rec in all_pitchers + all_batters:
             row = [rec.get(c, '') for c in headers]
-            row += [rec.get(gk, '') for gk in grade_keys]
-            row += [rec['stats'].get(sk, '') for sk in stat_keys]
+            row += [rec.get(gk, 'NA') for gk in grade_keys]
+            row += [rec['stats'].get(sk, 'NA') for sk in stat_keys]
             writer.writerow(row)
 
     logging.info(f"Saved CSV to {csv_path}")
