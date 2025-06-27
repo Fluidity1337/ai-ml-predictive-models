@@ -34,6 +34,6 @@ def get_first_three_batters(game_id):
 if __name__ == "__main__":
     import json
     # replace with any real game ID from schedule
-    example_game_id = 777436
+    example_game_id = 777344
     batters = get_first_three_batters(example_game_id)
     print(json.dumps(batters, indent=2))

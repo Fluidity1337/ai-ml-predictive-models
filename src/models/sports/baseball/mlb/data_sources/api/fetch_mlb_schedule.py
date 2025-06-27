@@ -40,6 +40,6 @@ def fetch_mlb_schedule(date_input=None):
 
 
 if __name__ == "__main__":
-    df_today = fetch_mlb_schedule()
-    #df_today = fetch_mlb_schedule()
+    df_today = fetch_mlb_schedule("2025-06-26")
+    # df_today = fetch_mlb_schedule()
     print(df_today)

@@ -1,10 +1,25 @@
-from fangraphs_client import FangraphsClient
+from utils.fangraphs_client import FangraphsClient
 import pytest
-import os
-import sys
-# ensure project root is on sys.path
-sys.path.insert(0, os.path.abspath(
-    os.path.join(os.path.dirname(__file__), '..')))
+import requests
+
+
+@pytest.mark.unit
+@pytest.fixture(autouse=True)
+def mock_requests(monkeypatch):
+    class DummyResponse:
+        def __init__(self, data):
+            self._data = data
+
+        def json(self):
+            return self._data
+
+        def raise_for_status(self):
+            pass
+
+    def fake_get(self, url, params=None):
+        # stubbed response with required keys for both pitching and hitting
+        return DummyResponse({'FIP': 3.14, 'xFIP': 2.71, 'wOBA': 0.320})
+    monkeypatch.setattr(requests.Session, 'get', fake_get)
 
 
 @pytest.fixture
@@ -12,10 +27,13 @@ def client():
     return FangraphsClient(api_key="DUMMY")
 
 
-@pytest.mark.parametrize("player_id, player_name", [
-    (11001, None),        # Example FG ID (Aaron Judge)
-    (None, "Aaron Judge"),
-])
+@pytest.mark.parametrize(
+    "player_id, player_name",
+    [
+        (11001, None),
+        (None, "Aaron Judge"),
+    ]
+)
 def test_get_player_stats_pitching(client, player_id, player_name):
     data = client.get_player_stats(
         player_id=player_id,
@@ -29,10 +47,13 @@ def test_get_player_stats_pitching(client, player_id, player_name):
     assert 'xfip' in keys
 
 
-@pytest.mark.parametrize("player_id, player_name", [
-    (11001, None),
-    (None, "Aaron Judge"),
-])
+@pytest.mark.parametrize(
+    "player_id, player_name",
+    [
+        (11001, None),
+        (None, "Aaron Judge"),
+    ]
+)
 def test_get_player_stats_hitting(client, player_id, player_name):
     data = client.get_player_stats(
         player_id=player_id,

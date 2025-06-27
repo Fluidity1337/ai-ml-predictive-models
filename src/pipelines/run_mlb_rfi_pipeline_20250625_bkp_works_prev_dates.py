@@ -8,6 +8,7 @@ from pathlib import Path
 from datetime import datetime
 import requests
 import pandas as pd
+from utils.config_loader import load_config
 
 # Try pybaseball for season stats
 try:
@@ -18,13 +19,27 @@ except ImportError:
     logging.warning("pybaseball not available, season stats may be incomplete")
 
 # Load config
-CONFIG_PATH = Path(__file__).resolve().parents[2] / "config.json"
-with open(CONFIG_PATH, "r", encoding="utf-8") as f:
-    config = json.load(f)
-
+config = load_config()
+# FANGRAPH_API_URL = config["mlb_fangraphs_api_url"]
 FEATURES_CONFIG_PATH = Path(config["mlb_rfi_model_features_config_path"])
 with open(FEATURES_CONFIG_PATH, "r", encoding="utf-8") as f:
     features_cfg = json.load(f)
+logging.info("Features config keys: %s", list(features_cfg.keys()))
+WEIGHTS = features_cfg.get("weights")
+BOUNDS = features_cfg.get("bounds")
+if WEIGHTS is None or BOUNDS is None:
+    raise KeyError("Expected 'weights' and 'bounds' in features config")
+
+# Optionally load pybaseball data
+try:
+    from pybaseball import pitching_stats, batting_stats
+    SEASON = int(datetime.now().year)
+    df_pitch = pitching_stats(SEASON)
+    df_bat = batting_stats(SEASON)
+except Exception as e:
+    logging.warning("Pybaseball not available or errored: %s", e)
+    df_pitch = pd.DataFrame()
+    df_bat = pd.DataFrame()
 
 ROOT = Path(config["root_path"]).resolve()
 RAW_DATA_DIR = Path(config["mlb_test_output_path"]).resolve()
@@ -67,6 +82,12 @@ def load_stats():
         try:
             logging.info(f"Loading {SEASON} pitching stats via pybaseball…")
             df_pitch = pitching_stats(SEASON)
+            # ——— DEBUG: what columns did we actually get? ———
+            logging.info("pybaseball.pitching_stats columns: %s",
+                         df_pitch.columns.tolist())
+            if 'xFIP' not in df_pitch.columns and 'xfip' not in df_pitch.columns:
+                logging.warning(
+                    "⚠️ No xFIP column found in pybaseball output!")
         except Exception as e:
             logging.error(f"pybaseball pitching_stats error: {e}")
         try:
@@ -78,20 +99,6 @@ def load_stats():
 
 
 DF_PITCH, DF_BAT = load_stats()
-
-WEIGHTS = features_cfg["weights"]
-BOUNDS = features_cfg["bounds"]
-
-# Optionally load pybaseball data
-try:
-    from pybaseball import pitching_stats, batting_stats
-    SEASON = int(datetime.now().year)
-    df_pitch = pitching_stats(SEASON)
-    df_bat = batting_stats(SEASON)
-except Exception as e:
-    logging.warning("Pybaseball not available or errored: %s", e)
-    df_pitch = pd.DataFrame()
-    df_bat = pd.DataFrame()
 
 
 def minmax_scale(x, lo, hi):
@@ -149,8 +156,12 @@ def batter_score(feats):
 
 
 # Utility functions
-def get_boxscore_batters(game_id, side):
-    url = f"https://statsapi.mlb.com/api/v1/game/{game_id}/boxscore"
+def get_boxscore_batters(game_id, side, preview: bool = False):
+    """
+    Fetch the boxscore lineup. If preview=True, use ?mode=preview.
+    """
+    suffix = "?mode=preview" if preview else ""
+    url = f"https://statsapi.mlb.com/api/v1/game/{game_id}/boxscore{suffix}"
     data = requests.get(url).json()
     lineup = []
     team_data = data.get('teams', {}).get(side, {})
@@ -192,6 +203,8 @@ def get_live_batters(game_id, side):
 
 def get_schedule_preview_batters(game, side):
     preview = game.get('teams', {}).get(side, {}).get('previewPlayers', [])
+    sorted_preview = sorted(
+        preview, key=lambda p: int(p.get('battingOrder') or 0))
     lineup = []
     for p in preview:
         person = p.get('person', {})
@@ -204,8 +217,8 @@ def get_schedule_preview_batters(game, side):
         lineup.append({
             'id': person.get('id'),
             'name': person.get('fullName'),
-            'position': pos,
-            'order': p.get('battingOrder')
+            'position': p.get('position', {}).get('abbreviation', ''),
+            'order': p.get('battingOrder', 0)
         })
     return lineup
 
@@ -260,10 +273,12 @@ def fetch_schedule(date_str):
 
 
 def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
+    # 0) Initialize empty dict up front
+    stat: dict = {}
     if pid is None:
         logging.debug(
             f"[LookupStats]  → skipping lookup for {name!r} because pid is None")
-        return {}
+        return stat
     logging.debug(f"[LookupStats] {group.upper()} for {name} (ID={pid})…")
 
     # 1) Primary statsapi GET
@@ -277,10 +292,10 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
         else:
             splits = []
         if splits:
-            stat = splits[0].get('stat', {})
-
-        logging.debug(f"[LookupStats]  → got {len(stat)} fields")
-        return stat
+            stat = splits[0].get('stat', {}) or {}
+            logging.debug(f"[LookupStats]  → API returned {len(stat)} fields")
+        else:
+            logging.debug(f"[LookupStats]  → API returned no splits")
 
     except Exception:
         logging.debug(
@@ -297,15 +312,26 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
         else:
             splits2 = []
         if splits2:
-            return splits2[0].get('stat', {})
+            stat = splits2[0].get('stat', {}) or {}
+            logging.debug(
+                f"[LookupStats]  → hydrated API returned {len(stat)} fields")
     except Exception:
         pass
-    # 3) pybaseball fallback
+    # 3) pybaseball fallback - Merge in pybaseball season-level stats (FIP, xFIP, etc.) by player name
     if HAS_PYBASEBALL and not df.empty:
-        for col in ('mlbam_id', 'player_id'):
-            if col in df.columns and pid in df[col].values:
-                return df[df[col] == pid].iloc[0].dropna().to_dict()
-    return {}
+        try:
+            # pybaseball declares hitters/pitchers in a 'Name' column
+            row = df[df['Name'] == name]
+            if not row.empty:
+                pyb = row.iloc[0].dropna().to_dict()
+                stat.update(pyb)
+                logging.debug(
+                    f"[LookupStats]  → merged {len(pyb)} pybaseball fields")
+        except Exception:
+            logging.debug(
+                f"[LookupStats]  → pybaseball merge failed for {name}", exc_info=True)
+
+    return stat
 
 # Main game detail fetch and scoring
 
@@ -345,11 +371,14 @@ def fetch_game_details(game: dict) -> tuple[list, list]:
             team_stats[side]['pitcher'] = pstats
 
         # Batters fallback
-        lineup = get_boxscore_batters(game_id, side)
+        # Batters fallback: projected schedule → boxscore preview → live → roster → leaders
+        lineup = get_schedule_preview_batters(game, side)
+        if len(lineup) < 3:
+            lineup = get_boxscore_batters(game_id, side, preview=True)
+        if len(lineup) < 3:
+            lineup = get_boxscore_batters(game_id, side, preview=False)
         if len(lineup) < 3:
             lineup = get_live_batters(game_id, side)
-        if len(lineup) < 3:
-            lineup = get_schedule_preview_batters(game, side)
         if len(lineup) < 3:
             lineup = get_roster_batters(team_id)
         if len(lineup) < 3:
@@ -424,27 +453,29 @@ if __name__ == '__main__':
     games = fetch_schedule(date_str)
 
     all_pitchers, all_batters = [], []
-    for g in games:
-        ps, bs = fetch_game_details(g)
-        # attach the game-level grades onto each record
-        for p in ps:
-            p.update({
-                'pitcher_score': g[f"{p['team']}_pitcher_score"],
-                'batter_score':  g[f"{p['team']}_batter_score"],
-                'away_rfi_grade': g['away_rfi_grade'],
-                'home_rfi_grade': g['home_rfi_grade'],
-                'nrfi_grade':     g['nrfi_grade']
-            })
-        for b in bs:
-            b.update({
-                'pitcher_score': g[f"{b['team']}_pitcher_score"],
-                'batter_score':  g[f"{b['team']}_batter_score"],
-                'away_rfi_grade': g['away_rfi_grade'],
-                'home_rfi_grade': g['home_rfi_grade'],
-                'nrfi_grade':     g['nrfi_grade']
-            })
-        all_pitchers.extend(ps)
-        all_batters.extend(bs)
+    # for g in games:
+    g = games[0]
+
+    ps, bs = fetch_game_details(g)
+    # attach the game-level grades onto each record
+    for p in ps:
+        p.update({
+            'pitcher_score': g[f"{p['team']}_pitcher_score"],
+            'batter_score':  g[f"{p['team']}_batter_score"],
+            'away_rfi_grade': g['away_rfi_grade'],
+            'home_rfi_grade': g['home_rfi_grade'],
+            'nrfi_grade':     g['nrfi_grade']
+        })
+    for b in bs:
+        b.update({
+            'pitcher_score': g[f"{b['team']}_pitcher_score"],
+            'batter_score':  g[f"{b['team']}_batter_score"],
+            'away_rfi_grade': g['away_rfi_grade'],
+            'home_rfi_grade': g['home_rfi_grade'],
+            'nrfi_grade':     g['nrfi_grade']
+        })
+    all_pitchers.extend(ps)
+    all_batters.extend(bs)
 
     # build CSV filename with the provided date
     csv_path = RAW_DATA_DIR / \
@@ -460,8 +491,8 @@ if __name__ == '__main__':
         writer.writerow(headers + grade_keys + stat_keys)
         for rec in all_pitchers + all_batters:
             row = [rec.get(c, '') for c in headers]
-            row += [rec.get(gk, '') for gk in grade_keys]
-            row += [rec['stats'].get(sk, '') for sk in stat_keys]
+            row += [rec.get(gk, 'NA') for gk in grade_keys]
+            row += [rec['stats'].get(sk, 'NA') for sk in stat_keys]
             writer.writerow(row)
 
     logging.info(f"Saved CSV to {csv_path}")
@@ -507,9 +538,9 @@ if __name__ == '__main__':
             "home_pitcher":     home_pitch,
             "away_batters":     away_bats,
             "home_batters":     home_bats,
-            "away_rfi_grade":   g["away_rfi_grade"],
-            "home_rfi_grade":   g["home_rfi_grade"],
-            "nrfi_grade":       g["nrfi_grade"],
+            "away_rfi_grade":   g.get("away_rfi_grade"),
+            "home_rfi_grade":   g.get("home_rfi_grade"),
+            "nrfi_grade":       g.get("nrfi_grade")
         })
 
     # ——— CSV game summary ———

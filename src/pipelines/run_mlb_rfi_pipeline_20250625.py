@@ -67,6 +67,12 @@ def load_stats():
         try:
             logging.info(f"Loading {SEASON} pitching stats via pybaseball…")
             df_pitch = pitching_stats(SEASON)
+            # ——— DEBUG: what columns did we actually get? ———
+            logging.info("pybaseball.pitching_stats columns: %s",
+                         df_pitch.columns.tolist())
+            if 'xFIP' not in df_pitch.columns and 'xfip' not in df_pitch.columns:
+                logging.warning(
+                    "⚠️ No xFIP column found in pybaseball output!")
         except Exception as e:
             logging.error(f"pybaseball pitching_stats error: {e}")
         try:
@@ -196,6 +202,8 @@ def get_live_batters(game_id, side):
 
 def get_schedule_preview_batters(game, side):
     preview = game.get('teams', {}).get(side, {}).get('previewPlayers', [])
+    sorted_preview = sorted(
+        preview, key=lambda p: int(p.get('battingOrder') or 0))
     lineup = []
     for p in preview:
         person = p.get('person', {})
@@ -208,8 +216,8 @@ def get_schedule_preview_batters(game, side):
         lineup.append({
             'id': person.get('id'),
             'name': person.get('fullName'),
-            'position': pos,
-            'order': p.get('battingOrder')
+            'position': p.get('position', {}).get('abbreviation', ''),
+            'order': p.get('battingOrder', 0)
         })
     return lineup
 
@@ -264,10 +272,12 @@ def fetch_schedule(date_str):
 
 
 def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
+    # 0) Initialize empty dict up front
+    stat: dict = {}
     if pid is None:
         logging.debug(
             f"[LookupStats]  → skipping lookup for {name!r} because pid is None")
-        return {}
+        return stat
     logging.debug(f"[LookupStats] {group.upper()} for {name} (ID={pid})…")
 
     # 1) Primary statsapi GET
@@ -281,10 +291,10 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
         else:
             splits = []
         if splits:
-            stat = splits[0].get('stat', {})
-
-        logging.debug(f"[LookupStats]  → got {len(stat)} fields")
-        return stat
+            stat = splits[0].get('stat', {}) or {}
+            logging.debug(f"[LookupStats]  → API returned {len(stat)} fields")
+        else:
+            logging.debug(f"[LookupStats]  → API returned no splits")
 
     except Exception:
         logging.debug(
@@ -301,15 +311,26 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
         else:
             splits2 = []
         if splits2:
-            return splits2[0].get('stat', {})
+            stat = splits2[0].get('stat', {}) or {}
+            logging.debug(
+                f"[LookupStats]  → hydrated API returned {len(stat)} fields")
     except Exception:
         pass
-    # 3) pybaseball fallback
+    # 3) pybaseball fallback - Merge in pybaseball season-level stats (FIP, xFIP, etc.) by player name
     if HAS_PYBASEBALL and not df.empty:
-        for col in ('mlbam_id', 'player_id'):
-            if col in df.columns and pid in df[col].values:
-                return df[df[col] == pid].iloc[0].dropna().to_dict()
-    return {}
+        try:
+            # pybaseball declares hitters/pitchers in a 'Name' column
+            row = df[df['Name'] == name]
+            if not row.empty:
+                pyb = row.iloc[0].dropna().to_dict()
+                stat.update(pyb)
+                logging.debug(
+                    f"[LookupStats]  → merged {len(pyb)} pybaseball fields")
+        except Exception:
+            logging.debug(
+                f"[LookupStats]  → pybaseball merge failed for {name}", exc_info=True)
+
+    return stat
 
 # Main game detail fetch and scoring
 

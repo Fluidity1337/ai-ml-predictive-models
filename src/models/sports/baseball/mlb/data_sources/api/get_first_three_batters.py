@@ -4,7 +4,9 @@ import logging
 from datetime import datetime
 
 # Configure basic logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 def fetch_player_stats(player_id, season):
     """Fetch season-long batting stats for a player."""
@@ -39,7 +41,8 @@ def get_first_three_projected_batters(game_id, date_str=None):
     games = dates[0].get("games", [])
 
     # Locate target game
-    game = next((g for g in games if str(g.get("gamePk")) == str(game_id)), None)
+    game = next((g for g in games if str(
+        g.get("gamePk")) == str(game_id)), None)
     if not game:
         raise RuntimeError(f"Game {game_id} not found on {date_str}")
 
@@ -70,12 +73,14 @@ def get_first_three_projected_batters(game_id, date_str=None):
         result[side] = batters
     return result
 
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python run_mlb_pipeline.py <game_id> [YYYY-MM-DD]")        #sys.exit(1)
-    #game_id = sys.argv[1]
-    game_id = 777552
-    date_str = sys.argv[2] if len(sys.argv) > 2 else None
+        # sys.exit(1)
+        print("Usage: python run_mlb_pipeline.py <game_id> [YYYY-MM-DD]")
+    # game_id = sys.argv[1]
+    game_id = 777344
+    date_str = sys.argv[2] if len(sys.argv) > 2 else "20250626"
     try:
         batters = get_first_three_projected_batters(game_id, date_str)
     except Exception as e:
@@ -83,7 +88,8 @@ if __name__ == "__main__":
         sys.exit(1)
 
     for side in ["away", "home"]:
-        print(f"{side.capitalize()} projected batters for game {game_id} on {date_str or 'today'}:")
+        print(
+            f"{side.capitalize()} projected batters for game {game_id} on {date_str or 'today'}:")
         if not batters.get(side):
             print("  No projected lineup available pre-game.")
         for b in batters.get(side, []):

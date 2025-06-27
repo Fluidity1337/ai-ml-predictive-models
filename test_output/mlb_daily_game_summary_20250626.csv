@@ -1,10 +1,10 @@
 game_id,game_datetime,away_team,away_abbrev,home_team,home_abbrev,away_pitcher,home_pitcher,away_batters,home_batters,away_rfi_grade,home_rfi_grade,nrfi_grade
-777351,2025-06-26T17:10:00Z,Athletics,ATH,Detroit Tigers,DET,Jeffrey Springs,Dietrich Enns,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,3.6,2.5,3.0
-777354,2025-06-26T17:10:00Z,Toronto Blue Jays,TOR,Cleveland Guardians,CLE,Kevin Gausman,Tanner Bibee,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,3.6,3.6,3.6
-777356,2025-06-26T17:10:00Z,Seattle Mariners,SEA,Minnesota Twins,MIN,Emerson Hancock,Simeon Woods Richardson,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,3.1,3.1,3.1
-777353,2025-06-26T18:10:00Z,Tampa Bay Rays,TB,Kansas City Royals,KC,Shane Baz,Michael Lorenzen,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,3.5,3.2,3.4
-777350,2025-06-26T18:10:00Z,Philadelphia Phillies,PHI,Houston Astros,HOU,Cristopher Sánchez,Hunter Brown,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,3.8,2.9,3.3
-777348,2025-06-26T18:15:00Z,Chicago Cubs,CHC,St. Louis Cardinals,STL,Shota Imanaga,Andre Pallante,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,2.6,3.4,3.0
-777344,2025-06-26T19:10:00Z,Los Angeles Dodgers,LAD,Colorado Rockies,COL,Clayton Kershaw,Austin Gomber,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,3.5,1.7,2.6
-777347,2025-06-26T19:45:00Z,Miami Marlins,MIA,San Francisco Giants,SF,Janson Junk,Hayden Birdsong,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,3.8,3.4,3.6
-777352,2025-06-26T23:10:00Z,Atlanta Braves,ATL,New York Mets,NYM,Grant Holmes,Griffin Canning,Aaron Bummer;Alex Verdugo;Austin Cox,Brandon Nimmo;Brandon Waddell;Brett Baty,2.5,3.4,3.0
+777351,2025-06-26T17:10:00Z,Athletics,ATH,Detroit Tigers,DET,Jeffrey Springs,Dietrich Enns,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,3.6,4.8,4.2
+777354,2025-06-26T17:10:00Z,Toronto Blue Jays,TOR,Cleveland Guardians,CLE,Kevin Gausman,Tanner Bibee,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,,,
+777356,2025-06-26T17:10:00Z,Seattle Mariners,SEA,Minnesota Twins,MIN,Emerson Hancock,Simeon Woods Richardson,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,,,
+777353,2025-06-26T18:10:00Z,Tampa Bay Rays,TB,Kansas City Royals,KC,Shane Baz,Michael Lorenzen,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,,,
+777350,2025-06-26T18:10:00Z,Philadelphia Phillies,PHI,Houston Astros,HOU,Cristopher Sánchez,Hunter Brown,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,,,
+777348,2025-06-26T18:15:00Z,Chicago Cubs,CHC,St. Louis Cardinals,STL,Shota Imanaga,Andre Pallante,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,,,
+777344,2025-06-26T19:10:00Z,Los Angeles Dodgers,LAD,Colorado Rockies,COL,Clayton Kershaw,Austin Gomber,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,,,
+777347,2025-06-26T19:45:00Z,Miami Marlins,MIA,San Francisco Giants,SF,Janson Junk,Hayden Birdsong,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,,,
+777352,2025-06-26T23:10:00Z,Atlanta Braves,ATL,New York Mets,NYM,Grant Holmes,Griffin Canning,Jacob Wilson;Brent Rooker;Nick Kurtz,Gleyber Torres;Jahmai Jones;Kerry Carpenter,,,

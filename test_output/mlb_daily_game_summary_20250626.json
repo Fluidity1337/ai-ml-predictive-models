@@ -9,18 +9,18 @@
     "away_pitcher": "Jeffrey Springs",
     "home_pitcher": "Dietrich Enns",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
     "away_rfi_grade": 3.6,
-    "home_rfi_grade": 2.5,
-    "nrfi_grade": 3.0
+    "home_rfi_grade": 4.8,
+    "nrfi_grade": 4.2
   },
   {
     "game_id": 777354,
@@ -32,18 +32,18 @@
     "away_pitcher": "Kevin Gausman",
     "home_pitcher": "Tanner Bibee",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
-    "away_rfi_grade": 3.6,
-    "home_rfi_grade": 3.6,
-    "nrfi_grade": 3.6
+    "away_rfi_grade": null,
+    "home_rfi_grade": null,
+    "nrfi_grade": null
   },
   {
     "game_id": 777356,
@@ -55,18 +55,18 @@
     "away_pitcher": "Emerson Hancock",
     "home_pitcher": "Simeon Woods Richardson",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
-    "away_rfi_grade": 3.1,
-    "home_rfi_grade": 3.1,
-    "nrfi_grade": 3.1
+    "away_rfi_grade": null,
+    "home_rfi_grade": null,
+    "nrfi_grade": null
   },
   {
     "game_id": 777353,
@@ -78,18 +78,18 @@
     "away_pitcher": "Shane Baz",
     "home_pitcher": "Michael Lorenzen",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
-    "away_rfi_grade": 3.5,
-    "home_rfi_grade": 3.2,
-    "nrfi_grade": 3.4
+    "away_rfi_grade": null,
+    "home_rfi_grade": null,
+    "nrfi_grade": null
   },
   {
     "game_id": 777350,
@@ -101,18 +101,18 @@
     "away_pitcher": "Cristopher S\u00e1nchez",
     "home_pitcher": "Hunter Brown",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
-    "away_rfi_grade": 3.8,
-    "home_rfi_grade": 2.9,
-    "nrfi_grade": 3.3
+    "away_rfi_grade": null,
+    "home_rfi_grade": null,
+    "nrfi_grade": null
   },
   {
     "game_id": 777348,
@@ -124,18 +124,18 @@
     "away_pitcher": "Shota Imanaga",
     "home_pitcher": "Andre Pallante",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
-    "away_rfi_grade": 2.6,
-    "home_rfi_grade": 3.4,
-    "nrfi_grade": 3.0
+    "away_rfi_grade": null,
+    "home_rfi_grade": null,
+    "nrfi_grade": null
   },
   {
     "game_id": 777344,
@@ -147,18 +147,18 @@
     "away_pitcher": "Clayton Kershaw",
     "home_pitcher": "Austin Gomber",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
-    "away_rfi_grade": 3.5,
-    "home_rfi_grade": 1.7,
-    "nrfi_grade": 2.6
+    "away_rfi_grade": null,
+    "home_rfi_grade": null,
+    "nrfi_grade": null
   },
   {
     "game_id": 777347,
@@ -170,18 +170,18 @@
     "away_pitcher": "Janson Junk",
     "home_pitcher": "Hayden Birdsong",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
-    "away_rfi_grade": 3.8,
-    "home_rfi_grade": 3.4,
-    "nrfi_grade": 3.6
+    "away_rfi_grade": null,
+    "home_rfi_grade": null,
+    "nrfi_grade": null
   },
   {
     "game_id": 777352,
@@ -193,17 +193,17 @@
     "away_pitcher": "Grant Holmes",
     "home_pitcher": "Griffin Canning",
     "away_batters": [
-      "Aaron Bummer",
-      "Alex Verdugo",
-      "Austin Cox"
+      "Jacob Wilson",
+      "Brent Rooker",
+      "Nick Kurtz"
     ],
     "home_batters": [
-      "Brandon Nimmo",
-      "Brandon Waddell",
-      "Brett Baty"
+      "Gleyber Torres",
+      "Jahmai Jones",
+      "Kerry Carpenter"
     ],
-    "away_rfi_grade": 2.5,
-    "home_rfi_grade": 3.4,
-    "nrfi_grade": 3.0
+    "away_rfi_grade": null,
+    "home_rfi_grade": null,
+    "nrfi_grade": null
   }
 ]
