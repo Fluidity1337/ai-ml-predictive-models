@@ -3,7 +3,9 @@
 
 # Top-level settings
 root_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/'
+log_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/logs'
 cache_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/.cache'
+
 
 mlb_data:
   base_path:   'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/'
@@ -13,6 +15,7 @@ mlb_data:
   season: 2025
   use_cache: true
   cache_dir: .cache
+  team_abbrev_cds_cache_path: '.cache/team_codes_{season}.json'
 
 api:
   mlb:
@@ -30,16 +33,24 @@ logging:
 
   formatters:
     simple:
-      format:  '%(asctime)s — %(levelname)s — %(message)s'
-      datefmt: '%Y-%m-%d %H:%M:%S'
+      format: "%(asctime)s — %(levelname)s — %(message)s"
+      datefmt: "%Y-%m-%d %H:%M:%S"
 
   handlers:
     console:
-      class:     logging.StreamHandler
-      level:     INFO
+      class: logging.StreamHandler
+      level: DEBUG
       formatter: simple
-      stream:    ext://sys.stdout
+      stream: ext://sys.stdout
+
+    file:
+      class: logging.FileHandler
+      level: DEBUG
+      filename: logs/mlb_pipeline.log
+      formatter: simple
+      encoding: utf-8   # ✅ THIS LINE FIXES YOUR ISSUE
 
   root:
-    level: INFO
-    handlers: [console]
+    level: DEBUG
+    handlers: [console, file]
+

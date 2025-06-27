@@ -6,9 +6,9 @@ from datetime import datetime, date, timedelta
 
 import pandas as pd
 from pybaseball import statcast_single_game
-from fetch_games_by_pitcher import FetchGamesByPitcher
-from utils.config_loader import load_config
-from utils.helpers import RatingCalculator, FeatureConfigLoader
+from src.utils.mlb.fetch_games_by_pitcher import FetchGamesByPitcher
+from src.utils.config_loader import load_config
+from src.utils.helpers import RatingCalculator, FeatureConfigLoader
 
 cfg = load_config()
 logging.config.dictConfig(cfg["logging"])

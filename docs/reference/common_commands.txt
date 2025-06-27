@@ -1,4 +1,4 @@
-python -m src.run_mlb_rfi_pipeline_20250627
+python -m src.pipelines.run_mlb_rfi_pipeline_20250627
 
 
 python fetch_games_by_pitcher 669160

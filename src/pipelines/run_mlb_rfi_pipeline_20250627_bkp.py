@@ -9,15 +9,13 @@ from datetime import datetime
 from pathlib import Path
 import requests
 import pandas as pd
-from src.utils.mlb.lookup_stats import lookup_stats
+from src.utils.mlb.get_mlb_player_stats import lookup_stats
 from src.utils.mlb.fetch_game_details import fetch_game_details
 from src.utils.mlb.fetch_advanced_stats_for_pitcher import PitcherXfipAnalyzer
 from utils.config_loader import load_config
 from utils.helpers import RatingCalculator, FeatureConfigLoader
 from src.utils.mlb.team_codes import get_team_codes
 
-cfg = load_config()
-logging.config.dictConfig(cfg["logging"])
 # Try pybaseball for season stats
 try:
     from pybaseball import batting_stats, pitching_stats
@@ -30,28 +28,6 @@ except ImportError:
 date_str = sys.argv[1] if len(
     sys.argv) > 1 else datetime.now().strftime('%Y-%m-%d')
 SEASON = int(date_str.split('-')[0])
-
-# Get base cache path from config and inject season into filename
-cache_template = cfg["mlb_data"].get(
-    "team_abbrev_cds_cache_path", ".cache/team_codes_{season}.json")
-cache_file = Path(cache_template.format(season=SEASON))
-
-if cache_file.exists():
-    logging.info("📦 Loading team codes from cache: %s", cache_file)
-    with open(cache_file, "r", encoding="utf-8") as f:
-        team_codes = json.load(f)
-else:
-    logging.info("📡 Fetching team codes from MLB API for season %d", SEASON)
-    team_codes = get_team_codes(SEASON)  # Your custom function
-    cache_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(cache_file, "w", encoding="utf-8") as f:
-        json.dump(team_codes, f, indent=2)
-    logging.info("✅ Saved team codes to cache at %s", cache_file)
-
-
-# logging.debug("🔁 Forcing refresh? %s", force_refresh)
-# logging.debug("📦 Cache file exists? %s", cache_file.exists())
-# logging.debug("📦 Cache file path: %s", cache_file)
 
 TEAM_CODES = get_team_codes()
 
@@ -81,6 +57,22 @@ except Exception as e:
 
 raw_data_dir = Path(cfg["mlb_data"]["raw"])
 raw_data_dir.mkdir(parents=True, exist_ok=True)
+
+log_dir = Path(cfg["log_path"])
+log_dir.mkdir(parents=True, exist_ok=True)
+
+# Logging setup
+date_now = datetime.now().strftime('%Y-%m-%d')
+log_file = log_dir / f"mlb_pipeline_{date_now}.log"
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    handlers=[logging.StreamHandler(), logging.FileHandler(
+        log_file, mode='a', encoding='utf-8')]
+)
+logging.info(f"Logging to console and file: {log_file}")
+
 
 # Load season stats
 
@@ -371,27 +363,17 @@ if __name__ == '__main__':
         sys.exit(1)
 
     games = fetch_schedule(date_str)
-    # Add this near `games = fetch_schedule(date_str)`
-    logging.info("Loaded %d games", len(games))
-    for i, g in enumerate(games):
-        logging.debug("Game %d: ID %s | %s vs %s", i, g["gamePk"],
-                      g["teams"]["away"]["team"]["name"],
-                      g["teams"]["home"]["team"]["name"])
-        logging.debug("  Probable Pitchers: away = %s, home = %s",
-                      g["teams"]["away"].get("probablePitcher"),
-                      g["teams"]["home"].get("probablePitcher"))
 
     all_pitchers, all_batters = [], []
     # for g in games:
     g = games[0]
-    print(
-        f"[DEBUG] Selected game ID: {games[0].get('gamePk')}, Teams: {games[0]['teams']['away']['team']['name']} @ {games[0]['teams']['home']['team']['name']}")
 
-    ps, bs = fetch_game_details(g, DF_PITCH, DF_BAT, features_cfg, SEASON)
-    all_pitchers.extend(ps)
-    all_batters.extend(bs)
-    logging.info(
-        f"Collected {len(all_pitchers)} pitchers and {len(all_batters)} batters")
+    ps, bs = fetch_game_details(g, DF_PITCH, DF_BAT, features_cfg)
+
+    if not all_pitchers and not all_batters:
+        logging.warning(
+            "⚠️ No pitcher or batter data was collected — CSV will be empty.")
+        sys.exit(1)
 
     csv_path = raw_data_dir / \
         f"mlb_combined_stats_{date_str.replace('-', '')}.csv"

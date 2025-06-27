@@ -13,7 +13,7 @@ if not HAS_PYBASEBALL:
         "This pipeline requires pybaseball. Please install it with `pip install pybaseball`.")
 
 
-def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
+def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str, season: str = "2025") -> dict:
     # 0) Initialize empty dict up front
     stat: dict = {}
     if pid is None:
@@ -24,7 +24,7 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
 
     # 1) Primary statsapi GET
     try:
-        url = f"https://statsapi.mlb.com/api/v1/people/{pid}/stats?stats=season&group={group}&season={SEASON}"
+        url = f"https://statsapi.mlb.com/api/v1/people/{pid}/stats?stats=season&group={group}&season={season}"
         res = requests.get(url)
         res.raise_for_status()
         stats_list = res.json().get('stats', [])
@@ -44,7 +44,7 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
     # 2) Hydrated people endpoint
     try:
         url2 = (f"https://statsapi.mlb.com/api/v1/people/{pid}"
-                f"?hydrate=stats(group={group},type=season,season={SEASON})")
+                f"?hydrate=stats(group={group},type=season,season={season})")
         res2 = requests.get(url2)
         res2.raise_for_status()
         ppl = res2.json().get('people', [])
@@ -72,4 +72,32 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
             logging.debug(
                 f"[LookupStats]  → pybaseball merge failed for {name}", exc_info=True)
 
+    stat["season"] = season
+    logging.debug(f"[LookupStats]  → returning keys: {list(stat.keys())}")
     return stat
+
+
+if __name__ == "__main__":
+    import logging
+    import pandas as pd
+
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s — %(levelname)s — %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S"
+    )
+
+    # Example: Mitch Keller (ID=656605)
+    test_pid = 656605
+    test_name = "Mitch Keller"
+    test_group = "pitching"
+    test_season = "2025"
+
+    # Create empty DataFrame with Name column (pybaseball fallback)
+    df_test = pd.DataFrame(columns=["Name"])
+
+    result = lookup_stats(test_pid, test_name, df_test,
+                          test_group, test_season)
+    print("\n[Unit Test] Stats returned:\n")
+    for k, v in result.items():
+        print(f"{k}: {v}")
