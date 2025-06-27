@@ -8,5 +8,7 @@
   "mlb_api_graphql_url": "https://statsapi.mlb.com/graphql",
   "mlb_fetch_daily_data_log_path" : "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output",
   "mlb_rfi_model_features_config_path": "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/src/models/sports/baseball/mlb/mlb-models/rfi_features_config.json",
-  "mlb_fangraphs_api_url": "https://www.fangraphs.com/api"
+  "mlb_fangraphs_api_url": "https://www.fangraphs.com/api",
+  "mlb_statsapi_pitcher_url": "https://statsapi.mlb.com/api/v1/people/{pitcher_id}",
+  "mlb_statsapi_schedule_url": "https://statsapi.mlb.com/api/v1/schedule"
 }
