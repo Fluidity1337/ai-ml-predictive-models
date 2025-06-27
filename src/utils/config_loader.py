@@ -1,8 +1,13 @@
 import json
+import yaml
+import warnings
 from pathlib import Path
 
+# Suppress FutureWarnings globally for pybaseball
+warnings.filterwarnings("ignore", category=FutureWarning, module="pybaseball")
 
-def find_config_path(filename: str = "config.json") -> Path:
+
+def find_config_path(filename: str = "config/config.yaml") -> Path:
     """
     Walk upwards from this file's directory to locate the given config file.
     Returns the Path to the first matching file.
@@ -17,9 +22,9 @@ def find_config_path(filename: str = "config.json") -> Path:
         f"Could not locate {filename} in any parent directories")
 
 
-def load_config(filename: str = "config.json") -> dict:
+def load_config(filename: str = "config/config.yaml") -> dict:
     """
-    Load and parse the JSON config file from the project root (or nearest parent).
+    Load and parse the YAML or JSON config file from the project root (or nearest parent).
 
     Usage:
         from utils.config_loader import load_config
@@ -28,6 +33,15 @@ def load_config(filename: str = "config.json") -> dict:
     path = find_config_path(filename)
     try:
         content = path.read_text(encoding="utf-8")
-        return json.loads(content)
+        if path.suffix in (".yaml", ".yml"):
+            return yaml.safe_load(content)
+        elif path.suffix == ".json":
+            return json.loads(content)
+        else:
+            # attempt YAML first, then JSON
+            try:
+                return yaml.safe_load(content)
+            except Exception:
+                return json.loads(content)
     except Exception as e:
         raise RuntimeError(f"Failed to load config from {path}: {e}")

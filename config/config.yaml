@@ -1,54 +1,41 @@
-config/config.yaml
+# remove the “config/config.yaml” line entirely
+# (start with your comments or the first actual setting)
 
-============================
-
-Project Base Paths
-
-============================
-
-root_path: "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/"   # Local repo root
+# Top-level settings
+root_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/'
 
 mlb_data:
-base_path:   "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/"
-raw:         "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/raw"
-api:         "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api"
-test_output: "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output"
-
-============================
-
-API Endpoints
-
-============================
+  base_path:   'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/'
+  raw:         'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/raw'
+  api:         'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api'
+  test_output: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output'
 
 api:
-mlb:
-pitcher:  "https://statsapi.mlb.com/api/v1/people/{pitcher_id}"
-schedule: "https://statsapi.mlb.com/api/v1/schedule"
-graphql:  "https://statsapi.mlb.com/graphql"
-fangraphs:
-base_url: "https://www.fangraphs.com/api"
-
-============================
-
-Model Configuration
-
-============================
+  mlb:
+    pitcher:  'https://statsapi.mlb.com/api/v1/people/{pitcher_id}'
+    schedule: 'https://statsapi.mlb.com/api/v1/schedule'
+    # …any other endpoints…
 
 models:
-mlb_rfi: 
-features_config_path: "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/src/models/sports/baseball/mlb/mlb-models/rfi_features_config.json"
-
-============================
-
-Defaults & Logging
-
-============================
-
-defaults:
-lookback_days: 30   # Default lookback window for fetching games
+  mlb_rfi:
+    feature_definitions_path:  "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/config/features/mlb_rfi_features.json"
 
 logging:
-level:   "INFO"
-format:  "%(asctime)s — %(levelname)s — %(message)s"
-datefmt: "%Y-%m-%d %H:%M:%S"
+  version: 1
+  disable_existing_loggers: False
 
+  formatters:
+    simple:
+      format:  '%(asctime)s — %(levelname)s — %(message)s'
+      datefmt: '%Y-%m-%d %H:%M:%S'
+
+  handlers:
+    console:
+      class:     logging.StreamHandler
+      level:     INFO
+      formatter: simple
+      stream:    ext://sys.stdout
+
+  root:
+    level: INFO
+    handlers: [console]

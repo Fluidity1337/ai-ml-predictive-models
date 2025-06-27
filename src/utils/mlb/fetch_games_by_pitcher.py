@@ -1,17 +1,28 @@
 #!/usr/bin/env python3
-import logging
-import sys
-from datetime import datetime, date, timedelta
-import argparse
-
-import pandas as pd
 from pybaseball import statcast_pitcher
+import pandas as pd
+import argparse
+from datetime import datetime, date, timedelta
+import sys
+import logging.config
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s — %(levelname)s — %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S"
-)
+from utils.config_loader import load_config
+from utils.helpers import RatingCalculator, FeatureConfigLoader
+
+# 1. Load YAML config
+cfg = load_config()
+
+# 2. Apply logging configuration from YAML
+logging.config.dictConfig(cfg["logging"])
+
+# 3. Load your model’s feature definitions
+# Load the features configuration
+features_path = cfg["models"]["mlb_rfi"]["feature_definitions_path"]
+features_cfg = FeatureConfigLoader.load_features_config(features_path)
+
+# Now you can access:
+#   cfg["api"]["mlb"]["pitcher"], cfg["defaults"]["lookback_days"], etc.
+#   features_cfg["BarrelPct"]["weight"], features_cfg["BarrelPct"]["bounds"], etc.
 
 
 class FetchGamesByPitcher:

@@ -1,0 +1,6 @@
+{
+  "xFIP":      { "weight": 0.35, "bounds": [0, 8] },
+  "BarrelPct": { "weight": 0.25, "bounds": [3, 9] },
+  "wRCp1st":   { "weight": 0.25, "bounds": [80, 140] },
+  "wOBA3":     { "weight": 0.15, "bounds": [0.200, 0.450] }
+}

@@ -1,4 +1,5 @@
-python advanced_stats.py 669160 --days 30
+python fetch_games_by_pitcher 669160
+python fetch_advanced_stats_for_pitcher.py 669160 --days 30
 
 Dustin May - 669160
 
