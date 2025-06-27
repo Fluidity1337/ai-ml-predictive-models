@@ -3,12 +3,16 @@
 
 # Top-level settings
 root_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/'
+cache_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/.cache'
 
 mlb_data:
   base_path:   'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/'
   raw:         'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/raw'
   api:         'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api'
   test_output: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output'
+  season: 2025
+  use_cache: true
+  cache_dir: .cache
 
 api:
   mlb:

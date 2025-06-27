@@ -1,3 +1,6 @@
+python -m src.run_mlb_rfi_pipeline_20250627
+
+
 python fetch_games_by_pitcher 669160
 python fetch_advanced_stats_for_pitcher.py 669160 --days 30
 

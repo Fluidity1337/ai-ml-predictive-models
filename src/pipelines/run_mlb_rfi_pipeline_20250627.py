@@ -2,33 +2,29 @@
 
 import sys
 import logging
-import json
-import csv
-from pathlib import Path
+import logging.config
 from datetime import datetime
+from pathlib import Path
 import requests
 import pandas as pd
 from utils.config_loader import load_config
+from utils.helpers import RatingCalculator, FeatureConfigLoader
+from src.utils.mlb.team_codes import get_team_codes
 
-# Try pybaseball for season stats
-try:
-    from pybaseball import batting_stats, pitching_stats
-    HAS_PYBASEBALL = True
-except ImportError:
-    HAS_PYBASEBALL = False
-    logging.warning("pybaseball not available, season stats may be incomplete")
+TEAM_CODES = get_team_codes()
 
 # Load config
-config = load_config()
-# FANGRAPH_API_URL = config["mlb_fangraphs_api_url"]
-FEATURES_CONFIG_PATH = Path(config["mlb_rfi_model_features_config_path"])
-with open(FEATURES_CONFIG_PATH, "r", encoding="utf-8") as f:
-    features_cfg = json.load(f)
+cfg = load_config()
+# print("[DEBUG] Loaded config:", cfg)
+logging.config.dictConfig(cfg["logging"])
+
+features_path = cfg["models"]["mlb_rfi"]["feature_definitions_path"]
+features_cfg = FeatureConfigLoader.load_features_config(features_path)
+
 logging.info("Features config keys: %s", list(features_cfg.keys()))
-WEIGHTS = features_cfg.get("weights")
-BOUNDS = features_cfg.get("bounds")
-if WEIGHTS is None or BOUNDS is None:
-    raise KeyError("Expected 'weights' and 'bounds' in features config")
+
+weights = {k: v["weight"] for k, v in features_cfg.items() if "weight" in v}
+bounds = {k: v["bounds"] for k, v in features_cfg.items() if "bounds" in v}
 
 # Optionally load pybaseball data
 try:
@@ -41,13 +37,13 @@ except Exception as e:
     df_pitch = pd.DataFrame()
     df_bat = pd.DataFrame()
 
-ROOT = Path(config["root_path"]).resolve()
-RAW_DATA_DIR = Path(config["mlb_test_output_path"]).resolve()
-RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
+raw_data_dir = Path(cfg["mlb_data"]["raw"])
+raw_data_dir.mkdir(parents=True, exist_ok=True)
 
+"""
 # Logging setup
 date_now = datetime.now().strftime('%Y-%m-%d')
-log_file = RAW_DATA_DIR / f"mlb_pipeline_{date_now}.log"
+log_file = raw_data_dir / f"mlb_pipeline_{date_now}.log"
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s - %(levelname)s - %(message)s",
@@ -56,21 +52,13 @@ logging.basicConfig(
         log_file, mode='a', encoding='utf-8')]
 )
 logging.info(f"Logging to console and file: {log_file}")
+"""
 
 # Determine date to process
 date_str = sys.argv[1] if len(
     sys.argv) > 1 else datetime.now().strftime('%Y-%m-%d')
 SEASON = int(date_str.split('-')[0])
 
-# build a map of team IDs → 3-letter club codes
-teams_resp = requests.get(
-    f"https://statsapi.mlb.com/api/v1/teams?season={SEASON}&sportId=1"
-)
-teams_resp.raise_for_status()
-TEAM_CODES = {
-    t['id']: t.get('abbreviation') or t.get('triCode', '')
-    for t in teams_resp.json().get('teams', [])
-}
 
 # Load season stats
 
@@ -99,60 +87,6 @@ def load_stats():
 
 
 DF_PITCH, DF_BAT = load_stats()
-
-
-def minmax_scale(x, lo, hi):
-    if x is None:
-        return 0.5
-    return max(0.0, min(1.0, (x - lo) / (hi - lo)))
-
-
-def pitcher_score(stats):
-    b = BOUNDS
-
-    # helper: coerce to float, or fall back to default
-    def safe(key, default):
-        try:
-            v = stats.get(key, None)
-            return float(v) if v is not None else default
-        except (TypeError, ValueError):
-            return default
-
-    # midpoint of a bound range
-    def mid(low, high):
-        return (low + high) / 2
-
-    # debug log so you can inspect what came in
-    print(f"[DEBUG pitcher_score] stats = {stats!r}")
-
-    # pull every value through safe()
-    era = safe("era",            mid(*b["era"]))
-    whip = safe("whip",           mid(*b["whip"]))
-    so9 = safe("strikeOutsPer9Inn", 0.0) / 9.0
-    bb9 = safe("baseOnBallsPer9Inn", 0.0) / 9.0
-    f1era = safe("firstInningEra", mid(*b["f1_era"]))
-
-    # build your feature scores
-    scores = {
-        "era":     1.0 - minmax_scale(era,   *b["era"]),
-        "whip":    1.0 - minmax_scale(whip,  *b["whip"]),
-        "k_rate":  minmax_scale(so9,        *b["k_rate"]),
-        "bb_rate": 1.0 - minmax_scale(bb9,   *b["bb_rate"]),
-        "f1_era":  1.0 - minmax_scale(f1era, *b["f1_era"]),
-    }
-
-    # average them
-    return sum(scores.values()) / len(scores)
-
-
-def batter_score(feats):
-    b = BOUNDS
-    f = {
-        "obp_vs":        feats["obp_vs"],
-        "hr_rate":       minmax_scale(feats["hr_rate"], *b["hr_rate"]),
-        "recent_f1_obp": feats["recent_f1_obp"]
-    }
-    return sum(f.values()) / len(f)
 
 
 # Utility functions
@@ -336,101 +270,65 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
 # Main game detail fetch and scoring
 
 
-def fetch_game_details(game: dict) -> tuple[list, list]:
-    game_id = game.get('gamePk')
-    team_stats = {'away': {}, 'home': {}}
-    pitchers, batters_list = [], []
+def fetch_game_details(game, df_pitch, df_bat, features_cfg):
+    game_id = game["gamePk"]
+    probables = game.get("probablePitchers", {})
+    lineups = game.get("previewBattingOrders", {})
 
-    for side in ('away', 'home'):
-        # initialize default pitcher and batter scores to avoid KeyError
-        game[f"{side}_pitcher_score"] = 0.0
-        game[f"{side}_batter_score"] = 0.0
-        info = game['teams'][side]
-        team_id = info['team']['id']
-        # look up the 3-letter code from our pre-fetched map
-        team_abbrev = TEAM_CODES.get(team_id, '')
+    rating_calculator = RatingCalculator(features_cfg)
+    pitchers = []
+    batters_list = []
 
-        # Probable Pitcher
-        prob = info.get('probablePitcher')
+    for side in ("away", "home"):
+        prob = probables.get(side)
+        lineup = lineups.get(side, [])
+        game[f"{side}_pitcher_score"] = None
+        game[f"{side}_batter_score"] = None
+
+        # --- Pitcher Score ---
         if prob:
             pstats = lookup_stats(
-                prob['id'], prob['fullName'], df_pitch, 'pitching')
-            pscore = pitcher_score(pstats)
+                prob['id'], prob['fullName'], df_pitch, "pitching")
+            pscore = rating_calculator.compute_score(pstats)
             game[f"{side}_pitcher_score"] = pscore
+
             pitchers.append({
-                'game_id': game_id,
-                'player_type': 'pitcher',
-                'team': side,
-                'team_abbrev': team_abbrev,
-                'id': prob['id'],
-                'name': prob['fullName'],
-                'position': 'P',
-                'order': None,
-                'stats': pstats
+                "game_id": game_id,
+                "side": side,
+                "id": prob["id"],
+                "name": prob["fullName"],
+                "team": game[f"{side}Team"]["team"]["abbreviation"],
+                "score": pscore
             })
-            team_stats[side]['pitcher'] = pstats
 
-        # Batters fallback
-        # Batters fallback: projected schedule → boxscore preview → live → roster → leaders
-        lineup = get_schedule_preview_batters(game, side)
-        if len(lineup) < 3:
-            lineup = get_boxscore_batters(game_id, side, preview=True)
-        if len(lineup) < 3:
-            lineup = get_boxscore_batters(game_id, side, preview=False)
-        if len(lineup) < 3:
-            lineup = get_live_batters(game_id, side)
-        if len(lineup) < 3:
-            lineup = get_roster_batters(team_id)
-        if len(lineup) < 3:
-            lineup = get_season_leaders()
-        lineup = lineup[:3]
-
-        feats = []
+        # --- Batter Score ---
+        batter_stats = []
         for b in lineup:
-            pid = b.get('id')
-            if pid:
-                bstats = lookup_stats(pid, b.get(
-                    'name', ''), df_bat, 'hitting')
-            else:
-                logging.debug(
-                    f"[fetch_game_details] no ID for {b.get('name', 'unknown')}, assigning empty stats")
-                bstats = {}
-            feats.append(bstats)
+            pid = b.get("id")
+            bstats = lookup_stats(pid, b.get("name", ""),
+                                  df_bat, "hitting") if pid else {}
+            batter_stats.append(bstats)
+
             batters_list.append({
-                'game_id': game_id,
-                'player_type': 'batter',
-                'team': side,
-                'team_abbrev': team_abbrev,
-                'id': pid,
-                'name': b.get('name'),
-                'position': b.get('position'),
-                'order': b.get('order'),
-                'stats': bstats
+                "game_id": game_id,
+                "side": side,
+                "id": pid,
+                "name": b.get("name", ""),
+                "team": game[f"{side}Team"]["team"]["abbreviation"],
             })
-        team_stats[side]['batters'] = feats
 
-        # Batter score
-        bscore = 0.0
-        if feats:
-            obp_vs = sum(float(x.get('obp', 0)) for x in feats) / len(feats)
-            hr_rate = sum(float(x.get('homeRuns', 0))
-                          for x in feats) / len(feats)
-            f1_obp = sum(float(x.get('firstInningOBP', 0))
-                         for x in feats) / len(feats)
-            bscore = batter_score(
-                {'obp_vs': obp_vs, 'hr_rate': hr_rate, 'recent_f1_obp': f1_obp})
+        # Aggregate top-of-lineup hitter stats and score
+        if batter_stats:
+            avg_batter_features = {}
+            for k in set().union(*[bs.keys() for bs in batter_stats]):
+                try:
+                    values = [float(bs[k]) for bs in batter_stats if k in bs]
+                    avg_batter_features[k] = sum(values) / len(values)
+                except Exception:
+                    continue
+
+            bscore = rating_calculator.compute_score(avg_batter_features)
             game[f"{side}_batter_score"] = bscore
-
-    # Compute RFI grades
-    for side in ('away', 'home'):
-        p = game.get(f"{side}_pitcher_score", 0.0)
-        b = game.get(f"{side}_batter_score", 0.0)
-        raw = WEIGHTS['pitcher'] * p + WEIGHTS['batter'] * b
-        game[f"{side}_rfi_grade"] = round(raw * 10, 1)
-
-    away_g = game.get('away_rfi_grade', 0)
-    home_g = game.get('home_rfi_grade', 0)
-    game['nrfi_grade'] = round((away_g + home_g) / 2, 1)
 
     return pitchers, batters_list
 
@@ -478,7 +376,7 @@ if __name__ == '__main__':
     all_batters.extend(bs)
 
     # build CSV filename with the provided date
-    csv_path = RAW_DATA_DIR / \
+    csv_path = raw_data_dir / \
         f"mlb_combined_stats_{date_str.replace('-', '')}.csv"
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
@@ -498,7 +396,7 @@ if __name__ == '__main__':
     logging.info(f"Saved CSV to {csv_path}")
 
     # ——— JSON stats summary alongside CSV ———
-    json_stats_path = RAW_DATA_DIR / \
+    json_stats_path = raw_data_dir / \
         f"mlb_daily_stats_summary_{date_str.replace('-', '')}.json"
     with open(json_stats_path, 'w', encoding='utf-8') as jf:
         json.dump(all_pitchers + all_batters, jf, indent=2)
@@ -544,7 +442,7 @@ if __name__ == '__main__':
         })
 
     # ——— CSV game summary ———
-    game_csv = RAW_DATA_DIR / \
+    game_csv = raw_data_dir / \
         f"mlb_daily_game_summary_{date_str.replace('-', '')}.csv"
     with open(game_csv, 'w', newline='', encoding='utf-8') as gf:
         writer = csv.writer(gf)
@@ -564,7 +462,7 @@ if __name__ == '__main__':
     logging.info(f"Saved CSV game summary to {game_csv}")
 
     # ——— JSON game summary ———
-    game_json = RAW_DATA_DIR / \
+    game_json = raw_data_dir / \
         f"mlb_daily_game_summary_{date_str.replace('-', '')}.json"
     with open(game_json, 'w', encoding='utf-8') as gj:
         json.dump(game_summary, gj, indent=2)

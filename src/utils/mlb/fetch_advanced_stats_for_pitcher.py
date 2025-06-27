@@ -2,7 +2,6 @@
 import logging
 import argparse
 import sys
-import warnings
 from datetime import datetime, date, timedelta
 
 import pandas as pd
