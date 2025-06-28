@@ -10,7 +10,7 @@ except ImportError:
 
 if not HAS_PYBASEBALL:
     raise ImportError(
-        "This pipeline requires pybaseball. Please install it with `pip install pybaseball`.")
+        "This script requires pybaseball. Please install it with `pip install pybaseball`.")
 
 
 def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str, season: str = "2025") -> dict:
@@ -73,7 +73,7 @@ def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str, season: str 
                 f"[LookupStats]  → pybaseball merge failed for {name}", exc_info=True)
 
     stat["season"] = season
-    logging.debug(f"[LookupStats]  → returning keys: {list(stat.keys())}")
+    # logging.debug(f"[LookupStats]  → returning keys: {list(stat.keys())}")
     return stat
 
 

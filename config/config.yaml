@@ -9,13 +9,18 @@ cache_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-
 
 mlb_data:
   base_path:   'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/'
-  raw:         'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/raw'
+  raw:         data/sports/baseball/mlb/raw
+  statcast:    data/sports/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
   api:         'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api'
   test_output: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output'
   season: 2025
   use_cache: true
   cache_dir: .cache
   team_abbrev_cds_cache_path: '.cache/team_codes_{season}.json'
+  statcast:
+    raw_csv: data/sports/baseball/mlb/raw/statcast_{lookback}d_raw.csv
+    split_json: data/sports/baseball/mlb/processed/team_woba_{lookback}d.json
+    combined_json: data/sports/baseball/mlb/processed/team_woba_splits_combined.json  
 
 api:
   mlb:
@@ -48,7 +53,7 @@ logging:
       level: DEBUG
       filename: logs/mlb_pipeline.log
       formatter: simple
-      encoding: utf-8   # ✅ THIS LINE FIXES YOUR ISSUE
+      encoding: utf-8
 
   root:
     level: DEBUG

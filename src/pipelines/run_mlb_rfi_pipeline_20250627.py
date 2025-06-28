@@ -9,12 +9,12 @@ from datetime import datetime
 from pathlib import Path
 import requests
 import pandas as pd
-from src.utils.mlb.lookup_stats import lookup_stats
-from src.utils.mlb.fetch_game_details import fetch_game_details
-from src.utils.mlb.fetch_advanced_stats_for_pitcher import PitcherXfipAnalyzer
+from utils.mlb.lookup_stats import lookup_stats
+from utils.mlb.fetch_game_details import fetch_game_details
+from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherXfipAnalyzer
 from utils.config_loader import load_config
 from utils.helpers import RatingCalculator, FeatureConfigLoader
-from src.utils.mlb.team_codes import get_team_codes
+from utils.mlb.team_codes import get_team_codes
 
 cfg = load_config()
 logging.config.dictConfig(cfg["logging"])
@@ -210,150 +210,10 @@ def get_season_leaders():
     return lineup
 
 
-def get_schedule_preview_batters(game: dict, side: str) -> list:
-    pp = game['teams'][side].get('previewPlayers', [])
-    bat = []
-    for p in pp[:3]:
-        bat.append({
-            'id': p['person']['id'],
-            'name': p['person']['fullName'],
-            'position': p.get('position', {}).get('abbreviation', ''),
-            'order': int(p.get('battingOrder', 0))
-        })
-    return bat
-
-
 def fetch_schedule(date_str):
     url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date_str}&hydrate=teams(team,previewPlayers),probablePitcher"
     return requests.get(url).json().get("dates", [{}])[0].get("games", [])
 
-
-"""
-def lookup_stats(pid: int, name: str, df: pd.DataFrame, group: str) -> dict:
-    # 0) Initialize empty dict up front
-    stat: dict = {}
-    if pid is None:
-        logging.debug(
-            f"[LookupStats]  → skipping lookup for {name!r} because pid is None")
-        return stat
-    logging.debug(f"[LookupStats] {group.upper()} for {name} (ID={pid})…")
-
-    # 1) Primary statsapi GET
-    try:
-        url = f"https://statsapi.mlb.com/api/v1/people/{pid}/stats?stats=season&group={group}&season={SEASON}"
-        res = requests.get(url)
-        res.raise_for_status()
-        stats_list = res.json().get('stats', [])
-        if stats_list and isinstance(stats_list, list):
-            splits = stats_list[0].get('splits', [])
-        else:
-            splits = []
-        if splits:
-            stat = splits[0].get('stat', {}) or {}
-            logging.debug(f"[LookupStats]  → API returned {len(stat)} fields")
-        else:
-            logging.debug(f"[LookupStats]  → API returned no splits")
-
-    except Exception:
-        logging.debug(
-            f"[LookupStats]  → Primary API failed for {name}", exc_info=True)
-    # 2) Hydrated people endpoint
-    try:
-        url2 = (f"https://statsapi.mlb.com/api/v1/people/{pid}"
-                f"?hydrate=stats(group={group},type=season,season={SEASON})")
-        res2 = requests.get(url2)
-        res2.raise_for_status()
-        ppl = res2.json().get('people', [])
-        if ppl and isinstance(ppl, list):
-            splits2 = ppl[0].get('stats', [{}])[0].get('splits', [])
-        else:
-            splits2 = []
-        if splits2:
-            stat = splits2[0].get('stat', {}) or {}
-            logging.debug(
-                f"[LookupStats]  → hydrated API returned {len(stat)} fields")
-    except Exception:
-        pass
-    # 3) pybaseball fallback - Merge in pybaseball season-level stats (FIP, xFIP, etc.) by player name
-    if HAS_PYBASEBALL and not df.empty:
-        try:
-            # pybaseball declares hitters/pitchers in a 'Name' column
-            row = df[df['Name'] == name]
-            if not row.empty:
-                pyb = row.iloc[0].dropna().to_dict()
-                stat.update(pyb)
-                logging.debug(
-                    f"[LookupStats]  → merged {len(pyb)} pybaseball fields")
-        except Exception:
-            logging.debug(
-                f"[LookupStats]  → pybaseball merge failed for {name}", exc_info=True)
-
-    return stat
-"""
-
-"""
-def fetch_game_details(game, df_pitch, df_bat, features_cfg):
-    game_id = game["gamePk"]
-    probables = game.get("probablePitchers", {})
-    lineups = game.get("previewBattingOrders", {})
-
-    rating_calculator = RatingCalculator(features_cfg)
-    pitchers = []
-    batters_list = []
-
-    for side in ("away", "home"):
-        prob = probables.get(side)
-        lineup = lineups.get(side, [])
-        game[f"{side}_pitcher_score"] = None
-        game[f"{side}_batter_score"] = None
-
-        # --- Pitcher Score ---
-        if prob:
-            pstats = lookup_stats(
-                prob['id'], prob['fullName'], df_pitch, "pitching")
-            pscore = rating_calculator.compute_score(pstats)
-            game[f"{side}_pitcher_score"] = pscore
-
-            pitchers.append({
-                "game_id": game_id,
-                "side": side,
-                "id": prob["id"],
-                "name": prob["fullName"],
-                "team": game[f"{side}Team"]["team"]["abbreviation"],
-                "score": pscore
-            })
-
-        # --- Batter Score ---
-        batter_stats = []
-        for b in lineup:
-            pid = b.get("id")
-            bstats = lookup_stats(pid, b.get("name", ""),
-                                  df_bat, "hitting") if pid else {}
-            batter_stats.append(bstats)
-
-            batters_list.append({
-                "game_id": game_id,
-                "side": side,
-                "id": pid,
-                "name": b.get("name", ""),
-                "team": game[f"{side}Team"]["team"]["abbreviation"],
-            })
-
-        # Aggregate top-of-lineup hitter stats and score
-        if batter_stats:
-            avg_batter_features = {}
-            for k in set().union(*[bs.keys() for bs in batter_stats]):
-                try:
-                    values = [float(bs[k]) for bs in batter_stats if k in bs]
-                    avg_batter_features[k] = sum(values) / len(values)
-                except Exception:
-                    continue
-
-            bscore = rating_calculator.compute_score(avg_batter_features)
-            game[f"{side}_batter_score"] = bscore
-
-    return pitchers, batters_list
-"""
 
 if __name__ == '__main__':
     # allow passing a date in YYYY-MM-DD as first arg, otherwise use today
@@ -374,13 +234,19 @@ if __name__ == '__main__':
     # Add this near `games = fetch_schedule(date_str)`
     logging.info("Loaded %d games", len(games))
     for i, g in enumerate(games):
+        logging.debug(
+            "Game %s previewPlayers: away=%r, home=%r",
+            g["gamePk"],
+            g["teams"]["away"].get("previewPlayers"),
+            g["teams"]["home"].get("previewPlayers"))
+        """
         logging.debug("Game %d: ID %s | %s vs %s", i, g["gamePk"],
                       g["teams"]["away"]["team"]["name"],
                       g["teams"]["home"]["team"]["name"])
         logging.debug("  Probable Pitchers: away = %s, home = %s",
                       g["teams"]["away"].get("probablePitcher"),
                       g["teams"]["home"].get("probablePitcher"))
-
+        """
     all_pitchers, all_batters = [], []
     # for g in games:
     g = games[0]

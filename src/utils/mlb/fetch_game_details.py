@@ -78,13 +78,8 @@ def fetch_game_details(game, df_pitch, df_bat, features_cfg, season):
 
 
 def main():
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S"
-    )
-
     cfg = load_config()
+    logging.config.dictConfig(cfg["logging"])
     features_path = cfg["models"]["mlb_rfi"]["feature_definitions_path"]
     with open(features_path, "r", encoding="utf-8") as f:
         features_cfg = json.load(f)
