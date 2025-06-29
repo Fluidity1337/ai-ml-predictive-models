@@ -6,8 +6,8 @@ from datetime import datetime, date, timedelta
 import sys
 import logging.config
 
-from src.utils.config_loader import load_config
-from src.utils.helpers import FeatureConfigLoader
+from utils.config_loader import load_config
+from utils.helpers import FeatureConfigLoader
 
 # 1. Load YAML config
 cfg = load_config()

@@ -6,9 +6,9 @@ from datetime import datetime, date, timedelta
 
 import pandas as pd
 from pybaseball import statcast_single_game
-from src.utils.mlb.fetch_games_by_pitcher import FetchGamesByPitcher
-from src.utils.config_loader import load_config
-from src.utils.helpers import RatingCalculator, FeatureConfigLoader
+from utils.mlb.fetch_games_by_pitcher import FetchGamesByPitcher
+from utils.config_loader import load_config
+from utils.helpers import RatingCalculator, FeatureConfigLoader
 
 cfg = load_config()
 logging.config.dictConfig(cfg["logging"])
@@ -54,18 +54,18 @@ class PitcherXfipAnalyzer:
                     except Exception:
                         self.pitcher_name = f"ID {self.pitcher_id}"
 
-                    # Infer team from inning
-                    try:
-                        is_home = (df_p['inning_topbot'] ==
-                                   'Top').mode()[0] == 'Top'
+                # Infer team from whether the pitcher threw in the Top (home) or Bottom (away)
+                try:
+                    # get the most common half-inning for this pitcher
+                    # 'Top' or 'Bottom'
+                    half = df_p['inning_topbot'].mode()[0]
+                    is_home = (half == 'Top')
 
-                        team_col = 'home_team' if is_home else 'away_team'
-                        if team_col in df.columns:
-                            self.team_name = df[team_col].mode()[0]
-                        else:
-                            self.team_name = "Unknown"
-                    except Exception:
-                        self.team_name = "Unknown"
+                    team_col = 'home_team' if is_home else 'away_team'
+                    self.team_name = df[team_col].mode(
+                    )[0] if team_col in df.columns else "Unknown"
+                except Exception:
+                    self.team_name = "Unknown"
 
                 # compute xFIP
                 hr = df_p['events'].eq('home_run').sum()

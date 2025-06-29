@@ -268,8 +268,6 @@ class AdvancedTeamStats(BaseStats):
         except Exception as e:
             logger.exception("CSV export of wRCP1st failed: %s", e)
 
-    from io import StringIO
-
     def fetch_wrclike_splits_from_fangraphs(self) -> dict:
         # IMPLEMENT LATER
         """

@@ -10,6 +10,53 @@ from utils.mlb.lookup_stats import lookup_stats  # If you split out lookup_stats
 # OR inline it here if not already modularized
 
 
+def fetch_game_details(game, df_pitch, features_cfg, season):
+    game_id = game.get("gamePk")
+    logging.debug(f"[Game {game_id}] Processing game details")
+
+    probables = {
+        "away": game.get("teams", {}).get("away", {}).get("probablePitcher"),
+        "home": game.get("teams", {}).get("home", {}).get("probablePitcher")
+    }
+    logging.debug(f"[{game_id}] Parsed probables from 'teams': {probables}")
+
+    lineups = game.get("previewBattingOrders", {})
+
+    pitchers = []
+
+    for side in ("away", "home"):
+        logging.debug(f"[{game_id}] Side: {side}")
+        prob = probables.get(side)
+        lineup = lineups.get(side, [])
+        logging.debug(f"[{game_id}] Probable pitcher: {prob}")
+        logging.debug(f"[{game_id}] Lineup length: {len(lineup)}")
+
+        # Pitcher stats
+        if prob:
+            try:
+                pstats = lookup_stats(
+                    prob['id'], prob['fullName'], df_pitch, "pitching", season=season
+                )
+                logging.debug(
+                    f"[{game_id}] Pitcher stats found for {prob['fullName']}: {bool(pstats)}")
+                pitchers.append({
+                    "game_id": game_id,
+                    "side": side,
+                    "id": prob["id"],
+                    "name": prob["fullName"],
+                    "team": game["teams"][side]["team"]["name"],
+                    "stats": pstats
+                })
+            except Exception as e:
+                logging.warning(
+                    f"[{game_id}] Failed to compute pitcher score for {prob['fullName']}: {e}")
+
+    logging.info(
+        f"[{game_id}] Final pitcher count: {len(pitchers)}")
+    return pitchers
+
+
+"""
 def fetch_game_details(game, df_pitch, df_bat, features_cfg, season):
     game_id = game.get("gamePk")
     logging.debug(f"[Game {game_id}] Processing game details")
@@ -75,6 +122,7 @@ def fetch_game_details(game, df_pitch, df_bat, features_cfg, season):
     logging.info(
         f"[{game_id}] Final pitcher count: {len(pitchers)}, batter count: {len(batters_list)}")
     return pitchers, batters_list
+"""
 
 
 def main():
@@ -85,7 +133,7 @@ def main():
         features_cfg = json.load(f)
 
     game = {
-        "gamePk": 777341,
+        "gamePk": 777309,
         "teams": {
             "away": {
                 "team": {"id": 121, "name": "New York Mets"},
@@ -111,10 +159,12 @@ def main():
     }
 
     df_pitch = pd.DataFrame()
-    df_bat = pd.DataFrame()
+    # df_bat = pd.DataFrame()
 
-    ps, bs = fetch_game_details(game, df_pitch, df_bat, features_cfg, "2025")
-    print(f"Pitchers: {len(ps)}, Batters: {len(bs)}")
+    # ps, bs = fetch_game_details(game, df_pitch, df_bat, features_cfg, "2025")
+    ps = fetch_game_details(game, df_pitch, features_cfg, "2025")
+    # print(f"Pitchers: {len(ps)}, Batters: {len(bs)}")
+    print(f"Pitchers: {len(ps)}")
 
 
 if __name__ == "__main__":
