@@ -1,3 +1,7 @@
+from io import StringIO
+import os
+from bs4 import BeautifulSoup
+import requests
 import logging
 import json
 import sys
@@ -13,17 +17,39 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
-class AdvancedTeamStats:
-    def __init__(self, lookback_days: int = 7, force: bool = False):
-        self.lookback_days = lookback_days
+class BaseStats:
+    def __init__(self):
         self.config = load_config()
+        self.root_path = Path(self.config.get("root_path", "."))
+        self.mlb_cfg = self.config.get("mlb_data", {})
+        self.statcast_cfg = self.mlb_cfg.get("statcast", {})
+        self.cache_path = Path(self.config.get("cache_path", ".cache"))
+        self.output_path = self.root_path / self.mlb_cfg.get("outputs_path")
+
+
+class AdvancedTeamStats(BaseStats):
+    def __init__(self, lookback_days: int = 7, force: bool = False, quiet: bool = False):
+        super().__init__()
+        self.lookback_days = lookback_days
         self.team_woba_splits = {}
         self.force = force
+        self.quiet = quiet
+
+        # Build paths from config
+        self.raw_csv_path = self.root_path / self.statcast_cfg.get("raw_csv")
+        self.woba_split_path = self.root_path / \
+            self.statcast_cfg.get("split_json")
+        self.combined_path = self.root_path / \
+            self.statcast_cfg.get("combined_json")
+        self.csv_export_path = self.output_path / \
+            f"woba3-features-{self.lookback_days}d.csv"
+
         logger.debug(
             "Initialized AdvancedTeamStats with %d-day default lookback", self.lookback_days)
 
     def fetch_statcast_data(self, lookback_days: int) -> pd.DataFrame:
-        cache_path = Path(f"data/statcast_{lookback_days}d_raw.csv")
+        cache_path = Path(
+            str(self.raw_csv_path).format(lookback=lookback_days))
         if not self.force and cache_path.exists():
             age_hours = (datetime.now(
             ) - datetime.fromtimestamp(cache_path.stat().st_mtime)).total_seconds() / 3600
@@ -43,8 +69,9 @@ class AdvancedTeamStats:
             ).tolist() if 'game_date' in df.columns else []
             logger.info(
                 "📊 Statcast summary → Games: %d, Unique teams: %s", len(games), teams)
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
             df.to_csv(cache_path, index=False)
-            logger.info("💾 Cached Statcast raw data to %s", cache_path)
+            logger.info("📂 Cached Statcast raw data to %s", cache_path)
             logger.debug("📊 Fetched %d rows from Statcast", len(df))
             return df
         except Exception as e:
@@ -63,12 +90,15 @@ class AdvancedTeamStats:
 
     def compute_team_woba_split(self, lookback_days: int) -> dict:
         try:
-            cache_path = Path(f"data/team_woba_{lookback_days}d.json")
+            # This metric represents wOBA in the FIRST INNING ONLY — a proxy for the performance of the top 3 in the batting order.
+            # We refer to it as "wOBA3" throughout for consistency, even though it's not literally per-player.
+            cache_path = Path(
+                str(self.woba_split_path).format(lookback=lookback_days))
             if cache_path.exists():
                 age = datetime.now() - datetime.fromtimestamp(cache_path.stat().st_mtime)
                 if age.days > 3:
                     logger.info(
-                        "🧹 Cache %s is %d days old. Deleting...", cache_path, age.days)
+                        "🩹 Cache %s is %d days old. Deleting...", cache_path, age.days)
                     cache_path.unlink(missing_ok=True)
                 else:
                     logger.info("📦 Using cached wOBA data from %s", cache_path)
@@ -127,14 +157,13 @@ class AdvancedTeamStats:
             return {}
 
     def compute_all_splits(self, force: bool = False):
-        combined_path = Path("data/team_woba_splits_combined.json")
-        if not force and combined_path.exists():
+        if not force and self.combined_path.exists():
             age_hours = (datetime.now(
-            ) - datetime.fromtimestamp(combined_path.stat().st_mtime)).total_seconds() / 3600
+            ) - datetime.fromtimestamp(self.combined_path.stat().st_mtime)).total_seconds() / 3600
             if age_hours < 12:
                 logger.info(
                     "🕒 Cached combined split file is recent (%.1f hrs). Loading from cache.", age_hours)
-                return self.load_from_json(combined_path)
+                return self.load_from_json(self.combined_path)
 
         from concurrent.futures import ThreadPoolExecutor
         logger.info(
@@ -179,6 +208,135 @@ class AdvancedTeamStats:
         except Exception as e:
             logger.exception("Failed to save wOBA splits to JSON: %s", e)
 
+    def save_wrclike_to_json(self):
+        try:
+            wrclike = self.fetch_wrclike_splits_from_fangraphs()
+            if not wrclike:
+                logger.warning(
+                    "No wRCP1st data to save. Skipping JSON export.")
+                return
+
+            wrclike_path = self.output_path / \
+                f"wrclike_1st_inning_{datetime.today().strftime('%Y%m%d')}.json"
+            wrclike_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(wrclike_path, "w", encoding="utf-8") as f:
+                json.dump(wrclike, f, indent=2)
+            logger.info("Saved wRCP1st splits to %s", wrclike_path)
+        except Exception as e:
+            logger.exception("Failed to save wRCP1st splits to JSON: %s", e)
+
+    def save_to_csv(self):
+        try:
+            if not self.team_woba_splits:
+                logger.warning("No wOBA data to save. Skipping CSV export.")
+                return
+
+            rows = []
+            all_teams = set()
+            for period in self.team_woba_splits:
+                all_teams.update(self.team_woba_splits[period].keys())
+
+            for team in sorted(all_teams):
+                row = {"Team": team}
+                for period, data in self.team_woba_splits.items():
+                    row[f"wOBA_{period}"] = data.get(team, None)
+                rows.append(row)
+
+            df = pd.DataFrame(rows)
+            self.csv_export_path.parent.mkdir(parents=True, exist_ok=True)
+            df.to_csv(self.csv_export_path, index=False)
+            logger.info("Exported wOBA splits to CSV: %s",
+                        self.csv_export_path)
+        except Exception as e:
+            logger.exception("CSV export failed: %s", e)
+
+    def save_wrclike_to_csv(self):
+        try:
+            wrclike = self.fetch_wrclike_splits_from_fangraphs()
+            if not wrclike:
+                logger.warning("No wRCP1st data to save. Skipping CSV export.")
+                return
+
+            df = pd.DataFrame(list(wrclike.items()),
+                              columns=["Team", "wRCP1st"])
+            path = self.output_path / \
+                f"wrclike_1st_inning_{datetime.today().strftime('%Y%m%d')}.csv"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            df.to_csv(path, index=False)
+            logger.info("Exported wRCP1st to CSV: %s", path)
+
+        except Exception as e:
+            logger.exception("CSV export of wRCP1st failed: %s", e)
+
+    from io import StringIO
+
+    def fetch_wrclike_splits_from_fangraphs(self) -> dict:
+        # IMPLEMENT LATER
+        """
+        Fetch per-team 1st-inning wRC+ via FanGraphs' CSV export,
+        with safe fallbacks if headers aren’t exactly as expected.
+        """
+        try:
+            url = (
+                "https://www.fangraphs.com/leaders/splits-leaderboards.csv"
+                "?splitArr=44"
+                "&splitTeams=true"
+                "&statType=team"
+                "&statgroup=2"
+                "&startDate=2025-03-01"
+                "&endDate=2025-11-01"
+                "&groupBy=team"
+                "&position=B"
+                "&sort=15,1"
+            )
+            logger.info("🌐 Fetching CSV splits from FanGraphs: %s", url)
+            df = pd.read_csv(url, engine="python", on_bad_lines="skip")
+            logger.debug("CSV columns: %s", df.columns.tolist())
+
+            # 1) Team column: prefer "Team", then "Tm", else first column
+            team_candidates = [c for c in df.columns if c in ("Team", "Tm")]
+            if team_candidates:
+                team_col = team_candidates[0]
+            else:
+                team_col = df.columns[0]
+                logger.warning(
+                    "No 'Team' or 'Tm' column found—falling back to first column: %r", team_col)
+
+            # 2) Stat column: prefer any containing "RC+", else last column
+            stat_candidates = [c for c in df.columns if "RC+" in c]
+            if stat_candidates:
+                stat_col = stat_candidates[0]
+            else:
+                stat_col = df.columns[-1]
+                logger.warning(
+                    "No 'RC+' column found—falling back to last column: %r", stat_col)
+
+            logger.debug("Using team_col=%r, stat_col=%r", team_col, stat_col)
+
+            out = dict(zip(df[team_col].astype(str).str.strip(),
+                           df[stat_col].astype(float)))
+            logger.info("✅ Parsed %s for %d teams", stat_col, len(out))
+            return out
+
+        except Exception as e:
+            logger.exception("❌ Failed to fetch or parse FanGraphs CSV: %s", e)
+            return {}
+
+    def get1stInningStats(csv_path="splits_1st_2025.csv", decode_uri_fn=None, data_uri=None):
+        """
+        Returns the team‐level first‐inning wRC+ table as a DataFrame.
+        If csv_path exists on disk, we load it.  Otherwise we call decode_uri_fn(data_uri)
+        to fetch & decode, then save it to csv_path and return that DataFrame.
+        """
+        if os.path.exists(csv_path):
+            return pd.read_csv(csv_path)
+        if not (decode_uri_fn and data_uri):
+            raise RuntimeError(
+                "No CSV cache and no URI fetch function/URI provided")
+        df = decode_uri_fn(data_uri)
+        df.to_csv(csv_path, index=False)
+        return df
+
     def load_from_json(self, input_path: Path):
         try:
             if not input_path.exists():
@@ -207,12 +365,32 @@ if __name__ == "__main__":
         datefmt='%Y-%m-%d %H:%M:%S'
     )
 
-    stats = AdvancedTeamStats(force='--force' in sys.argv)
+    force_flag = '--force' in sys.argv
+    quiet_flag = '--quiet' in sys.argv
+
+    stats = AdvancedTeamStats(force=force_flag, quiet=quiet_flag)
     splits = stats.compute_all_splits()
 
-    stats.save_to_json(Path("data/team_woba_splits_combined.json"))
+    stats.save_to_json(stats.combined_path)
+    stats.save_to_csv()
+    stats.save_wrclike_to_json()
+    stats.save_wrclike_to_csv()
 
-    if splits:
+    # Save combined CSV with both wOBA3 and wRCP1st
+    try:
+        woba_df = pd.read_csv(stats.csv_export_path)
+        wrclike = stats.fetch_wrclike_splits_from_fangraphs()
+        wrclike_df = pd.DataFrame(
+            list(wrclike.items()), columns=["Team", "wRCP1st"])
+        combined = pd.merge(woba_df, wrclike_df, on="Team", how="left")
+        combined_path = stats.output_path / \
+            f"combined_features_{datetime.today().strftime('%Y%m%d')}.csv"
+        combined.to_csv(combined_path, index=False)
+        logger.info("📦 Saved combined CSV to %s", combined_path)
+    except Exception as e:
+        logger.exception("❌ Failed to save combined CSV: %s", e)
+
+    if not quiet_flag and splits:
         for period, data in splits.items():
             print(f"\n{period.upper()} split wOBA3:")
             for team, value in sorted(data.items(), key=lambda x: x[1], reverse=True):

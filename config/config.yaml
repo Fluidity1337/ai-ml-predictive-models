@@ -8,19 +8,21 @@ cache_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-
 
 
 mlb_data:
-  base_path:   'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/'
-  raw:         data/sports/baseball/mlb/raw
-  statcast:    data/sports/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
-  api:         'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/sports/baseball/mlb/data_sources/api'
-  test_output: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output'
+  base_path:   data/baseball/mlb/
+  raw:         data/baseball/mlb/raw
+  interim:     data/baseball/mlb/interim
+  statcast:    data/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
+  api:         data/sports/baseball/mlb/data_sources/api
+  test_output: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output' 
+  outputs_path: data/baseball/mlb/outputs
   season: 2025
   use_cache: true
   cache_dir: .cache
   team_abbrev_cds_cache_path: '.cache/team_codes_{season}.json'
   statcast:
-    raw_csv: data/sports/baseball/mlb/raw/statcast_{lookback}d_raw.csv
-    split_json: data/sports/baseball/mlb/processed/team_woba_{lookback}d.json
-    combined_json: data/sports/baseball/mlb/processed/team_woba_splits_combined.json  
+    raw_csv: data/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
+    split_json: data/baseball/mlb/processed/team_woba3_{lookback}d.json
+    combined_json: data/baseball/mlb/processed/team_woba3_splits_combined.json  
 
 api:
   mlb:
