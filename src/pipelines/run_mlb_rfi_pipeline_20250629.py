@@ -278,7 +278,7 @@ if __name__ == '__main__':
                 r["game_id"], r["game_datetime"], r["away_team"], r["away_abbrev"],
                 r["home_team"], r["home_abbrev"], r["away_pitcher"],
                 r["home_pitcher"], r["nrfi_grade"],
-                r["home_pitcher_recent_xfip"], r["home_pitcher_rehome_pitcher_recent_xfip_scorecent_xFIP_score"],
+                r["home_pitcher_recent_xfip"], r["home_pitcher_recent_xfip_score"],
                 r["home_pitcher_recent_barrel_pct"], r["home_pitcher_recent_barrel_pct_score"],
                 r["away_pitcher_recent_xfip"], r["away_pitcher_recent_xfip_score"],
                 r["away_pitcher_recent_barrel_pct"], r["away_pitcher_recent_barrel_pct_score"],

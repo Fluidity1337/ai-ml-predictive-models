@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import sys
 import logging
 import logging.config
@@ -20,7 +19,7 @@ raw_data_dir.mkdir(parents=True, exist_ok=True)
 # JSON_PATH must be defined before deriving date_suffix
 JSON_FILENAME = cfg.get(
     # "json_filename", f"mlb_daily_game_summary_{_dt.now().strftime('%Y%m%d')}.json"
-    "json_filename", f"mlb_daily_game_summary_20250630.json"
+    "json_filename", "mlb_daily_game_summary_20250630.json"
 )
 JSON_PATH = raw_data_dir / JSON_FILENAME
 HTML_FILENAME = cfg.get(
@@ -123,7 +122,7 @@ class BaseballRfiHtmlGenerator:
 <head>
   <meta charset='UTF-8'/>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-  <title>Moneyline Hacks - RFI Model</title>
+  <title>Moneyline Hacks - NRFI Model</title>
   <link href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css' rel='stylesheet'>
   <style>
     body {{ background-color:#0f172a; color:#e2e8f0; font-family:'Segoe UI', sans-serif; }}
@@ -135,7 +134,7 @@ class BaseballRfiHtmlGenerator:
 <body class='p-6'>
   <div class='text-center mb-6'>
     <h1 class='text-4xl font-extrabold title-highlight'>Moneyline Hacks</h1>
-    <p class='text-gray-400'>Run First Inning (RFI) Model — {title_date}</p>
+    <p class='text-gray-400'>MLB No Run First Inning (NRFI) Model — {title_date}</p>
   </div>
   <div class='overflow-auto max-w-5xl mx-auto'>
     <table class='min-w-full text-gray-300 text-sm'>
@@ -146,9 +145,9 @@ class BaseballRfiHtmlGenerator:
           <th class='px-4 py-2'>SP Name</th>
           <th class='px-4 py-2'>SP xFIP (L30D)</th>
           <th class='px-4 py-2 borderless'>SP Barrel% (L30D)</th>
+          <th class='px-4 py-2'>Top 3 Hitters Avg wOBA</th>          
           <th class='px-4 py-2'>Team 1st Inning wRC+</th>
-          <th class='px-4 py-2'>Top 3 Hitters Avg wOBA</th>
-          <th class='px-4 py-2'>Team RFI Grade (0-5)</th>
+          <th class='px-4 py-2'>Team RFI Grade (0-100)</th>
           <th class='px-4 py-2'>NRFI Grade (0-100)</th>
           <th class='px-4 py-2'>Recommendation</th>
         </tr>
@@ -181,18 +180,55 @@ class BaseballRfiHtmlGenerator:
                     f"Missing timestamp for game_id {game.get('game_id')}")
                 game_time = 'TBD'
 
-            home_pitcher_recent_xfip_raw = game.get('home')
-
             away_team = game.get('away_team', '-')
             home_team = game.get('home_team', '-')
             away_abbrev = game.get('away_abbrev', '-')
             home_abbrev = game.get('home_abbrev', '-')
             away_pitcher = game.get('away_pitcher', '-')
             home_pitcher = game.get('home_pitcher', '-')
-            home_pitcher_recent_xfip = game.get(
-                'home_pitcher_recent_xFIP', '-')
-            away_pitcher_recent_xfip = game.get(
-                'away_pitcher_recent_xFIP', '-')
+
+            # Round pitcher xFIP to two decimal places if numeric, else fallback
+            raw_away_xfip = game.get('away_pitcher_recent_xfip')
+            away_pitcher_recent_xfip = f"{raw_away_xfip:.2f}" if isinstance(
+                raw_away_xfip, (int, float)) else 'N/A'
+            raw_home_xfip = game.get('home_pitcher_recent_xfip')
+            home_pitcher_recent_xfip = f"{raw_home_xfip:.2f}" if isinstance(
+                raw_home_xfip, (int, float)) else 'N/A'
+
+            # Barrel %
+            raw_away_barrel_pct = game.get('away_pitcher_recent_barrel_pct')
+            away_pitcher_recent_barrel_pct = f"{raw_away_barrel_pct:.2f}" if isinstance(
+                raw_away_barrel_pct, (int, float)) else 'N/A'
+            raw_home_barrel_pct = game.get('home_pitcher_recent_barrel_pct')
+            home_pitcher_recent_barrel_pct = f"{raw_home_barrel_pct:.2f}" if isinstance(
+                raw_home_barrel_pct, (int, float)) else 'N/A'
+
+            # wRC+ 1st Inning
+            raw_away_team_wrc_plus_1st_inn = game.get(
+                'away_team_wrc_plus_1st_inn')
+            away_team_season_wrc_plus_1st_inn = f"{raw_away_team_wrc_plus_1st_inn:.2f}" if isinstance(
+                raw_away_team_wrc_plus_1st_inn, (int, float)) else 'N/A'
+            raw_home_team_wrc_plus_1st_inn = game.get(
+                'home_team_wrc_plus_1st_inn')
+            home_team_season_wrc_plus_1st_inn = f"{raw_home_team_wrc_plus_1st_inn:.2f}" if isinstance(
+                raw_home_team_wrc_plus_1st_inn, (int, float)) else 'N/A'
+
+            # wOBA3
+            raw_away_team_woba3 = game.get('away_team_woba3')
+            away_team_recent_woba3 = f"{raw_away_team_woba3:.2f}" if isinstance(
+                raw_away_team_woba3, (int, float)) else 'N/A'
+            raw_home_team_woba3 = game.get('home_team_woba3')
+            home_team_recent_woba3 = f"{raw_home_team_woba3:.2f}" if isinstance(
+                raw_home_team_woba3, (int, float)) else 'N/A'
+
+            # Team RFI
+            raw_away_team_rfi_score = game.get('away_team_nrfi_score')
+            away_team_nrfi_score = f"{raw_away_team_rfi_score:.2f}" if isinstance(
+                raw_away_team_rfi_score, (int, float)) else 'N/A'
+            raw_home_team_rfi_score = game.get('home_team_nrfi_score')
+            home_team_nrfi_score = f"{raw_home_team_rfi_score:.2f}" if isinstance(
+                raw_home_team_rfi_score, (int, float)) else 'N/A'
+
             away_team_rfi_score = game.get('away_rfi_grade', '')
             home_team_rfi_score = game.get('home_rfi_grade', '')
             nrfi = game.get('nrfi_grade', '')
@@ -205,10 +241,10 @@ class BaseballRfiHtmlGenerator:
                 f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{game_time}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher} ({away_abbrev})</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_xfip}</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>{away_team_rfi_score}</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_barrel_pct}</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>{away_team_recent_woba3}</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>{away_team_season_wrc_plus_1st_inn}</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>AWAY RFI: {away_team_rfi_score}</td>"
                 f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{nrfi}</td>"
                 f"<td class='{grade_color(nrfi)}' rowspan='2'>{rec}</td>"
                 "</tr>\n"
@@ -219,10 +255,10 @@ class BaseballRfiHtmlGenerator:
                 "<tr>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher} ({home_abbrev})</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_xfip}</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>{home_team_rfi_score}</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_barrel_pct}</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>{home_team_recent_woba3}</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>{home_team_season_wrc_plus_1st_inn}</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>HOME RFI:{home_team_rfi_score}</td>"
                 "</tr>\n"
             )
 

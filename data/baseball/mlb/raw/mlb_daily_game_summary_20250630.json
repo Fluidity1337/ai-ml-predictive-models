@@ -8,7 +8,19 @@
     "home_abbrev": "PHI",
     "away_pitcher": "Matt Waldron",
     "home_pitcher": "Zack Wheeler",
-    "nrfi_grade": null
+    "nrfi_grade": null,
+    "home_pitcher_recent_xfip": 3.3265693488097585,
+    "home_pitcher_recent_xfip_score": 72.42500000000001,
+    "away_pitcher_recent_xfip": null,
+    "away_pitcher_recent_xfip_score": null,
+    "home_pitcher_recent_barrel_pct": 2.5418275418275416,
+    "home_pitcher_recent_barrel_pct_score": 85.1,
+    "away_pitcher_recent_barrel_pct": null,
+    "away_pitcher_recent_barrel_pct_score": null,
+    "home_team_woba3": 0.2329787234042553,
+    "away_team_woba3": 0.3588235294117647,
+    "home_team_wrc_plus_1st_inn": 116.31010172359888,
+    "away_team_wrc_plus_1st_inn": 118.90800978828324
   },
   {
     "game_id": 777299,
@@ -19,7 +31,19 @@
     "home_abbrev": "PIT",
     "away_pitcher": "Erick Fedde",
     "home_pitcher": "Andrew Heaney",
-    "nrfi_grade": null
+    "nrfi_grade": null,
+    "home_pitcher_recent_xfip": 3.8267267181331257,
+    "home_pitcher_recent_xfip_score": 55.779999999999994,
+    "away_pitcher_recent_xfip": 3.8168362367043662,
+    "away_pitcher_recent_xfip_score": 56.1,
+    "home_pitcher_recent_barrel_pct": 5.902298850574712,
+    "home_pitcher_recent_barrel_pct_score": 57.1,
+    "away_pitcher_recent_barrel_pct": 4.196428571428571,
+    "away_pitcher_recent_barrel_pct_score": 79.64,
+    "home_team_woba3": 0.26634615384615384,
+    "away_team_woba3": 0.29523809523809524,
+    "home_team_wrc_plus_1st_inn": 88.00923382257837,
+    "away_team_wrc_plus_1st_inn": 80.01532207298241
   },
   {
     "game_id": 777295,
@@ -30,7 +54,19 @@
     "home_abbrev": "TOR",
     "away_pitcher": "Carlos Rod\u00f3n",
     "home_pitcher": "Max Scherzer",
-    "nrfi_grade": null
+    "nrfi_grade": null,
+    "home_pitcher_recent_xfip": 3.635174418604651,
+    "home_pitcher_recent_xfip_score": 62.2,
+    "away_pitcher_recent_xfip": 3.493114999324883,
+    "away_pitcher_recent_xfip_score": 66.88,
+    "home_pitcher_recent_barrel_pct": 3.571428571428571,
+    "home_pitcher_recent_barrel_pct_score": 91.8,
+    "away_pitcher_recent_barrel_pct": 6.651515151515151,
+    "away_pitcher_recent_barrel_pct_score": 59.260000000000005,
+    "home_team_woba3": 0.35963855421686747,
+    "away_team_woba3": 0.26136363636363635,
+    "home_team_wrc_plus_1st_inn": 102.71335900463926,
+    "away_team_wrc_plus_1st_inn": 161.31803788443312
   },
   {
     "game_id": 777300,
@@ -41,7 +77,19 @@
     "home_abbrev": "BOS",
     "away_pitcher": "Chase Burns",
     "home_pitcher": "Garrett Crochet",
-    "nrfi_grade": null
+    "nrfi_grade": null,
+    "home_pitcher_recent_xfip": 3.409874966771638,
+    "home_pitcher_recent_xfip_score": 69.67999999999999,
+    "away_pitcher_recent_xfip": 3.8576562500000002,
+    "away_pitcher_recent_xfip_score": 54.7,
+    "home_pitcher_recent_barrel_pct": 2.7485380116959064,
+    "home_pitcher_recent_barrel_pct_score": 85.4,
+    "away_pitcher_recent_barrel_pct": 3.4482758620689653,
+    "away_pitcher_recent_barrel_pct_score": 93.6,
+    "home_team_woba3": 0.36875,
+    "away_team_woba3": 0.475,
+    "home_team_wrc_plus_1st_inn": 123.17742322803144,
+    "away_team_wrc_plus_1st_inn": 114.16453909046716
   },
   {
     "game_id": 777296,
@@ -52,7 +100,19 @@
     "home_abbrev": "TB",
     "away_pitcher": "Jacob Lopez",
     "home_pitcher": "Drew Rasmussen",
-    "nrfi_grade": null
+    "nrfi_grade": null,
+    "home_pitcher_recent_xfip": 3.61720811284935,
+    "home_pitcher_recent_xfip_score": 62.779999999999994,
+    "away_pitcher_recent_xfip": 3.567430153527687,
+    "away_pitcher_recent_xfip_score": 64.4,
+    "home_pitcher_recent_barrel_pct": 2.6515151515151514,
+    "home_pitcher_recent_barrel_pct_score": 79.26,
+    "away_pitcher_recent_barrel_pct": 2.4,
+    "away_pitcher_recent_barrel_pct_score": 80.0,
+    "home_team_woba3": 0.29918032786885246,
+    "away_team_woba3": 0.4,
+    "home_team_wrc_plus_1st_inn": 125.654673699357,
+    "away_team_wrc_plus_1st_inn": 116.20264215540952
   },
   {
     "game_id": 777292,
@@ -63,7 +123,19 @@
     "home_abbrev": "TEX",
     "away_pitcher": "Trevor Rogers",
     "home_pitcher": "Patrick Corbin",
-    "nrfi_grade": null
+    "nrfi_grade": null,
+    "home_pitcher_recent_xfip": 3.657138864384689,
+    "home_pitcher_recent_xfip_score": 61.42,
+    "away_pitcher_recent_xfip": 3.628614123581337,
+    "away_pitcher_recent_xfip_score": 62.400000000000006,
+    "home_pitcher_recent_barrel_pct": 5.596495008259714,
+    "home_pitcher_recent_barrel_pct_score": 57.5,
+    "away_pitcher_recent_barrel_pct": 1.1627906976744187,
+    "away_pitcher_recent_barrel_pct_score": 100.0,
+    "home_team_woba3": 0.31875000000000003,
+    "away_team_woba3": 0.38,
+    "home_team_wrc_plus_1st_inn": 88.36724698069314,
+    "away_team_wrc_plus_1st_inn": 100.46104647092106
   },
   {
     "game_id": 777297,
@@ -74,7 +146,19 @@
     "home_abbrev": "SEA",
     "away_pitcher": "Michael Wacha",
     "home_pitcher": "George Kirby",
-    "nrfi_grade": null
+    "nrfi_grade": null,
+    "home_pitcher_recent_xfip": 3.878019082206454,
+    "home_pitcher_recent_xfip_score": 54.06,
+    "away_pitcher_recent_xfip": 3.654051571229585,
+    "away_pitcher_recent_xfip_score": 61.54,
+    "home_pitcher_recent_barrel_pct": 3.3846153846153846,
+    "home_pitcher_recent_barrel_pct_score": 76.12,
+    "away_pitcher_recent_barrel_pct": 3.6415130568356373,
+    "away_pitcher_recent_barrel_pct_score": 80.5,
+    "home_team_woba3": 0.28936170212765955,
+    "away_team_woba3": 0.2532258064516129,
+    "home_team_wrc_plus_1st_inn": 155.5597816083422,
+    "away_team_wrc_plus_1st_inn": 102.20325518826068
   },
   {
     "game_id": 777291,
@@ -85,6 +169,18 @@
     "home_abbrev": "AZ",
     "away_pitcher": "Logan Webb",
     "home_pitcher": "Ryne Nelson",
-    "nrfi_grade": null
+    "nrfi_grade": null,
+    "home_pitcher_recent_xfip": 3.969203491055513,
+    "home_pitcher_recent_xfip_score": 51.04,
+    "away_pitcher_recent_xfip": 3.5274947500842666,
+    "away_pitcher_recent_xfip_score": 65.75999999999999,
+    "home_pitcher_recent_barrel_pct": 5.7375535106347115,
+    "home_pitcher_recent_barrel_pct_score": 60.9,
+    "away_pitcher_recent_barrel_pct": 2.965507610668901,
+    "away_pitcher_recent_barrel_pct_score": 83.35999999999999,
+    "home_team_woba3": 0.2905405405405405,
+    "away_team_woba3": 0.28600000000000003,
+    "home_team_wrc_plus_1st_inn": 120.59502547078948,
+    "away_team_wrc_plus_1st_inn": 85.88685892222207
   }
 ]
