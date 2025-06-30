@@ -11,6 +11,7 @@ mlb_data:
   base_path:   data/baseball/mlb/
   raw:         data/baseball/mlb/raw
   interim:     data/baseball/mlb/interim
+  test_output: test_output
   statcast:    data/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
   api:         data/sports/baseball/mlb/data_sources/api
   test_output: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output' 

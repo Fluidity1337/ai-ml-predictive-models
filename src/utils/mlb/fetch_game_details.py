@@ -8,7 +8,7 @@ import pandas as pd
 from pathlib import Path
 from datetime import date
 from utils.config_loader import load_config
-from utils.helpers import FeatureConfigLoader
+from utils.helpers import RatingCalculator, FeatureConfigLoader
 from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherAdvancedStats
 
 
@@ -64,10 +64,10 @@ def fetch_game_details(game, df_pitch=None, features_cfg=None, season=None):
         last5_map = {
             gp: {
                 'date': gd.isoformat(),
-                'xFIP': xfip if pd.notna(xfip) else None,
-                'xFIP_score': xfsc if pd.notna(xfsc) else None,
-                'Barrel%': bp if pd.notna(bp) else None,
-                'Barrel%_score': bpsc if pd.notna(bpsc) else None
+                'xfip': xfip if pd.notna(xfip) else None,
+                'xfip_score': xfsc if pd.notna(xfsc) else None,
+                'barrel_pct': bp if pd.notna(bp) else None,
+                'barrel_pct_score': bpsc if pd.notna(bpsc) else None
             }
             for gp, gd, xfip, xfsc, bp, bpsc in last5
         }
@@ -79,10 +79,10 @@ def fetch_game_details(game, df_pitch=None, features_cfg=None, season=None):
         last5_map = {
             gp: {
                 'date': gd.isoformat(),
-                'xFIP': xfip,
-                'xFIP_score': xfsc,
-                'Barrel%': bp,
-                'Barrel%_score': bpsc
+                'xfip': xfip,
+                'xfip_score': xfsc,
+                'barrel_pct': bp,
+                'barrel_pct_score': bpsc
             }
             for gp, gd, xfip, xfsc, bp, bpsc in last5
         }
@@ -96,7 +96,7 @@ def fetch_game_details(game, df_pitch=None, features_cfg=None, season=None):
             len(xfip_scores) if xfip_scores else float('nan')
         avg_barrel_pct = sum(barrel_pcts) / \
             len(barrel_pcts) if barrel_pcts else float('nan')
-        avg_barrel_score = sum(
+        avg_barrel_pct_score = sum(
             barrel_scores)/len(barrel_scores) if barrel_scores else float('nan')
 
         # Extract stats for this specific game
@@ -108,43 +108,44 @@ def fetch_game_details(game, df_pitch=None, features_cfg=None, season=None):
             if not seasonal.empty:
                 row_season = seasonal.iloc[0]
                 season_xfip = row_season.get('xFIP', float('nan'))
-                season_barrel = row_season.get('Barrel%', float('nan'))
+                season_barrel_pct = row_season.get('Barrel%', float('nan'))
                 # Compute season scores via RatingCalculator
                 rc = RatingCalculator(features_cfg)
                 season_xfip_score = rc.minmax_scale(
                     season_xfip, 'xFIP', reverse=True)
-                season_barrel_score = rc.minmax_scale(
-                    season_barrel, 'BarrelPct', reverse=True)
+                season_barrel_pct_score = rc.minmax_scale(
+                    season_barrel_pct, 'Barrel%', reverse=True)
                 # Override data maps
                 last5_map = {
                     'season': {
                         'date': None,
-                        'xFIP': season_xfip,
-                        'xFIP_score': season_xfip_score,
-                        'Barrel%': season_barrel,
-                        'Barrel%_score': season_barrel_score
+                        'xfip': season_xfip,
+                        'xfip_score': season_xfip_score,
+                        'barrel_pct': season_barrel_pct,
+                        'barrel_pct_score': season_barrel_pct_score
                     }
                 }
                 # Averages equal seasonal for this fallback
                 avg_xfip = season_xfip
                 avg_xfip_score = season_xfip_score
-                avg_barrel_pct = season_barrel
-                avg_barrel_score = season_barrel_score
+                avg_barrel_pct = season_barrel_pct
+                avg_barrel_pct_score = season_barrel_pct
                 this_game_stats = {
-                    'xFIP': season_xfip,
-                    'xFIP_score': season_xfip_score,
-                    'Barrel%': season_barrel,
-                    'Barrel%_score': season_barrel_score,
-                    'avg_xFIP': avg_xfip,
-                    'avg_xFIP_score': avg_xfip_score,
-                    'avg_Barrel%': avg_barrel_pct,
-                    'avg_Barrel%_score': avg_barrel_score
+                    'xfip': season_xfip,
+                    'xfip_score': season_xfip_score,
+                    'barrel_pct': season_barrel_pct,
+                    'barrel_pct_score': season_barrel_pct_score,
+                    'avg_xfip': avg_xfip,
+                    'avg_xfip_score': avg_xfip_score,
+                    'avg_barrel_pct': avg_barrel_pct,
+                    'avg_barrel_pct_score': avg_barrel_pct_score
                 }
         # Always include averages if not overridden above
-        this_game_stats.setdefault('avg_xFIP', avg_xfip)
-        this_game_stats.setdefault('avg_xFIP_score', avg_xfip_score)
-        this_game_stats.setdefault('avg_Barrel%', avg_barrel_pct)
-        this_game_stats.setdefault('avg_Barrel%_score', avg_barrel_score)
+        this_game_stats.setdefault('avg_xfip', avg_xfip)
+        this_game_stats.setdefault('avg_xfip_score', avg_xfip_score)
+        this_game_stats.setdefault('avg_barrel_pct', avg_barrel_pct)
+        this_game_stats.setdefault(
+            'avg_barrel_pct_score', avg_barrel_pct_score)
 
         # Convert any remaining NaNs to None for JSON
         import math

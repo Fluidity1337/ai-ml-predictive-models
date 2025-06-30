@@ -8,11 +8,7 @@
     "home_abbrev": "PHI",
     "away_pitcher": "Matt Waldron",
     "home_pitcher": "Zack Wheeler",
-    "nrfi_grade": null,
-    "home_pitcher_recent_xFIP": 3.3265693488097585,
-    "home_pitcher_recent_xFIP_score": 72.42500000000001,
-    "away_pitcher_recent_barrel%": null,
-    "away_pitcher_recent_barrel%_score": null
+    "nrfi_grade": null
   },
   {
     "game_id": 777299,
@@ -23,11 +19,7 @@
     "home_abbrev": "PIT",
     "away_pitcher": "Erick Fedde",
     "home_pitcher": "Andrew Heaney",
-    "nrfi_grade": null,
-    "home_pitcher_recent_xFIP": 3.8267267181331257,
-    "home_pitcher_recent_xFIP_score": 55.779999999999994,
-    "away_pitcher_recent_barrel%": 4.196428571428571,
-    "away_pitcher_recent_barrel%_score": 79.64
+    "nrfi_grade": null
   },
   {
     "game_id": 777295,
@@ -38,11 +30,7 @@
     "home_abbrev": "TOR",
     "away_pitcher": "Carlos Rod\u00f3n",
     "home_pitcher": "Max Scherzer",
-    "nrfi_grade": null,
-    "home_pitcher_recent_xFIP": 3.635174418604651,
-    "home_pitcher_recent_xFIP_score": 62.2,
-    "away_pitcher_recent_barrel%": 6.651515151515151,
-    "away_pitcher_recent_barrel%_score": 59.260000000000005
+    "nrfi_grade": null
   },
   {
     "game_id": 777300,
@@ -53,11 +41,7 @@
     "home_abbrev": "BOS",
     "away_pitcher": "Chase Burns",
     "home_pitcher": "Garrett Crochet",
-    "nrfi_grade": null,
-    "home_pitcher_recent_xFIP": 3.409874966771638,
-    "home_pitcher_recent_xFIP_score": 69.67999999999999,
-    "away_pitcher_recent_barrel%": 3.4482758620689653,
-    "away_pitcher_recent_barrel%_score": 93.6
+    "nrfi_grade": null
   },
   {
     "game_id": 777296,
@@ -68,11 +52,7 @@
     "home_abbrev": "TB",
     "away_pitcher": "Jacob Lopez",
     "home_pitcher": "Drew Rasmussen",
-    "nrfi_grade": null,
-    "home_pitcher_recent_xFIP": 3.61720811284935,
-    "home_pitcher_recent_xFIP_score": 62.779999999999994,
-    "away_pitcher_recent_barrel%": 2.4,
-    "away_pitcher_recent_barrel%_score": 80.0
+    "nrfi_grade": null
   },
   {
     "game_id": 777292,
@@ -83,11 +63,7 @@
     "home_abbrev": "TEX",
     "away_pitcher": "Trevor Rogers",
     "home_pitcher": "Patrick Corbin",
-    "nrfi_grade": null,
-    "home_pitcher_recent_xFIP": 3.657138864384689,
-    "home_pitcher_recent_xFIP_score": 61.42,
-    "away_pitcher_recent_barrel%": 1.1627906976744187,
-    "away_pitcher_recent_barrel%_score": 100.0
+    "nrfi_grade": null
   },
   {
     "game_id": 777297,
@@ -98,11 +74,7 @@
     "home_abbrev": "SEA",
     "away_pitcher": "Michael Wacha",
     "home_pitcher": "George Kirby",
-    "nrfi_grade": null,
-    "home_pitcher_recent_xFIP": 3.878019082206454,
-    "home_pitcher_recent_xFIP_score": 54.06,
-    "away_pitcher_recent_barrel%": 3.6415130568356373,
-    "away_pitcher_recent_barrel%_score": 80.5
+    "nrfi_grade": null
   },
   {
     "game_id": 777291,
@@ -113,10 +85,6 @@
     "home_abbrev": "AZ",
     "away_pitcher": "Logan Webb",
     "home_pitcher": "Ryne Nelson",
-    "nrfi_grade": null,
-    "home_pitcher_recent_xFIP": 3.969203491055513,
-    "home_pitcher_recent_xFIP_score": 51.04,
-    "away_pitcher_recent_barrel%": 2.965507610668901,
-    "away_pitcher_recent_barrel%_score": 83.35999999999999
+    "nrfi_grade": null
   }
 ]

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import logging
+import logging.config
 import json
 from pathlib import Path
 from datetime import datetime as _dt
@@ -10,22 +11,22 @@ from utils.config_loader import load_config
 cfg = load_config()
 logging.config.dictConfig(cfg["logging"])
 
-raw_data_dir = cfg["mlb_data"]["raw"]
+raw_data_dir = Path(cfg["mlb_data"]["test_output"])
 
 # Raw data directory, relative to ROOT if not absolute
 raw_data_dir.mkdir(parents=True, exist_ok=True)
 
 # Determine JSON and HTML filenames
 # JSON_PATH must be defined before deriving date_suffix
-JSON_FILENAME = config.get(
+JSON_FILENAME = cfg.get(
     # "json_filename", f"mlb_daily_game_summary_{_dt.now().strftime('%Y%m%d')}.json"
-    "json_filename", f"mlb_daily_game_summary_20250625.json"
+    "json_filename", f"mlb_daily_game_summary_20250630.json"
 )
 JSON_PATH = raw_data_dir / JSON_FILENAME
-HTML_FILENAME = config.get(
+HTML_FILENAME = cfg.get(
     "html_filename", f"mlb_mlh_rfi_websheet_{JSON_PATH.stem.split('_')[-1]}.html"
 )
-HTML_PATH = RAW_DATA_DIR / HTML_FILENAME
+HTML_PATH = raw_data_dir / HTML_FILENAME
 
 # Derive title_date from JSON filename suffix
 date_suffix = JSON_PATH.stem.split('_')[-1]
@@ -180,12 +181,18 @@ class BaseballRfiHtmlGenerator:
                     f"Missing timestamp for game_id {game.get('game_id')}")
                 game_time = 'TBD'
 
+            home_pitcher_recent_xfip_raw = game.get('home')
+
             away_team = game.get('away_team', '-')
             home_team = game.get('home_team', '-')
             away_abbrev = game.get('away_abbrev', '-')
             home_abbrev = game.get('home_abbrev', '-')
             away_pitcher = game.get('away_pitcher', '-')
             home_pitcher = game.get('home_pitcher', '-')
+            home_pitcher_recent_xfip = game.get(
+                'home_pitcher_recent_xFIP', '-')
+            away_pitcher_recent_xfip = game.get(
+                'away_pitcher_recent_xFIP', '-')
             away_team_rfi_score = game.get('away_rfi_grade', '')
             home_team_rfi_score = game.get('home_rfi_grade', '')
             nrfi = game.get('nrfi_grade', '')
@@ -197,7 +204,7 @@ class BaseballRfiHtmlGenerator:
                 f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{away_abbrev} @{home_abbrev}</td>"
                 f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{game_time}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher} ({away_abbrev})</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_xfip}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>TBD</td>"
@@ -211,7 +218,7 @@ class BaseballRfiHtmlGenerator:
             html += (
                 "<tr>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher} ({home_abbrev})</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_xfip}</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>TBD</td>"

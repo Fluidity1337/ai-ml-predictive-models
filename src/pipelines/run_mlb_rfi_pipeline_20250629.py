@@ -117,6 +117,10 @@ def fetch_schedule(date_str):
     return requests.get(url).json().get("dates", [{}])[0].get("games", [])
 
 
+def normalize_team_name(name):
+    return name.replace(".", "").replace("  ", " ").strip().lower()
+
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         date_str = sys.argv[1]
@@ -132,6 +136,27 @@ if __name__ == '__main__':
     games = fetch_schedule(date_str)
     logging.info("Loaded %d games", len(games))
 
+    # Load wOBA split data
+    woba3_path = Path(
+        "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/baseball/mlb/processed/team_woba3_splits_combined.json")
+    with open(woba3_path, 'r', encoding='utf-8') as wf:
+        woba_data = json.load(wf)
+        woba_split = woba_data.get("splits", {}).get("14d", {})
+
+    # Load wRC+ 1st inning data from FanGraphs
+    wrclike_path = Path(
+        "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/baseball/mlb/raw/fangraphs/splits_1st_inning_2025_20250629.csv")
+    try:
+        wrclike_df = pd.read_csv(wrclike_path)
+        wrclike_map = {
+            str(row["Tm"]).strip().upper(): row["wRC+"]
+            for _, row in wrclike_df.iterrows()
+        }
+
+    except Exception as e:
+        logging.error(f"❌ Failed to load wRC+ 1st inning CSV: {e}")
+        wrclike_map = {}
+
     all_pitchers = []
     for g in games:
         ps = fetch_game_details(g, DF_PITCH, features_cfg, SEASON)
@@ -141,11 +166,11 @@ if __name__ == '__main__':
             # Flatten recent_avgs from calculated_stats
             calculated = p.get("calculated_stats", {})
             recent = calculated.get("recent_avgs", {})
-            stats["recent_xFIP"] = recent.get("avg_xFIP", "NA")
-            stats["recent_xFIP_score"] = recent.get("avg_xFIP_score", "NA")
-            stats["recent_Barrel%"] = recent.get("avg_Barrel%", "NA")
-            stats["recent_Barrel%_score"] = recent.get(
-                "avg_Barrel%_score", "NA")
+            stats["recent_xfip"] = recent.get("avg_xfip", "NA")
+            stats["recent_xfip_score"] = recent.get("avg_xfip_score", "NA")
+            stats["recent_barrel_pct"] = recent.get("avg_barrel_pct", "NA")
+            stats["recent_barrel_pct_score"] = recent.get(
+                "avg_barrel_pct_score", "NA")
 
         all_pitchers.extend(ps)
 
@@ -189,6 +214,24 @@ if __name__ == '__main__':
         away_pitcher_stats = next((p.get("stats", {}) for p in all_pitchers if p.get(
             "name") == away_pitch and p.get("side") == "away"), {})
 
+        # Lookup opponent wOBA using team abbrev
+        opp_woba_home = woba_split.get(away_abbrev.capitalize(), "NA")
+        opp_woba_away = woba_split.get(home_abbrev.capitalize(), "NA")
+
+        # Lookup wRC+ 1st inning by full team name
+        TEAM_ABBREV_MAP = {
+            "AZ": "ARI", "SF": "SFG", "KC": "KCR", "TB": "TBR", "NY": "NYY",
+            "SD": "SDP", "CWS": "CHW", "WSH": "WSN", "CHC": "CHC", "OAK": "OAK",
+            "LAA": "LAA", "LAD": "LAD", "MIA": "MIA", "BOS": "BOS", "PHI": "PHI",
+            "PIT": "PIT", "CLE": "CLE", "CIN": "CIN", "SEA": "SEA", "BAL": "BAL",
+            "TEX": "TEX", "TOR": "TOR", "MIN": "MIN", "HOU": "HOU", "DET": "DET",
+            "ATL": "ATL", "STL": "STL", "NYM": "NYM", "NYY": "NYY", "SFG": "SFG"
+        }
+        home_wrclike = wrclike_map.get(TEAM_ABBREV_MAP.get(
+            home_abbrev.upper(), home_abbrev.upper()), "NA")
+        away_wrclike = wrclike_map.get(TEAM_ABBREV_MAP.get(
+            away_abbrev.upper(), away_abbrev.upper()), "NA")
+
         game_summary.append({
             "game_id": g["gamePk"],
             "game_datetime": g["gameDate"],
@@ -199,10 +242,18 @@ if __name__ == '__main__':
             "away_pitcher": away_pitch,
             "home_pitcher": home_pitch,
             "nrfi_grade": g.get("nrfi_grade"),
-            "home_pitcher_recent_xFIP": home_pitcher_stats.get("recent_xFIP", "NA"),
-            "home_pitcher_recent_xFIP_score": home_pitcher_stats.get("recent_xFIP_score", "NA"),
-            "away_pitcher_recent_barrel%": away_pitcher_stats.get("recent_Barrel%", "NA"),
-            "away_pitcher_recent_barrel%_score": away_pitcher_stats.get("recent_Barrel%_score", "NA")
+            "home_pitcher_recent_xfip": home_pitcher_stats.get("recent_xfip", "NA"),
+            "home_pitcher_recent_xfip_score": home_pitcher_stats.get("recent_xfip_score", "NA"),
+            "away_pitcher_recent_xfip": away_pitcher_stats.get("recent_xfip", "NA"),
+            "away_pitcher_recent_xfip_score": away_pitcher_stats.get("recent_xfip_score", "NA"),
+            "home_pitcher_recent_barrel_pct": home_pitcher_stats.get("recent_barrel_pct", "NA"),
+            "home_pitcher_recent_barrel_pct_score": home_pitcher_stats.get("recent_barrel_pct_score", "NA"),
+            "away_pitcher_recent_barrel_pct": away_pitcher_stats.get("recent_barrel_pct", "NA"),
+            "away_pitcher_recent_barrel_pct_score": away_pitcher_stats.get("recent_barrel_pct_score", "NA"),
+            "home_team_woba3": opp_woba_home,
+            "away_team_woba3": opp_woba_away,
+            "home_team_wrc_plus_1st_inn": home_wrclike,
+            "away_team_wrc_plus_1st_inn": away_wrclike
         })
 
     game_csv = raw_data_dir / \
@@ -213,17 +264,26 @@ if __name__ == '__main__':
             "game_id", "game_datetime",
             "away_team", "away_abbrev",
             "home_team", "home_abbrev",
-            "away_pitcher", "home_pitcher", "nrfi_grade",
-            "home_pitcher_recent_xFIP", "home_pitcher_recent_xFIP_score",
-            "away_pitcher_recent_barrel%", "away_pitcher_recent_barrel%_score"
+            "away_pitcher", "home_pitcher",
+            "home_pitcher_recent_xfip", "home_pitcher_recent_xfip_score",
+            "home_pitcher_recent_barrel_pct", "home_pitcher_recent_barrel_pct_score",
+            "away_pitcher_recent_xfip", "away_pitcher_recent_xfip_score",
+            "away_pitcher_recent_barrel_pct", "away_pitcher_recent_barrel_pct_score",
+            "home_team_woba3", "away_team_woba3",
+            "home_team_wrc_plus_1st_inn", "away_team_wrc_plus_1st_inn",
+            "nrfi_grade",
         ])
         for r in game_summary:
             writer.writerow([
                 r["game_id"], r["game_datetime"], r["away_team"], r["away_abbrev"],
                 r["home_team"], r["home_abbrev"], r["away_pitcher"],
                 r["home_pitcher"], r["nrfi_grade"],
-                r["home_pitcher_recent_xFIP"], r["home_pitcher_recent_xFIP_score"],
-                r["away_pitcher_recent_barrel%"], r["away_pitcher_recent_barrel%_score"]
+                r["home_pitcher_recent_xfip"], r["home_pitcher_rehome_pitcher_recent_xfip_scorecent_xFIP_score"],
+                r["home_pitcher_recent_barrel_pct"], r["home_pitcher_recent_barrel_pct_score"],
+                r["away_pitcher_recent_xfip"], r["away_pitcher_recent_xfip_score"],
+                r["away_pitcher_recent_barrel_pct"], r["away_pitcher_recent_barrel_pct_score"],
+                r["home_team_woba3"], r["away_team_woba3"],
+                r["home_team_wrc_plus_1st_inn"], r["away_team_wrc_plus_1st_inn"]
             ])
     logging.info(f"Saved CSV game summary to {game_csv}")
 
