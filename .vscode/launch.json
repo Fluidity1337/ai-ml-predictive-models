@@ -1,18 +1,31 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        
+  // Use IntelliSense to learn about possible attributes:
+  // https://code.visualstudio.com/docs/python/debugging#_launchjson-attributes
+  "version": "0.2.0",
+  "configurations": [
 
-        {
-            "name": "Python Debugger: Current File with Arguments",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "args": "${command:pickArgs}"
-        }
-    ]
+    {
+      "name": "Debug MLB RFI Pipeline",
+      "type": "debugpy",
+      "request": "launch",
+
+      // Runs "python -m src.pipelines.run_mlb_rfi_pipeline_20250629"
+      "module": "src.pipelines.run_mlb_rfi_pipeline_20250629",
+
+      // Ensure your workspace root is where VS Code looks for "src"
+      "cwd": "${workspaceFolder}",
+
+      // If your script takes CLI args, add them here:
+      // "args": ["--start=2025-05-30", "--end=2025-06-29"],
+
+      // Optional: step into third-party code if you want
+      "justMyCode": true,
+
+      // Optional: environment vars, e.g. if you need a .env file
+      // "envFile": "${workspaceFolder}/.env"
+    "console": "integratedTerminal",
+    "args": "${command:pickArgs}"     
+    }
+
+  ]
 }

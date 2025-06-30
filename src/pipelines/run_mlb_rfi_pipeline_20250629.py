@@ -9,15 +9,15 @@ from datetime import datetime
 from pathlib import Path
 import requests
 import pandas as pd
-from utils.mlb.lookup_stats import lookup_stats
 from utils.mlb.fetch_game_details import fetch_game_details
-from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherXfipAnalyzer
+from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherAdvancedStats
 from utils.config_loader import load_config
 from utils.helpers import RatingCalculator, FeatureConfigLoader
 from utils.mlb.team_codes import get_team_codes
 
 cfg = load_config()
 logging.config.dictConfig(cfg["logging"])
+
 # Try pybaseball for season stats
 try:
     from pybaseball import batting_stats, pitching_stats
@@ -25,6 +25,7 @@ try:
 except ImportError:
     HAS_PYBASEBALL = False
     logging.warning("pybaseball not available, season stats may be incomplete")
+
 
 # Determine date to process
 date_str = sys.argv[1] if len(
@@ -55,11 +56,6 @@ else:
 
 TEAM_CODES = get_team_codes()
 
-# Load config
-cfg = load_config()
-# print("[DEBUG] Loaded config:", cfg)
-logging.config.dictConfig(cfg["logging"])
-
 features_path = cfg["models"]["mlb_rfi"]["feature_definitions_path"]
 features_cfg = FeatureConfigLoader.load_features_config(features_path)
 
@@ -69,6 +65,7 @@ weights = {k: v["weight"] for k, v in features_cfg.items() if "weight" in v}
 bounds = {k: v["bounds"] for k, v in features_cfg.items() if "bounds" in v}
 
 # Optionally load pybaseball data
+"""
 try:
     from pybaseball import pitching_stats, batting_stats
     SEASON = int(datetime.now().year)
@@ -78,6 +75,7 @@ except Exception as e:
     logging.warning("Pybaseball not available or errored: %s", e)
     df_pitch = pd.DataFrame()
     # df_bat = pd.DataFrame()
+"""
 
 raw_data_dir = Path(cfg["mlb_data"]["raw"])
 raw_data_dir.mkdir(parents=True, exist_ok=True)
@@ -93,8 +91,8 @@ def load_stats():
             logging.info(f"Loading {SEASON} pitching stats via pybaseball…")
             df_pitch = pitching_stats(SEASON)
             # ——— DEBUG: what columns did we actually get? ———
-            logging.info("pybaseball.pitching_stats columns: %s",
-                         df_pitch.columns.tolist())
+            # logging.info("pybaseball.pitching_stats columns: %s",
+            #             df_pitch.columns.tolist())
             if 'xFIP' not in df_pitch.columns and 'xfip' not in df_pitch.columns:
                 logging.warning(
                     "⚠️ No xFIP column found in pybaseball output!")
@@ -109,23 +107,22 @@ def load_stats():
 
 
 DF_PITCH = load_stats()
-
+# DF_PITCH = []
 
 # Utility functions
+
+
 def fetch_schedule(date_str):
     url = f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={date_str}&hydrate=teams(team,previewPlayers),probablePitcher"
     return requests.get(url).json().get("dates", [{}])[0].get("games", [])
 
 
 if __name__ == '__main__':
-    # allow passing a date in YYYY-MM-DD as first arg, otherwise use today
     if len(sys.argv) > 1:
         date_str = sys.argv[1]
     else:
-        date_str = datetime.now().strftime('%Y-%m-%d')
-        # date_str = "2025-06-27"
+        date_str = "2025-06-30"
 
-    # validate format (simple check)
     try:
         datetime.strptime(date_str, '%Y-%m-%d')
     except ValueError:
@@ -133,116 +130,81 @@ if __name__ == '__main__':
         sys.exit(1)
 
     games = fetch_schedule(date_str)
-    # Add this near `games = fetch_schedule(date_str)`
     logging.info("Loaded %d games", len(games))
-    for i, g in enumerate(games):
-        logging.debug(
-            "Game %s previewPlayers: away=%r, home=%r",
-            g["gamePk"],
-            g["teams"]["away"].get("previewPlayers"),
-            g["teams"]["home"].get("previewPlayers"))
-        """
-        logging.debug("Game %d: ID %s | %s vs %s", i, g["gamePk"],
-                      g["teams"]["away"]["team"]["name"],
-                      g["teams"]["home"]["team"]["name"])
-        logging.debug("  Probable Pitchers: away = %s, home = %s",
-                      g["teams"]["away"].get("probablePitcher"),
-                      g["teams"]["home"].get("probablePitcher"))
-        """
+
     all_pitchers = []
-    # for g in games:
-    g = games[0]
-    print(
-        f"[DEBUG] Selected game ID: {games[0].get('gamePk')}, Teams: {games[0]['teams']['away']['team']['name']} @ {games[0]['teams']['home']['team']['name']}")
+    for g in games:
+        ps = fetch_game_details(g, DF_PITCH, features_cfg, SEASON)
 
-    ps = fetch_game_details(g, DF_PITCH, features_cfg, SEASON)
-    # ps = fetch_game_details(g, DF_PITCH, DF_BAT, features_cfg, SEASON)
-    """
-    for rec in ps:
-        if rec["id"] == 671106:
-            logging.debug(">>>> Logan Allen rec: %r", rec)
+        for p in ps:
+            stats = p.setdefault("stats", {})
+            # Flatten recent_avgs from calculated_stats
+            calculated = p.get("calculated_stats", {})
+            recent = calculated.get("recent_avgs", {})
+            stats["recent_xFIP"] = recent.get("avg_xFIP", "NA")
+            stats["recent_xFIP_score"] = recent.get("avg_xFIP_score", "NA")
+            stats["recent_Barrel%"] = recent.get("avg_Barrel%", "NA")
+            stats["recent_Barrel%_score"] = recent.get(
+                "avg_Barrel%_score", "NA")
 
-    logging.debug(
-        "DF_PITCH columns: %s", DF_PITCH.columns.tolist()
-    )
-    logging.debug(
-        "DF_PITCH rows for 671106:\n%s",
-        DF_PITCH[DF_PITCH.get("playerId", DF_PITCH.columns[0]) == 671106]
-    )
-    """
-
-    all_pitchers.extend(ps)
-    # all_batters.extend(bs)
-    # logging.info(
-    #    f"Collected {len(all_pitchers)} pitchers and {len(all_batters)} batters")
+        all_pitchers.extend(ps)
 
     csv_path = raw_data_dir / \
         f"mlb_combined_stats_{date_str.replace('-', '')}.csv"
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        headers = ['game_id', 'player_type', 'team', 'team_abbrev',
+        headers = ['game_id', 'player_type', 'team', 'team_abbrev', 'side',
                    'id', 'name', 'position', 'order']
         stat_keys = sorted({
-            k
-            for rec in all_pitchers
-            for k in rec.get('stats', {})
+            k for rec in all_pitchers for k in rec.get('stats', {})
         })
         writer.writerow(headers + stat_keys)
-        # writer.writerow(headers)
         for rec in all_pitchers:
-            row = [rec.get(c, '') for c in headers]
+            row = [rec.get(c, 'NA') for c in headers]
             row += [rec['stats'].get(sk, 'NA') for sk in stat_keys]
             writer.writerow(row)
 
     logging.info(f"Saved CSV to {csv_path}")
 
-    # ——— JSON stats summary alongside CSV ———
     json_stats_path = raw_data_dir / \
         f"mlb_daily_stats_summary_{date_str.replace('-', '')}.json"
     with open(json_stats_path, 'w', encoding='utf-8') as jf:
         json.dump(all_pitchers, jf, indent=2)
     logging.info(f"Saved JSON stats summary to {json_stats_path}")
 
-    # ——— Build a per‐game summary ———
     game_summary = []
     for g in games:
         away_team = g["teams"]["away"]["team"]["name"]
         home_team = g["teams"]["home"]["team"]["name"]
-        away_abbrev = TEAM_CODES.get(
-            g["teams"]["away"]["team"]["id"],
-            ""
-        )
-        home_abbrev = TEAM_CODES.get(
-            g["teams"]["home"]["team"]["id"],
-            ""
-        )
+        away_abbrev = TEAM_CODES.get(g["teams"]["away"]["team"]["id"], "")
+        home_abbrev = TEAM_CODES.get(g["teams"]["home"]["team"]["id"], "")
         away_pitch = g["teams"]["away"].get(
             "probablePitcher", {}).get("fullName", "")
         home_pitch = g["teams"]["home"].get(
             "probablePitcher", {}).get("fullName", "")
 
-        # first 3 batters we just collected:
-        # bs is the per‐game batters list returned by fetch_game_details()
-        # away_bats = [b['name'] for b in bs if b['team'] == "away"]
-        # home_bats = [b['name'] for b in bs if b['team'] == "home"]
+        # Look up pitcher stats
+        home_pitcher_stats = next((p.get("stats", {}) for p in all_pitchers if p.get(
+            "name") == home_pitch and p.get("side") == "home"), {})
+        away_pitcher_stats = next((p.get("stats", {}) for p in all_pitchers if p.get(
+            "name") == away_pitch and p.get("side") == "away"), {})
 
         game_summary.append({
-            "game_id":          g["gamePk"],
-            "game_datetime":    g["gameDate"],
-            "away_team":        away_team,
-            "away_abbrev":      away_abbrev,
-            "home_team":        home_team,
-            "home_abbrev":      home_abbrev,
-            "away_pitcher":     away_pitch,
-            "home_pitcher":     home_pitch,
-            #    "away_batters":     away_bats,
-            #    "home_batters":     home_bats,
-            #    "away_rfi_grade":   g.get("away_rfi_grade"),
-            #    "home_rfi_grade":   g.get("home_rfi_grade"),
-            "nrfi_grade":       g.get("nrfi_grade")
+            "game_id": g["gamePk"],
+            "game_datetime": g["gameDate"],
+            "away_team": away_team,
+            "away_abbrev": away_abbrev,
+            "home_team": home_team,
+            "home_abbrev": home_abbrev,
+            "away_pitcher": away_pitch,
+            "home_pitcher": home_pitch,
+            "nrfi_grade": g.get("nrfi_grade"),
+            "home_pitcher_recent_xFIP": home_pitcher_stats.get("recent_xFIP", "NA"),
+            "home_pitcher_recent_xFIP_score": home_pitcher_stats.get("recent_xFIP_score", "NA"),
+            "away_pitcher_recent_barrel%": away_pitcher_stats.get("recent_Barrel%", "NA"),
+            "away_pitcher_recent_barrel%_score": away_pitcher_stats.get("recent_Barrel%_score", "NA")
         })
 
-    # ——— CSV game summary ———
     game_csv = raw_data_dir / \
         f"mlb_daily_game_summary_{date_str.replace('-', '')}.csv"
     with open(game_csv, 'w', newline='', encoding='utf-8') as gf:
@@ -251,24 +213,20 @@ if __name__ == '__main__':
             "game_id", "game_datetime",
             "away_team", "away_abbrev",
             "home_team", "home_abbrev",
-            "away_pitcher",
-            "home_pitcher",
-            # "away_batters",
-            # "home_batters",
-            # "away_rfi_grade",
-            # "home_rfi_grade",
-            "nrfi_grade"
+            "away_pitcher", "home_pitcher", "nrfi_grade",
+            "home_pitcher_recent_xFIP", "home_pitcher_recent_xFIP_score",
+            "away_pitcher_recent_barrel%", "away_pitcher_recent_barrel%_score"
         ])
         for r in game_summary:
             writer.writerow([
-                r["game_id"], r["game_datetime"], r["away_team"], r["away_abbrev"], r["home_team"], r["home_abbrev"],
-                r["away_pitcher"], r["home_pitcher"], r["nrfi_grade"]
-                #    ";".join(r["away_batters"]), ";".join(r["home_batters"]),
-                #    r["away_rfi_grade"], r["home_rfi_grade"], r["nrfi_grade"],
+                r["game_id"], r["game_datetime"], r["away_team"], r["away_abbrev"],
+                r["home_team"], r["home_abbrev"], r["away_pitcher"],
+                r["home_pitcher"], r["nrfi_grade"],
+                r["home_pitcher_recent_xFIP"], r["home_pitcher_recent_xFIP_score"],
+                r["away_pitcher_recent_barrel%"], r["away_pitcher_recent_barrel%_score"]
             ])
     logging.info(f"Saved CSV game summary to {game_csv}")
 
-    # ——— JSON game summary ———
     game_json = raw_data_dir / \
         f"mlb_daily_game_summary_{date_str.replace('-', '')}.json"
     with open(game_json, 'w', encoding='utf-8') as gj:

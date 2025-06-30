@@ -2,7 +2,7 @@ import requests
 import logging
 import json
 from pathlib import Path
-from src.utils.config_loader import load_config
+from utils.config_loader import load_config
 
 logger = logging.getLogger(__name__)
 

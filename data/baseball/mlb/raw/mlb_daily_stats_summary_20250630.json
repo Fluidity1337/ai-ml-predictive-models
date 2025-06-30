@@ -1,0 +1,826 @@
+[
+  {
+    "insufficient_data": true,
+    "game_id": 777306,
+    "side": "away",
+    "id": 663362,
+    "name": "Matt Waldron",
+    "team": "San Diego Padres",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": null,
+        "avg_xFIP_score": null,
+        "avg_Barrel%": null,
+        "avg_Barrel%_score": null
+      },
+      "last5_games": {}
+    },
+    "stats": {
+      "recent_xFIP": null,
+      "recent_xFIP_score": null,
+      "recent_Barrel%": null,
+      "recent_Barrel%_score": null
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777306,
+    "side": "home",
+    "id": 554430,
+    "name": "Zack Wheeler",
+    "team": "Philadelphia Phillies",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.3265693488097585,
+        "avg_xFIP_score": 72.42500000000001,
+        "avg_Barrel%": 2.5418275418275416,
+        "avg_Barrel%_score": 85.1
+      },
+      "last5_games": {
+        "777578": {
+          "date": "2025-06-09",
+          "xFIP": 3.566625,
+          "xFIP_score": 64.4,
+          "Barrel%": 5.405405405405405,
+          "Barrel%_score": 65.6
+        },
+        "777499": {
+          "date": "2025-06-15",
+          "xFIP": 3.272794117647059,
+          "xFIP_score": 74.2,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777437": {
+          "date": "2025-06-20",
+          "xFIP": 3.250336538461539,
+          "xFIP_score": 75.0,
+          "Barrel%": 4.761904761904762,
+          "Barrel%_score": 74.8
+        },
+        "777366": {
+          "date": "2025-06-25",
+          "xFIP": 3.216521739130435,
+          "xFIP_score": 76.1,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.3265693488097585,
+      "recent_xFIP_score": 72.42500000000001,
+      "recent_Barrel%": 2.5418275418275416,
+      "recent_Barrel%_score": 85.1
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777299,
+    "side": "away",
+    "id": 607200,
+    "name": "Erick Fedde",
+    "team": "St. Louis Cardinals",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.8168362367043662,
+        "avg_xFIP_score": 56.1,
+        "avg_Barrel%": 4.196428571428571,
+        "avg_Barrel%_score": 79.64
+      },
+      "last5_games": {
+        "777678": {
+          "date": "2025-06-01",
+          "xFIP": 3.826422018348624,
+          "xFIP_score": 55.8,
+          "Barrel%": 3.125,
+          "Barrel%_score": 98.2
+        },
+        "777601": {
+          "date": "2025-06-07",
+          "xFIP": 4.1408433734939765,
+          "xFIP_score": 45.3,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777525": {
+          "date": "2025-06-13",
+          "xFIP": 3.4245522388059704,
+          "xFIP_score": 69.2,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777447": {
+          "date": "2025-06-19",
+          "xFIP": 3.603106796116505,
+          "xFIP_score": 63.2,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777357": {
+          "date": "2025-06-25",
+          "xFIP": 4.089256756756757,
+          "xFIP_score": 47.0,
+          "Barrel%": 17.857142857142858,
+          "Barrel%_score": 0.0
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.8168362367043662,
+      "recent_xFIP_score": 56.1,
+      "recent_Barrel%": 4.196428571428571,
+      "recent_Barrel%_score": 79.64
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777299,
+    "side": "home",
+    "id": 571760,
+    "name": "Andrew Heaney",
+    "team": "Pittsburgh Pirates",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.8267267181331257,
+        "avg_xFIP_score": 55.779999999999994,
+        "avg_Barrel%": 5.902298850574712,
+        "avg_Barrel%_score": 57.1
+      },
+      "last5_games": {
+        "777681": {
+          "date": "2025-06-01",
+          "xFIP": 3.8121978021978022,
+          "xFIP_score": 56.3,
+          "Barrel%": 6.666666666666667,
+          "Barrel%_score": 47.6
+        },
+        "777607": {
+          "date": "2025-06-07",
+          "xFIP": 4.070869565217391,
+          "xFIP_score": 47.6,
+          "Barrel%": 3.4482758620689653,
+          "Barrel%_score": 93.6
+        },
+        "777541": {
+          "date": "2025-06-12",
+          "xFIP": 3.6750000000000003,
+          "xFIP_score": 60.8,
+          "Barrel%": 6.896551724137931,
+          "Barrel%_score": 44.3
+        },
+        "777451": {
+          "date": "2025-06-19",
+          "xFIP": 3.7633684210526317,
+          "xFIP_score": 57.9,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777374": {
+          "date": "2025-06-24",
+          "xFIP": 3.8121978021978022,
+          "xFIP_score": 56.3,
+          "Barrel%": 12.5,
+          "Barrel%_score": 0.0
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.8267267181331257,
+      "recent_xFIP_score": 55.779999999999994,
+      "recent_Barrel%": 5.902298850574712,
+      "recent_Barrel%_score": 57.1
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777295,
+    "side": "away",
+    "id": 607074,
+    "name": "Carlos Rod\u00f3n",
+    "team": "New York Yankees",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.493114999324883,
+        "avg_xFIP_score": 66.88,
+        "avg_Barrel%": 6.651515151515151,
+        "avg_Barrel%_score": 59.260000000000005
+      },
+      "last5_games": {
+        "777664": {
+          "date": "2025-06-03",
+          "xFIP": 3.365740740740741,
+          "xFIP_score": 71.1,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777593": {
+          "date": "2025-06-08",
+          "xFIP": 3.5906451612903227,
+          "xFIP_score": 63.6,
+          "Barrel%": 4.166666666666666,
+          "Barrel%_score": 83.3
+        },
+        "777516": {
+          "date": "2025-06-14",
+          "xFIP": 3.7613333333333334,
+          "xFIP_score": 58.0,
+          "Barrel%": 9.090909090909092,
+          "Barrel%_score": 13.0
+        },
+        "777449": {
+          "date": "2025-06-19",
+          "xFIP": 3.4588297872340426,
+          "xFIP_score": 68.0,
+          "Barrel%": 20.0,
+          "Barrel%_score": 0.0
+        },
+        "777385": {
+          "date": "2025-06-24",
+          "xFIP": 3.289025974025974,
+          "xFIP_score": 73.7,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.493114999324883,
+      "recent_xFIP_score": 66.88,
+      "recent_Barrel%": 6.651515151515151,
+      "recent_Barrel%_score": 59.260000000000005
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777295,
+    "side": "home",
+    "id": 453286,
+    "name": "Max Scherzer",
+    "team": "Toronto Blue Jays",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.635174418604651,
+        "avg_xFIP_score": 62.2,
+        "avg_Barrel%": 3.571428571428571,
+        "avg_Barrel%_score": 91.8
+      },
+      "last5_games": {
+        "777368": {
+          "date": "2025-06-25",
+          "xFIP": 3.635174418604651,
+          "xFIP_score": 62.2,
+          "Barrel%": 3.571428571428571,
+          "Barrel%_score": 91.8
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.635174418604651,
+      "recent_xFIP_score": 62.2,
+      "recent_Barrel%": 3.571428571428571,
+      "recent_Barrel%_score": 91.8
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777300,
+    "side": "away",
+    "id": 695505,
+    "name": "Chase Burns",
+    "team": "Cincinnati Reds",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.8576562500000002,
+        "avg_xFIP_score": 54.7,
+        "avg_Barrel%": 3.4482758620689653,
+        "avg_Barrel%_score": 93.6
+      },
+      "last5_games": {
+        "777385": {
+          "date": "2025-06-24",
+          "xFIP": 3.8576562500000002,
+          "xFIP_score": 54.7,
+          "Barrel%": 3.4482758620689653,
+          "Barrel%_score": 93.6
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.8576562500000002,
+      "recent_xFIP_score": 54.7,
+      "recent_Barrel%": 3.4482758620689653,
+      "recent_Barrel%_score": 93.6
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777300,
+    "side": "home",
+    "id": 676979,
+    "name": "Garrett Crochet",
+    "team": "Boston Red Sox",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.409874966771638,
+        "avg_xFIP_score": 69.67999999999999,
+        "avg_Barrel%": 2.7485380116959064,
+        "avg_Barrel%_score": 85.4
+      },
+      "last5_games": {
+        "777692": {
+          "date": "2025-06-01",
+          "xFIP": 3.407336448598131,
+          "xFIP_score": 69.8,
+          "Barrel%": 2.631578947368421,
+          "Barrel%_score": 100.0
+        },
+        "777605": {
+          "date": "2025-06-07",
+          "xFIP": 3.238275862068966,
+          "xFIP_score": 75.4,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777537": {
+          "date": "2025-06-13",
+          "xFIP": 3.4882727272727276,
+          "xFIP_score": 67.1,
+          "Barrel%": 5.555555555555555,
+          "Barrel%_score": 63.5
+        },
+        "777453": {
+          "date": "2025-06-18",
+          "xFIP": 3.545918367346939,
+          "xFIP_score": 65.1,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777376": {
+          "date": "2025-06-24",
+          "xFIP": 3.3695714285714287,
+          "xFIP_score": 71.0,
+          "Barrel%": 5.555555555555555,
+          "Barrel%_score": 63.5
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.409874966771638,
+      "recent_xFIP_score": 69.67999999999999,
+      "recent_Barrel%": 2.7485380116959064,
+      "recent_Barrel%_score": 85.4
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777296,
+    "side": "away",
+    "id": 682052,
+    "name": "Jacob Lopez",
+    "team": "Athletics",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.567430153527687,
+        "avg_xFIP_score": 64.4,
+        "avg_Barrel%": 2.4,
+        "avg_Barrel%_score": 80.0
+      },
+      "last5_games": {
+        "777658": {
+          "date": "2025-06-03",
+          "xFIP": 3.481470588235294,
+          "xFIP_score": 67.3,
+          "Barrel%": 12.0,
+          "Barrel%_score": 0.0
+        },
+        "777588": {
+          "date": "2025-06-08",
+          "xFIP": 3.4679411764705885,
+          "xFIP_score": 67.7,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777511": {
+          "date": "2025-06-14",
+          "xFIP": 3.552741935483871,
+          "xFIP_score": 64.9,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777441": {
+          "date": "2025-06-19",
+          "xFIP": 3.561451612903226,
+          "xFIP_score": 64.6,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777371": {
+          "date": "2025-06-25",
+          "xFIP": 3.773545454545455,
+          "xFIP_score": 57.5,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.567430153527687,
+      "recent_xFIP_score": 64.4,
+      "recent_Barrel%": 2.4,
+      "recent_Barrel%_score": 80.0
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777296,
+    "side": "home",
+    "id": 656876,
+    "name": "Drew Rasmussen",
+    "team": "Tampa Bay Rays",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.61720811284935,
+        "avg_xFIP_score": 62.779999999999994,
+        "avg_Barrel%": 2.6515151515151514,
+        "avg_Barrel%_score": 79.26
+      },
+      "last5_games": {
+        "777662": {
+          "date": "2025-06-03",
+          "xFIP": 3.343538461538462,
+          "xFIP_score": 71.9,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777592": {
+          "date": "2025-06-08",
+          "xFIP": 3.4607954545454547,
+          "xFIP_score": 68.0,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777518": {
+          "date": "2025-06-14",
+          "xFIP": 3.8165463917525773,
+          "xFIP_score": 56.1,
+          "Barrel%": 9.090909090909092,
+          "Barrel%_score": 13.0
+        },
+        "777446": {
+          "date": "2025-06-19",
+          "xFIP": 3.8183333333333334,
+          "xFIP_score": 56.1,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777359": {
+          "date": "2025-06-25",
+          "xFIP": 3.6468269230769232,
+          "xFIP_score": 61.8,
+          "Barrel%": 4.166666666666666,
+          "Barrel%_score": 83.3
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.61720811284935,
+      "recent_xFIP_score": 62.779999999999994,
+      "recent_Barrel%": 2.6515151515151514,
+      "recent_Barrel%_score": 79.26
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777292,
+    "side": "away",
+    "id": 669432,
+    "name": "Trevor Rogers",
+    "team": "Baltimore Orioles",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.628614123581337,
+        "avg_xFIP_score": 62.400000000000006,
+        "avg_Barrel%": 1.1627906976744187,
+        "avg_Barrel%_score": 100.0
+      },
+      "last5_games": {
+        "777463": {
+          "date": "2025-06-18",
+          "xFIP": 3.649769230769231,
+          "xFIP_score": 61.7,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777394": {
+          "date": "2025-06-23",
+          "xFIP": 3.607459016393443,
+          "xFIP_score": 63.1,
+          "Barrel%": 2.3255813953488373,
+          "Barrel%_score": 100.0
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.628614123581337,
+      "recent_xFIP_score": 62.400000000000006,
+      "recent_Barrel%": 1.1627906976744187,
+      "recent_Barrel%_score": 100.0
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777292,
+    "side": "home",
+    "id": 571578,
+    "name": "Patrick Corbin",
+    "team": "Texas Rangers",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.657138864384689,
+        "avg_xFIP_score": 61.42,
+        "avg_Barrel%": 5.596495008259714,
+        "avg_Barrel%_score": 57.5
+      },
+      "last5_games": {
+        "777697": {
+          "date": "2025-05-31",
+          "xFIP": 3.8892857142857142,
+          "xFIP_score": 53.7,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777624": {
+          "date": "2025-06-06",
+          "xFIP": 3.7737974683544304,
+          "xFIP_score": 57.5,
+          "Barrel%": 5.88235294117647,
+          "Barrel%_score": 58.8
+        },
+        "777533": {
+          "date": "2025-06-12",
+          "xFIP": 3.4576470588235297,
+          "xFIP_score": 68.1,
+          "Barrel%": 3.8461538461538463,
+          "Barrel%_score": 87.9
+        },
+        "777460": {
+          "date": "2025-06-18",
+          "xFIP": 3.7197916666666666,
+          "xFIP_score": 59.3,
+          "Barrel%": 7.142857142857142,
+          "Barrel%_score": 40.8
+        },
+        "777394": {
+          "date": "2025-06-23",
+          "xFIP": 3.4451724137931037,
+          "xFIP_score": 68.5,
+          "Barrel%": 11.11111111111111,
+          "Barrel%_score": 0.0
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.657138864384689,
+      "recent_xFIP_score": 61.42,
+      "recent_Barrel%": 5.596495008259714,
+      "recent_Barrel%_score": 57.5
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777297,
+    "side": "away",
+    "id": 608379,
+    "name": "Michael Wacha",
+    "team": "Kansas City Royals",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.654051571229585,
+        "avg_xFIP_score": 61.54,
+        "avg_Barrel%": 3.6415130568356373,
+        "avg_Barrel%_score": 80.5
+      },
+      "last5_games": {
+        "777694": {
+          "date": "2025-05-31",
+          "xFIP": 3.931029411764706,
+          "xFIP_score": 52.3,
+          "Barrel%": 2.380952380952381,
+          "Barrel%_score": 100.0
+        },
+        "777606": {
+          "date": "2025-06-07",
+          "xFIP": 3.658975409836066,
+          "xFIP_score": 61.4,
+          "Barrel%": 6.25,
+          "Barrel%_score": 53.6
+        },
+        "777529": {
+          "date": "2025-06-13",
+          "xFIP": 3.4605555555555556,
+          "xFIP_score": 68.0,
+          "Barrel%": 6.451612903225806,
+          "Barrel%_score": 50.7
+        },
+        "777443": {
+          "date": "2025-06-19",
+          "xFIP": 3.8502857142857145,
+          "xFIP_score": 55.0,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777359": {
+          "date": "2025-06-25",
+          "xFIP": 3.3694117647058826,
+          "xFIP_score": 71.0,
+          "Barrel%": 3.125,
+          "Barrel%_score": 98.2
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.654051571229585,
+      "recent_xFIP_score": 61.54,
+      "recent_Barrel%": 3.6415130568356373,
+      "recent_Barrel%_score": 80.5
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777297,
+    "side": "home",
+    "id": 669923,
+    "name": "George Kirby",
+    "team": "Seattle Mariners",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.878019082206454,
+        "avg_xFIP_score": 54.06,
+        "avg_Barrel%": 3.3846153846153846,
+        "avg_Barrel%_score": 76.12
+      },
+      "last5_games": {
+        "777655": {
+          "date": "2025-06-03",
+          "xFIP": 3.7705357142857143,
+          "xFIP_score": 57.6,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777589": {
+          "date": "2025-06-08",
+          "xFIP": 3.3157386363636365,
+          "xFIP_score": 72.8,
+          "Barrel%": 6.666666666666667,
+          "Barrel%_score": 47.6
+        },
+        "777507": {
+          "date": "2025-06-14",
+          "xFIP": 3.7722857142857142,
+          "xFIP_score": 57.6,
+          "Barrel%": 2.564102564102564,
+          "Barrel%_score": 100.0
+        },
+        "777436": {
+          "date": "2025-06-20",
+          "xFIP": 4.926071428571428,
+          "xFIP_score": 19.1,
+          "Barrel%": 7.6923076923076925,
+          "Barrel%_score": 33.0
+        },
+        "777363": {
+          "date": "2025-06-25",
+          "xFIP": 3.6054639175257734,
+          "xFIP_score": 63.2,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.878019082206454,
+      "recent_xFIP_score": 54.06,
+      "recent_Barrel%": 3.3846153846153846,
+      "recent_Barrel%_score": 76.12
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777291,
+    "side": "away",
+    "id": 657277,
+    "name": "Logan Webb",
+    "team": "San Francisco Giants",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.5274947500842666,
+        "avg_xFIP_score": 65.75999999999999,
+        "avg_Barrel%": 2.965507610668901,
+        "avg_Barrel%_score": 83.35999999999999
+      },
+      "last5_games": {
+        "777676": {
+          "date": "2025-06-02",
+          "xFIP": 3.4069158878504675,
+          "xFIP_score": 69.8,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777598": {
+          "date": "2025-06-07",
+          "xFIP": 3.2736,
+          "xFIP_score": 74.2,
+          "Barrel%": 3.225806451612903,
+          "Barrel%_score": 96.8
+        },
+        "777522": {
+          "date": "2025-06-13",
+          "xFIP": 4.058311688311688,
+          "xFIP_score": 48.1,
+          "Barrel%": 3.0303030303030303,
+          "Barrel%_score": 99.6
+        },
+        "777440": {
+          "date": "2025-06-19",
+          "xFIP": 3.450578947368421,
+          "xFIP_score": 68.3,
+          "Barrel%": 0.0,
+          "Barrel%_score": 100.0
+        },
+        "777355": {
+          "date": "2025-06-25",
+          "xFIP": 3.4480672268907564,
+          "xFIP_score": 68.4,
+          "Barrel%": 8.571428571428571,
+          "Barrel%_score": 20.4
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.5274947500842666,
+      "recent_xFIP_score": 65.75999999999999,
+      "recent_Barrel%": 2.965507610668901,
+      "recent_Barrel%_score": 83.35999999999999
+    }
+  },
+  {
+    "insufficient_data": false,
+    "game_id": 777291,
+    "side": "home",
+    "id": 669194,
+    "name": "Ryne Nelson",
+    "team": "Arizona Diamondbacks",
+    "calculated_stats": {
+      "recent_avgs": {
+        "avg_xFIP": 3.969203491055513,
+        "avg_xFIP_score": 51.04,
+        "avg_Barrel%": 5.7375535106347115,
+        "avg_Barrel%_score": 60.9
+      },
+      "last5_games": {
+        "777696": {
+          "date": "2025-05-31",
+          "xFIP": 4.210714285714285,
+          "xFIP_score": 43.0,
+          "Barrel%": 3.0303030303030303,
+          "Barrel%_score": 99.6
+        },
+        "777612": {
+          "date": "2025-06-07",
+          "xFIP": 3.898823529411765,
+          "xFIP_score": 53.4,
+          "Barrel%": 9.090909090909092,
+          "Barrel%_score": 13.0
+        },
+        "777521": {
+          "date": "2025-06-13",
+          "xFIP": 3.786666666666667,
+          "xFIP_score": 57.1,
+          "Barrel%": 6.451612903225806,
+          "Barrel%_score": 50.7
+        },
+        "777448": {
+          "date": "2025-06-19",
+          "xFIP": 4.181328125,
+          "xFIP_score": 44.0,
+          "Barrel%": 3.4482758620689653,
+          "Barrel%_score": 93.6
+        },
+        "777383": {
+          "date": "2025-06-24",
+          "xFIP": 3.7684848484848485,
+          "xFIP_score": 57.7,
+          "Barrel%": 6.666666666666667,
+          "Barrel%_score": 47.6
+        }
+      }
+    },
+    "stats": {
+      "recent_xFIP": 3.969203491055513,
+      "recent_xFIP_score": 51.04,
+      "recent_Barrel%": 5.7375535106347115,
+      "recent_Barrel%_score": 60.9
+    }
+  }
+]

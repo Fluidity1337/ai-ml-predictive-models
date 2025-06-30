@@ -1,3 +1,4 @@
+from datetime import date
 import importlib.util
 import sys
 from pathlib import Path
@@ -18,8 +19,7 @@ schedule_df = fetch_mlb_schedule.fetch_mlb_schedule()
 print(schedule_df)
 
 # Optional: Run test on a specific date (e.g., June 3, 2025)
-from datetime import date
-test_date = date(2025, 6, 3)
+test_date = date(2025, 6, 30)
 schedule_df_test = fetch_mlb_schedule.fetch_mlb_schedule(test_date)
 print("\nFiltered for test date:")
 print(schedule_df_test)

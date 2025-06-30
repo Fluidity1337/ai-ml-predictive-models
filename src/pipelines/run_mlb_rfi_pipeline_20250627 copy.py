@@ -11,7 +11,7 @@ import requests
 import pandas as pd
 from utils.mlb.lookup_stats import lookup_stats
 from utils.mlb.fetch_game_details import fetch_game_details
-from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherXfipAnalyzer
+from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherAdvancedStats
 from utils.config_loader import load_config
 from utils.helpers import RatingCalculator, FeatureConfigLoader
 from utils.mlb.team_codes import get_team_codes

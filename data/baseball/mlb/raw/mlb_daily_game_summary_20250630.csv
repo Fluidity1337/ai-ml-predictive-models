@@ -1,0 +1,9 @@
+game_id,game_datetime,away_team,away_abbrev,home_team,home_abbrev,away_pitcher,home_pitcher,nrfi_grade,home_pitcher_recent_xFIP,home_pitcher_recent_xFIP_score,away_pitcher_recent_barrel%,away_pitcher_recent_barrel%_score
+777306,2025-06-30T22:35:00Z,San Diego Padres,SD,Philadelphia Phillies,PHI,Matt Waldron,Zack Wheeler,,3.3265693488097585,72.42500000000001,,
+777299,2025-06-30T22:40:00Z,St. Louis Cardinals,STL,Pittsburgh Pirates,PIT,Erick Fedde,Andrew Heaney,,3.8267267181331257,55.779999999999994,4.196428571428571,79.64
+777295,2025-06-30T23:07:00Z,New York Yankees,NYY,Toronto Blue Jays,TOR,Carlos Rodón,Max Scherzer,,3.635174418604651,62.2,6.651515151515151,59.260000000000005
+777300,2025-06-30T23:10:00Z,Cincinnati Reds,CIN,Boston Red Sox,BOS,Chase Burns,Garrett Crochet,,3.409874966771638,69.67999999999999,3.4482758620689653,93.6
+777296,2025-06-30T23:35:00Z,Athletics,ATH,Tampa Bay Rays,TB,Jacob Lopez,Drew Rasmussen,,3.61720811284935,62.779999999999994,2.4,80.0
+777292,2025-07-01T00:05:00Z,Baltimore Orioles,BAL,Texas Rangers,TEX,Trevor Rogers,Patrick Corbin,,3.657138864384689,61.42,1.1627906976744187,100.0
+777297,2025-07-01T01:40:00Z,Kansas City Royals,KC,Seattle Mariners,SEA,Michael Wacha,George Kirby,,3.878019082206454,54.06,3.6415130568356373,80.5
+777291,2025-07-01T01:40:00Z,San Francisco Giants,SF,Arizona Diamondbacks,AZ,Logan Webb,Ryne Nelson,,3.969203491055513,51.04,2.965507610668901,83.35999999999999

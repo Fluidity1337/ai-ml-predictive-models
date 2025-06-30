@@ -6,6 +6,7 @@ python -m src.pipelines.run_mlb_rfi_pipeline_20250629
 
 python advanced_team_stats.py --force --quiet
 
+python src/utils/mlb/lookup_stats.py 671106
 python src/utils/mlb/fetch_games_by_pitcher.py 671106
 python src/utils/mlb/fetch_advanced_stats_for_pitcher.py 671106
 python fetch_advanced_stats_for_pitcher.py 669160 --days 30

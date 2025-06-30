@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import logging
-import argparse
+import logging.config
+import os
 import sys
+import argparse
 from datetime import datetime, date, timedelta
 
 import pandas as pd
@@ -10,64 +12,68 @@ from utils.mlb.fetch_games_by_pitcher import FetchGamesByPitcher
 from utils.config_loader import load_config
 from utils.helpers import RatingCalculator, FeatureConfigLoader
 
+# Configure logging
 cfg = load_config()
-logging.config.dictConfig(cfg["logging"])
+try:
+    log_cfg = cfg.get("logging", {})
+    handlers = log_cfg.get("handlers", {})
+    file_handler = handlers.get("file", {})
+    if file_handler:
+        os.makedirs(os.path.dirname(
+            file_handler.get("filename", "")), exist_ok=True)
+    logging.config.dictConfig(log_cfg)
+except Exception as e:
+    logging.basicConfig(level=logging.DEBUG,
+                        format="%(asctime)s %(levelname)-8s %(message)s")
+    logging.warning(
+        "Could not configure file logging, using console only: %s", e)
+
+# Load feature config
 features_path = cfg["models"]["mlb_rfi"]["feature_definitions_path"]
 features_cfg = FeatureConfigLoader.load_features_config(features_path)
 
 
-class PitcherXfipAnalyzer:
+class PitcherAdvancedStats:
     """
-    Analyze a pitcher's xFIP and barrel percentage across games in a date range.
+    Analyze a pitcher's per-game xFIP and Barrel% across a date range,
+    and compute average metrics.
     """
 
     def __init__(self, pitcher_id: int, start: date = None, end: date = None):
         self.pitcher_id = pitcher_id
         self.pitcher_name = None
         self.team_name = None
-
         self.fetcher = FetchGamesByPitcher(pitcher_id, start=start, end=end)
+        self.start = self.fetcher.start
+        self.end = self.fetcher.end
         self.games = self.fetcher.fetch_games()
-        # records: list of (game_pk, game_date, xFIP, barrel_pct)
+        # list of (game_pk, game_date, xfip, xfip_score, barrel_pct, barrel_score)
         self.records = []
+        # average metrics
+        self.avg_xfip = float('nan')
+        self.avg_xfip_score = float('nan')
+        self.avg_barrel_pct = float('nan')
+        self.avg_barrel_score = float('nan')
 
     def analyze(self):
-        """
-        Compute xFIP and barrel% for each fetched game.
-        """
         recs = []
         for gp, gd in self.games:
             try:
-                # pull Statcast data for game
                 df = statcast_single_game(gp)
                 df_p = df[df['pitcher'] == self.pitcher_id]
                 if self.pitcher_name is None and not df_p.empty:
-                    try:
-                        # Extract name from nested matchup field
-                        first_matchup = df_p.iloc[0]['matchup']
-                        self.pitcher_name = (
-                            first_matchup['pitcher']['fullName']
-                            if isinstance(first_matchup, dict) and 'pitcher' in first_matchup
-                            else f"ID {self.pitcher_id}"
-                        )
-
-                    except Exception:
-                        self.pitcher_name = f"ID {self.pitcher_id}"
-
-                # Infer team from whether the pitcher threw in the Top (home) or Bottom (away)
+                    mp = df_p.iloc[0].get('matchup', {})
+                    self.pitcher_name = mp.get('pitcher', {}).get(
+                        'fullName', f"ID {self.pitcher_id}")
                 try:
-                    # get the most common half-inning for this pitcher
-                    # 'Top' or 'Bottom'
                     half = df_p['inning_topbot'].mode()[0]
                     is_home = (half == 'Top')
-
-                    team_col = 'home_team' if is_home else 'away_team'
-                    self.team_name = df[team_col].mode(
-                    )[0] if team_col in df.columns else "Unknown"
+                    col = 'home_team' if is_home else 'away_team'
+                    self.team_name = df[col].mode(
+                    )[0] if col in df.columns else None
                 except Exception:
-                    self.team_name = "Unknown"
+                    self.team_name = None
 
-                # compute xFIP
                 hr = df_p['events'].eq('home_run').sum()
                 bb = df_p['bb_type'].eq('walk').sum()
                 hbp = df_p['events'].eq('hit_by_pitch').sum()
@@ -80,91 +86,100 @@ class PitcherXfipAnalyzer:
                 if ip > 0:
                     hr_exp = fb * 0.105
                     xfip = (13 * hr_exp + 3 * (bb + hbp) - 2 * k) / ip + 3.20
-                # compute barrel%
-                # 6 = Barrel zone in launch_speed_angle
                 barrels = df_p['launch_speed_angle'].eq(6).sum()
                 batted = df_p['launch_speed'].notna().sum()
                 barrel_pct = float('nan')
                 if batted > 0:
                     barrel_pct = barrels / batted * 100.0
-                # Scale metrics (bounds set from historical MLB data ranges)
-                rating_calculator = RatingCalculator(features_cfg)
-                xfip_score = rating_calculator.minmax_scale(
-                    xfip, "xFIP", reverse=True)
-                barrel_score = rating_calculator.minmax_scale(
+                rc = RatingCalculator(features_cfg)
+                xfip_score = rc.minmax_scale(xfip, "xFIP", reverse=True)
+                barrel_score = rc.minmax_scale(
                     barrel_pct, "BarrelPct", reverse=True)
-
                 recs.append((gp, gd, xfip, xfip_score,
                             barrel_pct, barrel_score))
             except Exception as e:
                 logging.error("Error analyzing game %s: %s", gp, e)
                 recs.append((gp, gd, float('nan'), 50, float('nan'), 50))
+
         self.records = recs
+        # compute averages
+        xfips = [r[2] for r in recs if pd.notna(r[2])]
+        xfip_scores = [r[3] for r in recs if pd.notna(r[3])]
+        barrel_pcts = [r[4] for r in recs if pd.notna(r[4])]
+        barrel_scores = [r[5] for r in recs if pd.notna(r[5])]
+        self.avg_xfip = sum(xfips) / len(xfips) if xfips else float('nan')
+        self.avg_xfip_score = sum(
+            xfip_scores) / len(xfip_scores) if xfip_scores else float('nan')
+        self.avg_barrel_pct = sum(
+            barrel_pcts) / len(barrel_pcts) if barrel_pcts else float('nan')
+        self.avg_barrel_score = sum(
+            barrel_scores) / len(barrel_scores) if barrel_scores else float('nan')
         return recs
 
     def summary(self):
-        """
-        Print detailed per-game scores and averages.
-        """
-        name = self.pitcher_name or f"Pitcher ID {self.pitcher_id}"
-        team = self.team_name or "Unknown Team"
-        print(f"\nSummary for pitcher {name} ({team}):")
-
-        if not self.records:
-            print(
-                f"No games pitched by {self.pitcher_id} in {self.fetcher.start}→{self.fetcher.end}.")
-            return
-
-        xfips, barrels, xfip_scores, barrel_scores = [], [], [], []
-        for gp, gd, xf, xf_s, bp, bp_s in self.records:
-            xf_str = f"{xf:.2f} ({xf_s}/100)" if not pd.isna(xf) else "NA"
-            bp_str = f"{bp:.1f}% ({bp_s}/100)" if not pd.isna(bp) else "NA"
+        name = self.pitcher_name or f"ID {self.pitcher_id}"
+        team = self.team_name or ""
+        print(f"Summary for {name} ({team}):")
+        for gp, gd, xf, xfsc, bp, bpsc in self.records:
+            xf_str = f"{xf:.2f} ({xfsc}/100)" if pd.notna(xf) else "NA"
+            bp_str = f"{bp:.1f}% ({bpsc}/100)" if pd.notna(bp) else "NA"
             print(f"Game {gp} on {gd}: xFIP = {xf_str}, Barrel% = {bp_str}")
-
-            if not pd.isna(xf):
-                xfips.append(xf)
-                xfip_scores.append(xf_s)
-            if not pd.isna(bp):
-                barrels.append(bp)
-                barrel_scores.append(bp_s)
-
-        avg_xfip = sum(xfips) / len(xfips) if xfips else float('nan')
-        avg_xfip_score = sum(xfip_scores) / \
-            len(xfip_scores) if xfip_scores else 50
-        avg_barrel = sum(barrels) / len(barrels) if barrels else float('nan')
-        avg_barrel_score = sum(barrel_scores) / \
-            len(barrel_scores) if barrel_scores else 50
-        count = len(self.records)
-
+        print(f"\nAverage over {len(self.records)} games:")
+        print(f"  xFIP: {self.avg_xfip:.2f} ({self.avg_xfip_score:.1f}/100)")
         print(
-            f"\nOver {count} games ({self.fetcher.start}→{self.fetcher.end}):")
-        print(f"  Average xFIP: {avg_xfip:.2f} ({avg_xfip_score:.1f}/100)")
-        print(
-            f"  Average Barrel%: {avg_barrel:.1f}% ({avg_barrel_score:.1f}/100)")
-        print(f"  Average xFIP Score: {avg_xfip_score:.1f}/100")
-        print(f"  Average Barrel% Score: {avg_barrel_score:.1f}/100")
+            f"  Barrel%: {self.avg_barrel_pct:.1f}% ({self.avg_barrel_score:.1f}/100)")
+
+
+def pitcher_stats_to_df(
+    pitcher_id: int,
+    start: date = None,
+    end: date = None,
+    existing_df: pd.DataFrame = None
+) -> pd.DataFrame:
+    """
+    Fetch per-game xFIP and Barrel% for a given pitcher over a date range, compute averages,
+    append to existing DataFrame (if provided), and return the combined DataFrame.
+    """
+    pa = PitcherAdvancedStats(pitcher_id, start=start, end=end)
+    pa.analyze()
+    df = pd.DataFrame([
+        {
+            'pitcher_id':    pitcher_id,
+            'game_pk':       gp,
+            'date':          gd,
+            'xFIP':          xf,
+            'xFIP_score':    xfsc,
+            'Barrel%':       bp,
+            'Barrel%_score': bpsc
+        }
+        for gp, gd, xf, xfsc, bp, bpsc in pa.records
+    ])
+    df['avg_xFIP'] = pa.avg_xfip
+    df['avg_xFIP_score'] = pa.avg_xfip_score
+    df['avg_Barrel%'] = pa.avg_barrel_pct
+    df['avg_Barrel%_score'] = pa.avg_barrel_score
+    if existing_df is not None:
+        return pd.concat([existing_df, df], ignore_index=True)
+    return df
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Analyze a pitcher's xFIP and Barrel% over a date range via class."
+        description="Analyze a pitcher's xFIP and Barrel% over a date range via class or CLI."
     )
     parser.add_argument("pitcher_id", type=int, help="MLBAM pitcher ID")
     parser.add_argument(
         "--start", type=lambda s: datetime.fromisoformat(s).date(),
-        help="Start date YYYY-MM-DD (defaults to 30 days ago)"
+        help="Start date YYYY-MM-DD"
     )
     parser.add_argument(
-        "--end",   type=lambda s: datetime.fromisoformat(s).date(),
-        help="End date YYYY-MM-DD (defaults to today)"
+        "--end", type=lambda s: datetime.fromisoformat(s).date(),
+        help="End date YYYY-MM-DD"
     )
     args = parser.parse_args()
-    try:
-        analyzer = PitcherXfipAnalyzer(
-            args.pitcher_id, start=args.start, end=args.end
-        )
-        analyzer.analyze()
-        analyzer.summary()
-    except Exception as e:
-        logging.error("Fatal error: %s", e)
-        sys.exit(1)
+    df = pitcher_stats_to_df(
+        args.pitcher_id,
+        start=args.start,
+        end=args.end
+    )
+    print(df.to_string(index=False))
