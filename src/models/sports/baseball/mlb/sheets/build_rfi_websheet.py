@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 from datetime import datetime as _dt
 from zoneinfo import ZoneInfo
+
+from pyparsing import col
 from utils.config_loader import load_config
 
 cfg = load_config()
@@ -46,26 +48,76 @@ logging.info(f"Title date: {title_date}")
 
 # Color thresholds
 
+# Utility functions
+
 
 def grade_color(score):
     try:
         s = float(score)
-
         if s <= 20:
-            return 'bg-red-600 text-white'
+            return 'bg-de4545 text-white'
         if s < 4:
             return 'bg-red-300 text-black'
         if s >= 50:
             return 'bg-green-600 text-white'
-        # if s <= 6:
-            return 'bg-gray-500 text-white'
-        # if s < 7:
-            return 'bg-green-300 text-black'
         return 'bg-gray-600 text-white'
     except:
         return ''
 
+# Letter grade helper
+
+
+def letter_grade(score):
+    try:
+        s = float(score)
+        # if s >= 98: return 'A+'
+        # if s >= 94: return 'A'
+        # if s >= 90: return 'A-'
+        # if s >= 85: return 'B+'
+        # if s >= 80: return 'B'
+        # if s >= 75: return 'B-'
+        # if s >= 70: return 'C+'
+        # if s >= 65: return 'C'
+        # if s >= 60: return 'C-'
+        # if s >= 55: return 'D+'
+        # if s >= 50: return 'D'
+        # if s >= 45: return 'D-'
+        if s >= 50:
+            return 'A'
+        if s >= 40:
+            return 'B'
+        if s >= 30:
+            return 'C'
+        if s >= 20:
+            return 'D'
+        if s >= 10:
+            return 'F'
+        return 'F'
+    except:
+        return ''
 # Recommendation logic
+
+
+def recommendation_from_grade(grade):
+    # map letter grade to recommendation
+    mapping = {
+        'A+': 'NRFI', 'A': 'NRFI', 'A-': 'NRFI',
+        'B+': 'Lean NRFI', 'B': 'Lean NRFI', 'B-': 'Lean NRFI',
+        'C+': 'TBD', 'C': 'TBD', 'C-': 'TBD',
+        'D+': 'Lean YRFI', 'D': 'Lean YRFI', 'D-': 'Lean YRFI',
+        'F': 'YRFI'
+    }
+    return mapping.get(grade, 'TBD')
+
+
+# Icon mapping for grades
+icon_map = {
+    'A+': '✅', 'A': '✅', 'A-': '✅',
+    'B+': '⚠️', 'B': '⚠️', 'B-': '⚠️',
+    'C+': '❌', 'C': '❌', 'C-': '❌',
+    'D+': '❌', 'D': '❌', 'D-': '❌',
+    'F': '❌'
+}
 
 
 def recommendation(nrfi):
@@ -113,6 +165,7 @@ class BaseballRfiHtmlGenerator:
         games = self.load_data()
         if not games:
             logging.warning("No games data; HTML will be blank.")
+
         # Build HTML header
         html = f"""<!DOCTYPE html>
 <html lang='en'>
@@ -122,16 +175,65 @@ class BaseballRfiHtmlGenerator:
   <title>Moneyline Hacks - NRFI Model</title>
   <link href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css' rel='stylesheet'>
   <style>
-    body {{ background-color:#0f172a; color:#e2e8f0; font-family:'Segoe UI', sans-serif; }}
-    .title-highlight {{ background:linear-gradient(to right,#34d399,#06b6d4); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }}
-    table {{ border-collapse: collapse; width:100%; }}
-    th, td {{ border: 1px solid #fff; padding: 0.5rem; text-align: center; }}
+    /* global box-sizing */
+    *, *::before, *::after {{ box-sizing: border-box; }}
+    /* reset margins */
+    html, body {{ margin: 0; padding: 0; }}
+    body {{
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 1.5rem;
+    }}
+    .title-highlight {{
+      background: linear-gradient(to right, #34d399, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }}
+
+    /* custom class for s<=20 */
+    .bg-de4545 {{ background-color: #db5a5a !important; }}
+    /* wrapper provides uniform white border */
+    .table-wrapper {{ 
+      display: inline-block; 
+      max-width: 100%; 
+      overflow-x: auto; 
+      border: 1px solid #fff; 
+    }}
+    table {{
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #0f172a; /* table background behind cells */
+      border: 1px solid #fff;     /* uniform outer border */
+    }}
+    th, td {{
+      border: 1px solid #fff;
+      padding: 0.5rem;
+      text-align: center;
+    }}
+    .overflow-auto.max-w-5xl.mx-auto {{
+    box-sizing: border-box; 
+    }}
   </style>
 </head>
 <body class='p-6'>
-  <div class='text-center mb-6'>
-    <h1 class='text-4xl font-extrabold title-highlight'>Moneyline Hacks</h1>
-    <p class='text-gray-400'>MLB No Run First Inning (NRFI) Model — {title_date}</p>
+  <div class='flex flex-col items-center justify-center gap-3 mb-6'>
+    <!-- First line: logo and title -->
+    <div class='flex items-center gap-4'>
+      <img
+        src='https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/assets/img/mlh/mlh-logo-1.jpg'
+        alt='Moneyline Hacks Logo'
+        class='h-16'/>
+      <h1 class='text-4xl font-extrabold title-highlight'>Moneyline Hacks</h1>
+    </div>
+    <!-- Second line: date and second logo -->
+    <div class='flex items-center gap-4'>
+      <h2 class='text-xl text-gray-400'>No Run First Inning Model — {title_date}</h2>
+      <img
+        src='https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/assets/img/mlb/mlb-logo-2.png'
+        alt='Baseball Icon'
+        class='h-10'/>
+    </div>
   </div>
   <div class='overflow-auto max-w-5xl mx-auto'>
     <table class='min-w-full text-gray-300 text-sm'>
@@ -141,13 +243,12 @@ class BaseballRfiHtmlGenerator:
           <th class='px-4 py-2'>Start Time</th>
           <th class='px-4 py-2'>SP Name</th>
           <th class='px-4 py-2'>SP xFIP (L30D)</th>
-          <th class='px-4 py-2'>xFIP Score (0-100) (L30D)</th>          
-          <th class='px-4 py-2'>SP Barrel% (L30D)</th>
-          <th class='px-4 py-2'>Barr% Score (0-100) (L30D)</th>          
+          <th class='px-4 py-2'>xFIP Score (0-100)</th>          
+          <th class='px-4 py-2'>SP Barrel% (L30D)</th>        
           <th class='px-4 py-2'>Top 3 Hitters Avg wOBA (L14D)</th>          
           <th class='px-4 py-2'>Team 1st Inning wRC+ (Season)</th>
           <th class='px-4 py-2'>Team RFI Grade (0-100)</th>
-          <th class='px-4 py-2'>NRFI Grade (0-100)</th>
+          <th class='px-4 py-2'>Grade</th>        
           <th class='px-4 py-2'>Recommendation</th>
         </tr>
       </thead>
@@ -196,10 +297,10 @@ class BaseballRfiHtmlGenerator:
                 raw_home_xfip, (int, float)) else 'N/A'
 
             # xFIP Score
-            raw_away_xfip_score = game.get('away_pitcher_recent_xfip')
+            raw_away_xfip_score = game.get('away_pitcher_recent_xfip_score')
             away_pitcher_recent_xfip_score = f"{raw_away_xfip_score:.2f}" if isinstance(
                 raw_away_xfip_score, (int, float)) else 'N/A'
-            raw_home_xfip_score = game.get('home_pitcher_recent_xfip')
+            raw_home_xfip_score = game.get('home_pitcher_recent_xfip_score')
             home_pitcher_recent_xfip_score = f"{raw_home_xfip_score:.2f}" if isinstance(
                 raw_home_xfip_score, (int, float)) else 'N/A'
 
@@ -248,7 +349,11 @@ class BaseballRfiHtmlGenerator:
                 raw_home_team_rfi_score, (int, float)) else 'N/A'
 
             game_nrfi_score = game.get('game_nrfi_score', '')
-            rec = recommendation(game_nrfi_score)
+            # rec = recommendation(game_nrfi_score)
+            score = game.get('game_nrfi_score', 0)
+            grade = letter_grade(score)
+            rec = recommendation_from_grade(grade)
+            color_cls = grade_color(score)
 
             # Away row (lighter gray on left 5 cols, lighter gray on RHS spans)
             html += (
@@ -258,13 +363,13 @@ class BaseballRfiHtmlGenerator:
                 f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher} ({away_abbrev})</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_xfip}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_xfip_score}</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_barrel_pct}</td>"
-                f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_barrel_pct_score}</td>"
+                f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_barrel_pct}%</td>"
+                # f"<td class='px-4 py-2 bg-gray-700'>{away_pitcher_recent_barrel_pct_score}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_team_recent_woba3}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_team_season_wrc_plus_1st_inn}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_team_nrfi_score}</td>"
-                f"<td class='px-4 py-2 bg-gray-700' rowspan='2'>{game_nrfi_score}</td>"
-                f"<td class='{grade_color(game_nrfi_score)}' rowspan='2'>{rec}</td>"
+                f"<td class='{color_cls}' rowspan='2'>{grade}</td>"
+                f"<td class='{color_cls}' rowspan='2'>{icon_map.get(grade, '')} {rec}</td>"
                 "</tr>\n"
             )
 
@@ -274,8 +379,8 @@ class BaseballRfiHtmlGenerator:
                 f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher} ({home_abbrev})</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_xfip}</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_xfip_score}</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_barrel_pct}</td>"
-                f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_barrel_pct_score}</td>"
+                f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_barrel_pct}%</td>"
+                # f"<td class='px-4 py-2 bg-gray-800'>{home_pitcher_recent_barrel_pct_score}</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_team_recent_woba3}</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_team_season_wrc_plus_1st_inn}</td>"
                 f"<td class='px-4 py-2 bg-gray-800'>{home_team_nrfi_score}</td>"
