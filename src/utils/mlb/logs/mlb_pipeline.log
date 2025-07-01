@@ -1142,3 +1142,499 @@
 2025-06-30 20:40:18 — INFO — Saved CSV to data\baseball\mlb\raw\mlb_combined_stats_20250630.csv
 2025-06-30 20:40:18 — INFO — Saved summary CSV to data\baseball\mlb\raw\mlb_daily_game_summary_20250630.csv
 2025-06-30 20:40:18 — INFO — Saved summary JSON to data\baseball\mlb\raw\mlb_daily_game_summary_20250630.json
+2025-06-30 20:47:51 — INFO — 📦 Loading team codes from cache: .cache\team_codes_2025.json
+2025-06-30 20:47:51 — INFO — Fetching team codes from MLB API for season 2025
+2025-06-30 20:47:51 — DEBUG — Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-30 20:47:52 — DEBUG — https://statsapi.mlb.com:443 "GET /api/v1/teams?season=2025&sportId=1 HTTP/1.1" 200 2916
+2025-06-30 20:47:52 — INFO — ✅ Saved team codes to cache at F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\src\utils\mlb\.cache\team_codes_2025.json
+2025-06-30 20:47:52 — INFO — Features config keys: ['xFIP', 'BarrelPct', 'f1_era', 'WHIP', 'wRCp1st', 'wOBA3']
+2025-06-30 20:47:52 — INFO — Loading 2025 pitching stats via pybaseball…
+2025-06-30 20:47:52 — DEBUG — Starting new HTTPS connection (1): www.fangraphs.com:443
+2025-06-30 20:47:53 — DEBUG — https://www.fangraphs.com:443 "GET /leaders-legacy.aspx?pos=all&stats=pit&lg=all&qual=y&type=c%2C-1%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C323%2C324%2C325%2C326%2C327%2C328%2C329%2C330%2C331%2C332%2C333%2C334%2C335%2C336%2C337%2C338%2C339%2C340%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C348%2C349%2C350%2C351%2C352%2C353%2C354%2C355%2C356%2C357%2C358%2C359%2C360%2C361%2C362%2C363%2C364%2C365%2C366%2C367%2C368%2C369%2C370%2C371%2C372%2C373%2C374%2C375%2C376%2C377%2C378%2C379%2C380%2C381%2C382%2C383%2C384%2C385%2C386%2C387%2C388%2C389%2C390%2C391&season=2025&month=0&season1=2025&ind=1&team=&rost=0&age=0%2C100&filter=&players=&page=1_1000000 HTTP/1.1" 200 None
+2025-06-30 20:47:53 — INFO — Loading 2025 batting stats via pybaseball…
+2025-06-30 20:47:53 — DEBUG — Starting new HTTPS connection (1): statsapi.mlb.com:443
+2025-06-30 20:47:53 — DEBUG — https://statsapi.mlb.com:443 "GET /api/v1/schedule?sportId=1&date=2025-06-30&hydrate=teams(team,previewPlayers),probablePitcher HTTP/1.1" 200 2185
+2025-06-30 20:47:53 — INFO — Loaded 8 games
+2025-06-30 20:47:53 — DEBUG — [Game 777306] Processing game details
+2025-06-30 20:47:53 — DEBUG — [777306] Probables parsed: {'away': {'id': 663362, 'fullName': 'Matt Waldron', 'link': '/api/v1/people/663362'}, 'home': {'id': 554430, 'fullName': 'Zack Wheeler', 'link': '/api/v1/people/554430'}}
+2025-06-30 20:47:53 — DEBUG — [777306] Side: away, Probable: {'id': 663362, 'fullName': 'Matt Waldron', 'link': '/api/v1/people/663362'}
+2025-06-30 20:47:53 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:47:55 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=663362&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 1809
+2025-06-30 20:47:55 — INFO — No Statcast pitches for 663362 in 2025-05-31→2025-06-30
+2025-06-30 20:47:55 — INFO — [777306] No recent RS games for Matt Waldron, fetching season-to-date
+2025-06-30 20:47:55 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:47:57 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-01-01&game_date_lt=2025-06-29&pitchers_lookup%5B%5D=663362&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 84149
+2025-06-30 20:47:57 — INFO — Found 4 appearances for 2025-01-01→2025-06-29: ['2025-02-22', '2025-02-27', '2025-03-04', '2025-03-09']
+2025-06-30 20:47:57 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:47:59 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=779026 HTTP/1.1" 200 206543
+2025-06-30 20:48:00 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:00 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=779145 HTTP/1.1" 200 109300
+2025-06-30 20:48:01 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:02 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=778750 HTTP/1.1" 200 129608
+2025-06-30 20:48:02 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:04 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=778988 HTTP/1.1" 200 121767
+2025-06-30 20:48:04 — DEBUG — [777306] Computed stats for Matt Waldron: {'avg_xfip': None, 'avg_xfip_score': None, 'avg_barrel_pct': None, 'avg_barrel_pct_score': None}
+2025-06-30 20:48:04 — DEBUG — [777306] Side: home, Probable: {'id': 554430, 'fullName': 'Zack Wheeler', 'link': '/api/v1/people/554430'}
+2025-06-30 20:48:04 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=554430&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 273980
+2025-06-30 20:48:05 — INFO — Found 4 appearances for 2025-05-31→2025-06-30: ['2025-06-09', '2025-06-15', '2025-06-20', '2025-06-25']
+2025-06-30 20:48:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:06 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777578 HTTP/1.1" 200 216934
+2025-06-30 20:48:06 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:09 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777499 HTTP/1.1" 200 229790
+2025-06-30 20:48:09 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:11 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777437 HTTP/1.1" 200 221477
+2025-06-30 20:48:11 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777366 HTTP/1.1" 200 187150
+2025-06-30 20:48:12 — DEBUG — [777306] Computed stats for Zack Wheeler: {'avg_xfip': np.float64(3.3265693488097585), 'avg_xfip_score': np.float64(72.42500000000001), 'avg_barrel_pct': np.float64(2.5418275418275416), 'avg_barrel_pct_score': np.float64(85.1)}
+2025-06-30 20:48:12 — INFO — [777306] Final pitcher count: 2
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=663362&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 1809
+2025-06-30 20:48:12 — INFO — No Statcast pitches for 663362 in 2025-05-31→2025-06-30
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=663362&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 1809
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=663362&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 1809
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=554430&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 273980
+2025-06-30 20:48:12 — INFO — Found 4 appearances for 2025-05-31→2025-06-30: ['2025-06-09', '2025-06-15', '2025-06-20', '2025-06-25']
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777578 HTTP/1.1" 200 216934
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777499 HTTP/1.1" 200 229790
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777437 HTTP/1.1" 200 221477
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777366 HTTP/1.1" 200 187150
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=554430&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 273980
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=554430&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 273980
+2025-06-30 20:48:12 — DEBUG — [Game 777299] Processing game details
+2025-06-30 20:48:12 — DEBUG — [777299] Probables parsed: {'away': {'id': 607200, 'fullName': 'Erick Fedde', 'link': '/api/v1/people/607200'}, 'home': {'id': 571760, 'fullName': 'Andrew Heaney', 'link': '/api/v1/people/571760'}}
+2025-06-30 20:48:12 — DEBUG — [777299] Side: away, Probable: {'id': 607200, 'fullName': 'Erick Fedde', 'link': '/api/v1/people/607200'}
+2025-06-30 20:48:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:14 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=607200&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 303669
+2025-06-30 20:48:14 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-01', '2025-06-07', '2025-06-13', '2025-06-19', '2025-06-25']
+2025-06-30 20:48:14 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:15 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777678 HTTP/1.1" 200 185663
+2025-06-30 20:48:15 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:16 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777601 HTTP/1.1" 200 196760
+2025-06-30 20:48:16 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:19 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777525 HTTP/1.1" 200 198570
+2025-06-30 20:48:19 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:20 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777447 HTTP/1.1" 200 221976
+2025-06-30 20:48:20 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:22 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777357 HTTP/1.1" 200 184873
+2025-06-30 20:48:22 — DEBUG — [777299] Computed stats for Erick Fedde: {'avg_xfip': np.float64(3.8168362367043662), 'avg_xfip_score': np.float64(56.1), 'avg_barrel_pct': np.float64(4.196428571428571), 'avg_barrel_pct_score': np.float64(79.64)}
+2025-06-30 20:48:22 — DEBUG — [777299] Side: home, Probable: {'id': 571760, 'fullName': 'Andrew Heaney', 'link': '/api/v1/people/571760'}
+2025-06-30 20:48:23 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:24 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=571760&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 283967
+2025-06-30 20:48:24 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-01', '2025-06-07', '2025-06-12', '2025-06-19', '2025-06-24']
+2025-06-30 20:48:24 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:25 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777681 HTTP/1.1" 200 223568
+2025-06-30 20:48:25 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:27 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777607 HTTP/1.1" 200 158753
+2025-06-30 20:48:27 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:28 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777541 HTTP/1.1" 200 161930
+2025-06-30 20:48:28 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:30 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777451 HTTP/1.1" 200 206607
+2025-06-30 20:48:30 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:32 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777374 HTTP/1.1" 200 223465
+2025-06-30 20:48:32 — DEBUG — [777299] Computed stats for Andrew Heaney: {'avg_xfip': np.float64(3.8267267181331257), 'avg_xfip_score': np.float64(55.779999999999994), 'avg_barrel_pct': np.float64(5.902298850574712), 'avg_barrel_pct_score': np.float64(57.1)}
+2025-06-30 20:48:32 — INFO — [777299] Final pitcher count: 2
+2025-06-30 20:48:32 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:32 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=607200&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 303669
+2025-06-30 20:48:32 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-01', '2025-06-07', '2025-06-13', '2025-06-19', '2025-06-25']
+2025-06-30 20:48:32 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:32 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777678 HTTP/1.1" 200 185663
+2025-06-30 20:48:32 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:32 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777601 HTTP/1.1" 200 196760
+2025-06-30 20:48:32 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:32 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777525 HTTP/1.1" 200 198570
+2025-06-30 20:48:32 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:32 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777447 HTTP/1.1" 200 221976
+2025-06-30 20:48:32 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:32 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777357 HTTP/1.1" 200 184873
+2025-06-30 20:48:32 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=607200&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 303669
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=607200&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 303669
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=571760&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 283967
+2025-06-30 20:48:33 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-01', '2025-06-07', '2025-06-12', '2025-06-19', '2025-06-24']
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777681 HTTP/1.1" 200 223568
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777607 HTTP/1.1" 200 158753
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777541 HTTP/1.1" 200 161930
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777451 HTTP/1.1" 200 206607
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777374 HTTP/1.1" 200 223465
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=571760&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 283967
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:33 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=571760&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 283967
+2025-06-30 20:48:33 — DEBUG — [Game 777295] Processing game details
+2025-06-30 20:48:33 — DEBUG — [777295] Probables parsed: {'away': {'id': 607074, 'fullName': 'Carlos Rodón', 'link': '/api/v1/people/607074'}, 'home': {'id': 453286, 'fullName': 'Max Scherzer', 'link': '/api/v1/people/453286'}}
+2025-06-30 20:48:33 — DEBUG — [777295] Side: away, Probable: {'id': 607074, 'fullName': 'Carlos Rodón', 'link': '/api/v1/people/607074'}
+2025-06-30 20:48:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:35 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=607074&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 316379
+2025-06-30 20:48:35 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-03', '2025-06-08', '2025-06-14', '2025-06-19', '2025-06-24']
+2025-06-30 20:48:35 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:36 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777664 HTTP/1.1" 200 185207
+2025-06-30 20:48:36 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777593 HTTP/1.1" 200 241593
+2025-06-30 20:48:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:40 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777516 HTTP/1.1" 200 178562
+2025-06-30 20:48:40 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:41 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777449 HTTP/1.1" 200 191495
+2025-06-30 20:48:41 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:41 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777385 HTTP/1.1" 200 235803
+2025-06-30 20:48:41 — DEBUG — [777295] Computed stats for Carlos Rodón: {'avg_xfip': np.float64(3.493114999324883), 'avg_xfip_score': np.float64(66.88), 'avg_barrel_pct': np.float64(6.651515151515151), 'avg_barrel_pct_score': np.float64(59.260000000000005)}
+2025-06-30 20:48:41 — DEBUG — [777295] Side: home, Probable: {'id': 453286, 'fullName': 'Max Scherzer', 'link': '/api/v1/people/453286'}
+2025-06-30 20:48:41 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:42 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=453286&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 60304
+2025-06-30 20:48:42 — INFO — Found 1 appearances for 2025-05-31→2025-06-30: ['2025-06-25']
+2025-06-30 20:48:42 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:43 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777368 HTTP/1.1" 200 215667
+2025-06-30 20:48:43 — DEBUG — [777295] Computed stats for Max Scherzer: {'avg_xfip': np.float64(3.635174418604651), 'avg_xfip_score': np.float64(62.2), 'avg_barrel_pct': np.float64(3.571428571428571), 'avg_barrel_pct_score': np.float64(91.8)}
+2025-06-30 20:48:43 — INFO — [777295] Final pitcher count: 2
+2025-06-30 20:48:43 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:43 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=607074&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 316379
+2025-06-30 20:48:43 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-03', '2025-06-08', '2025-06-14', '2025-06-19', '2025-06-24']
+2025-06-30 20:48:43 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:43 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777664 HTTP/1.1" 200 185207
+2025-06-30 20:48:43 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:43 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777593 HTTP/1.1" 200 241593
+2025-06-30 20:48:43 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:43 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777516 HTTP/1.1" 200 178562
+2025-06-30 20:48:43 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:43 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777449 HTTP/1.1" 200 191495
+2025-06-30 20:48:43 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:43 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777385 HTTP/1.1" 200 235803
+2025-06-30 20:48:43 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=607074&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 316379
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=607074&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 316379
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=453286&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 60304
+2025-06-30 20:48:44 — INFO — Found 1 appearances for 2025-05-31→2025-06-30: ['2025-06-25']
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777368 HTTP/1.1" 200 215667
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=453286&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 60304
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=453286&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 60304
+2025-06-30 20:48:44 — DEBUG — [Game 777300] Processing game details
+2025-06-30 20:48:44 — DEBUG — [777300] Probables parsed: {'away': {'id': 695505, 'fullName': 'Chase Burns', 'link': '/api/v1/people/695505'}, 'home': {'id': 676979, 'fullName': 'Garrett Crochet', 'link': '/api/v1/people/676979'}}
+2025-06-30 20:48:44 — DEBUG — [777300] Side: away, Probable: {'id': 695505, 'fullName': 'Chase Burns', 'link': '/api/v1/people/695505'}
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=695505&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 57758
+2025-06-30 20:48:44 — INFO — Found 1 appearances for 2025-05-31→2025-06-30: ['2025-06-24']
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777385 HTTP/1.1" 200 235803
+2025-06-30 20:48:44 — DEBUG — [777300] Computed stats for Chase Burns: {'avg_xfip': np.float64(3.8576562500000002), 'avg_xfip_score': np.float64(54.7), 'avg_barrel_pct': np.float64(3.4482758620689653), 'avg_barrel_pct_score': np.float64(93.6)}
+2025-06-30 20:48:44 — DEBUG — [777300] Side: home, Probable: {'id': 676979, 'fullName': 'Garrett Crochet', 'link': '/api/v1/people/676979'}
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=676979&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 363945
+2025-06-30 20:48:44 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-01', '2025-06-07', '2025-06-13', '2025-06-18', '2025-06-24']
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777692 HTTP/1.1" 200 188136
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777605 HTTP/1.1" 200 205664
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777537 HTTP/1.1" 200 200822
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777453 HTTP/1.1" 200 181456
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777376 HTTP/1.1" 200 212954
+2025-06-30 20:48:44 — DEBUG — [777300] Computed stats for Garrett Crochet: {'avg_xfip': np.float64(3.409874966771638), 'avg_xfip_score': np.float64(69.67999999999999), 'avg_barrel_pct': np.float64(2.7485380116959064), 'avg_barrel_pct_score': np.float64(85.4)}
+2025-06-30 20:48:44 — INFO — [777300] Final pitcher count: 2
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=695505&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 57758
+2025-06-30 20:48:44 — INFO — Found 1 appearances for 2025-05-31→2025-06-30: ['2025-06-24']
+2025-06-30 20:48:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777385 HTTP/1.1" 200 235803
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=695505&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 57758
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=695505&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 57758
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=676979&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 363945
+2025-06-30 20:48:45 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-01', '2025-06-07', '2025-06-13', '2025-06-18', '2025-06-24']
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777692 HTTP/1.1" 200 188136
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777605 HTTP/1.1" 200 205664
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777537 HTTP/1.1" 200 200822
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777453 HTTP/1.1" 200 181456
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777376 HTTP/1.1" 200 212954
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=676979&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 363945
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=676979&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 363945
+2025-06-30 20:48:45 — DEBUG — [Game 777296] Processing game details
+2025-06-30 20:48:45 — DEBUG — [777296] Probables parsed: {'away': {'id': 682052, 'fullName': 'Jacob Lopez', 'link': '/api/v1/people/682052'}, 'home': {'id': 656876, 'fullName': 'Drew Rasmussen', 'link': '/api/v1/people/656876'}}
+2025-06-30 20:48:45 — DEBUG — [777296] Side: away, Probable: {'id': 682052, 'fullName': 'Jacob Lopez', 'link': '/api/v1/people/682052'}
+2025-06-30 20:48:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:47 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=682052&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 329650
+2025-06-30 20:48:47 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-03', '2025-06-08', '2025-06-14', '2025-06-19', '2025-06-25']
+2025-06-30 20:48:47 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:48 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777658 HTTP/1.1" 200 223403
+2025-06-30 20:48:48 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:49 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777588 HTTP/1.1" 200 202865
+2025-06-30 20:48:49 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:50 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777511 HTTP/1.1" 200 179561
+2025-06-30 20:48:50 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:52 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777441 HTTP/1.1" 200 218774
+2025-06-30 20:48:52 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:53 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777371 HTTP/1.1" 200 183544
+2025-06-30 20:48:53 — DEBUG — [777296] Computed stats for Jacob Lopez: {'avg_xfip': np.float64(3.567430153527687), 'avg_xfip_score': np.float64(64.4), 'avg_barrel_pct': np.float64(2.4), 'avg_barrel_pct_score': 80.0}
+2025-06-30 20:48:53 — DEBUG — [777296] Side: home, Probable: {'id': 656876, 'fullName': 'Drew Rasmussen', 'link': '/api/v1/people/656876'}
+2025-06-30 20:48:53 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:55 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=656876&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 275639
+2025-06-30 20:48:55 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-03', '2025-06-08', '2025-06-14', '2025-06-19', '2025-06-25']
+2025-06-30 20:48:55 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:56 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777662 HTTP/1.1" 200 184802
+2025-06-30 20:48:56 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:48:57 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777592 HTTP/1.1" 200 178798
+2025-06-30 20:48:57 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:00 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777518 HTTP/1.1" 200 218320
+2025-06-30 20:49:00 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:02 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777446 HTTP/1.1" 200 217892
+2025-06-30 20:49:02 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:04 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777359 HTTP/1.1" 200 165986
+2025-06-30 20:49:04 — DEBUG — [777296] Computed stats for Drew Rasmussen: {'avg_xfip': np.float64(3.61720811284935), 'avg_xfip_score': np.float64(62.779999999999994), 'avg_barrel_pct': np.float64(2.6515151515151514), 'avg_barrel_pct_score': np.float64(79.26)}
+2025-06-30 20:49:04 — INFO — [777296] Final pitcher count: 2
+2025-06-30 20:49:04 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:04 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=682052&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 329650
+2025-06-30 20:49:04 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-03', '2025-06-08', '2025-06-14', '2025-06-19', '2025-06-25']
+2025-06-30 20:49:04 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:04 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777658 HTTP/1.1" 200 223403
+2025-06-30 20:49:04 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:04 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777588 HTTP/1.1" 200 202865
+2025-06-30 20:49:04 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:04 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777511 HTTP/1.1" 200 179561
+2025-06-30 20:49:04 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:04 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777441 HTTP/1.1" 200 218774
+2025-06-30 20:49:04 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:04 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777371 HTTP/1.1" 200 183544
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=682052&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 329650
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=682052&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 329650
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=656876&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 275639
+2025-06-30 20:49:05 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-03', '2025-06-08', '2025-06-14', '2025-06-19', '2025-06-25']
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777662 HTTP/1.1" 200 184802
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777592 HTTP/1.1" 200 178798
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777518 HTTP/1.1" 200 218320
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777446 HTTP/1.1" 200 217892
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777359 HTTP/1.1" 200 165986
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=656876&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 275639
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:05 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=656876&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 275639
+2025-06-30 20:49:05 — DEBUG — [Game 777292] Processing game details
+2025-06-30 20:49:05 — DEBUG — [777292] Probables parsed: {'away': {'id': 669432, 'fullName': 'Trevor Rogers', 'link': '/api/v1/people/669432'}, 'home': {'id': 571578, 'fullName': 'Patrick Corbin', 'link': '/api/v1/people/571578'}}
+2025-06-30 20:49:05 — DEBUG — [777292] Side: away, Probable: {'id': 669432, 'fullName': 'Trevor Rogers', 'link': '/api/v1/people/669432'}
+2025-06-30 20:49:05 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:06 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669432&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 122121
+2025-06-30 20:49:06 — INFO — Found 2 appearances for 2025-05-31→2025-06-30: ['2025-06-18', '2025-06-23']
+2025-06-30 20:49:06 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:08 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777463 HTTP/1.1" 200 228728
+2025-06-30 20:49:08 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:10 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777394 HTTP/1.1" 200 162836
+2025-06-30 20:49:10 — DEBUG — [777292] Computed stats for Trevor Rogers: {'avg_xfip': np.float64(3.628614123581337), 'avg_xfip_score': np.float64(62.400000000000006), 'avg_barrel_pct': np.float64(1.1627906976744187), 'avg_barrel_pct_score': 100.0}
+2025-06-30 20:49:10 — DEBUG — [777292] Side: home, Probable: {'id': 571578, 'fullName': 'Patrick Corbin', 'link': '/api/v1/people/571578'}
+2025-06-30 20:49:10 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:12 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=571578&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 299483
+2025-06-30 20:49:12 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-05-31', '2025-06-06', '2025-06-12', '2025-06-18', '2025-06-23']
+2025-06-30 20:49:12 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:13 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777697 HTTP/1.1" 200 187671
+2025-06-30 20:49:13 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:14 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777624 HTTP/1.1" 200 146024
+2025-06-30 20:49:14 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:16 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777533 HTTP/1.1" 200 230016
+2025-06-30 20:49:16 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:17 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777460 HTTP/1.1" 200 206913
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777394 HTTP/1.1" 200 162836
+2025-06-30 20:49:18 — DEBUG — [777292] Computed stats for Patrick Corbin: {'avg_xfip': np.float64(3.657138864384689), 'avg_xfip_score': np.float64(61.42), 'avg_barrel_pct': np.float64(5.596495008259714), 'avg_barrel_pct_score': np.float64(57.5)}
+2025-06-30 20:49:18 — INFO — [777292] Final pitcher count: 2
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669432&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 122121
+2025-06-30 20:49:18 — INFO — Found 2 appearances for 2025-05-31→2025-06-30: ['2025-06-18', '2025-06-23']
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777463 HTTP/1.1" 200 228728
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777394 HTTP/1.1" 200 162836
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669432&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 122121
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669432&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 122121
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=571578&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 299483
+2025-06-30 20:49:18 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-05-31', '2025-06-06', '2025-06-12', '2025-06-18', '2025-06-23']
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777697 HTTP/1.1" 200 187671
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777624 HTTP/1.1" 200 146024
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777533 HTTP/1.1" 200 230016
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777460 HTTP/1.1" 200 206913
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777394 HTTP/1.1" 200 162836
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:18 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=571578&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 299483
+2025-06-30 20:49:18 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:19 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=571578&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 299483
+2025-06-30 20:49:19 — DEBUG — [Game 777297] Processing game details
+2025-06-30 20:49:19 — DEBUG — [777297] Probables parsed: {'away': {'id': 608379, 'fullName': 'Michael Wacha', 'link': '/api/v1/people/608379'}, 'home': {'id': 669923, 'fullName': 'George Kirby', 'link': '/api/v1/people/669923'}}
+2025-06-30 20:49:19 — DEBUG — [777297] Side: away, Probable: {'id': 608379, 'fullName': 'Michael Wacha', 'link': '/api/v1/people/608379'}
+2025-06-30 20:49:19 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:21 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=608379&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 333550
+2025-06-30 20:49:21 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-05-31', '2025-06-07', '2025-06-13', '2025-06-19', '2025-06-25']
+2025-06-30 20:49:21 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:26 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777694 HTTP/1.1" 200 165781
+2025-06-30 20:49:26 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:28 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777606 HTTP/1.1" 200 188825
+2025-06-30 20:49:28 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:29 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777529 HTTP/1.1" 200 194895
+2025-06-30 20:49:29 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:30 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777443 HTTP/1.1" 200 188582
+2025-06-30 20:49:30 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:30 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777359 HTTP/1.1" 200 165986
+2025-06-30 20:49:30 — DEBUG — [777297] Computed stats for Michael Wacha: {'avg_xfip': np.float64(3.654051571229585), 'avg_xfip_score': np.float64(61.54), 'avg_barrel_pct': np.float64(3.6415130568356373), 'avg_barrel_pct_score': np.float64(80.5)}
+2025-06-30 20:49:30 — DEBUG — [777297] Side: home, Probable: {'id': 669923, 'fullName': 'George Kirby', 'link': '/api/v1/people/669923'}
+2025-06-30 20:49:30 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:31 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669923&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 327713
+2025-06-30 20:49:31 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-03', '2025-06-08', '2025-06-14', '2025-06-20', '2025-06-25']
+2025-06-30 20:49:31 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:32 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777655 HTTP/1.1" 200 199947
+2025-06-30 20:49:33 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:34 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777589 HTTP/1.1" 200 194540
+2025-06-30 20:49:34 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:35 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777507 HTTP/1.1" 200 226041
+2025-06-30 20:49:35 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:37 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777436 HTTP/1.1" 200 215116
+2025-06-30 20:49:37 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:38 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777363 HTTP/1.1" 200 172418
+2025-06-30 20:49:38 — DEBUG — [777297] Computed stats for George Kirby: {'avg_xfip': np.float64(3.878019082206454), 'avg_xfip_score': np.float64(54.06), 'avg_barrel_pct': np.float64(3.3846153846153846), 'avg_barrel_pct_score': np.float64(76.12)}
+2025-06-30 20:49:38 — INFO — [777297] Final pitcher count: 2
+2025-06-30 20:49:38 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:38 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=608379&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 333550
+2025-06-30 20:49:38 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-05-31', '2025-06-07', '2025-06-13', '2025-06-19', '2025-06-25']
+2025-06-30 20:49:38 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:38 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777694 HTTP/1.1" 200 165781
+2025-06-30 20:49:38 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777606 HTTP/1.1" 200 188825
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777529 HTTP/1.1" 200 194895
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777443 HTTP/1.1" 200 188582
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777359 HTTP/1.1" 200 165986
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=608379&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 333550
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=608379&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 333550
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669923&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 327713
+2025-06-30 20:49:39 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-03', '2025-06-08', '2025-06-14', '2025-06-20', '2025-06-25']
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777655 HTTP/1.1" 200 199947
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777589 HTTP/1.1" 200 194540
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777507 HTTP/1.1" 200 226041
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777436 HTTP/1.1" 200 215116
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777363 HTTP/1.1" 200 172418
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669923&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 327713
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:39 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669923&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 327713
+2025-06-30 20:49:39 — DEBUG — [Game 777291] Processing game details
+2025-06-30 20:49:39 — DEBUG — [777291] Probables parsed: {'away': {'id': 657277, 'fullName': 'Logan Webb', 'link': '/api/v1/people/657277'}, 'home': {'id': 669194, 'fullName': 'Ryne Nelson', 'link': '/api/v1/people/669194'}}
+2025-06-30 20:49:39 — DEBUG — [777291] Side: away, Probable: {'id': 657277, 'fullName': 'Logan Webb', 'link': '/api/v1/people/657277'}
+2025-06-30 20:49:39 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:41 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=657277&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 349008
+2025-06-30 20:49:41 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-02', '2025-06-07', '2025-06-13', '2025-06-19', '2025-06-25']
+2025-06-30 20:49:41 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:42 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777676 HTTP/1.1" 200 209031
+2025-06-30 20:49:42 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:44 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777598 HTTP/1.1" 200 185209
+2025-06-30 20:49:44 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:45 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777522 HTTP/1.1" 200 201656
+2025-06-30 20:49:45 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:47 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777440 HTTP/1.1" 200 182517
+2025-06-30 20:49:47 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:48 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777355 HTTP/1.1" 200 223526
+2025-06-30 20:49:48 — DEBUG — [777291] Computed stats for Logan Webb: {'avg_xfip': np.float64(3.5274947500842666), 'avg_xfip_score': np.float64(65.75999999999999), 'avg_barrel_pct': np.float64(2.965507610668901), 'avg_barrel_pct_score': np.float64(83.35999999999999)}
+2025-06-30 20:49:48 — DEBUG — [777291] Side: home, Probable: {'id': 669194, 'fullName': 'Ryne Nelson', 'link': '/api/v1/people/669194'}
+2025-06-30 20:49:48 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:50 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669194&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 272135
+2025-06-30 20:49:50 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-05-31', '2025-06-07', '2025-06-13', '2025-06-19', '2025-06-24']
+2025-06-30 20:49:50 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:52 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777696 HTTP/1.1" 200 237698
+2025-06-30 20:49:52 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:54 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777612 HTTP/1.1" 200 224592
+2025-06-30 20:49:54 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:55 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777521 HTTP/1.1" 200 188441
+2025-06-30 20:49:55 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:56 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777448 HTTP/1.1" 200 204755
+2025-06-30 20:49:56 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777383 HTTP/1.1" 200 186467
+2025-06-30 20:49:58 — DEBUG — [777291] Computed stats for Ryne Nelson: {'avg_xfip': np.float64(3.969203491055513), 'avg_xfip_score': np.float64(51.04), 'avg_barrel_pct': np.float64(5.7375535106347115), 'avg_barrel_pct_score': np.float64(60.9)}
+2025-06-30 20:49:58 — INFO — [777291] Final pitcher count: 2
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=657277&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 349008
+2025-06-30 20:49:58 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-06-02', '2025-06-07', '2025-06-13', '2025-06-19', '2025-06-25']
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777676 HTTP/1.1" 200 209031
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777598 HTTP/1.1" 200 185209
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777522 HTTP/1.1" 200 201656
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777440 HTTP/1.1" 200 182517
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777355 HTTP/1.1" 200 223526
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=657277&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 349008
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=657277&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 349008
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669194&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 272135
+2025-06-30 20:49:58 — INFO — Found 5 appearances for 2025-05-31→2025-06-30: ['2025-05-31', '2025-06-07', '2025-06-13', '2025-06-19', '2025-06-24']
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777696 HTTP/1.1" 200 237698
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777612 HTTP/1.1" 200 224592
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:58 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777521 HTTP/1.1" 200 188441
+2025-06-30 20:49:58 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:59 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777448 HTTP/1.1" 200 204755
+2025-06-30 20:49:59 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:59 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&type=details&game_pk=777383 HTTP/1.1" 200 186467
+2025-06-30 20:49:59 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:59 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669194&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 272135
+2025-06-30 20:49:59 — DEBUG — Starting new HTTPS connection (1): baseballsavant.mlb.com:443
+2025-06-30 20:49:59 — DEBUG — https://baseballsavant.mlb.com:443 "GET /statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7CPO%7CS%7C=&hfSea=&hfSit=&player_type=pitcher&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt=2025-05-31&game_date_lt=2025-06-30&pitchers_lookup%5B%5D=669194&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details& HTTP/1.1" 200 272135
+2025-06-30 20:49:59 — INFO — Saved CSV to data\baseball\mlb\raw\mlb_combined_stats_20250630.csv
+2025-06-30 20:49:59 — INFO — Saved summary CSV to data\baseball\mlb\raw\mlb_daily_game_summary_20250630.csv
+2025-06-30 20:49:59 — INFO — Saved summary JSON to data\baseball\mlb\raw\mlb_daily_game_summary_20250630.json

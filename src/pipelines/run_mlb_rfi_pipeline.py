@@ -279,6 +279,8 @@ if __name__ == '__main__':
             'game_datetime':         g['gameDate'],
             'away_team':             away['team']['name'],
             'home_team':             home['team']['name'],
+            'away_team_abbrev':      away_abbrev,
+            'home_team_abbrev':      home_abbrev,
             'away_pitcher':          away_pitch,
             'home_pitcher':          home_pitch,
             'home_pitcher_recent_f1_era':  home_stats.get('recent_f1_era', 'NA'),

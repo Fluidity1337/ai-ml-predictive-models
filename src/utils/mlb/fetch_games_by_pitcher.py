@@ -30,10 +30,20 @@ class FetchGamesByPitcher:
     def __init__(self, pitcher_id: int, start: date = None, end: date = None):
         self.pitcher_id = pitcher_id
         self.today = datetime.today().date()
+        # Default date window: last 30 days up to today
         self.start = start if start else self.today - timedelta(days=30)
         self.end = end if end else self.today
-        if self.start > self.today or self.end > self.today or self.end < self.start:
+        # Clamp end to today
+        if self.end > self.today:
+            logging.warning(
+                f"End date {self.end} is in the future; clamping to today {self.today}")
+            self.end = self.today
+        # Validate ordering
+        if self.end < self.start:
             raise ValueError(f"Invalid date range {self.start} → {self.end}")
+        # Extend window to last 35 days unless single-day query
+        if self.start != self.end:
+            self.start = max(self.start, self.today - timedelta(days=35))
 
     def fetch_games(self) -> list[tuple[int, date]]:
         """

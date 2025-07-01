@@ -2,8 +2,15 @@
 
 F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\src\models\sports\baseball\mlb\sheets
 
-python src/utils/mlb/fetch_games_by_pitcher.py 671106
-PS F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models> python -m src.pipelines.run_mlb_rfi_pipeline_20250629
+python src/utils/mlb/daily_game_summary_scrubber.py F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_game_summary_20250701.json F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_game_summary_20250701_scrubbed.json
+
+from root:
+python .\src\pipelines\run_mlb_rfi_pipeline_20250629.py 2025-07-01
+
+python src/utils/mlb/fetch_games_by_pitcher.py --start 2025-06-01 --end 2025-06-03 592332
+
+python src/utils/mlb/fetch_games_by_pitcher.py 592332 2025-06-01 2025-06-03
+python -m src.pipelines.run_mlb_rfi_pipeline_20250630 2025-07-01
 python -m src.pipelines.run_mlb_rfi_pipeline_20250629
 
 python advanced_team_stats.py --force --quiet

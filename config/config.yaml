@@ -56,6 +56,7 @@ logging:
       level: DEBUG
       filename: logs/mlb_pipeline.log
       formatter: simple
+      mode: a
       encoding: utf-8
 
   root:
