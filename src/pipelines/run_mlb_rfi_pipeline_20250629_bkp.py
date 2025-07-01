@@ -5,7 +5,7 @@ import csv
 import json
 import logging
 import logging.config
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 import requests
 import pandas as pd
@@ -146,13 +146,14 @@ if __name__ == '__main__':
             str(row["Tm"]).strip().upper(): row["wRC+"]
             for _, row in wrclike_df.iterrows()
         }
+
     except Exception as e:
         logging.error(f"❌ Failed to load wRC+ 1st inning CSV: {e}")
         wrclike_map = {}
 
     # Load 1st-inning ERA splits
     f1_era_path = Path(
-        "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/baseball/mlb/raw/fangraphs/pitchers_basic_splits_1st_inning_2025_20250630.csv"
+        "data/baseball/mlb/raw/fangraphs/pitchers_basic_splits_1st_inning_2025_20250630.csv"
     )
     f1_df = pd.read_csv(f1_era_path)
     player_col = f1_df.columns[0]
@@ -173,32 +174,18 @@ if __name__ == '__main__':
         stats['recent_barrel_pct'] = recent.get('avg_barrel_pct', 'NA')
         stats['recent_barrel_pct_score'] = recent.get(
             'avg_barrel_pct_score', 'NA')
-        # First-inning metrics via PitcherAdvancedStats
-        pas = PitcherAdvancedStats(
-            p.get('id'),
-            start=(datetime.strptime(date_str, '%Y-%m-%d') -
-                   timedelta(days=30)).date(),
-            end=datetime.strptime(date_str, '%Y-%m-%d').date()
-        )
-        pas.analyze()
-        stats['f1_era'] = pas.f1_era()
-        stats['f1_whip'] = pas.f1_whip()
-        # Compute first-inning ERA via MLB Stats API
-        try:
-            sc_df = statcast_pitcher(
-                start_dt=start_dt, end_dt=end_dt, pitcher_id=p.get('id'))
-            first_inn = sc_df[sc_df['inning'] == 1]
-            ip_outs = first_inn['outs'].sum()
-            ip = ip_outs / 3.0 if ip_outs > 0 else 0
-            er = first_inn['earned_run'].sum() if 'earned_run' in first_inn.columns else first_inn['events'].apply(
-                lambda ev: 1 if ev == 'home_run' else 0).sum()
-            stats['recent_f1_era'] = round(
-                (er / ip) * 9, 2) if ip > 0 else 'NA'
-        except Exception as e:
-            logging.warning(
-                f"Failed to compute first-inning ERA for pitcher {p.get('id')}: {e}")
-            stats['recent_f1_era'] = 'NA'
-    all_pitchers.extend(ps)
+
+    # now pull first-inning ERA/WHIP
+    pas = PitcherAdvancedStats(
+        p.get('id'),
+        start=start_dt.date(),
+        end=end_dt.date()
+    )
+    pas.analyze()   # ensure `start`/`end` are set before calling
+    stats['f1_era'] = pas.f1_era()
+    stats['f1_whip'] = pas.f1_whip()
+
+    combined.append(p)
 
     # Write CSV of combined stats
     csv_path = raw_data_dir / \
