@@ -15,9 +15,13 @@ from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherAdvancedStats
 from utils.config_loader import load_config
 from utils.helpers import RatingCalculator, FeatureConfigLoader
 from utils.mlb.team_codes import get_team_codes
+from utils.mlb.calculate_nrfi_score import calculate_nrfi_score
 
 cfg = load_config()
 logging.config.dictConfig(cfg["logging"])
+features_path = Path(cfg['models']['mlb_rfi']['feature_definitions_path'])
+with open(features_path) as fd:
+    features_def = json.load(fd)
 
 # Try pybaseball for season stats
 try:
@@ -122,10 +126,14 @@ if __name__ == '__main__':
         date_str = "2025-06-30"
 
     try:
-        datetime.strptime(date_str, '%Y-%m-%d')
+        dt = datetime.strptime(date_str, '%Y-%m-%d')
     except ValueError:
         logging.error("Date must be in YYYY-MM-DD format, got %r", date_str)
         sys.exit(1)
+
+    # right after validating date_str
+    start_dt = (dt - timedelta(days=30)).strftime('%Y-%m-%d')
+    end_dt = date_str
 
     games = fetch_schedule(date_str)
     logging.info("Loaded %d games", len(games))
@@ -150,55 +158,31 @@ if __name__ == '__main__':
         logging.error(f"❌ Failed to load wRC+ 1st inning CSV: {e}")
         wrclike_map = {}
 
-    # Load 1st-inning ERA splits
-    f1_era_path = Path(
-        "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/baseball/mlb/raw/fangraphs/pitchers_basic_splits_1st_inning_2025_20250630.csv"
-    )
-    f1_df = pd.read_csv(f1_era_path)
-    player_col = f1_df.columns[0]
-    f1_era_map = {str(r[player_col]).strip(): r['ERA']
-                  for _, r in f1_df.iterrows()}
-
     # Aggregate pitcher stats for 4th game only (index 3)
     all_pitchers = []
-    g = games[3]
-    ps = fetch_game_details(g, DF_PITCH, features_cfg, SEASON)
-    for p in ps:
-        stats = p.setdefault('stats', {})
-        calculated = p.setdefault('calculated_stats', {})
-        recent = calculated.get('recent_avgs', {})
-        # Flatten averages
-        stats['recent_xfip'] = recent.get('avg_xfip', 'NA')
-        stats['recent_xfip_score'] = recent.get('avg_xfip_score', 'NA')
-        stats['recent_barrel_pct'] = recent.get('avg_barrel_pct', 'NA')
-        stats['recent_barrel_pct_score'] = recent.get(
-            'avg_barrel_pct_score', 'NA')
-        # First-inning metrics via PitcherAdvancedStats
-        pas = PitcherAdvancedStats(
-            p.get('id'),
-            start=(datetime.strptime(date_str, '%Y-%m-%d') -
-                   timedelta(days=30)).date(),
-            end=datetime.strptime(date_str, '%Y-%m-%d').date()
-        )
-        pas.analyze()
-        stats['f1_era'] = pas.f1_era()
-        stats['f1_whip'] = pas.f1_whip()
-        # Compute first-inning ERA via MLB Stats API
-        try:
-            sc_df = statcast_pitcher(
-                start_dt=start_dt, end_dt=end_dt, pitcher_id=p.get('id'))
-            first_inn = sc_df[sc_df['inning'] == 1]
-            ip_outs = first_inn['outs'].sum()
-            ip = ip_outs / 3.0 if ip_outs > 0 else 0
-            er = first_inn['earned_run'].sum() if 'earned_run' in first_inn.columns else first_inn['events'].apply(
-                lambda ev: 1 if ev == 'home_run' else 0).sum()
-            stats['recent_f1_era'] = round(
-                (er / ip) * 9, 2) if ip > 0 else 'NA'
-        except Exception as e:
-            logging.warning(
-                f"Failed to compute first-inning ERA for pitcher {p.get('id')}: {e}")
-            stats['recent_f1_era'] = 'NA'
-    all_pitchers.extend(ps)
+    # g = games[3]
+    for g in games:
+        pitchers = fetch_game_details(g, DF_PITCH, features_cfg, SEASON)
+        for p in pitchers:
+            stats = p.setdefault('stats', {})
+            calc = p.setdefault('calculated_stats', {})
+            recent = calc.get('recent_avgs', {})
+            # Flatten recent averages
+            stats['recent_xfip'] = recent.get('avg_xfip', 'NA')
+            stats['recent_xfip_score'] = recent.get('avg_xfip_score', 'NA')
+            stats['recent_barrel_pct'] = recent.get('avg_barrel_pct', 'NA')
+            stats['recent_barrel_pct_score'] = recent.get(
+                'avg_barrel_pct_score', 'NA')
+            # Compute first-inning metrics via PitcherAdvancedStats
+            pas = PitcherAdvancedStats(
+                p.get('id'),
+                start=(dt - timedelta(days=30)).date(),
+                end=dt.date()
+            )
+            pas.analyze()
+            stats['recent_f1_era'] = pas.f1_era()
+            stats['recent_f1_whip'] = pas.f1_whip()
+            all_pitchers.append(p)
 
     # Write CSV of combined stats
     csv_path = raw_data_dir / \
@@ -217,14 +201,10 @@ if __name__ == '__main__':
             writer.writerow(row)
     logging.info(f"Saved CSV to {csv_path}")
 
-    json_stats_path = raw_data_dir / \
-        f"mlb_daily_stats_summary_{date_str.replace('-', '')}.json"
-    with open(json_stats_path, 'w', encoding='utf-8') as jf:
-        json.dump(all_pitchers, jf, indent=2)
-    logging.info(f"Saved JSON stats summary to {json_stats_path}")
-
     game_summary = []
     for g in games:
+        away = g['teams']['away']
+        home = g['teams']['home']
         away_team = g["teams"]["away"]["team"]["name"]
         home_team = g["teams"]["home"]["team"]["name"]
         away_abbrev = TEAM_CODES.get(g["teams"]["away"]["team"]["id"], "")
@@ -233,6 +213,10 @@ if __name__ == '__main__':
             "probablePitcher", {}).get("fullName", "")
         home_pitch = g["teams"]["home"].get(
             "probablePitcher", {}).get("fullName", "")
+        away_stats = next((rec['stats'] for rec in all_pitchers
+                           if rec['name'] == away_pitch and rec['side'] == 'away'), {})
+        home_stats = next((rec['stats'] for rec in all_pitchers
+                           if rec['name'] == home_pitch and rec['side'] == 'home'), {})
 
         # Look up pitcher stats
         home_pitcher_stats = next((p.get("stats", {}) for p in all_pitchers if p.get(
@@ -258,15 +242,49 @@ if __name__ == '__main__':
         away_wrclike = wrclike_map.get(TEAM_ABBREV_MAP.get(
             away_abbrev.upper(), away_abbrev.upper()), "NA")
 
+        # compute team-level RFI scores
+        # away team features
+        away_nrfi_features_vals = {
+            "xFIP": away_stats.get('recent_xfip', 'NA'),
+            "BarrelPct": away_stats.get('recent_barrel_pct', 'NA'),
+            "f1_era": away_stats.get('f1_era', 'NA'),
+            "WHIP": away_stats.get('f1_whip', 'NA'),
+            "wRCp1st": away_wrclike,
+            "wOBA3": opp_woba_away
+        }
+        _away_nrfi_score_resp = calculate_nrfi_score(
+            away_nrfi_features_vals, features_def)
+        away_nrfi_score = _away_nrfi_score_resp[0] if isinstance(
+            _away_nrfi_score_resp, tuple) else _away_nrfi_score_resp
+
+        # home team features
+        home_nrfi_features_vals = {
+            "xFIP": home_stats.get('recent_xfip', 'NA'),
+            "BarrelPct": home_stats.get('recent_barrel_pct', 'NA'),
+            "f1_era": home_stats.get('f1_era', 'NA'),
+            "WHIP": home_stats.get('f1_whip', 'NA'),
+            "wRCp1st": home_wrclike,
+            "wOBA3": opp_woba_home,
+        }
+        _home_nrfi_score_resp = calculate_nrfi_score(
+            home_nrfi_features_vals, features_def)
+        home_nrfi_score = _home_nrfi_score_resp[0] if isinstance(
+            _home_nrfi_score_resp, tuple) else _home_nrfi_score_resp
+
+        # game-level average
+        game_nrfi_score = round((away_nrfi_score + home_nrfi_score) / 2, 2)
+
         game_summary.append({
-            "game_id": g["gamePk"],
-            "game_datetime": g["gameDate"],
-            "away_team": away_team,
-            "away_abbrev": away_abbrev,
-            "home_team": home_team,
-            "home_abbrev": home_abbrev,
-            "away_pitcher": away_pitch,
-            "home_pitcher": home_pitch,
+            'game_id':               g['gamePk'],
+            'game_datetime':         g['gameDate'],
+            'away_team':             away['team']['name'],
+            'home_team':             home['team']['name'],
+            'away_pitcher':          away_pitch,
+            'home_pitcher':          home_pitch,
+            'home_pitcher_recent_f1_era':  home_stats.get('recent_f1_era', 'NA'),
+            'home_pitcher_recent_f1_whip': home_stats.get('recent_f1_whip', 'NA'),
+            'away_pitcher_recent_f1_era':  away_stats.get('recent_f1_era', 'NA'),
+            'away_pitcher_recent_f1_whip': away_stats.get('recent_f1_whip', 'NA'),
             "nrfi_grade": g.get("nrfi_grade"),
             "home_pitcher_recent_xfip": home_pitcher_stats.get("recent_xfip", "NA"),
             "home_pitcher_recent_xfip_score": home_pitcher_stats.get("recent_xfip_score", "NA"),
@@ -279,42 +297,19 @@ if __name__ == '__main__':
             "home_team_woba3": opp_woba_home,
             "away_team_woba3": opp_woba_away,
             "home_team_wrc_plus_1st_inn": home_wrclike,
-            "away_team_wrc_plus_1st_inn": away_wrclike
+            "away_team_wrc_plus_1st_inn": away_wrclike,
+            'away_team_score': away_nrfi_score,
+            'home_team_score': home_nrfi_score,
+            'game_nrfi_score': game_nrfi_score
         })
 
-    game_csv = raw_data_dir / \
-        f"mlb_daily_game_summary_{date_str.replace('-', '')}.csv"
-    with open(game_csv, 'w', newline='', encoding='utf-8') as gf:
-        writer = csv.writer(gf)
-        writer.writerow([
-            "game_id", "game_datetime",
-            "away_team", "away_abbrev",
-            "home_team", "home_abbrev",
-            "away_pitcher", "home_pitcher",
-            "home_pitcher_recent_xfip", "home_pitcher_recent_xfip_score",
-            "home_pitcher_recent_barrel_pct", "home_pitcher_recent_barrel_pct_score",
-            "away_pitcher_recent_xfip", "away_pitcher_recent_xfip_score",
-            "away_pitcher_recent_barrel_pct", "away_pitcher_recent_barrel_pct_score",
-            "home_team_woba3", "away_team_woba3",
-            "home_team_wrc_plus_1st_inn", "away_team_wrc_plus_1st_inn",
-            "nrfi_grade",
-        ])
-        for r in game_summary:
-            writer.writerow([
-                r["game_id"], r["game_datetime"], r["away_team"], r["away_abbrev"],
-                r["home_team"], r["home_abbrev"], r["away_pitcher"],
-                r["home_pitcher"], r["nrfi_grade"],
-                r["home_pitcher_recent_xfip"], r["home_pitcher_recent_xfip_score"],
-                r["home_pitcher_recent_barrel_pct"], r["home_pitcher_recent_barrel_pct_score"],
-                r["away_pitcher_recent_xfip"], r["away_pitcher_recent_xfip_score"],
-                r["away_pitcher_recent_barrel_pct"], r["away_pitcher_recent_barrel_pct_score"],
-                r["home_team_woba3"], r["away_team_woba3"],
-                r["home_team_wrc_plus_1st_inn"], r["away_team_wrc_plus_1st_inn"]
-            ])
-    logging.info(f"Saved CSV game summary to {game_csv}")
-
-    game_json = raw_data_dir / \
-        f"mlb_daily_game_summary_{date_str.replace('-', '')}.json"
-    with open(game_json, 'w', encoding='utf-8') as gj:
+    # Write game summary CSV/JSON
+    summary_csv = raw_data_dir / \
+        f"mlb_daily_game_summary_{date_str.replace('-','')}.csv"
+    pd.DataFrame(game_summary).to_csv(summary_csv, index=False)
+    logging.info(f"Saved summary CSV to {summary_csv}")
+    summary_json = raw_data_dir / \
+        f"mlb_daily_game_summary_{date_str.replace('-','')}.json"
+    with open(summary_json, 'w', encoding='utf-8') as gj:
         json.dump(game_summary, gj, indent=2)
-    logging.info(f"Saved JSON game summary to {game_json}")
+    logging.info(f"Saved summary JSON to {summary_json}")
