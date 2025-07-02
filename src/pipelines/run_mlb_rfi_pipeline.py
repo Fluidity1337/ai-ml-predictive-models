@@ -123,7 +123,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         date_str = sys.argv[1]
     else:
-        date_str = "2025-06-30"
+        date_str = "2025-07-02"
 
     try:
         dt = datetime.strptime(date_str, '%Y-%m-%d')
