@@ -7,6 +7,21 @@ A collection of machine learning models designed to make sports predictions, sta
 ## 📂 Project Structure
 
 
+## Getting Started
+
+### 1. Create & activate a virtual environment  
+```bash
+python3 -m venv .venv
+# macOS/Linux
+source .venv/bin/activate
+# Windows (PowerShell)
+.\.venv\Scripts\Activate.ps1
+
+Install Dependencies
+pip install --upgrade pip
+pip install .[tests]
+
+
 ## Usage
 
 **Fetch today’s schedule** (defaults to today’s date):  

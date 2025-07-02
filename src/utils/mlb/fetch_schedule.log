@@ -1,0 +1,8 @@
+Received response status: 200
+Found 19 games for date: 2025-07-02
+Error saving JSON: [Errno 2] No such file or directory: 'config.yaml'
+Traceback (most recent call last):
+  File "F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\src\utils\mlb\fetch_schedule.py", line 82, in <module>
+    with open("config.yaml") as f:
+         ^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'config.yaml'
