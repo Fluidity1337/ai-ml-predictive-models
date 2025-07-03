@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 import requests
 import pandas as pd
-from utils.mlb.fetch_schedule import fetch_schedule
+from fetch_schedule_bkp_20250702 import fetch_schedule
 from utils.mlb.fetch_game_details import fetch_game_details
 from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherAdvancedStats
 from utils.config_loader import load_config
@@ -123,7 +123,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         date_str = sys.argv[1]
     else:
-        date_str = "2025-07-02"
+        date_str = "2025-07-03"
 
     try:
         dt = datetime.strptime(date_str, '%Y-%m-%d')

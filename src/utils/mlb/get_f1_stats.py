@@ -7,7 +7,7 @@ Usage:
   python get_f1_stats.py <pitcher_id> [YYYY-MM-DD]
   python get_f1_stats.py test [YYYY-MM-DD]
 """
-from utils.mlb.fetch_schedule import fetch_schedule
+from fetch_schedule_bkp_20250702 import fetch_schedule
 import pandas as pd
 from pybaseball import statcast_pitcher
 import sys
