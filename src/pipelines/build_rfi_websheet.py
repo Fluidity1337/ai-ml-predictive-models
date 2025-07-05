@@ -2,6 +2,7 @@ import sys
 import logging
 import logging.config
 import json
+from shutil import copyfile
 from pathlib import Path
 from datetime import datetime as _dt
 from zoneinfo import ZoneInfo
@@ -16,22 +17,24 @@ log_path.parent.mkdir(parents=True, exist_ok=True)
 logging.config.dictConfig(cfg["logging"])
 
 
-raw_data_dir = Path(cfg["mlb_data"]["test_output"])
+RAW_DATA_PATH = Path(cfg["mlb_data"]["raw"])
 
 # Raw data directory, relative to ROOT if not absolute
-raw_data_dir.mkdir(parents=True, exist_ok=True)
+RAW_DATA_PATH.mkdir(parents=True, exist_ok=True)
 
 # Determine JSON and HTML filenames
 # JSON_PATH must be defined before deriving date_suffix
 JSON_FILENAME = cfg.get(
-    # "json_filename", f"mlb_daily_game_summary_{_dt.now().strftime('%Y%m%d')}.json"
-    "json_filename", "mlb_daily_game_summary_20250703.json"
+    "json_filename", f"mlb_daily_game_summary_{_dt.now().strftime('%Y%m%d')}.json"
+    # "json_filename", "mlb_daily_game_summary_20250703.json"
 )
-JSON_PATH = raw_data_dir / JSON_FILENAME
-HTML_FILENAME = cfg.get(
+JSON_PATH = RAW_DATA_PATH / JSON_FILENAME
+RFI_SHEET_HTML_FILENAME = cfg.get(
+    # "html_filename", f"mlb_mlh_rfi_websheet_{JSON_PATH.stem.split('_')[-1]}.html"
     "html_filename", f"mlb_mlh_rfi_websheet_{JSON_PATH.stem.split('_')[-1]}.html"
 )
-HTML_PATH = raw_data_dir / HTML_FILENAME
+RFI_SHEET_FILEPATH = RAW_DATA_PATH / RFI_SHEET_HTML_FILENAME
+INDEX_HTML_FILEPATH = Path(cfg["index_html_filepath"])
 
 # Derive title_date from JSON filename suffix
 date_suffix = JSON_PATH.stem.split('_')[-1]
@@ -41,9 +44,10 @@ except Exception as e:
     logging.error(f"Error parsing date_suffix '{date_suffix}': {e}")
     title_date = date_suffix
 
-logging.info(f"Raw data dir: {raw_data_dir}")
+logging.info(f"Raw data dir: {RAW_DATA_PATH}")
 logging.info(f"JSON path: {JSON_PATH} (exists={JSON_PATH.exists()})")
-logging.info(f"HTML path: {HTML_PATH}")
+logging.info(f"RFI SHEET filepath: {RFI_SHEET_HTML_FILENAME}")
+logging.info(f"INDEX HTML filepath: {RFI_SHEET_HTML_FILENAME}")
 logging.info(f"Title date: {title_date}")
 
 # Color thresholds
@@ -399,5 +403,13 @@ class BaseballRfiHtmlGenerator:
 
 
 if __name__ == '__main__':
-    generator = BaseballRfiHtmlGenerator(JSON_PATH, HTML_PATH)
+    generator = BaseballRfiHtmlGenerator(JSON_PATH, RFI_SHEET_FILEPATH)
     generator.generate()
+
+    # After writing, copy to root as index.html
+    root_index_path = Path(cfg["index_html_filepath"])
+    try:
+        copyfile(RFI_SHEET_FILEPATH, root_index_path)
+        logging.info(f"Copied HTML to {root_index_path}")
+    except Exception as e:
+        logging.error(f"Failed to copy HTML to root: {e}")

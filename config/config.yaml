@@ -5,6 +5,7 @@
 root_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/'
 log_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/logs'
 cache_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/.cache'
+index_html_filepath: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/index.html'
 
 mlb_data:
   nrfi_websheet_ds: /data/baseball/mlb/raw/mlb_daily_
