@@ -134,6 +134,22 @@ icon_map = {
     'F': '❌'
 }
 
+# American odds converter
+
+
+def p_to_american(p: float) -> str:
+    try:
+        if p <= 0 or p >= 1:
+            return 'N/A'
+        if p >= 0.5:
+            odds = -round(p / (1 - p) * 100)
+        else:
+            odds = round((1 - p) / p * 100)
+        sign = '+' if odds > 0 else ''
+        return f"{sign}{odds}"
+    except:
+        return 'N/A'
+
 
 class BaseballRfiHtmlGenerator:
     def __init__(self, json_path: Path, output_path: Path):
@@ -246,7 +262,7 @@ class BaseballRfiHtmlGenerator:
           <th class='px-4 py-2'>Team 1st Inning wRC+ (Season)</th>
           <th class='px-4 py-2'>Team RFI Grade (0-100)</th>
           <th class='px-4 py-2'>Projected NRFI Chance</th>
-          <th class='px-4 py-2'>Recommendation</th>
+          <th class='px-4 py-2'>Projected American Odds</th>
         </tr>
       </thead>
       <tbody>
@@ -345,17 +361,18 @@ class BaseballRfiHtmlGenerator:
             home_team_nrfi_score = f"{raw_home_team_rfi_score:.2f}" if isinstance(
                 raw_home_team_rfi_score, (int, float)) else 'N/A'
 
-            raw_nrfi_score = game.get('calibrated_p_nrfi', 0)
+            raw_nrfi_score = game.get('calibrated_p_nrfi', 0.0)
             nrfi_calibrated_pct = f"{raw_nrfi_score * 100:.2f}" if isinstance(
                 raw_nrfi_score, (int, float)) else 'N/A'
             # rec = recommendation_from_grade(grade)
             color_cls = grade_color(nrfi_calibrated_pct)
             # in your row-building loop
-            raw = game.get("calibrated_p_nrfi", 0)
+            # raw = game.get("calibrated_p_nrfi", 0)
             # e.g. ("A+", "✅ Elite NRFI Spot …")
-            letter, action = assign_grade(raw)
+            letter, action = assign_grade(raw_nrfi_score)
             # rec = recommendation_from_grade(letter)    # map "A+" → "NRFI"
             # icon = icon_map[letter]
+            american_odds = p_to_american(raw_nrfi_score)
 
             # Away row (lighter gray on left 5 cols, lighter gray on RHS spans)
             html += (
@@ -371,7 +388,7 @@ class BaseballRfiHtmlGenerator:
                 f"<td class='px-4 py-2 bg-gray-700'>{away_team_season_wrc_plus_1st_inn}</td>"
                 f"<td class='px-4 py-2 bg-gray-700'>{away_team_nrfi_score}</td>"
                 f"<td class='{color_cls}' rowspan='2'>{nrfi_calibrated_pct} %</td>"
-                f"<td class='{color_cls}' rowspan='2'>Compare with your book's line.</td>"
+                f"<td class='{color_cls}' rowspan='2'>{american_odds}</td>"
                 "</tr>\n"
             )
 
