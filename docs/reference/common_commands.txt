@@ -1,3 +1,6 @@
+python src/utils/mlb/augment_game_summaries.py -i data/baseball/mlb/raw -o data/baseball/mlb/interim/game_summaries
+
+
 (.venv) PS F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models> python src/utils/mlb/fetch_advanced_stats_for_pitcher.py 671106
 
 F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\src\models\sports\baseball\mlb\sheets
