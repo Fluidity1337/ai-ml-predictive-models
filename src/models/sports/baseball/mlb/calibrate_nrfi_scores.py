@@ -63,32 +63,27 @@ def fit_with_numpy(df, score_col, target_col):
 
 
 def compute_calibrated_prob(intercept, coef, score):
-    return 1 / (1 + math.exp(-(intercept + coef * score)))
+    """Apply logistic calibration so that higher raw score → higher NRFI probability by inverting the original model output."""
+    # original logit: intercept + coef*score
+    z = intercept + coef * score
+    raw_p = 1 / (1 + math.exp(-z))
+    # invert so higher score ⇒ higher probability
+    return 1 - raw_p
 
 
 def main():
     parser = argparse.ArgumentParser(
         description="Calibrate NRFI scores and output updated JSONs.")
-    parser.add_argument(
-        '-i', '--input-dir', required=True,
-        help='Directory containing augmented JSON summaries'
-    )
-    parser.add_argument(
-        '-p', '--pattern', default='mlb_daily_game_summary_*_augmented.json',
-        help='Filename pattern for input JSON files'
-    )
-    parser.add_argument(
-        '-s', '--score-col', default='game_nrfi_score',
-        help='Raw score column name'
-    )
-    parser.add_argument(
-        '-t', '--target-col', default='first_inning_run',
-        help='Boolean column: True if there was a run in 1st inning'
-    )
-    parser.add_argument(
-        '-d', '--output-dir', required=True,
-        help='Directory where updated JSONs will be written'
-    )
+    parser.add_argument('-i', '--input-dir', required=True,
+                        help='Directory containing augmented JSON summaries')
+    parser.add_argument('-p', '--pattern', default='mlb_daily_game_summary_*_augmented.json',
+                        help='Filename pattern for input JSON files')
+    parser.add_argument('-s', '--score-col', default='game_nrfi_score',
+                        help='Raw score column name')
+    parser.add_argument('-t', '--target-col', default='first_inning_run',
+                        help='Boolean column: True if there was a run in 1st inning')
+    parser.add_argument('-d', '--output-dir', required=True,
+                        help='Directory where updated JSONs will be written')
     args = parser.parse_args()
 
     # Load data for calibration
@@ -110,8 +105,8 @@ def main():
     # Save calibration parameters
     params = {'intercept': intercept,
               'coef': coef, 'score_col': args.score_col}
-    params_path = os.path.join(args.output_dir, 'nrfi_calibration_params.json')
     os.makedirs(args.output_dir, exist_ok=True)
+    params_path = os.path.join(args.output_dir, 'nrfi_calibration_params.json')
     with open(params_path, 'w') as pf:
         json.dump(params, pf, indent=2)
     print(f"Saved calibration params to {params_path}")
@@ -123,10 +118,9 @@ def main():
             games = json.load(f)
         for game in games:
             score = game.get(args.score_col)
-            if score is not None:
+            if isinstance(score, (int, float)):
                 game['calibrated_p_nrfi'] = compute_calibrated_prob(
                     intercept, coef, score)
-        # Write updated JSON to output directory
         out_path = os.path.join(args.output_dir, os.path.basename(inp))
         with open(out_path, 'w') as f:
             json.dump(games, f, indent=2)

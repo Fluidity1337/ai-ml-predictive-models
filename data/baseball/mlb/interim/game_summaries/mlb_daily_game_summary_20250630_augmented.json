@@ -31,7 +31,8 @@
     "first_inning_away_runs": 0,
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.8360653431439661
   },
   {
     "game_id": 777299,
@@ -65,7 +66,8 @@
     "first_inning_away_runs": 0,
     "first_inning_home_runs": 1,
     "first_inning_score": "0-1",
-    "first_inning_run": true
+    "first_inning_run": true,
+    "calibrated_p_nrfi": 0.8200936942913332
   },
   {
     "game_id": 777295,
@@ -99,7 +101,8 @@
     "first_inning_away_runs": 0,
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.8535616490046045
   },
   {
     "game_id": 777300,
@@ -133,7 +136,8 @@
     "first_inning_away_runs": 0,
     "first_inning_home_runs": 7,
     "first_inning_score": "0-7",
-    "first_inning_run": true
+    "first_inning_run": true,
+    "calibrated_p_nrfi": 0.8915950527823776
   },
   {
     "game_id": 777296,
@@ -167,7 +171,8 @@
     "first_inning_away_runs": 3,
     "first_inning_home_runs": 0,
     "first_inning_score": "3-0",
-    "first_inning_run": true
+    "first_inning_run": true,
+    "calibrated_p_nrfi": 0.8428290978427004
   },
   {
     "game_id": 777292,
@@ -201,7 +206,8 @@
     "first_inning_away_runs": 0,
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.8282649882074234
   },
   {
     "game_id": 777297,
@@ -235,7 +241,8 @@
     "first_inning_away_runs": 0,
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.8413579393542612
   },
   {
     "game_id": 777291,
@@ -269,6 +276,7 @@
     "first_inning_away_runs": 0,
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.8347295222806276
   }
 ]
