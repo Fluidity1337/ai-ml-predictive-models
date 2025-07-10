@@ -16,3 +16,5 @@ tests = ["pytest>=7.0"]
 [tool.setuptools.packages.find]
 where   = ["src"]
 include = ["*"]
+
+#add scikit-learn, ace_tools

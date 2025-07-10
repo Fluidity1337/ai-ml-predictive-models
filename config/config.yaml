@@ -13,6 +13,8 @@ mlb_data:
   raw:          data/baseball/mlb/raw
   game_schedule: data/baseball/mlb/raw/game_schedule
   interim:      data/baseball/mlb/interim
+  processed:    data/baseball/mlb/processed
+  processed_game_summaries_path:    data/baseball/mlb/processed/game_summaries
   test_output:  test_output
   statcast:     data/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
   api:          data/sports/baseball/mlb/data_sources/api
