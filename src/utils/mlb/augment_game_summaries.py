@@ -83,7 +83,7 @@ def main():
         help='Directory to output augmented JSON files'
     )
     args = parser.parse_args()
-    augment_files(args.input_dir, args.output_dir)
+    augment_game_summaries(args.input_dir, args.output_dir)
 
 
 if __name__ == '__main__':

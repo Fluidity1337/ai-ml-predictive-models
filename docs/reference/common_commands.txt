@@ -11,7 +11,7 @@ F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\src\mo
 python src/utils/mlb/daily_game_summary_scrubber.py F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_game_summary_20250701.json F:\Dropbox\1_Work\Development\GitHub\Fluidity1337\ai-ml-predictive-models\test_output\mlb_daily_game_summary_20250701_scrubbed.json
 
 from root:
-python .\src\pipelines\run_mlb_rfi_pipeline.py 2025-07-07
+python .\src\pipelines\run_mlb_rfi_pipeline.py 2025-07-13
 
 python src/utils/mlb/fetch_games_by_pitcher.py --start 2025-06-01 --end 2025-06-03 592332
 
