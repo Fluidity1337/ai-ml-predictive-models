@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Moneyline Hacks - RFI Model</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .title-highlight {
+      background: linear-gradient(to right, #34d399, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .card {
+      background-color: #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body class="p-6">
+  <div class="flex flex-col items-center justify-center gap-3 mb-6">
+    <img src="https://i.postimg.cc/fbNmRxKv/moneyline-hacks-logo.png" alt="Moneyline Hacks Logo" class="h-20" />
+    <h1 class="text-5xl font-extrabold title-highlight text-center">Moneyline Hacks</h1>
+    <h2 class="text-xl text-gray-300 text-center">🔥 Run First Inning (RFI) Model — May 29 🔥</h2>
+    <img src="https://i.postimg.cc/DwWzBtj0/baseball-icon.png" alt="Baseball Icon" class="h-10" />
+  </div>
+
+  <div class="card max-w-6xl mx-auto overflow-x-auto">
+    <table class="min-w-full text-sm text-left text-gray-300">
+      <thead class="bg-gray-700 text-gray-300 text-sm uppercase">
+        <tr>
+          <th class="px-4 py-3">Matchup</th>
+          <th class="px-4 py-3">Start Time</th>
+          <th class="px-4 py-3">RFI Probability</th>
+          <th class="px-4 py-3">Implied Odds</th>
+          <th class="px-4 py-3">Sportsbook Odds</th>
+          <th class="px-4 py-3">EV%</th>
+          <th class="px-4 py-3">Recommendation</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Atlanta Braves vs Philadelphia Phillies</td>
+          <td class="px-4 py-3">10:05 AM</td>
+          <td class="px-4 py-3">43.2%</td>
+          <td class="px-4 py-3">+131</td>
+          <td class="px-4 py-3">+110</td>
+          <td class="px-4 py-3">+3.2%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Philadelphia Phillies vs Atlanta Braves</td>
+          <td class="px-4 py-3">3:45 PM</td>
+          <td class="px-4 py-3">52.1%</td>
+          <td class="px-4 py-3">+118</td>
+          <td class="px-4 py-3">+115</td>
+          <td class="px-4 py-3">+2.6%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Oakland Athletics vs Toronto Blue Jays</td>
+          <td class="px-4 py-3">4:07 PM</td>
+          <td class="px-4 py-3">39.5%</td>
+          <td class="px-4 py-3">+153</td>
+          <td class="px-4 py-3">+130</td>
+          <td class="px-4 py-3">+7.8%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Toronto Blue Jays vs Oakland Athletics</td>
+          <td class="px-4 py-3">4:07 PM</td>
+          <td class="px-4 py-3">48.3%</td>
+          <td class="px-4 py-3">+107</td>
+          <td class="px-4 py-3">+105</td>
+          <td class="px-4 py-3">+1.9%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">Lean ✅</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Tampa Bay Rays vs Houston Astros</td>
+          <td class="px-4 py-3">5:10 PM</td>
+          <td class="px-4 py-3">58.4%</td>
+          <td class="px-4 py-3">+108</td>
+          <td class="px-4 py-3">+110</td>
+          <td class="px-4 py-3">+4.5%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Houston Astros vs Tampa Bay Rays</td>
+          <td class="px-4 py-3">5:10 PM</td>
+          <td class="px-4 py-3">60.2%</td>
+          <td class="px-4 py-3">+106</td>
+          <td class="px-4 py-3">+108</td>
+          <td class="px-4 py-3">+5.1%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Washington Nationals vs Seattle Mariners</td>
+          <td class="px-4 py-3">6:40 PM</td>
+          <td class="px-4 py-3">44.1%</td>
+          <td class="px-4 py-3">+127</td>
+          <td class="px-4 py-3">+115</td>
+          <td class="px-4 py-3">+2.7%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">✅ Bet</td>
+        </tr>
+    
+        <tr class="hover:bg-gray-700 border-b border-gray-700">
+          <td class="px-4 py-3">Seattle Mariners vs Washington Nationals</td>
+          <td class="px-4 py-3">6:40 PM</td>
+          <td class="px-4 py-3">53.0%</td>
+          <td class="px-4 py-3">+114</td>
+          <td class="px-4 py-3">+112</td>
+          <td class="px-4 py-3">+1.8%</td>
+          <td class="px-4 py-3 font-semibold text-green-400">Lean ✅</td>
+        </tr>
+    
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center text-gray-400 text-xs mt-8">
+    <p>© 2025 Moneyline Hacks. Built for bettors who crave data 🔥</p>
+  </div>
+</body>
+</html>

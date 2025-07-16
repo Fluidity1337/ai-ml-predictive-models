@@ -1,0 +1,69 @@
+# remove the “config/config.yaml” line entirely
+# (start with your comments or the first actual setting)
+
+# Top-level settings
+root_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/'
+log_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/logs'
+cache_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/.cache'
+index_html_filepath: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/index.html'
+
+mlb_data:
+  nrfi_websheet_ds: /data/baseball/mlb/raw/mlb_daily_
+  base_path:    data/baseball/mlb/
+  raw:          data/baseball/mlb/raw
+  game_schedule: data/baseball/mlb/raw/game_schedule
+  interim:      data/baseball/mlb/interim
+  processed:    data/baseball/mlb/processed
+  processed_game_summaries_path:    data/baseball/mlb/processed/game_summaries
+  test_output:  test_output
+  statcast:     data/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
+  api:          data/sports/baseball/mlb/data_sources/api
+  test_output:  'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output' 
+  outputs_path: data/baseball/mlb/outputs
+  season: 2025
+  use_cache: true
+  cache_dir: .cache
+  team_abbrev_cds_cache_path: '.cache/team_codes_{season}.json'
+  statcast:
+    raw_csv: data/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
+    split_json: data/baseball/mlb/processed/team_woba3_{lookback}d.json
+    combined_json: data/baseball/mlb/processed/team_woba3_splits_combined.json  
+
+api:
+  mlb:
+    pitcher:  'https://statsapi.mlb.com/api/v1/people/{pitcher_id}'
+    schedule: 'https://statsapi.mlb.com/api/v1/schedule'
+    # …any other endpoints…
+
+models:
+  mlb_rfi:
+    feature_definitions_path:  "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/config/features/mlb_rfi_features.json"
+
+logging:
+  version: 1
+  disable_existing_loggers: False
+
+  formatters:
+    simple:
+      format: "%(asctime)s — %(levelname)s — %(message)s"
+      datefmt: "%Y-%m-%d %H:%M:%S"
+
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: DEBUG
+      formatter: simple
+      stream: ext://sys.stdout
+
+    file:
+      class: logging.FileHandler
+      level: DEBUG
+      filename: logs/mlb_pipeline.log
+      formatter: simple
+      mode: a
+      encoding: utf-8
+
+  root:
+    level: DEBUG
+    handlers: [console, file]
+

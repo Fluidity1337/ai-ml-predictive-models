@@ -1,0 +1,27 @@
+flowchart TB
+    subgraph Data Acquisition
+        A[FanGraphs CSV Data URI] --> B[decode_data_uri]
+    end
+    subgraph Data Ingestion
+        B --> C[pandas DataFrame]
+        C --> D[load_wrcp1st(loader fn)]
+    end
+    subgraph Domain Mapping
+        D --> E[df_to_team_stats]
+        subgraph ScheduleLoading
+            F[MLB Schedule JSON/API] --> G[fetch_daily_schedule] --> H[schedule DataFrame]
+        end
+        H --> I[df_to_games]
+        E --> J[team_stats lookup]
+        I --> J
+    end
+    subgraph Enrichment
+        J --> K[Game objects with away_stats & home_stats]
+    end
+    subgraph Feature Export
+        K --> L[games_to_feature_df]
+        L --> M[Master CSV with RFI features]
+    end
+    subgraph Modeling
+        M --> N[Model Training / Scoring]
+    end
