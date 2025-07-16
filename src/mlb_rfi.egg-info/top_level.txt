@@ -1,4 +1,0 @@
-models
-pipelines
-renderers
-utils
