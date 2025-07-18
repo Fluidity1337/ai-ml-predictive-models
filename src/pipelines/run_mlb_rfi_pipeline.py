@@ -140,15 +140,14 @@ if __name__ == '__main__':
     logging.info("Loaded %d games", len(games))
 
     # Load wOBA split data
-    woba3_path = Path(
-        "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/baseball/mlb/processed/team_woba3_splits_combined.json")
+    woba3_path = Path('data/baseball/mlb/processed/team_woba3_splits_combined.json')
     with open(woba3_path, 'r', encoding='utf-8') as wf:
         woba_data = json.load(wf)
         woba_split = woba_data.get("splits", {}).get("14d", {})
 
     # Load wRC+ 1st inning data from FanGraphs
     wrclike_path = Path(
-        "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/data/baseball/mlb/raw/fangraphs/splits_1st_inning_2025_20250629.csv")
+        'data/baseball/mlb/raw/fangraphs/splits_1st_inning_2025_20250629.csv')
     try:
         wrclike_df = pd.read_csv(wrclike_path)
         wrclike_map = {

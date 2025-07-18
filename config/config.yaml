@@ -2,14 +2,17 @@
 # (start with your comments or the first actual setting)
 
 # Top-level settings
-root_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/'
-log_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/logs'
-cache_path: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/.cache'
-index_html_filepath: 'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/index.html'
+root_path: .
+log_path: logs
+cache_path: .cache
+index_html_filepath: index.html
 
 mlb_data:
-  nrfi_websheet_ds: /data/baseball/mlb/raw/mlb_daily_
+  nrfi_websheet_ds: data/baseball/mlb/raw/mlb_daily_
   base_path:    data/baseball/mlb/
+  rfi:
+    team_woba3_filepath: data/baseball/mlb/processed/team_woba3_splits_combined.json
+    wrc_filepath: data/baseball/mlb/raw/fangraphs/splits_1st_inning_{season}.csv
   raw:          data/baseball/mlb/raw
   game_schedule: data/baseball/mlb/raw/game_schedule
   interim:      data/baseball/mlb/interim
@@ -18,7 +21,6 @@ mlb_data:
   test_output:  test_output
   statcast:     data/baseball/mlb/raw/statcast/statcast_{lookback}d_raw.csv
   api:          data/sports/baseball/mlb/data_sources/api
-  test_output:  'F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/test_output' 
   outputs_path: data/baseball/mlb/outputs
   season: 2025
   use_cache: true
@@ -37,7 +39,7 @@ api:
 
 models:
   mlb_rfi:
-    feature_definitions_path:  "F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/config/features/mlb_rfi_features.json"
+    feature_definitions_path:  config/features/mlb_rfi_features.json
 
 logging:
   version: 1

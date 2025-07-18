@@ -1,7 +1,9 @@
 python -m src.pipelines.run_mlb_rfi_pipeline 2025-07-18
 
-& F:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/.venv/Scripts/python.exe f:/Dropbox/1_Work/Development/GitHub/Fluidity1337/ai-ml-predictive-models/src/renderers/build_rfi_websheet.py
 python src/utils/mlb/augment_game_summaries.py -i data/baseball/mlb/raw -o data/baseball/mlb/interim/game_summaries
+
+python src/renderers/build_rfi_websheet.py
+
 
 python src/models/sports/baseball/mlb/calibrate_nrfi_scores.py -i data/baseball/mlb/interim/game_summaries -p "mlb_daily_game_summary_*_augmented.json" -d data/baseball/mlb/processed/game_summaries
 

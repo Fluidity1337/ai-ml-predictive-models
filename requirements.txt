@@ -1,3 +1,10 @@
 pandas
 requests
 pybaseball
+pyYAML
+python-dotenv
+json
+weasyprint
+
+pip install --upgrade pip
+pip install .[tests]
