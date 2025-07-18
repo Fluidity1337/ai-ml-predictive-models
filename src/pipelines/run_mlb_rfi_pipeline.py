@@ -1,5 +1,6 @@
 # run_mlb_rfi_pipeline_with_websheets_3.py
-
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env file
 import sys
 import csv
 import json
