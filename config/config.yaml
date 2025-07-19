@@ -12,7 +12,7 @@ mlb_data:
   base_path:    data/baseball/mlb/
   rfi:
     team_woba3_filepath: data/baseball/mlb/processed/team_woba3_splits_combined.json
-    wrc_filepath: data/baseball/mlb/raw/fangraphs/splits_1st_inning_{season}.csv
+    wrc_filepath: data/baseball/mlb/raw/fangraphs/splits_1st_inning_{season}_20250629.csv
   raw:          data/baseball/mlb/raw
   game_schedule: data/baseball/mlb/raw/game_schedule
   interim:      data/baseball/mlb/interim

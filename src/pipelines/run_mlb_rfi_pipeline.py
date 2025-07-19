@@ -146,8 +146,20 @@ if __name__ == '__main__':
         woba_split = woba_data.get("splits", {}).get("14d", {})
 
     # Load wRC+ 1st inning data from FanGraphs
+    #wrclike_path = Path(
+    #    'data/baseball/mlb/raw/fangraphs/splits_1st_inning_2025_20250629.csv')
+    # Grab the template from your loaded config
+    wrc_template = cfg["mlb_data"]["rfi"]["wrc_filepath"]  # now contains “…_{season}_{date}.csv”
+    # Fill in both season and date
     wrclike_path = Path(
-        'data/baseball/mlb/raw/fangraphs/splits_1st_inning_2025_20250629.csv')
+        wrc_template.format(
+            season=SEASON,     # e.g. "2025"
+            date=20250629   # e.g. "20250718"
+        )
+    )
+    if not wrclike_path.exists():
+        raise FileNotFoundError(f"{wrclike_path} not found—please add the FanGraphs splits CSV.")
+
     try:
         wrclike_df = pd.read_csv(wrclike_path)
         wrclike_map = {
@@ -155,12 +167,13 @@ if __name__ == '__main__':
             for _, row in wrclike_df.iterrows()
         }
     except Exception as e:
-        logging.error(f"❌ Failed to load wRC+ 1st inning CSV: {e}")
+        logging.error(f"❌ Failed to load w#RC+ 1st inning CSV: {e}")
         wrclike_map = {}
+    print("wRC+ keys:", sorted(wrclike_map.keys()))
 
     # Aggregate pitcher stats for 4th game only (index 3)
     all_pitchers = []
-    # g = games[3]
+    #g = games[3]
     for g in games:
         pitchers = fetch_game_details(g, DF_PITCH, features_cfg, SEASON)
         for p in pitchers:
@@ -237,6 +250,8 @@ if __name__ == '__main__':
             "TEX": "TEX", "TOR": "TOR", "MIN": "MIN", "HOU": "HOU", "DET": "DET",
             "ATL": "ATL", "STL": "STL", "NYM": "NYM", "NYY": "NYY", "SFG": "SFG"
         }
+        print("Looking up home:", home_abbrev, "→", wrclike_map.get(home_abbrev))
+        print("Looking up away:", away_abbrev, "→", wrclike_map.get(away_abbrev))
         home_wrclike = wrclike_map.get(TEAM_ABBREV_MAP.get(
             home_abbrev.upper(), home_abbrev.upper()), "NA")
         away_wrclike = wrclike_map.get(TEAM_ABBREV_MAP.get(
