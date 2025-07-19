@@ -32,7 +32,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
     "first_inning_run": false,
-    "calibrated_p_nrfi": 0.4527448191722613
+    "calibrated_p_nrfi": 0.4211099585799216
   },
   {
     "game_id": 777175,
@@ -67,7 +67,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
     "first_inning_run": false,
-    "calibrated_p_nrfi": 0.3279278454964767
+    "calibrated_p_nrfi": 0.33198439740763386
   },
   {
     "game_id": 777163,
@@ -102,7 +102,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
     "first_inning_run": false,
-    "calibrated_p_nrfi": 0.4412565054713323
+    "calibrated_p_nrfi": 0.41295623955924976
   },
   {
     "game_id": 777182,
@@ -137,7 +137,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "2-0",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.5375863336711042
+    "calibrated_p_nrfi": 0.48183004832028786
   },
   {
     "game_id": 777184,
@@ -172,7 +172,7 @@
     "first_inning_home_runs": 3,
     "first_inning_score": "0-3",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.5015597647847039
+    "calibrated_p_nrfi": 0.4558882702715107
   },
   {
     "game_id": 777179,
@@ -207,7 +207,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
     "first_inning_run": false,
-    "calibrated_p_nrfi": 0.43789793603448235
+    "calibrated_p_nrfi": 0.41057330007124737
   },
   {
     "game_id": 777183,
@@ -242,7 +242,7 @@
     "first_inning_home_runs": 3,
     "first_inning_score": "0-3",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.5122471680637786
+    "calibrated_p_nrfi": 0.4635520620155724
   },
   {
     "game_id": 777177,
@@ -277,7 +277,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
     "first_inning_run": false,
-    "calibrated_p_nrfi": 0.4947432486036376
+    "calibrated_p_nrfi": 0.45101186859382103
   },
   {
     "game_id": 777173,
@@ -312,7 +312,7 @@
     "first_inning_home_runs": 2,
     "first_inning_score": "0-2",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.5669976874660874
+    "calibrated_p_nrfi": 0.5032870663558056
   },
   {
     "game_id": 777178,
@@ -347,7 +347,7 @@
     "first_inning_home_runs": 1,
     "first_inning_score": "3-1",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.4036282845445429
+    "calibrated_p_nrfi": 0.38624882971977526
   },
   {
     "game_id": 777174,
@@ -382,7 +382,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "2-0",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.37723607419759986
+    "calibrated_p_nrfi": 0.36745404488792965
   },
   {
     "game_id": 777171,
@@ -417,7 +417,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "1-0",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.547429561563891
+    "calibrated_p_nrfi": 0.48897885243507944
   },
   {
     "game_id": 777162,
@@ -452,7 +452,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "0-0",
     "first_inning_run": false,
-    "calibrated_p_nrfi": 0.49598254408243425
+    "calibrated_p_nrfi": 0.45189781539104157
   },
   {
     "game_id": 777176,
@@ -487,7 +487,7 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "4-0",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.6557770878091724
+    "calibrated_p_nrfi": 0.5704525487903823
   },
   {
     "game_id": 777181,
@@ -522,6 +522,6 @@
     "first_inning_home_runs": 0,
     "first_inning_score": "2-0",
     "first_inning_run": true,
-    "calibrated_p_nrfi": 0.576556523204534
+    "calibrated_p_nrfi": 0.510328870200015
   }
 ]

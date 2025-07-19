@@ -403,9 +403,9 @@
     "home_team_score": 20.28,
     "game_nrfi_score": 22.73,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 4,
+    "first_inning_score": "0-4",
+    "first_inning_run": true
   },
   {
     "game_id": 777100,

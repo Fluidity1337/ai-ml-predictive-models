@@ -27,7 +27,12 @@
     "away_team_wrc_plus_1st_inn": 85.88685892222207,
     "away_team_score": 31.14,
     "home_team_score": 23.13,
-    "game_nrfi_score": 27.13
+    "game_nrfi_score": 27.13,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.4260232271942942
   },
   {
     "game_id": 777092,
@@ -57,7 +62,12 @@
     "away_team_wrc_plus_1st_inn": 114.16453909046716,
     "away_team_score": 24.14,
     "home_team_score": 29.06,
-    "game_nrfi_score": 26.6
+    "game_nrfi_score": 26.6,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.4202380927964948
   },
   {
     "game_id": 777093,
@@ -87,7 +97,12 @@
     "away_team_wrc_plus_1st_inn": 102.20325518826068,
     "away_team_score": 21.62,
     "home_team_score": 25.89,
-    "game_nrfi_score": 23.76
+    "game_nrfi_score": 23.76,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.3896466519403964
   },
   {
     "game_id": 777089,
@@ -117,7 +132,12 @@
     "away_team_wrc_plus_1st_inn": 135.10657581197043,
     "away_team_score": 34.66,
     "home_team_score": 60.68,
-    "game_nrfi_score": 47.67
+    "game_nrfi_score": 47.67,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.6503165806573198
   },
   {
     "game_id": 777090,
@@ -147,7 +167,12 @@
     "away_team_wrc_plus_1st_inn": 109.34205986911556,
     "away_team_score": 29.04,
     "home_team_score": 40.13,
-    "game_nrfi_score": 34.59
+    "game_nrfi_score": 34.59,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.5088760431465557
   },
   {
     "game_id": 777091,
@@ -177,7 +202,12 @@
     "away_team_wrc_plus_1st_inn": 118.90800978828324,
     "away_team_score": 25.4,
     "home_team_score": 38.19,
-    "game_nrfi_score": 31.79
+    "game_nrfi_score": 31.79,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.4775887750700142
   },
   {
     "game_id": 777095,
@@ -207,7 +237,12 @@
     "away_team_wrc_plus_1st_inn": 100.46104647092106,
     "away_team_score": 24.92,
     "home_team_score": 33.56,
-    "game_nrfi_score": 29.24
+    "game_nrfi_score": 29.24,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.44924091193929394
   },
   {
     "game_id": 777088,
@@ -237,7 +272,12 @@
     "away_team_wrc_plus_1st_inn": 127.58458255301151,
     "away_team_score": 38.63,
     "home_team_score": 31.23,
-    "game_nrfi_score": 34.93
+    "game_nrfi_score": 34.93,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.5126753655087875
   },
   {
     "game_id": 777104,
@@ -267,7 +307,12 @@
     "away_team_wrc_plus_1st_inn": 116.20264215540952,
     "away_team_score": 35.66,
     "home_team_score": 24.3,
-    "game_nrfi_score": 29.98
+    "game_nrfi_score": 29.98,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.4574416733138311
   },
   {
     "game_id": 777096,
@@ -297,7 +342,12 @@
     "away_team_wrc_plus_1st_inn": 123.17742322803144,
     "away_team_score": 35.54,
     "home_team_score": 43.99,
-    "game_nrfi_score": 39.77
+    "game_nrfi_score": 39.77,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.566393538944447
   },
   {
     "game_id": 777081,
@@ -327,7 +377,12 @@
     "away_team_wrc_plus_1st_inn": 80.01532207298241,
     "away_team_score": 12.58,
     "home_team_score": 31.29,
-    "game_nrfi_score": 21.93
+    "game_nrfi_score": 21.93,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.37036918820306286
   },
   {
     "game_id": 777097,
@@ -357,7 +412,12 @@
     "away_team_wrc_plus_1st_inn": 161.31803788443312,
     "away_team_score": 38.87,
     "home_team_score": 39.82,
-    "game_nrfi_score": 39.34
+    "game_nrfi_score": 39.34,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.5616651305572737
   },
   {
     "game_id": 777080,
@@ -387,7 +447,12 @@
     "away_team_wrc_plus_1st_inn": 95.4277961415584,
     "away_team_score": 4.62,
     "home_team_score": 21.69,
-    "game_nrfi_score": 13.16
+    "game_nrfi_score": 13.16,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.2843840476857523
   },
   {
     "game_id": 777085,
@@ -417,7 +482,12 @@
     "away_team_wrc_plus_1st_inn": 95.47785304424193,
     "away_team_score": 19.71,
     "home_team_score": 28.72,
-    "game_nrfi_score": 24.21
+    "game_nrfi_score": 24.21,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.39444295578287125
   },
   {
     "game_id": 777086,
@@ -447,6 +517,11 @@
     "away_team_wrc_plus_1st_inn": 80.87513529031497,
     "away_team_score": 31.46,
     "home_team_score": 38.16,
-    "game_nrfi_score": 34.81
+    "game_nrfi_score": 34.81,
+    "first_inning_away_runs": 0,
+    "first_inning_home_runs": 0,
+    "first_inning_score": "0-0",
+    "first_inning_run": false,
+    "calibrated_p_nrfi": 0.5113345728172889
   }
 ]
