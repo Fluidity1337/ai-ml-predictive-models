@@ -50,13 +50,17 @@ class AdvancedTeamStats(BaseStats):
     def fetch_statcast_data(self, lookback_days: int) -> pd.DataFrame:
         cache_path = Path(
             str(self.raw_csv_path).format(lookback=lookback_days))
-        if not self.force and cache_path.exists():
-            age_hours = (datetime.now(
-            ) - datetime.fromtimestamp(cache_path.stat().st_mtime)).total_seconds() / 3600
-            if age_hours < 12:
-                logger.info(
-                    "📂 Using cached Statcast CSV from %s (%.1f hrs old)", cache_path, age_hours)
-                return pd.read_csv(cache_path)
+        if cache_path.exists():
+            if self.force:
+                logger.info("--force: Deleting cached Statcast CSV at %s", cache_path)
+                cache_path.unlink(missing_ok=True)
+            else:
+                age_hours = (datetime.now() - datetime.fromtimestamp(cache_path.stat().st_mtime)).total_seconds() / 3600
+                if age_hours < 12:
+                    logger.info(
+                        "📂 Using cached Statcast CSV from %s (%.1f hrs old)", cache_path, age_hours
+                    )
+                    return pd.read_csv(cache_path)
 
         try:
             end = datetime.today().date()
@@ -92,18 +96,21 @@ class AdvancedTeamStats(BaseStats):
         try:
             # This metric represents wOBA in the FIRST INNING ONLY — a proxy for the performance of the top 3 in the batting order.
             # We refer to it as "wOBA3" throughout for consistency, even though it's not literally per-player.
-            cache_path = Path(
-                str(self.woba_split_path).format(lookback=lookback_days))
+            cache_path = Path(str(self.woba_split_path).format(lookback=lookback_days))
+
             if cache_path.exists():
-                age = datetime.now() - datetime.fromtimestamp(cache_path.stat().st_mtime)
-                if age.days > 3:
-                    logger.info(
-                        "🩹 Cache %s is %d days old. Deleting...", cache_path, age.days)
+                if self.force:
+                    logger.info("--force: Deleting cached wOBA split at %s", cache_path)
                     cache_path.unlink(missing_ok=True)
                 else:
-                    logger.info("📦 Using cached wOBA data from %s", cache_path)
-                    with open(cache_path, "r", encoding="utf-8") as f:
-                        return json.load(f)
+                    age = datetime.now() - datetime.fromtimestamp(cache_path.stat().st_mtime)
+                    if age.days > 3:
+                        logger.info("🩹 Cache %s is %d days old. Deleting...", cache_path, age.days)
+                        cache_path.unlink(missing_ok=True)
+                    else:
+                        logger.info("📦 Using cached wOBA data from %s", cache_path)
+                        with cache_path.open("r", encoding="utf-8") as f:
+                            return json.load(f)
 
             df = self.fetch_statcast_data(lookback_days)
             if df.empty:
@@ -157,6 +164,9 @@ class AdvancedTeamStats(BaseStats):
             return {}
 
     def compute_all_splits(self, force: bool = False):
+        if (self.force or force) and self.combined_path.exists():
+            logger.info("--force: Deleting combined split cache at %s", self.combined_path)
+            self.combined_path.unlink(missing_ok=True)
         if not force and self.combined_path.exists():
             age_hours = (datetime.now(
             ) - datetime.fromtimestamp(self.combined_path.stat().st_mtime)).total_seconds() / 3600

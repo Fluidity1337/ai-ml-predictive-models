@@ -124,7 +124,9 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         date_str = sys.argv[1]
     else:
-        date_str = "2025-07-03"
+        date_str = datetime.now().strftime('%Y-%m-%d')
+        
+    #date_str_nohyphens=datetime.strftime("%Y%m%d")
 
     try:
         dt = datetime.strptime(date_str, '%Y-%m-%d')
@@ -154,7 +156,7 @@ if __name__ == '__main__':
     wrclike_path = Path(
         wrc_template.format(
             season=SEASON,     # e.g. "2025"
-            date=20250629   # e.g. "20250718"
+            date=dt.strftime("%Y%m%d")  # e.g. "20250718"
         )
     )
     if not wrclike_path.exists():

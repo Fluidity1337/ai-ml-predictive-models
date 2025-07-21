@@ -27,7 +27,7 @@ def load_config(filename: str = "config/config.yaml") -> dict:
     Load and parse the YAML or JSON config file from the project root (or nearest parent).
 
     Usage:
-        from utils.config_loader import load_config
+        from src.utils.config_loader import load_config
         config = load_config()
     """
     path = find_config_path(filename)

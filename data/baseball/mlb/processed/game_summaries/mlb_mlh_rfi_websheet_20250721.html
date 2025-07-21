@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <title>Moneyline Hacks - NRFI Model</title>
+  <link href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css' rel='stylesheet'>
+  <style>
+    /* global box-sizing */
+    *, *::before, *::after { box-sizing: border-box; }
+    /* reset margins */
+    html, body { margin: 0; padding: 0; }
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 1.5rem;
+    }
+    .title-highlight {
+      background: linear-gradient(to right, #34d399, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* custom class for s<=20 */
+    .bg-de4545 { background-color: #db5a5a !important; }
+    /* wrapper provides uniform white border */
+    .table-wrapper { 
+      display: inline-block; 
+      max-width: 100%; 
+      overflow-x: auto; 
+      border: 1px solid #fff; 
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #0f172a; /* table background behind cells */
+      border: 1px solid #fff;     /* uniform outer border */
+    }
+    th, td {
+      border: 1px solid #fff;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .overflow-auto.max-w-5xl.mx-auto {
+    box-sizing: border-box; 
+    }
+  </style>
+</head>
+<body class='p-6'>
+  <div class='flex flex-col items-center justify-center gap-3 mb-6'>
+    <!-- First line: logo and title -->
+    <div class='flex items-center gap-4'>
+      <img
+        src='https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/assets/img/mlh/mlh-logo-1.jpg'
+        alt='Moneyline Hacks Logo'
+        class='h-16'/>
+      <h1 class='text-4xl font-extrabold title-highlight'>Moneyline Hacks</h1>
+    </div>
+    <!-- Second line: date and second logo -->
+    <div class='flex items-center gap-4'>
+      <h2 class='text-xl text-gray-400'>No Run First Inning Model — July 21, 2025</h2>
+      <img
+        src='https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/assets/img/mlb/mlb-logo-2.png'
+        alt='Baseball Icon'
+        class='h-10'/>
+    </div>
+  </div>
+  <div class='overflow-auto w-full mx-auto'>
+    <table class='min-w-full text-gray-300 text-sm'>
+      <thead class='bg-gray-900 text-gray-100 uppercase text-xs'>
+        <tr>
+          <th class='px-4 py-2'>MLB MatchupWTF</th>
+          <th class='px-4 py-2'>Start Time</th>
+          <th class='px-4 py-2'>SP Name</th>
+          <th class='px-4 py-2'>SP xFIP (L30D)</th>
+          <th class='px-4 py-2'>xFIP Score (0-100)</th>          
+          <th class='px-4 py-2'>SP Barrel% (L30D)</th>        
+          <th class='px-4 py-2'>Top 3 Hitters Avg wOBA (L14D)</th>          
+          <th class='px-4 py-2'>Team 1st Inning wRC+ (Season)</th>
+          <th class='px-4 py-2'>Team RFI Grade (0-100)</th>
+          <th class='px-4 py-2'>Projected NRFI Chance</th>
+          <th class='px-4 py-2'>Projected American Odds</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>BAL @CLE</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>6:40 PM ET</td><td class='px-4 py-2 bg-gray-700'>Tomoyuki Sugano (BAL)</td><td class='px-4 py-2 bg-gray-700'>3.79</td><td class='px-4 py-2 bg-gray-700'>57.10</td><td class='px-4 py-2 bg-gray-700'>11.73%</td><td class='px-4 py-2 bg-gray-700'>0.19</td><td class='px-4 py-2 bg-gray-700'>101.55</td><td class='px-4 py-2 bg-gray-700'>36.98</td><td class='' rowspan='2'>45.89 %</td><td class='' rowspan='2'>+118</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Tanner Bibee (CLE)</td><td class='px-4 py-2 bg-gray-800'>3.73</td><td class='px-4 py-2 bg-gray-800'>58.90</td><td class='px-4 py-2 bg-gray-800'>3.70%</td><td class='px-4 py-2 bg-gray-800'>0.33</td><td class='px-4 py-2 bg-gray-800'>89.94</td><td class='px-4 py-2 bg-gray-800'>24.54</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>DET @PIT</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>6:40 PM ET</td><td class='px-4 py-2 bg-gray-700'>Jack Flaherty (DET)</td><td class='px-4 py-2 bg-gray-700'>3.60</td><td class='px-4 py-2 bg-gray-700'>63.33</td><td class='px-4 py-2 bg-gray-700'>5.85%</td><td class='px-4 py-2 bg-gray-700'>0.50</td><td class='px-4 py-2 bg-gray-700'>128.58</td><td class='px-4 py-2 bg-gray-700'>41.47</td><td class='' rowspan='2'>47.26 %</td><td class='' rowspan='2'>+112</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Paul Skenes (PIT)</td><td class='px-4 py-2 bg-gray-800'>3.54</td><td class='px-4 py-2 bg-gray-800'>65.23</td><td class='px-4 py-2 bg-gray-800'>1.80%</td><td class='px-4 py-2 bg-gray-800'>0.36</td><td class='px-4 py-2 bg-gray-800'>95.38</td><td class='px-4 py-2 bg-gray-800'>22.66</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>SD @MIA</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>6:40 PM ET</td><td class='px-4 py-2 bg-gray-700'>Randy Vásquez (SD)</td><td class='px-4 py-2 bg-gray-700'>4.17</td><td class='px-4 py-2 bg-gray-700'>44.15</td><td class='px-4 py-2 bg-gray-700'>3.96%</td><td class='px-4 py-2 bg-gray-700'>0.40</td><td class='px-4 py-2 bg-gray-700'>114.89</td><td class='px-4 py-2 bg-gray-700'>38.43</td><td class='' rowspan='2'>43.96 %</td><td class='' rowspan='2'>+127</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Eury Pérez (MIA)</td><td class='px-4 py-2 bg-gray-800'>3.77</td><td class='px-4 py-2 bg-gray-800'>57.66</td><td class='px-4 py-2 bg-gray-800'>3.48%</td><td class='px-4 py-2 bg-gray-800'>0.22</td><td class='px-4 py-2 bg-gray-800'>90.94</td><td class='px-4 py-2 bg-gray-800'>19.41</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>CIN @WSH</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>6:45 PM ET</td><td class='px-4 py-2 bg-gray-700'>Brady Singer (CIN)</td><td class='px-4 py-2 bg-gray-700'>3.46</td><td class='px-4 py-2 bg-gray-700'>68.03</td><td class='px-4 py-2 bg-gray-700'>2.59%</td><td class='px-4 py-2 bg-gray-700'>0.31</td><td class='px-4 py-2 bg-gray-700'>108.85</td><td class='px-4 py-2 bg-gray-700'>22.07</td><td class='' rowspan='2'>44.52 %</td><td class='' rowspan='2'>+125</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Jake Irvin (WSH)</td><td class='px-4 py-2 bg-gray-800'>3.82</td><td class='px-4 py-2 bg-gray-800'>56.12</td><td class='px-4 py-2 bg-gray-800'>6.13%</td><td class='px-4 py-2 bg-gray-800'>0.32</td><td class='px-4 py-2 bg-gray-800'>119.92</td><td class='px-4 py-2 bg-gray-800'>36.83</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>BOS @PHI</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>6:45 PM ET</td><td class='px-4 py-2 bg-gray-700'>Walker Buehler (BOS)</td><td class='px-4 py-2 bg-gray-700'>3.84</td><td class='px-4 py-2 bg-gray-700'>55.23</td><td class='px-4 py-2 bg-gray-700'>5.09%</td><td class='px-4 py-2 bg-gray-700'>0.41</td><td class='px-4 py-2 bg-gray-700'>129.47</td><td class='px-4 py-2 bg-gray-700'>40.60</td><td class='' rowspan='2'>47.41 %</td><td class='' rowspan='2'>+111</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Zack Wheeler (PHI)</td><td class='px-4 py-2 bg-gray-800'>3.42</td><td class='px-4 py-2 bg-gray-800'>69.17</td><td class='px-4 py-2 bg-gray-800'>4.25%</td><td class='px-4 py-2 bg-gray-800'>0.26</td><td class='px-4 py-2 bg-gray-800'>115.06</td><td class='px-4 py-2 bg-gray-800'>23.79</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>NYY @TOR</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>7:07 PM ET</td><td class='px-4 py-2 bg-gray-700'>Carlos Rodón (NYY)</td><td class='px-4 py-2 bg-gray-700'>3.46</td><td class='px-4 py-2 bg-gray-700'>67.95</td><td class='px-4 py-2 bg-gray-700'>3.64%</td><td class='px-4 py-2 bg-gray-700'>0.40</td><td class='px-4 py-2 bg-gray-700'>149.37</td><td class='px-4 py-2 bg-gray-700'>34.06</td><td class='' rowspan='2'>45.22 %</td><td class='' rowspan='2'>+121</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Kevin Gausman (TOR)</td><td class='px-4 py-2 bg-gray-800'>3.80</td><td class='px-4 py-2 bg-gray-800'>56.58</td><td class='px-4 py-2 bg-gray-800'>2.87%</td><td class='px-4 py-2 bg-gray-800'>0.29</td><td class='px-4 py-2 bg-gray-800'>113.15</td><td class='px-4 py-2 bg-gray-800'>26.19</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>LAA @NYM</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>7:10 PM ET</td><td class='px-4 py-2 bg-gray-700'>Tyler Anderson (LAA)</td><td class='px-4 py-2 bg-gray-700'>3.84</td><td class='px-4 py-2 bg-gray-700'>55.23</td><td class='px-4 py-2 bg-gray-700'>6.20%</td><td class='px-4 py-2 bg-gray-700'>0.32</td><td class='px-4 py-2 bg-gray-700'>140.87</td><td class='px-4 py-2 bg-gray-700'>41.51</td><td class='' rowspan='2'>52.65 %</td><td class='' rowspan='2'>-111</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Kodai Senga (NYM)</td><td class='px-4 py-2 bg-gray-800'>3.03</td><td class='px-4 py-2 bg-gray-800'>82.30</td><td class='px-4 py-2 bg-gray-800'>5.88%</td><td class='px-4 py-2 bg-gray-800'>0.44</td><td class='px-4 py-2 bg-gray-800'>121.46</td><td class='px-4 py-2 bg-gray-800'>32.81</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>SF @ATL</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>7:15 PM ET</td><td class='px-4 py-2 bg-gray-700'>Hayden Birdsong (SF)</td><td class='px-4 py-2 bg-gray-700'>3.64</td><td class='px-4 py-2 bg-gray-700'>62.17</td><td class='px-4 py-2 bg-gray-700'>10.79%</td><td class='px-4 py-2 bg-gray-700'>0.38</td><td class='px-4 py-2 bg-gray-700'>87.50</td><td class='px-4 py-2 bg-gray-700'>40.86</td><td class='' rowspan='2'>53.44 %</td><td class='' rowspan='2'>-115</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Bryce Elder (ATL)</td><td class='px-4 py-2 bg-gray-800'>3.46</td><td class='px-4 py-2 bg-gray-800'>68.03</td><td class='px-4 py-2 bg-gray-800'>10.31%</td><td class='px-4 py-2 bg-gray-800'>0.11</td><td class='px-4 py-2 bg-gray-800'>110.90</td><td class='px-4 py-2 bg-gray-800'>34.97</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>CWS @TB</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>7:35 PM ET</td><td class='px-4 py-2 bg-gray-700'>Sean Burke (CWS)</td><td class='px-4 py-2 bg-gray-700'>3.73</td><td class='px-4 py-2 bg-gray-700'>58.98</td><td class='px-4 py-2 bg-gray-700'>4.95%</td><td class='px-4 py-2 bg-gray-700'>0.40</td><td class='px-4 py-2 bg-gray-700'>113.87</td><td class='px-4 py-2 bg-gray-700'>35.66</td><td class='' rowspan='2'>46.94 %</td><td class='' rowspan='2'>+113</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Shane Baz (TB)</td><td class='px-4 py-2 bg-gray-800'>3.63</td><td class='px-4 py-2 bg-gray-800'>62.40</td><td class='px-4 py-2 bg-gray-800'>5.28%</td><td class='px-4 py-2 bg-gray-800'>0.25</td><td class='px-4 py-2 bg-gray-800'>112.09</td><td class='px-4 py-2 bg-gray-800'>27.86</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>KC @CHC</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>8:05 PM ET</td><td class='px-4 py-2 bg-gray-700'>Noah Cameron (KC)</td><td class='px-4 py-2 bg-gray-700'>3.50</td><td class='px-4 py-2 bg-gray-700'>66.70</td><td class='px-4 py-2 bg-gray-700'>4.20%</td><td class='px-4 py-2 bg-gray-700'>0.43</td><td class='px-4 py-2 bg-gray-700'>102.07</td><td class='px-4 py-2 bg-gray-700'>30.13</td><td class='' rowspan='2'>42.73 %</td><td class='' rowspan='2'>+134</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Ryan Brasier (CHC)</td><td class='px-4 py-2 bg-gray-800'>3.45</td><td class='px-4 py-2 bg-gray-800'>68.48</td><td class='px-4 py-2 bg-gray-800'>0.00%</td><td class='px-4 py-2 bg-gray-800'>0.30</td><td class='px-4 py-2 bg-gray-800'>127.74</td><td class='px-4 py-2 bg-gray-800'>25.34</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>ATH @TEX</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>8:05 PM ET</td><td class='px-4 py-2 bg-gray-700'>Jacob Lopez (ATH)</td><td class='px-4 py-2 bg-gray-700'>3.77</td><td class='px-4 py-2 bg-gray-700'>57.52</td><td class='px-4 py-2 bg-gray-700'>3.20%</td><td class='px-4 py-2 bg-gray-700'>0.14</td><td class='px-4 py-2 bg-gray-700'>114.78</td><td class='px-4 py-2 bg-gray-700'>22.33</td><td class='' rowspan='2'>42.60 %</td><td class='' rowspan='2'>+135</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Jack Leiter (TEX)</td><td class='px-4 py-2 bg-gray-800'>3.85</td><td class='px-4 py-2 bg-gray-800'>55.08</td><td class='px-4 py-2 bg-gray-800'>4.26%</td><td class='px-4 py-2 bg-gray-800'>0.43</td><td class='px-4 py-2 bg-gray-800'>94.73</td><td class='px-4 py-2 bg-gray-800'>32.88</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>STL @COL</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>8:40 PM ET</td><td class='px-4 py-2 bg-gray-700'>Michael McGreevy (STL)</td><td class='px-4 py-2 bg-gray-700'>3.88</td><td class='px-4 py-2 bg-gray-700'>53.80</td><td class='px-4 py-2 bg-gray-700'>8.33%</td><td class='px-4 py-2 bg-gray-700'>0.45</td><td class='px-4 py-2 bg-gray-700'>90.00</td><td class='px-4 py-2 bg-gray-700'>43.47</td><td class='' rowspan='2'>56.37 %</td><td class='' rowspan='2'>-129</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Austin Gomber (COL)</td><td class='px-4 py-2 bg-gray-800'>3.95</td><td class='px-4 py-2 bg-gray-800'>51.68</td><td class='px-4 py-2 bg-gray-800'>7.28%</td><td class='px-4 py-2 bg-gray-800'>0.41</td><td class='px-4 py-2 bg-gray-800'>70.60</td><td class='px-4 py-2 bg-gray-800'>37.94</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>HOU @AZ</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>9:40 PM ET</td><td class='px-4 py-2 bg-gray-700'>Colton Gordon (HOU)</td><td class='px-4 py-2 bg-gray-700'>3.91</td><td class='px-4 py-2 bg-gray-700'>53.02</td><td class='px-4 py-2 bg-gray-700'>2.78%</td><td class='px-4 py-2 bg-gray-700'>0.52</td><td class='px-4 py-2 bg-gray-700'>89.69</td><td class='px-4 py-2 bg-gray-700'>30.28</td><td class='' rowspan='2'>48.61 %</td><td class='' rowspan='2'>+106</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Zac Gallen (AZ)</td><td class='px-4 py-2 bg-gray-800'>3.43</td><td class='px-4 py-2 bg-gray-800'>69.07</td><td class='px-4 py-2 bg-gray-800'>6.81%</td><td class='px-4 py-2 bg-gray-800'>0.41</td><td class='px-4 py-2 bg-gray-800'>110.11</td><td class='px-4 py-2 bg-gray-800'>36.39</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>MIL @SEA</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>9:40 PM ET</td><td class='px-4 py-2 bg-gray-700'>Brandon Woodruff (MIL)</td><td class='px-4 py-2 bg-gray-700'>3.25</td><td class='px-4 py-2 bg-gray-700'>74.95</td><td class='px-4 py-2 bg-gray-700'>8.82%</td><td class='px-4 py-2 bg-gray-700'>0.21</td><td class='px-4 py-2 bg-gray-700'>94.73</td><td class='px-4 py-2 bg-gray-700'>26.77</td><td class='' rowspan='2'>42.86 %</td><td class='' rowspan='2'>+133</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>George Kirby (SEA)</td><td class='px-4 py-2 bg-gray-800'>3.46</td><td class='px-4 py-2 bg-gray-800'>68.10</td><td class='px-4 py-2 bg-gray-800'>2.46%</td><td class='px-4 py-2 bg-gray-800'>0.33</td><td class='px-4 py-2 bg-gray-800'>139.41</td><td class='px-4 py-2 bg-gray-800'>28.94</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>MIN @LAD</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>10:10 PM ET</td><td class='px-4 py-2 bg-gray-700'>David Festa (MIN)</td><td class='px-4 py-2 bg-gray-700'>3.76</td><td class='px-4 py-2 bg-gray-700'>58.12</td><td class='px-4 py-2 bg-gray-700'>5.80%</td><td class='px-4 py-2 bg-gray-700'>0.13</td><td class='px-4 py-2 bg-gray-700'>89.57</td><td class='px-4 py-2 bg-gray-700'>23.70</td><td class='' rowspan='2'>38.89 %</td><td class='' rowspan='2'>+157</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Shohei Ohtani (LAD)</td><td class='px-4 py-2 bg-gray-800'>3.68</td><td class='px-4 py-2 bg-gray-800'>60.55</td><td class='px-4 py-2 bg-gray-800'>0.00%</td><td class='px-4 py-2 bg-gray-800'>0.26</td><td class='px-4 py-2 bg-gray-800'>117.21</td><td class='px-4 py-2 bg-gray-800'>24.27</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

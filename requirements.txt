@@ -5,3 +5,4 @@ pyYAML
 python-dotenv
 json
 weasyprint
+beautifulsoup4

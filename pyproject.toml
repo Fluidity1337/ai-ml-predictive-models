@@ -10,9 +10,12 @@ dependencies = [
   "pandas>=1.0",
   "scikit-learn",
   "ace_tools",
+  "pybaseball (>=2.2.7,<3.0.0)",
+  "pyyaml (>=6.0.2,<7.0.0)",
+  "python-dotenv (>=1.1.1,<2.0.0)",
 ]
 
-requires-python = ">=3.8,<3.12"
+requires-python = ">=3.9,<3.12"
 
 [project.optional-dependencies]
 tests = ["pytest>=7.0"]
@@ -20,3 +23,6 @@ tests = ["pytest>=7.0"]
 [tool.setuptools.packages.find]
 where   = ["src"]
 include = ["*"]
+
+[tool.poetry]
+package-mode = false
