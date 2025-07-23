@@ -368,10 +368,10 @@
     "away_team_score": 17.07,
     "home_team_score": 28.19,
     "game_nrfi_score": 22.63,
-    "first_inning_away_runs": 0,
+    "first_inning_away_runs": 1,
     "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_score": "1-0",
+    "first_inning_run": true
   },
   {
     "game_id": 777049,
@@ -403,9 +403,9 @@
     "home_team_score": 32.77,
     "game_nrfi_score": 38.37,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 1,
+    "first_inning_score": "0-1",
+    "first_inning_run": true
   },
   {
     "game_id": 777040,
