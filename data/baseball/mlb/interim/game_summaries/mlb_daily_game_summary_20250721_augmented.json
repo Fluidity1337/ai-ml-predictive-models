@@ -28,10 +28,10 @@
     "away_team_score": 36.98,
     "home_team_score": 24.54,
     "game_nrfi_score": 30.76,
-    "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_away_runs": 3,
+    "first_inning_home_runs": 3,
+    "first_inning_score": "3-3",
+    "first_inning_run": true
   },
   {
     "game_id": 777060,
@@ -131,9 +131,9 @@
     "home_team_score": 36.83,
     "game_nrfi_score": 29.45,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 4,
+    "first_inning_score": "0-4",
+    "first_inning_run": true
   },
   {
     "game_id": 777063,
@@ -164,10 +164,10 @@
     "away_team_score": 40.6,
     "home_team_score": 23.79,
     "game_nrfi_score": 32.2,
-    "first_inning_away_runs": 0,
+    "first_inning_away_runs": 1,
     "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_score": "1-0",
+    "first_inning_run": true
   },
   {
     "game_id": 777066,
@@ -266,10 +266,10 @@
     "away_team_score": 40.86,
     "home_team_score": 34.97,
     "game_nrfi_score": 37.91,
-    "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_away_runs": 1,
+    "first_inning_home_runs": 5,
+    "first_inning_score": "1-5",
+    "first_inning_run": true
   },
   {
     "game_id": 777059,
@@ -437,9 +437,9 @@
     "home_team_score": 36.39,
     "game_nrfi_score": 33.34,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 1,
+    "first_inning_score": "0-1",
+    "first_inning_run": true
   },
   {
     "game_id": 777050,
@@ -504,9 +504,9 @@
     "away_team_score": 23.7,
     "home_team_score": 24.27,
     "game_nrfi_score": 23.98,
-    "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_away_runs": 1,
+    "first_inning_home_runs": 2,
+    "first_inning_score": "1-2",
+    "first_inning_run": true
   }
 ]
