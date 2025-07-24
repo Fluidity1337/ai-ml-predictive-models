@@ -46,12 +46,18 @@ def insert_example_data(cur):
 
 def main():
     config = load_config()
-    root_path = config.get("root_path", "..")
-    if not root_path:
-        raise ValueError("'root_path' must be set in config.yaml for database path resolution.")
-    # Debug print for root_path
-    print(f"[DEBUG] root_path (as in config): {root_path}")
-    print(f"[DEBUG] root_path (absolute): {os.path.abspath(root_path)}")
+    try:
+        root_path = config["root_path"]
+        print(f"[DEBUG] root_path (auto-detected): {root_path}")
+    except KeyError:
+        import sys
+        import importlib.util
+        config_loader_path = os.path.join(os.path.dirname(__file__), '..', 'utils', 'config_loader.py')
+        spec = importlib.util.spec_from_file_location("config_loader", os.path.abspath(config_loader_path))
+        config_loader = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(config_loader)
+        root_path = str(config_loader.find_project_root())
+        print(f"[WARN] root_path not found in config, auto-detected: {root_path}")
     # Get db path from mlb_data.data_lake_filepath in config.yaml
     mlb_data = config.get("mlb_data", {})
     #print(f"[DEBUG] mlb_data section from config: {mlb_data}")

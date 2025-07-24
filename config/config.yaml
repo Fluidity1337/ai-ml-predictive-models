@@ -1,5 +1,4 @@
 # Top-level settings
-root_path: ..
 log_path: logs
 cache_path: .cache
 index_html_filepath: index.html

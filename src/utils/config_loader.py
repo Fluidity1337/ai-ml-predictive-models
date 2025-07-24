@@ -57,14 +57,11 @@ def load_config(filename: str = "config/config.yaml") -> dict:
             except Exception:
                 config = json.loads(content)
 
-        # Auto-detect project root and inject/override root_path
+        # Force root_path to always be the detected project root
         try:
             project_root = str(find_project_root())
-            if not config.get("root_path") or config.get("root_path") in ("..", "../..", ".", "./"):
-                config["root_path"] = project_root
-                print(f"[DEBUG] Auto-set root_path to project root: {project_root}")
-            else:
-                print(f"[DEBUG] root_path from config: {config['root_path']}")
+            config["root_path"] = project_root
+            print(f"[DEBUG] Forced root_path to project root: {project_root}")
         except Exception as e:
             print(f"[WARN] Could not auto-detect project root: {e}")
         return config
