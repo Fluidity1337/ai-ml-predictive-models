@@ -1,17 +1,14 @@
-# remove the “config/config.yaml” line entirely
-# (start with your comments or the first actual setting)
-
 # Top-level settings
-root_path: .
+root_path: ..
 log_path: logs
 cache_path: .cache
 index_html_filepath: index.html
 
 mlb_data:
+  data_lake_filepath: db/mlb_poc.db
   nrfi_websheet_ds: data/baseball/mlb/raw/mlb_daily_
   base_path:    data/baseball/mlb/
   rfi:
-    team_woba3_filepath: data/baseball/mlb/processed/team_woba3_splits_combined.json
     wrc_filepath: data/baseball/mlb/raw/fangraphs/splits_1st_inning_{season}_{date}.csv
   raw:          data/baseball/mlb/raw
   game_schedule: data/baseball/mlb/raw/game_schedule
