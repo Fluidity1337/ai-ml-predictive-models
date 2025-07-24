@@ -1,6 +1,4 @@
 # run_mlb_rfi_pipeline_with_websheets_3.py
-from dotenv import load_dotenv
-load_dotenv()  # Load environment variables from .env file
 import sys
 import csv
 import json
@@ -8,15 +6,24 @@ import logging
 import logging.config
 from datetime import datetime, timedelta
 from pathlib import Path
-import requests
 import pandas as pd
+from dotenv import load_dotenv
+
+# Add src directory to Python path
+src_path = Path(__file__).parent.parent
+if str(src_path) not in sys.path:
+    sys.path.insert(0, str(src_path))
+
+# Now import local modules
 from utils.mlb.fetch_schedule import fetch_schedule
 from utils.mlb.fetch_game_details import fetch_game_details
 from utils.mlb.fetch_advanced_stats_for_pitcher import PitcherAdvancedStats
 from utils.config_loader import load_config
-from utils.helpers import RatingCalculator, FeatureConfigLoader
+from utils.helpers import FeatureConfigLoader
 from utils.mlb.team_codes import get_team_codes
 from utils.mlb.calculate_nrfi_score import calculate_nrfi_score
+
+load_dotenv()  # Load environment variables from .env file
 
 cfg = load_config()
 logging.config.dictConfig(cfg["logging"])

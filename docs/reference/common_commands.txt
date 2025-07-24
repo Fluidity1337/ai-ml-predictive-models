@@ -1,4 +1,7 @@
-$env:PYTHONPATH="E:\dev\github\Fluidity1337\ai-ml-predictive-models\src"
+# DEVELOPMENT - Set PYTHONPATH (local only)
+$env:PYTHONPATH="$PWD\src"
+# OR install as editable package (works everywhere)
+pip install -e .
 
 1) wRC+ Fangraphs, grab manually Advanced, Team, Split, wRC+
 https://www.fangraphs.com/leaders/splits-leaderboards?splitArr=44&splitArrPitch=&autoPt=false&splitTeams=false&statType=team&statgroup=2&startDate=2025-03-01&endDate=2025-11-01&players=&filter=&groupBy=season&wxTemperature=&wxPressure=&wxAirDensity=&wxElevation=&wxWindSpeed=&position=B&sort=23,1
@@ -8,9 +11,9 @@ python advanced_team_stats.py --force --quiet
   or
 python -m utils.mlb.advanced_team_stats --force
 
-3) python -m src.pipelines.run_mlb_rfi_pipeline 2025-07-22
+3) python -m src.pipelines.run_mlb_rfi_pipeline 2025-07-24
   or
-python -m pipelines.run_mlb_rfi_pipeline 2025-07-23
+python -m pipelines.run_mlb_rfi_pipeline 2025-07-24
 
 python src/utils/mlb/augment_game_summaries.py -i data/baseball/mlb/raw -o data/baseball/mlb/interim/game_summaries
 python src/models/sports/baseball/mlb/calibrate_nrfi_scores.py -i data/baseball/mlb/interim/game_summaries -p "mlb_daily_game_summary_*_augmented.json" -d data/baseball/mlb/processed/game_summaries

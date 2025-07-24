@@ -1,11 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "../../../../../../../../../dev/vscode/workspaces/ai-ml-predictive-models"
-		},
-		{
-			"name": "ai-ml-predictive-models",
-			"path": "../../../../../../../../../dev/vscode/workspaces/ai-ml-predictive-models/ai-ml-predictive-models"
+			"path": "."
 		}
 	],
 	"settings": {}
