@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <title>Moneyline Hacks - NRFI Model</title>
+  <link href='https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css' rel='stylesheet'>
+  <style>
+    /* global box-sizing */
+    *, *::before, *::after { box-sizing: border-box; }
+    /* reset margins */
+    html, body { margin: 0; padding: 0; }
+    body {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 1.5rem;
+    }
+    .title-highlight {
+      background: linear-gradient(to right, #34d399, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* custom class for s<=20 */
+    .bg-de4545 { background-color: #db5a5a !important; }
+    /* wrapper provides uniform white border */
+    .table-wrapper { 
+      display: inline-block; 
+      max-width: 100%; 
+      overflow-x: auto; 
+      border: 1px solid #fff; 
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #0f172a; /* table background behind cells */
+      border: 1px solid #fff;     /* uniform outer border */
+    }
+    th, td {
+      border: 1px solid #fff;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .overflow-auto.max-w-5xl.mx-auto {
+    box-sizing: border-box; 
+    }
+  </style>
+</head>
+<body class='p-6'>
+  <div class='flex flex-col items-center justify-center gap-3 mb-6'>
+    <!-- First line: logo and title -->
+    <div class='flex items-center gap-4'>
+      <img
+        src='https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/assets/img/mlh/mlh-logo-1.jpg'
+        alt='Moneyline Hacks Logo'
+        class='h-16'/>
+      <h1 class='text-4xl font-extrabold title-highlight'>Moneyline Hacks</h1>
+    </div>
+    <!-- Second line: date and second logo -->
+    <div class='flex items-center gap-4'>
+      <h2 class='text-xl text-gray-400'>No Run First Inning Model — July 24, 2025</h2>
+      <img
+        src='https://raw.githubusercontent.com/Fluidity1337/ai-ml-predictive-models/main/assets/img/mlb/mlb-logo-2.png'
+        alt='Baseball Icon'
+        class='h-10'/>
+    </div>
+  </div>
+  <div class='overflow-auto w-full mx-auto'>
+    <table class='min-w-full text-gray-300 text-sm'>
+      <thead class='bg-gray-900 text-gray-100 uppercase text-xs'>
+        <tr>
+          <th class='px-4 py-2'>MLB MatchupWTF</th>
+          <th class='px-4 py-2'>Start Time</th>
+          <th class='px-4 py-2'>SP Name</th>
+          <th class='px-4 py-2'>SP xFIP (L30D)</th>
+          <th class='px-4 py-2'>xFIP Score (0-100)</th>          
+          <th class='px-4 py-2'>SP Barrel% (L30D)</th>        
+          <th class='px-4 py-2'>Top 3 Hitters Avg wOBA (L14D)</th>          
+          <th class='px-4 py-2'>Team 1st Inning wRC+ (Season)</th>
+          <th class='px-4 py-2'>Team RFI Grade (0-100)</th>
+          <th class='px-4 py-2'>Projected NRFI Chance</th>
+          <th class='px-4 py-2'>Projected American Odds</th>
+        </tr>
+      </thead>
+      <tbody>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>BAL @CLE</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>1:10 PM ET</td><td class='px-4 py-2 bg-gray-700'>Charlie Morton (BAL)</td><td class='px-4 py-2 bg-gray-700'>3.78</td><td class='px-4 py-2 bg-gray-700'>57.38</td><td class='px-4 py-2 bg-gray-700'>4.16%</td><td class='px-4 py-2 bg-gray-700'>0.35</td><td class='px-4 py-2 bg-gray-700'>103.87</td><td class='px-4 py-2 bg-gray-700'>29.69</td><td class='' rowspan='2'>46.44 %</td><td class='' rowspan='2'>+115</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Logan Allen (CLE)</td><td class='px-4 py-2 bg-gray-800'>3.76</td><td class='px-4 py-2 bg-gray-800'>58.10</td><td class='px-4 py-2 bg-gray-800'>4.66%</td><td class='px-4 py-2 bg-gray-800'>0.33</td><td class='px-4 py-2 bg-gray-800'>94.68</td><td class='px-4 py-2 bg-gray-800'>28.17</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>TOR @DET</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>6:40 PM ET</td><td class='px-4 py-2 bg-gray-700'>Eric Lauer (TOR)</td><td class='px-4 py-2 bg-gray-700'>3.79</td><td class='px-4 py-2 bg-gray-700'>57.14</td><td class='px-4 py-2 bg-gray-700'>3.26%</td><td class='px-4 py-2 bg-gray-700'>0.36</td><td class='px-4 py-2 bg-gray-700'>111.58</td><td class='px-4 py-2 bg-gray-700'>29.74</td><td class='' rowspan='2'>47.51 %</td><td class='' rowspan='2'>+110</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Reese Olson (DET)</td><td class='px-4 py-2 bg-gray-800'>3.79</td><td class='px-4 py-2 bg-gray-800'>57.07</td><td class='px-4 py-2 bg-gray-800'>1.96%</td><td class='px-4 py-2 bg-gray-800'>0.32</td><td class='px-4 py-2 bg-gray-800'>126.88</td><td class='px-4 py-2 bg-gray-800'>29.84</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>SD @STL</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>7:45 PM ET</td><td class='px-4 py-2 bg-gray-700'>Yu Darvish (SD)</td><td class='px-4 py-2 bg-gray-700'>3.61</td><td class='px-4 py-2 bg-gray-700'>62.90</td><td class='px-4 py-2 bg-gray-700'>3.86%</td><td class='px-4 py-2 bg-gray-700'>0.41</td><td class='px-4 py-2 bg-gray-700'>114.03</td><td class='px-4 py-2 bg-gray-700'>32.07</td><td class='' rowspan='2'>43.28 %</td><td class='' rowspan='2'>+131</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Sonny Gray (STL)</td><td class='px-4 py-2 bg-gray-800'>3.19</td><td class='px-4 py-2 bg-gray-800'>77.08</td><td class='px-4 py-2 bg-gray-800'>6.69%</td><td class='px-4 py-2 bg-gray-800'>0.23</td><td class='px-4 py-2 bg-gray-800'>90.33</td><td class='px-4 py-2 bg-gray-800'>20.69</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>ATH @HOU</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>8:10 PM ET</td><td class='px-4 py-2 bg-gray-700'>Luis Severino (ATH)</td><td class='px-4 py-2 bg-gray-700'>3.97</td><td class='px-4 py-2 bg-gray-700'>51.16</td><td class='px-4 py-2 bg-gray-700'>5.59%</td><td class='px-4 py-2 bg-gray-700'>0.46</td><td class='px-4 py-2 bg-gray-700'>113.72</td><td class='px-4 py-2 bg-gray-700'>42.19</td><td class='' rowspan='2'>56.46 %</td><td class='' rowspan='2'>-130</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Jason Alexander (HOU)</td><td class='px-4 py-2 bg-gray-800'>4.13</td><td class='px-4 py-2 bg-gray-800'>45.60</td><td class='px-4 py-2 bg-gray-800'>0.00%</td><td class='px-4 py-2 bg-gray-800'>0.43</td><td class='px-4 py-2 bg-gray-800'>88.17</td><td class='px-4 py-2 bg-gray-800'>31.77</td></tr>
+<tr><td class='px-4 py-2 bg-gray-700' rowspan='2'>SEA @LAA</td><td class='px-4 py-2 bg-gray-700' rowspan='2'>9:38 PM ET</td><td class='px-4 py-2 bg-gray-700'>Logan Evans (SEA)</td><td class='px-4 py-2 bg-gray-700'>3.84</td><td class='px-4 py-2 bg-gray-700'>55.33</td><td class='px-4 py-2 bg-gray-700'>7.71%</td><td class='px-4 py-2 bg-gray-700'>0.43</td><td class='px-4 py-2 bg-gray-700'>137.70</td><td class='px-4 py-2 bg-gray-700'>49.94</td><td class='' rowspan='2'>56.95 %</td><td class='' rowspan='2'>-132</td></tr>
+<tr><td class='px-4 py-2 bg-gray-800'>Yusei Kikuchi (LAA)</td><td class='px-4 py-2 bg-gray-800'>3.57</td><td class='px-4 py-2 bg-gray-800'>64.46</td><td class='px-4 py-2 bg-gray-800'>3.21%</td><td class='px-4 py-2 bg-gray-800'>0.17</td><td class='px-4 py-2 bg-gray-800'>139.65</td><td class='px-4 py-2 bg-gray-800'>24.81</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

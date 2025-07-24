@@ -148,8 +148,15 @@ if __name__ == '__main__':
     games = fetch_schedule(date_str)
     logging.info("Loaded %d games", len(games))
 
-    # Load wOBA split data
-    woba3_path = Path('data/baseball/mlb/processed/team_woba3_splits_combined.json')
+    # Load wOBA split data (portable)
+    woba3_path = cfg["mlb_data"].get("woba3_combined_json")
+    if not woba3_path:
+        raise ValueError("Missing woba3_combined_json in config.yaml")
+    from pathlib import Path
+    root_path = cfg["root_path"]
+    woba3_path = Path(woba3_path)
+    if not woba3_path.is_absolute():
+        woba3_path = Path(root_path) / woba3_path
     with open(woba3_path, 'r', encoding='utf-8') as wf:
         woba_data = json.load(wf)
         woba_split = woba_data.get("splits", {}).get("14d", {})

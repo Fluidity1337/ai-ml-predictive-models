@@ -1,7 +1,13 @@
 Metadata-Version: 2.4
 Name: mlb
 Version: 0.1.0
+Requires-Python: <3.12,>=3.9
 Requires-Dist: requests>=2.0
 Requires-Dist: pandas>=1.0
+Requires-Dist: scikit-learn
+Requires-Dist: ace_tools
+Requires-Dist: pybaseball<3.0.0,>=2.2.7
+Requires-Dist: pyyaml<7.0.0,>=6.0.2
+Requires-Dist: python-dotenv<2.0.0,>=1.1.1
 Provides-Extra: tests
 Requires-Dist: pytest>=7.0; extra == "tests"

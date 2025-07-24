@@ -1,5 +1,10 @@
 requests>=2.0
 pandas>=1.0
+scikit-learn
+ace_tools
+pybaseball<3.0.0,>=2.2.7
+pyyaml<7.0.0,>=6.0.2
+python-dotenv<2.0.0,>=1.1.1
 
 [tests]
 pytest>=7.0

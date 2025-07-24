@@ -267,9 +267,9 @@
     "home_team_score": 45.2,
     "game_nrfi_score": 36.12,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 1,
+    "first_inning_score": "0-1",
+    "first_inning_run": true
   },
   {
     "game_id": 777024,
@@ -335,9 +335,9 @@
     "home_team_score": 22.88,
     "game_nrfi_score": 25.71,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 1,
+    "first_inning_score": "0-1",
+    "first_inning_run": true
   },
   {
     "game_id": 777036,
@@ -403,9 +403,9 @@
     "home_team_score": 30.27,
     "game_nrfi_score": 36.33,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 3,
+    "first_inning_score": "0-3",
+    "first_inning_run": true
   },
   {
     "game_id": 777027,
@@ -471,9 +471,9 @@
     "home_team_score": 23.53,
     "game_nrfi_score": 26.98,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 4,
+    "first_inning_score": "0-4",
+    "first_inning_run": true
   },
   {
     "game_id": 777033,

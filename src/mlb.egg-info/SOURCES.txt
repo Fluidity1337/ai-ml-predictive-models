@@ -48,12 +48,16 @@ src/models/sports/tennis/schema/tennis_model_schema.py
 src/pipelines/helper_functions.py
 src/pipelines/run_mlb_rfi_pipeline.py
 src/pipelines/run_mlb_rfi_pipeline_20250629_bkp.py
+src/pipelines/run_mlb_rfi_pipeline_bkp_20250723.py
 src/pipelines/run_mlb_rfi_pipeline_with_websheets_bkp.py
 src/renderers/_init_.py
 src/renderers/baseball_rfi_html_generator.py
 src/renderers/build_rfi_websheet.py
+src/sql/mlb_sqlite_poc.py
 src/utils/_init_.py
 src/utils/config_loader.py
+src/utils/convert_html_to_pdf.py
+src/utils/db_access.py
 src/utils/decode_data_uri.py
 src/utils/ev_calculator.py
 src/utils/fangraphs_client.py
@@ -73,6 +77,7 @@ src/utils/mlb/fetch_game_details.py
 src/utils/mlb/fetch_games_by_pitcher.py
 src/utils/mlb/fetch_schedule.py
 src/utils/mlb/fetch_schedule_bkp2.py
+src/utils/mlb/fetch_wrc_teams_daily.py
 src/utils/mlb/get_f1_stats.py
 src/utils/mlb/lookup_stats.py
 src/utils/mlb/lookup_stats_20250629.py
