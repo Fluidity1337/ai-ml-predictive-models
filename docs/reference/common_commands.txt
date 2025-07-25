@@ -15,11 +15,17 @@ python -m utils.mlb.advanced_team_stats --force
   or
 python -m pipelines.run_mlb_rfi_pipeline 2025-07-24
 
-python src/utils/mlb/augment_game_summaries.py -i data/baseball/mlb/raw -o data/baseball/mlb/interim/game_summaries
-python src/models/sports/baseball/mlb/calibrate_nrfi_scores.py -i data/baseball/mlb/interim/game_summaries -p "mlb_daily_game_summary_*_augmented.json" -d data/baseball/mlb/processed/game_summaries
+4) OPTIONAL TO GET GAME RESULTS
+python -m src.utils.mlb.augment_game_summaries --start-date 20250725 --end-date 20250725 --input-dir data/baseball/mlb/raw --output-dir data/baseball/mlb/interim/game_summaries
+
+#python src/utils/mlb/augment_game_summaries.py -i data/baseball/mlb/raw -o data/baseball/mlb/interim/game_summaries
+  -update this to not fetch for files if the augmented file exists
+
+5) python -m src.models.sports.baseball.mlb.calibrate_nrfi_scores -i data/baseball/mlb/interim/game_summaries -p "mlb_daily_game_summary_*_augmented.json" -d data/baseball/mlb/processed/game_summaries
 
 python src/renderers/build_rfi_websheet.py
 
+python -m src.utils.mlb.fetch_wrc_teams_daily --date 20250725 
 
 
 
