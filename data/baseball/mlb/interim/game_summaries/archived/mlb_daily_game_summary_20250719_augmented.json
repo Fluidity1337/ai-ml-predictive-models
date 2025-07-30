@@ -63,9 +63,9 @@
     "home_team_score": 29.06,
     "game_nrfi_score": 26.6,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 1,
+    "first_inning_score": "0-1",
+    "first_inning_run": true
   },
   {
     "game_id": 777093,
@@ -97,9 +97,9 @@
     "home_team_score": 25.89,
     "game_nrfi_score": 23.76,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 1,
+    "first_inning_score": "0-1",
+    "first_inning_run": true
   },
   {
     "game_id": 777089,
@@ -131,9 +131,9 @@
     "home_team_score": 60.68,
     "game_nrfi_score": 47.67,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 1,
+    "first_inning_score": "0-1",
+    "first_inning_run": true
   },
   {
     "game_id": 777090,
@@ -232,10 +232,10 @@
     "away_team_score": 24.92,
     "home_team_score": 33.56,
     "game_nrfi_score": 29.24,
-    "first_inning_away_runs": 0,
+    "first_inning_away_runs": 2,
     "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_score": "2-0",
+    "first_inning_run": true
   },
   {
     "game_id": 777088,
@@ -335,9 +335,9 @@
     "home_team_score": 43.99,
     "game_nrfi_score": 39.77,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 2,
+    "first_inning_score": "0-2",
+    "first_inning_run": true
   },
   {
     "game_id": 777081,
@@ -369,9 +369,9 @@
     "home_team_score": 31.29,
     "game_nrfi_score": 21.93,
     "first_inning_away_runs": 0,
-    "first_inning_home_runs": 0,
-    "first_inning_score": "0-0",
-    "first_inning_run": false
+    "first_inning_home_runs": 3,
+    "first_inning_score": "0-3",
+    "first_inning_run": true
   },
   {
     "game_id": 777097,

@@ -9,6 +9,9 @@ from pathlib import Path
 import pandas as pd
 from dotenv import load_dotenv
 
+# Notification utility
+from utils.notify import send_discord_webhook
+
 # Add src directory to Python path
 src_path = Path(__file__).parent.parent
 if str(src_path) not in sys.path:
@@ -128,18 +131,28 @@ def normalize_team_name(name):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        date_str = sys.argv[1]
-    else:
-        date_str = datetime.now().strftime('%Y-%m-%d')
-        
-    #date_str_nohyphens=datetime.strftime("%Y%m%d")
+
+    import argparse
+    parser = argparse.ArgumentParser(description="MLB RFI Pipeline")
+    parser.add_argument("date", nargs="?", default=datetime.now().strftime('%Y-%m-%d'), help="Date to process (YYYY-MM-DD)")
+    parser.add_argument("--force", action="store_true", help="Force re-run even if output exists")
+    args = parser.parse_args()
+    date_str = args.date
+    force = args.force
 
     try:
         dt = datetime.strptime(date_str, '%Y-%m-%d')
     except ValueError:
         logging.error("Date must be in YYYY-MM-DD format, got %r", date_str)
         sys.exit(1)
+
+    # Check for existing outputs unless --force
+    summary_csv = Path(cfg["mlb_data"]["raw"]) / f"mlb_daily_game_summary_{date_str.replace('-','')}.csv"
+    summary_json = Path(cfg["mlb_data"]["raw"]) / f"mlb_daily_game_summary_{date_str.replace('-','')}.json"
+    if not force and summary_csv.exists() and summary_json.exists():
+        logging.info(f"Summary files for {date_str} already exist. Use --force to re-run.")
+        print(f"Summary files for {date_str} already exist. Use --force to re-run.")
+        sys.exit(0)
 
     # right after validating date_str
     start_dt = (dt - timedelta(days=30)).strftime('%Y-%m-%d')
@@ -174,7 +187,41 @@ if __name__ == '__main__':
         )
     )
     if not wrclike_path.exists():
-        raise FileNotFoundError(f"{wrclike_path} not found—please add the FanGraphs splits CSV.")
+
+        # Try to find a recent file with the same pattern (7 days old or less)
+        import glob
+        import time
+        from datetime import datetime, timedelta
+        import smtplib
+        # from email.message import EmailMessage
+        # import requests
+
+        pattern = str(wrclike_path).replace(dt.strftime("%Y%m%d"), "*")
+        candidates = glob.glob(pattern)
+        recent_file = None
+        for f in sorted(candidates, reverse=True):
+            try:
+                mtime = Path(f).stat().st_mtime
+                file_dt = datetime.fromtimestamp(mtime)
+                if (datetime.now() - file_dt).days <= 7:
+                    recent_file = Path(f)
+                    break
+            except Exception:
+                continue
+        if recent_file:
+            logging.warning(f"{wrclike_path} not found, using recent file {recent_file} (<=7 days old)")
+            wrclike_path = recent_file
+        else:
+            # Notification scaffolding
+            msg = f"FanGraphs splits CSV missing: {wrclike_path}. No recent file found."
+            logging.error(msg)
+            # --- Email notification (scaffold) ---
+            # send_email_notification(msg)
+            # --- Text/SMS notification (scaffold) ---
+            # send_sms_notification(msg)
+            # --- Discord webhook notification (scaffold) ---
+            # send_discord_webhook(msg)
+            raise FileNotFoundError(f"{wrclike_path} not found—please add the FanGraphs splits CSV. No recent file found.")
 
     try:
         wrclike_df = pd.read_csv(wrclike_path)
@@ -337,12 +384,53 @@ if __name__ == '__main__':
         })
 
     # Write game summary CSV/JSON
-    summary_csv = raw_data_dir / \
-        f"mlb_daily_game_summary_{date_str.replace('-','')}.csv"
+    summary_csv = raw_data_dir / f"mlb_daily_game_summary_{date_str.replace('-','')}.csv"
     pd.DataFrame(game_summary).to_csv(summary_csv, index=False)
     logging.info(f"Saved summary CSV to {summary_csv}")
-    summary_json = raw_data_dir / \
-        f"mlb_daily_game_summary_{date_str.replace('-','')}.json"
+    summary_json = raw_data_dir / f"mlb_daily_game_summary_{date_str.replace('-','')}.json"
     with open(summary_json, 'w', encoding='utf-8') as gj:
         json.dump(game_summary, gj, indent=2)
     logging.info(f"Saved summary JSON to {summary_json}")
+
+    # --- Post-processing: augment, calibrate, build websheet ---
+    import subprocess
+    import sys
+    try:
+        # 1. Augment game summaries
+        subprocess.run([
+            sys.executable, "-m", "src.utils.mlb.augment_game_summaries",
+            "--input-dir", "data/baseball/mlb/raw",
+            "--output-dir", "data/baseball/mlb/interim/game_summaries"
+        ], check=True)
+        # 2. Calibrate NRFI scores
+        subprocess.run([
+            sys.executable, "-m", "src.models.sports.baseball.mlb.calibrate_nrfi_scores",
+            "-i", "data/baseball/mlb/interim/game_summaries",
+            "-d", "data/baseball/mlb/processed/game_summaries"
+        ], check=True)
+        # 3. Build RFI websheet
+        subprocess.run([
+            sys.executable, "-m", "src.renderers.build_rfi_websheet"
+        ], check=True)
+    except subprocess.CalledProcessError as e:
+        logging.error(f"Post-processing step failed: {e}")
+        raise
+
+    # --- Notifications ---
+    webhook_url = "https://discord.com/api/webhooks/1395446824210403408/UzL082WyBbPcJNZzAU7t84KTAHbFgI9x5Kt8JIr8r3wUlUeWd6EJ3AMb6WUJtgwsIMhA"
+    msg = f"MLB RFI pipeline finished for {date_str}. Games: {len(games)}. Summary: {summary_json.name}"
+    try:
+        send_discord_webhook(msg, webhook_url)
+        # Send index.html as a file attachment
+        html_path = Path("index.html")
+        if html_path.exists():
+            send_discord_webhook("MLB RFI index.html attached", webhook_url, file_path=str(html_path), file_label="index.html")
+        else:
+            logging.warning("index.html not found, not sending to Discord webhook.")
+        # --- SMS notification (placeholder) ---
+        def send_sms_notification(message, phone_number):
+            # TODO: Integrate with Twilio or other SMS provider
+            logging.info(f"[SMS to {phone_number}]: {message}")
+        send_sms_notification(f"MLB RFI pipeline completed successfully for {date_str}", "323-855-5486")
+    except Exception as e:
+        logging.error(f"Failed to send Discord webhook or SMS: {e}")

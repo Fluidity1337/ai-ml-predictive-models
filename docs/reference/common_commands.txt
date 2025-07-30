@@ -3,6 +3,12 @@ $env:PYTHONPATH="$PWD\src"
 # OR install as editable package (works everywhere)
 pip install -e .
 
+python -m pipelines.run_mlb_rfi_pipeline 2025-07-25 --force
+
+python -m src.utils.mlb.augment_game_summaries --input-dir data/baseball/mlb/raw --output-dir data/baseball/mlb/interim/game_summaries
+python -m src.models.sports.baseball.mlb.calibrate_nrfi_scores -i data/baseball/mlb/interim/game_summaries -d data/baseball/mlb/processed/game_summaries
+python -m src.renderers.build_rfi_websheet.py
+
 1) wRC+ Fangraphs, grab manually Advanced, Team, Split, wRC+
 https://www.fangraphs.com/leaders/splits-leaderboards?splitArr=44&splitArrPitch=&autoPt=false&splitTeams=false&statType=team&statgroup=2&startDate=2025-03-01&endDate=2025-11-01&players=&filter=&groupBy=season&wxTemperature=&wxPressure=&wxAirDensity=&wxElevation=&wxWindSpeed=&position=B&sort=23,1
 
@@ -13,7 +19,7 @@ python -m utils.mlb.advanced_team_stats --force
 
 3) python -m src.pipelines.run_mlb_rfi_pipeline 2025-07-24
   or
-python -m pipelines.run_mlb_rfi_pipeline 2025-07-24
+python -m pipelines.run_mlb_rfi_pipeline 2025-07-25
 
 4) OPTIONAL TO GET GAME RESULTS
 python -m src.utils.mlb.augment_game_summaries --start-date 20250725 --end-date 20250725 --input-dir data/baseball/mlb/raw --output-dir data/baseball/mlb/interim/game_summaries
@@ -21,8 +27,9 @@ python -m src.utils.mlb.augment_game_summaries --start-date 20250725 --end-date 
 #python src/utils/mlb/augment_game_summaries.py -i data/baseball/mlb/raw -o data/baseball/mlb/interim/game_summaries
   -update this to not fetch for files if the augmented file exists
 
-5) python -m src.models.sports.baseball.mlb.calibrate_nrfi_scores -i data/baseball/mlb/interim/game_summaries -p "mlb_daily_game_summary_*_augmented.json" -d data/baseball/mlb/processed/game_summaries
-
+5) CALIBRATE NRFI SCORES scikit-learn
+python -m src.models.sports.baseball.mlb.calibrate_nrfi_scores -i data/baseball/mlb/interim/game_summaries -d data/baseball/mlb/processed/game_summaries
+6) GENERATE NRFI HTML PAGE
 python src/renderers/build_rfi_websheet.py
 
 python -m src.utils.mlb.fetch_wrc_teams_daily --date 20250725 
