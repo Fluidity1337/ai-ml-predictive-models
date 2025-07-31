@@ -102,7 +102,7 @@ def fetch_game_details(game, df_pitch=None, features_cfg=None, season=None):
         # Extract stats for this specific game
         this_game_stats = last5_map.get(game_id, {})
         # If no recent appearances, fall back to seasonal stats
-        if not last5_map and df_pitch is not None:
+        if not last5_map and df_pitch is not None and not df_pitch.empty and 'IDfg' in df_pitch.columns:
             # Seasonal DataFrame is expected to have 'IDfg', 'xFIP', and 'Barrel%' columns
             seasonal = df_pitch.loc[df_pitch['IDfg'] == pid]
             if not seasonal.empty:
