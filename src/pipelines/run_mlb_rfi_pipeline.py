@@ -417,7 +417,7 @@ if __name__ == '__main__':
         raise
 
     # --- Notifications ---
-    webhook_url = "https://discord.com/api/webhooks/1395446824210403408/UzL082WyBbPcJNZzAU7t84KTAHbFgI9x5Kt8JIr8r3wUlUeWd6EJ3AMb6WUJtgwsIMhA"
+    webhook_url = "https://discord.com/api/webhooks/1394522977772503040/NJ7Wp9CvZJVtrjERlmnWFS3K7SVOxTcRVolL49O5_XPDycAiADxMzb7mzW0eKiz8yWqM"
     msg = f"MLB RFI pipeline finished for {date_str}. Games: {len(games)}. Summary: {summary_json.name}"
     try:
         send_discord_webhook(msg, webhook_url)

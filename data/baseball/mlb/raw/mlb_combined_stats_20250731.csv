@@ -1,0 +1,7 @@
+game_id,player_type,team,team_abbrev,side,id,name,position,order,recent_barrel_pct,recent_barrel_pct_score,recent_f1_era,recent_f1_whip,recent_xfip,recent_xfip_score
+776927,NA,Tampa Bay Rays,NA,away,686752,Ryan Pepiot,NA,NA,5.810455775973017,51.260000000000005,3.60,1.20,3.8595566099833882,54.660000000000004
+776927,NA,New York Yankees,NA,home,573186,Marcus Stroman,NA,NA,5.404648956356736,65.425,2.25,2.00,3.675484545672859,60.8
+776928,NA,Atlanta Braves,NA,away,471911,Carlos Carrasco,NA,NA,,,NA,NA,,
+776928,NA,Cincinnati Reds,NA,home,671096,Andrew Abbott,NA,NA,2.4743589743589745,95.225,2.25,1.25,3.96095823406627,51.325
+776923,NA,Texas Rangers,NA,away,677958,Kumar Rocker,NA,NA,9.166666666666666,36.9,0.00,1.25,3.6806574819730464,60.625
+776923,NA,Seattle Mariners,NA,home,669923,George Kirby,NA,NA,4.705802775655717,75.425,0.00,1.00,3.541657948794305,65.27499999999999
