@@ -3,6 +3,9 @@ $env:PYTHONPATH="$PWD\src"
 # OR install as editable package (works everywhere)
 pip install -e .
 
+# SECURITY: Create .env file with your Discord webhook URL (never commit this!)
+# Copy .env.example to .env and update with your actual webhook URL
+
 python -m pipelines.run_mlb_rfi_pipeline 2025-07-25 --force
 
 python -m src.utils.mlb.augment_game_summaries --input-dir data/baseball/mlb/raw --output-dir data/baseball/mlb/interim/game_summaries
@@ -122,3 +125,9 @@ Collecting requests
   data_uri = """data:application/csv;charset=utf-8,Season%2CTm%2CPA%2CBB%25%2CK%25%2CBB%2FK%2CAVG%2COBP%2CSLG%2COPS%2CISO%2CBABIP%2CwRC%2CwRAA%2CwOBA%2CwRC%2B%0A2025%2C%22CIN%22%2C358%2C0.106145251%2C0.229050279%2C0.463414634%2C0.268987341%2C0.349162011%2C0.427215189%2C0.7763772%2C0.158227848%2C0.331858407%2C49.54525807970423%2C8.238773857292125%2C0.3422689411227264%2C112.49718323230123%0A2025%2C%22TOR%22%2C337%2C0.074183976%2C0.21661721%2C0.342465753%2C0.265372168%2C0.31845238%2C0.398058252%2C0.716510632%2C0.132686084%2C0.32173913%2C39.3649677875213%2C0.4814896228484453%2C0.3153422347136906%2C103.99062580899256%0A2025%2C%22PHI%22%2C368%2C0.095108695%2C0.217391304%2C0.4375%2C0.274390243%2C0.345108695%2C0.420731707%2C0.765840402%2C0.146341464%2C0.331950207%2C49.47971509100912%2C7.019418460149743%2C0.33733247706423636%2C115.19018032726193"""
 
 schtasks /create /tn "MLB RFI Pipeline Daily" /tr "C:\dev\vscode\workspaces\ai-ml-predictive-models\run_daily_pipeline.bat" /sc daily /st 06:00 /ru "SYSTEM" /f
+
+# SECURITY SETUP:
+# 1. Create .env file: copy .env.example to .env
+# 2. Generate new Discord webhook in your server settings
+# 3. Update DISCORD_WEBHOOK_URL in .env file
+# 4. Never commit .env file to git (already in .gitignore)

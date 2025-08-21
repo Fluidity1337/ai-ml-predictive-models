@@ -4,6 +4,7 @@ import csv
 import json
 import logging
 import logging.config
+import os
 from datetime import datetime, timedelta
 from pathlib import Path
 import pandas as pd
@@ -417,16 +418,23 @@ if __name__ == '__main__':
         raise
 
     # --- Notifications ---
-    webhook_url = "https://discord.com/api/webhooks/1394522977772503040/NJ7Wp9CvZJVtrjERlmnWFS3K7SVOxTcRVolL49O5_XPDycAiADxMzb7mzW0eKiz8yWqM"
+    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+    if not webhook_url:
+        logging.warning("DISCORD_WEBHOOK_URL not set in environment variables, skipping Discord notification")
+        webhook_url = None
     msg = f"MLB RFI pipeline finished for {date_str}. Games: {len(games)}. Summary: {summary_json.name}"
     try:
-        send_discord_webhook(msg, webhook_url)
-        # Send index.html as a file attachment
-        html_path = Path("index.html")
-        if html_path.exists():
-            send_discord_webhook("MLB RFI index.html attached", webhook_url, file_path=str(html_path), file_label="index.html")
+        if webhook_url:
+            send_discord_webhook(msg, webhook_url)
+            # Send index.html as a file attachment
+            html_path = Path("index.html")
+            if html_path.exists():
+                send_discord_webhook("MLB RFI index.html attached", webhook_url, file_path=str(html_path), file_label="index.html")
+            else:
+                logging.warning("index.html not found, not sending to Discord webhook.")
         else:
-            logging.warning("index.html not found, not sending to Discord webhook.")
+            logging.info("Discord webhook URL not configured, skipping notification")
+        
         # --- SMS notification (placeholder) ---
         def send_sms_notification(message, phone_number):
             # TODO: Integrate with Twilio or other SMS provider
